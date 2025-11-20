@@ -9,30 +9,49 @@
     <a href="../index.html">Tagasi</a>
     <h1>Spiraalmudel</h1><br/>
     <p>
-        Spiraalmudel on samuti üks iteratiivseid arendusmudeleid. <br/>
+        Spiraalmudel on tarkvaraarenduse iteratiivne ja riskipõhine arendusmudel. <br/>
+        See on üks arendusmudeleid, mis rõhutab riskianalüüsi olulisust igas arendustsüklis. <br/>
        
     </p>
     <h2>Spiraalmudel etapid:<br/></h2>
     <p>
-        Spiraalmudel koosneb neljast etapist. <br/>
-        Nendeks on: Eesmärkide seadmine (Objective setting), Riskide hindamine ja maandamine (Risk assessment and reduction), Arendus ja valideerimine (Development and validation), Planeerimine (Planning). <br/> <br/>
+        Spiraalmudel koosneb neljast tegevusest, mida korratakse igas spiraali ringis ehk faasis (iteratsioonis). Need neli tegevust on:<br/>
+        <ul>
+        <li>Eesmärkide seadmine (Objective Setting)</li>
+        <li> hindamine ja maandamine (Risk Assessment and Reduction)</li>
+        <li>Arendus ja valideerimine (Engineering and Validation)</li>
+        <li>Planeerimine (Planning)</li>
+        </ul>
     </p>
-    <h3>1. Etapp - Eesmärkide seadmine (Objective setting)</h3> <br/>
+    <h3>1. Eesmärkide Seadmine (Objective Setting)</h3> <br/>
     <p>
-        Määratakse selle faasi ehk korduse eesmärgid, piirangud protsessis, tulemused, juhtimisplaan, võimalikud riskid ning alternatiivsed strateegiad lähtudes riskidest. <br/>
+        Määratakse kindlaks selle spiraali faasi ehk korduse eesmärgid (nt funktsionaalsus, jõudlus).<br/>
+        Määratletakse piirangud (nt aeg, eelarve, tehnilised piirangud).<br/>
+        Kogutakse ja täpsustatakse nõuded ning kaalutakse alternatiivseid lahendusstrateegiaid (nt osta valmis lahendus, arendada ise,<br/>
+        taaskasutada olemasolevaid komponente).<br/>
     </p>
-    <h3> 2. Etapp - Riskide hindamine ja maandamine (Risk assessment and reduction)</h3>
+    <h3> 2.  Riskide Hindamine ja Maandamine (Risk Assessment and Reduction)</h3>
     <p>
-        Iga leitud riski jaoks tehakse analüüs, võetakse midagi ette riskide maandamiseks (nt risk, et nõudmised pole adekvaatsed: tehakse prototüüp)<br/> <br/>
+        Identifitseeritakse ja hinnatakse kõik potentsiaalsed riskid,<br/>
+        mis võivad takistada projekti eesmärkide saavutamist (nt tehnoloogilised riskid, nõuete ebastabiilsus, ajakava riskid).<br/>
+        Iga tuvastatud kõrge riskiga probleemi jaoks töötatakse välja maandamisstrateegia.<br/>
+        See võib hõlmata uuringuid, simulatsioone või prototüüpide loomist (nt nõuete ebaselguse riski maandamiseks luuakse kasutajaliidese prototüüp). <br/>
+        See tegevus teeb spiraalmudeli teistest arendusmudelitest unikaalseks. <br/>
     </p>
-    <h3>3. Etapp - Arendus ja valideerimine (Development and validation)</h3>
+    <h3>3. Arendus ja Valideerimine (Engineering and Validation)</h3>
     <p>
-         Valitakse arendusmudel, mis lähtub hinnatud riskidest (mudel peab olema selline, mis riske vähendada aitab). Nt kui kasutajaliides on suurim risk, siis võib aidata prototüüpide tegemine.<br/> <br/>
+        Valitakse ja teostatakse arendusmudel (nt prototüüpimine, koskmudel), <br/>
+        mis sobib kõige paremini maandatud riskidega ning aitab saavutada faasi eesmärke.<br/>
+        See etapp hõlmab disainimist, kodeerimist, testimist ja valideerimist.<br/>
+        Faasi tulemusena luuakse kas töötav tarkvara versioon või prototüüp, mis vastab faasi eesmärkidele.<br/>
     </p>
-    <h3>4. Etapp - Planeerimine (Planning</h3>
+    <h3>4. Planeerimine (Planning)</h3>
     <p>
-        Projekt vaadatakse üle ja tehakse otsus, kas jätkata järgmisel kordusel, kui otsustatakse jätkata, tehakse järgmise faasi jaoks plaan. <br/> <br/>
+        Vaadatakse üle faasi tulemused (sealhulgas riskianalüüsi ja arenduse tulemused) ning hinnatakse klientide ja teiste huvigruppide tagasisidet.<br/>
+        Tehakse otsus, kas jätkata projekti ning minna järgmisesse spiraali kordusesse.<br/>
+        Kui otsustatakse jätkata, koostatakse plaan järgmise faasi jaoks. Järgmine ring algab uute detailsemate eesmärkide seadmisega. <br/>
     </p><br/> <br/>
+    <h3>Peamine Erinevus ja Tähendus</h3><br/>
 
     <p>Selle mudeli kõige olulisem erinevus teistest on riskidega arvestamine. Risk - so võimalus, et midagi saab untsu minna. <br/>
       Riskide realiseerumise tõttu ületatakse tähtajad ja maksumus, seepärast peab riskidega arvestama ning võtma midagi ette nende maandamiseks. <br/>
@@ -47,13 +66,17 @@
         <td>Vead</td>
     </tr>   
     <tr>
-        <th>Väike risk</th>
-        <th>Kulakas</th>
+        <th>Väga madal risk – riskide süstemaatiline maandamine varakult.</th>
+        <th>Kulukas – nõuab pidevat planeerimist, riskianalüüsi ja hindamist.</th>
     </tr>   
     <tr>
-        <th>Paindlikus</th>
-        <th>Planerimis raskuse</th>
-    </tr> 
+        <th>Paindlikkus – sobib hästi projektidele, kus nõuded on ebaselged või muutuvad.</th>
+        <th>Aeganõudev – sobib pigem suuremahulistele, keerukatele ja kalli riskiga projektidele.</th>
+    </tr>
+    <tr>
+        <th>Sobib hästi suurtele ja keerukatele süsteemidele.</th>
+        <th>Planeerimise raskus – keeruline määrata tsüklite arvu ja nende kestust ette.</th>
+    </tr>
  
 </table>
 <p>
