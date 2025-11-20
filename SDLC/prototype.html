@@ -9,25 +9,32 @@
     <a href="../index.html">Tagasi</a>
     <h1>Prototüüpimine</h1><br/>
     <p>
-        Spiraalmudel on samuti üks iteratiivseid arendusmudeleid. <br/>
+        Prototüüpimine on oluline tarkvaraarenduse meetod, mis hõlmab süsteemi esialgse, <br/>
+        mittetäieliku versiooni ehk prototüübi loomist eesmärgiga koguda tagasisidet ja täpsustada nõudeid. <br/>
        
     </p>
     <h2>Prototüüpimine etapid:<br/></h2>
     <p>
-        Spiraalmudel koosneb kolmest etapist. <br/>
+        Prototüüpimise mudeli tsükkel koosneb tüüpiliselt kolmest põhitegevusest, mida korratakse (iteratsioon): <br/>
         Nendeks on: Nõuete kogumine, Kiire kavandamine, Iteratsioon prototüübi parandamiseks. <br/> <br/>
     </p>
-    <h3>1. Etapp - Nõuete kogumine</h3> <br/>
+    <h3>1. Nõuete kogumine ja defineerimine</h3> <br/>
     <p>
-        Seda tehakse üldisemal tasemel ja samas ka fikseeritakse, mida on kindlasti vaja edaspidi täpsustama hakata.. <br/>
+        Seda tehakse esialgu üldisemal tasemel. Määratletakse süsteemi põhinõuded ja fikseeritakse, <br/>
+        milliseid osi on kindlasti vaja edaspidi täpsustama hakata. Eesmärk on saada kiiresti kätte esmane arusaam. <br/>
     </p>
-    <h3> 2. Etapp - Kiire kavandamine</h3>
+    <h3> 2. Kiire kavandamine ja prototüübi loomine</h3>
     <p>
-        Keskendub nähtavale osale (sisend, väljund, vormid jms) ja selle tulemuseks on prototüüp. Klient hindab prototüüpi ja oskab selle alusel ka oma soove täpsustada.<br/> <br/>
+        Keskendutakse tavaliselt kasutajaliidesele ja nähtavale osale (sisend, väljund, vormid jms),<br/>
+        mis on kliendile kõige paremini arusaadav. Selle tulemuseks on prototüüp.<br/> <br/>
     </p>
-    <h3>3. Etapp - Iteratsioon prototüübi parandamiseks</h3>
+    <h3>3. Prototüübi hindamine ja parandamine (iteratsioon)</h3>
     <p>
-         Järgneb iteratsioon prototüübi parandamiseks, kuni see rahuldab kasutajat. Samal ajal saab arendaja uusi teadmisi kliendi soovide kohta.<br/> <br/>
+        Klient hindab prototüüpi ja saab selle alusel oma soove ja puudujääke täpsustada. <br/>
+        Järgneb iteratsioon (prototüübi parandamine), kuni prototüüp rahuldab kasutajat. <br/>
+        Iga tsükliga saab arendaja uusi teadmisi kliendi tegelike soovide ja vajaduste kohta. <br/>
+        Prototüüp kas visatakse ära ja alustatakse lõpliku süsteemi arendust puhtalt lehelt (throwaway prototyping) <br/>
+        või arendatakse edasi lõpptooteks (evolutionary prototyping).<br/> <br/>
     </p><br/> <br/>
 
     <p>Prototüübi arendamisel on oluline, et see saaks loodud kiiresti, kasutades selleks abivahendeid (kiire prototüüpimise keeled ja tööriistad). <br/>
@@ -47,12 +54,12 @@
         <td>Vead</td>
     </tr>   
     <tr>
-        <th>----</th>
-        <th>----</th>
+        <th>Parem kliendisuhtlus ja tagasiside (klient näeb lahendust ja saab soove täpsustada)</th>
+        <th>Ebapiisav testimine prototüübi faasis võib viia probleemideni hiljem.</th>
     </tr>   
     <tr>
-        <th>----</th>
-        <th>----</th>
+        <th>Vähendab arenduskulusid hilisemates faasides (muudatusi on odavam teha alguses).</th>
+        <th>Liigne detailiseerimine ja ajakulukus, eriti kui puudub selge struktuur.</th>
     </tr> 
  
 </table>
