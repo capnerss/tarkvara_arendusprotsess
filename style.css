@@ -1,0 +1,109 @@
+/* Define the main colors using CSS variables for easy updates */
+:root {
+    --primary-color: #FF8C00; /* Darker Orange */
+    --secondary-color: #FFA500; /* Bright Orange */
+    --background-color: #FFFFFF; /* White */
+    --text-color: #333333; /* Dark Gray for readability */
+    --link-color: #FF4500; /* Red-Orange for links */
+}
+
+/* Basic styles for the entire page */
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    margin: 0; 
+    padding: 20px;
+}
+
+/* Header styling */
+h1, h2 {
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--secondary-color);
+    padding-bottom: 5px;
+    margin-top: 25px;
+}
+
+/* Sub-header styling */
+h3 {
+    color: var(--secondary-color);
+    margin-bottom: 10px;
+}
+
+/* Paragraph text styling */
+p {
+    line-height: 1.6;
+}
+
+/* Anchor (link) styling */
+a {
+    display: block; 
+    color: var(--link-color);
+    text-decoration: none; 
+    padding: 5px 0;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--primary-color); 
+    text-decoration: underline;
+}
+
+/* Table styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+/* Table header row background */
+table tr:first-child {
+    background-color: var(--primary-color);
+    color: var(--background-color);
+    font-weight: bold;
+}
+
+/* Zebra-striping for table body rows */
+table tr:nth-child(even) {
+    background-color: #FFF5EE; /* Lightest Orange/Off-white for contrast */
+}
+
+/* Style the image in the table */
+table img {
+    border: 3px solid var(--secondary-color);
+    border-radius: 5px;
+    display: block;
+}
+
+/* Style the link row spanning 4 columns */
+table tr:last-child td {
+    background-color: var(--secondary-color);
+    text-align: center;
+}
+
+/* Style the link inside the last table cell */
+table tr:last-child a {
+    color: var(--background-color); /* White text for the link */
+    font-weight: bold;
+    display: inline; /* Keep the link inline */
+    padding: 0;
+}
+
+table tr:last-child a:hover {
+     color: var(--text-color); /* Darker text on hover */
+}
+
+/* Style the divider line */
+hr {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), var(--secondary-color), rgba(0, 0, 0, 0));
+    margin: 20px 0;
+}
