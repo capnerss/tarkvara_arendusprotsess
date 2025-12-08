@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Bitcoin kalkulaator</title>
     <link rel="stylesheet" type="text/css" href="../style.css">
 </head>
 <body>
@@ -16,6 +16,37 @@
 
     Esitus: Esitage link oma bitcoin osale github pages saidil.
     -->
+    <a href="../index.html" id="floatingButton">Tagasi</a>
+<h1>Bitcoin kalkulaator.</h1>
+    <p> Programmi eesmärk on teisendada Bitcoini (BTC) kogus teistesse valuutadesse, nagu EUR, USD, GBP, või EEK, kasutades reaalajas või hiljutist vahetuskurssi.
+        <br>
+</p>
+<h2>Programmi lühikirjeldus</h2>
+    <p>
+Programm töötab järgmiste põhietappide kaudu: <br>
+
+Start ja Sisendi kogumine: <br>
+Programmi alustades küsitakse kasutajalt, kas ta on sisestanud Bitcoini koguse. <br>
+Kui ei, palutakse tal see sisestada ja protsess algab uuesti. <br>
+Järgmiseks küsitakse, kas ta on valinud sihtvaluuta. <br>
+Kui ei, palutakse tal valida valuuta. <br>
+Lõpuks küsitakse, kas kasutaja on vajutanud nuppu väärtuse arvutamiseks. <br>
+Valuuta valik ja API päringud: <br>
+Kui kõik eeldused on täidetud (kogus sisestatud, valuuta valitud, nuppu vajutatud), kontrollib programm, milline valuuta valiti (EUR, USD, GBP, või EEK).
+    <br>
+Vastavalt valikule esitatakse API päring, et saada BTC hetkehind valitud valuutas (nt. EUR, USD, GBP). <br>
+
+Erijuhtum on EEK (Eesti kroon), mille puhul esitatakse API päring BTC hinna saamiseks EUR-is ja seejärel korrutatakse tulemus EEK-i hinnaga
+    (ilmselt fiksseeritud kursi alusel, kuna EEK ei ole enam kasutusel). <br>
+
+Arvutamine ja Tulemus: <br>
+Pärast API-st kursi saamist korrutatakse sisestatud BTC kogus hetkehinnaga valitud valuutas. <br>
+Kontrollitakse, kas arvutus oli edukas (JAH või EI). <br>
+Edukal arvutusel kuvatakse tulemus aknas ja programm lõpetab töö (Lõpp). <br>
+Ebaõnnestunud arvutusel kuvatakse kasutajale veateade ("Tulemuse arvutus ebaõnnestus, palun proovi uuesti") ja protsess suunatakse tagasi algusesse (START).<br>
+See programm on tüüpiline näide valuutakalkulaatorist või konverterist, mis kasutab välist teenust (API) andmete saamiseks.
+    <br>
+    </p> <br>
     <a href="https://github.com/capnerss/MyEpicBitcoinCalc">Link bitcoin kalkulaatori</a>
     <img src="../pildid/btc.png" alt="btc">
 
