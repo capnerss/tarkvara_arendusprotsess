@@ -12,8 +12,10 @@ body {
     font-family: Arial, sans-serif;
     background-color: var(--background-color);
     color: var(--text-color);
-    margin: 0;
     padding: 20px;
+    line-height: 1.6;
+    max-width: 1000px;
+    margin: 0 auto;
 }
 
 /* Header styling (same as before) */
@@ -129,3 +131,13 @@ hr {
     background-image: linear-gradient(to right, rgba(0, 0, 0, 0), var(--secondary-color), rgba(0, 0, 0, 0));
     margin: 20px 0;
 }
+.note {
+            background-color: #fff9e6;
+            border-left: 5px solid #ffcc00;
+            padding: 15px;
+            margin: 20px 0;
+        }
+ul {
+            list-style-type: disc;
+            margin-left: 20px;
+        }

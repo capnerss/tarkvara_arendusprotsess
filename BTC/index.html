@@ -5,50 +5,73 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Bitcoin kalkulaator</title>
+    <title>Bitcoin kalkulaator: BIC</title>
     <link rel="stylesheet" type="text/css" href="../style.css">
 </head>
 <body>
-    <!--Tunnis tehtud bitcoin kalkulaatori programmi kohta tehke oma ainmappi eraldi saidi osa "BIC" kus on "index.html"
-    Kirjeldus programmi kohta
-    Vooskeem
-    Ja link bitcoin kalkulaatori enda reposse
-
-    Esitus: Esitage link oma bitcoin osale github pages saidil.
-    -->
     <a href="../index.html" id="floatingButton">Tagasi</a>
-<h1>Bitcoin kalkulaator.</h1>
-    <p> Programmi eesmärk on teisendada Bitcoini (BTC) kogus teistesse valuutadesse, nagu EUR, USD, GBP, või EEK, kasutades reaalajas või hiljutist vahetuskurssi.
-        <br>
-</p>
-<h2>Programmi lühikirjeldus</h2>
+
+    <h1>Bitcoini Kalkulaator: Programmi Kirjeldus</h1>
     <p>
-Programm töötab järgmiste põhietappide kaudu: <br>
+        Selle programmi eesmärk on teisendada <b>Bitcoini (BTC)</b> kogus teistesse valuutadesse (nt <b>EUR, USD, GBP, EEK</b>), kasutades selleks reaalajas või hiljutist vahetuskurssi, mis saadakse välise API kaudu.
+    </p>
 
-Start ja Sisendi kogumine: <br>
-Programmi alustades küsitakse kasutajalt, kas ta on sisestanud Bitcoini koguse. <br>
-Kui ei, palutakse tal see sisestada ja protsess algab uuesti. <br>
-Järgmiseks küsitakse, kas ta on valinud sihtvaluuta. <br>
-Kui ei, palutakse tal valida valuuta. <br>
-Lõpuks küsitakse, kas kasutaja on vajutanud nuppu väärtuse arvutamiseks. <br>
-Valuuta valik ja API päringud: <br>
-Kui kõik eeldused on täidetud (kogus sisestatud, valuuta valitud, nuppu vajutatud), kontrollib programm, milline valuuta valiti (EUR, USD, GBP, või EEK).
-    <br>
-Vastavalt valikule esitatakse API päring, et saada BTC hetkehind valitud valuutas (nt. EUR, USD, GBP). <br>
+    <hr>
 
-Erijuhtum on EEK (Eesti kroon), mille puhul esitatakse API päring BTC hinna saamiseks EUR-is ja seejärel korrutatakse tulemus EEK-i hinnaga
-    (ilmselt fiksseeritud kursi alusel, kuna EEK ei ole enam kasutusel). <br>
+    <h2>Programmi Lühikirjeldus</h2>
+    <p>
+        Programm töötab kolme peamise etapina: sisendi kogumine, API päringute tegemine ja arvutamine.
+    </p>
 
-Arvutamine ja Tulemus: <br>
-Pärast API-st kursi saamist korrutatakse sisestatud BTC kogus hetkehinnaga valitud valuutas. <br>
-Kontrollitakse, kas arvutus oli edukas (JAH või EI). <br>
-Edukal arvutusel kuvatakse tulemus aknas ja programm lõpetab töö (Lõpp). <br>
-Ebaõnnestunud arvutusel kuvatakse kasutajale veateade ("Tulemuse arvutus ebaõnnestus, palun proovi uuesti") ja protsess suunatakse tagasi algusesse (START).<br>
-See programm on tüüpiline näide valuutakalkulaatorist või konverterist, mis kasutab välist teenust (API) andmete saamiseks.
-    <br>
-    </p> <br>
-    <a href="https://github.com/capnerss/MyEpicBitcoinCalc">Link bitcoin kalkulaatori</a>
-    <img src="../pildid/btc.png" alt="btc">
+    <h3>1. Sisendi Kogumine ja Kontroll</h3>
+    <p>
+        Enne arvutuse alustamist kontrollitakse, kas kasutaja on vajalikud andmed sisestanud:
+    </p>
+    <ul>
+        <li>Kontrollitakse, kas <b>Bitcoini (BTC) kogus</b> on sisestatud.</li>
+        <li>Kontrollitakse, kas <b>sihtvaluuta</b> (EUR, USD, GBP, EEK) on valitud.</li>
+        <li>Kontrollitakse, kas nuppu <b>väärtuse arvutamiseks</b> on vajutatud.</li>
+    </ul>
+
+    <h3>2. Valuuta Valik ja API Päringud</h3>
+    <p>
+        Kui kõik tingimused on täidetud, sooritab programm vajaliku API päringu:
+    </p>
+    <ul>
+        <li><b>EUR, USD, GBP:</b> Tehakse otse API päring vastava BTC hetkehinna saamiseks.</li>
+        <li><b>EEK (Eesti kroon):</b> Saamiseks tehakse esmalt API päring BTC hinna saamiseks <b>EUR-is</b> ning seejärel korrutatakse tulemus fikseeritud (ajaloolise) EEK-i kursiga.</li>
+    </ul>
+    <div class="note">
+        <b>Märkus:</b> See on tüüpiline näide konverterist, mis kasutab välist teenust (API) reaalajas andmete saamiseks.
+    </div>
+
+    <h3>3. Arvutamine ja Tulemuse Kuvamine</h3>
+    <p>
+        Pärast vahetuskursi saamist teostatakse konverteerimise arvutus:
+    </p>
+    <ul>
+        <li><b>Arvutus:</b> Sisestatud BTC kogus korrutatakse saadud hetkekursiga.</li>
+        <li><b>Edukas tulemus:</b> Tulemus kuvatakse kasutajale ja programm lõpetab töö.</li>
+        <li><b>Ebaõnnestumine:</b> Kuvatakse veateade ("Tulemuse arvutus ebaõnnestus, palun proovi uuesti") ja protsess suunatakse tagasi algusesse.</li>
+    </ul>
+
+    <hr>
+
+    <h2>Programmi Vooskeem</h2>
+    <p>
+        Vooskeem illustreerib programmi tööloogikat visuaalselt samm-sammult.
+    </p>
+    <img src="../pildid/btc.png" alt="Bitcoini kalkulaatori programmi vooskeem" style="max-width: 100%; height: auto; display: block; margin: 20px 0;">
+
+    <hr>
+
+    <h2>Link Koodile (Repo)</h2>
+    <p>
+        Projekti lähtekood asub GitHubis.
+    </p>
+    <a href="[https://github.com/capnerss/MyEpicBitcoinCalc](https://github.com/capnerss/MyEpicBitcoinCalc)" class="code-link" target="_blank">
+        Vaata Bitcoini Kalkulaatori Repot
+    </a>
 
 </body>
 </html>
