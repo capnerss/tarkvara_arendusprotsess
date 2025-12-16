@@ -9,6 +9,11 @@
 
 /* Basic styles for the entire page (same as before) */
 body {
+    background-image:  url('pildid/background.png');
+    background-repeat: no-repeat, no-repeat, no-repeat;
+
+
+
     font-family: Arial, sans-serif;
     background-color: var(--background-color);
     color: var(--text-color);
@@ -141,3 +146,18 @@ ul {
             list-style-type: disc;
             margin-left: 20px;
         }
+
+.navbar {
+    display: inline-block; /* Allows padding and keeps them side-by-side if space allows */
+    background-color: #f26417;
+    color: var(--background-color); /* White text */
+    text-decoration: none;
+    padding: 10px 10px; /* Adds space inside the button */
+    margin: 0px 0px 0px 0; /* Adds space around the button */
+    border-radius: 0px; /* Rounded corners */
+    border: none; /* Darker border */
+    transition: background-color 0.3s ease, transform 0.1s ease; /* Smooth hover effects */
+    font-weight: bold;
+    box-shadow: 0 0px 0px rgba(0, 0, 0, 0); /* Subtle shadow */
+}
+
