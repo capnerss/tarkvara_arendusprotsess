@@ -8,7 +8,48 @@
     <title>Document</title>
     <link rel="stylesheet" type="text/css" href="../style.css">
 </head>
-<body>
+<header>
+    <a href="../UML/index.html" id="floatingButton">Tagasi</a>
 
+</header>
+<body>
+<h1><b>Vooskeem</b> (Flowchart)</a><b>non-UML</b></h1>
+<p>Vooskeem, kirjeldab süsteemi dünaamilisi aspekte. Mis modelleerib ühelt tegevuselt teisele liikumist.</p>
+
+toob välja eraldi kujundite tähendused ja kasutusnäidise
+<h2>Millal kasutada Vooskeem</h2>
+<p>
+Vooskeem kirjeldavad, kuidas tegevusi koordineeritakse teenuse osutamiseks, mis võib olla erineval abstraktsioonitasemel.
+    Tavaliselt tuleb sündmus saavutada mõne toimingu abil, eriti kui toimingu eesmärk on saavutada mitu erinevat asja, mis vajavad koordineerimist,
+    või kuidas ühe kasutusjuhtumi sündmused on omavahel seotud, eriti kasutusjuhtumite korral, kus tegevused võivad kattuda ja vajavad koordineerimist.
+    See sobib ka modelleerimiseks, kuidas kasutusjuhtude kogum koordineerub äriprotsesside esindamiseks.
+</p>
+<ul>
+    <li>Tuvastage potentsiaalsed kasutusjuhud äriprotsesside uurimise kaudu
+    </li>
+    <li>Kasutusjuhtude eel- ja järeltingimuste (konteksti) kindlakstegemine</li>
+    <li>Kasutusjuhtude sees ja nende vahel modelleeritavad töövood</li>
+    <li>Objektidega tehtavate toimingute keerukate töövoogude modelleerimine</li>
+    <li>Modelleeri keerukaid tegevusi detailselt kõrgetasemelise tegevusdiagrammi abil</li>
+</ul>
+
+<h3>Kujundite/Joonte lahtiseletus</h3>
+<table>
+    <tr><td></td><td></td><td></td></tr>
+    <tr><td>Tegevus</td><td>Kasutatakse tegevuste kogumi esindamiseks</td><td><img src="../pildid/09-activity-diagram-notation-activity.png" alt=""></td></tr>
+    <tr><td>Juhtimisvoog</td><td>Näitab teostusjärjestust</td><td><img src="../pildid/11-activity-diagram-notation-control-flow.png" alt=""></td></tr>
+    <tr><td>Esialgne sõlm</td><td>Kujutab tegevuste või tegevuste komplekti algust</td><td><img src="../pildid/start.png" alt=""></td></tr>
+    <tr><td>Tegevuse lõppsõlm</td><td>Peata kõik tegevuse (või toimingu) juhtimisvood ja objektivood</td><td><img
+            src="../pildid/stop.png" alt=""></td></tr>
+    <tr><td>Otsustussõlm</td><td>Esitavad testitingimust, et tagada juhtimisvoo või objektivoo liikumine ainult ühte rada pidi.</td><td>
+        <img src="../pildid/otsus.png" alt=""></td></tr>
+    <tr><td></td><td></td><td></td></tr>
+</table>
+
+<h2>Vooskeem illustreerib programmi tööloogikat visuaalselt samm-sammult.</h2>
+
+    <img src="../pildid/btc.png" alt="Bitcoini kalkulaatori programmi vooskeem" style="max-width: 100%; height: auto; display: block; margin: 20px 0;">
+
+<a href="https://www.visual-paradigm.com/"> Viited infoallikaile</a>
 </body>
 </html>
