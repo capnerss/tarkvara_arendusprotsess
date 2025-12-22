@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minu Programmeerimise Alused Ainemapp</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header>
+    <img src="../icons/logojs2.svg" alt="" width="50" height="50" align="left">
+
+    <a class="navbar" href="../index.html">Tarkvara Arendusprotsess</a>
+    <a class="navbar" href="index.html">Programmeerimine</a>
+    <a class="navbar" href="../multimedia/index.html">Multimeedia</a>
+    <br>
+    <br>
+</header>
+<h1>Hulk (Set)</h1>
+
+    <section>
+        <h2>Mis on hulk?</h2>
+        <ul>
+            <li>Hulk on järjestamata elementide kollektsioon.</li>
+            <li>Hulgas ei ole kordusi (iga element on unikaalne).</li>
+            <li>Hulga elemente ei saa pärida indeksi järgi.</li>
+            <li>Hulga elemendid peavad olema muutumatud (immutable), kuid hulk ise on muutuv.</li>
+            <li>Hulgaga saab teostada matemaatilisi operatsioone.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Hulga loomine</h2>
+        <ul>
+            <li>Loomine loogeliste sulgudega: <code>my_set = {1, 2, 3}</code>.</li>
+            <li>Tühja hulga loomine funktsiooniga <code>set()</code> (NB! <code>{}</code> loob tühja sõnastiku).</li>
+            <li>Loomine järjendist (eemaldab duplikaadid): <code>set([1, 2, 2, 3])</code> annab <code>{1, 2, 3}</code>.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Elementide piirangud</h2>
+        <p>Hulka saab panna vaid muutumatuid objekte (sõned, arvud, tõeväärtused, ennikud). Muutuvad objektid nagu listid annavad vea (<code>TypeError: unhashable type: 'list'</code>).</p>
+    </section>
+
+    <section>
+        <h2>Elementide lisamine ja eemaldamine</h2>
+        <ul>
+            <li><strong>add(element):</strong> lisab ühe elemendi.</li>
+            <li><strong>update(iterable):</strong> lisab mitu elementi (nt listist või teisest hulgast).</li>
+            <li><strong>discard(element):</strong> eemaldab elemendi, ei anna viga kui elementi pole.</li>
+            <li><strong>remove(element):</strong> eemaldab elemendi, annab vea kui elementi pole.</li>
+            <li><strong>pop():</strong> eemaldab ja tagastab suvalise elemendi.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Matemaatilised operatsioonid</h2>
+        <ul>
+            <li><strong>Ühend (union):</strong> <code>a | b</code> või <code>a.union(b)</code> – kõik elemendid mõlemast hulgast.</li>
+            <li><strong>Ühisosa (intersection):</strong> <code>a & b</code> või <code>a.intersection(b)</code> – elemendid, mis on mõlemas hulgas.</li>
+            <li><strong>Vahe (difference):</strong> <code>a - b</code> või <code>a.difference(b)</code> – elemendid, mis on esimeses, aga mitte teises.</li>
+            <li><strong>Sümmeetriline vahe:</strong> <code>a ^ b</code> või <code>a.symmetric_difference(b)</code> – elemendid, mis on vaid ühes hulgastest.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Muud funktsioonid</h2>
+        <ul>
+            <li><code>len(my_set)</code> – elementide arv.</li>
+            <li><code>element in my_set</code> – kontrollib olemasolu (kiire operatsioon).</li>
+            <li>Sõne tähtedest hulga tegemine: <code>set("hello")</code> -> <code>{'h', 'e', 'l', 'o'}</code>.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Kokkuvõte</h2>
+        <ul>
+            <li>Kasulik unikaalsete väärtuste leidmiseks ja hoidmiseks.</li>
+            <li>Võimaldab kiireid matemaatilisi võrdlusi gruppide vahel.</li>
+            <li>Ei säilita sisestamise järjekorda.</li>
+        </ul>
+    </section>
+<a href="tekstifail.html">Next topic</a>
+<footer>
+    <hr>
+    <div style="text-align: center; padding: 20px;">
+        <p>&copy; 2025 Juri.</p>
+        <p style="font-size: small; color: #666;">
+            Lehekülg on osa õppematerjalist. Viimati uuendatud: detsember 2025.
+        </p>
+    </div>
+</footer>
+</body>
+</html>

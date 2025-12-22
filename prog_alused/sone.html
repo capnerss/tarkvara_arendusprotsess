@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minu Programmeerimise Alused Ainemapp</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header>
+    <img src="../icons/logojs2.svg" alt="" width="50" height="50" align="left">
+
+    <a class="navbar" href="../index.html">Tarkvara Arendusprotsess</a>
+    <a class="navbar" href="index.html">Programmeerimine</a>
+    <a class="navbar" href="../multimedia/index.html">Multimeedia</a>
+    <br>
+    <br>
+</header>
+<h1>Sõne (String)</h1>
+
+    <section>
+        <h2>Mis on sõne?</h2>
+        <ul>
+            <li>Sõne on tekstiliste andmete esitamiseks.</li>
+            <li>Sõne on märkide jada.</li>
+            <li>Sõne kirjeldatakse jutumärkide (<code>" "</code>) või ülakomade (<code>' '</code>) vahel.</li>
+            <li>Näide: <code>"Python"</code>, <code>'Tallinn'</code>.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Sõne kui jada</h2>
+        <p>Sõne on indekseeritav jada, kus igal märgil on oma asukoht (indeks).</p>
+        <ul>
+            <li>Indeksid algavad <strong>0</strong>-st.</li>
+            <li>Tagantpoolt lugemist alustatakse <strong>-1</strong>-st.</li>
+        </ul>
+        <pre>
+s = "Python"
+# s[0] -> 'P'
+# s[1] -> 'y'
+# s[-1] -> 'n'
+        </pre>
+            </section>
+
+    <section>
+        <h2>Sõne viilutamine (Slicing)</h2>
+        <p>Sõnest saab eraldada osi kasutades süntaksit <code>s[start:end:step]</code>.</p>
+        <ul>
+            <li><code>s[0:2]</code> -> võtab märgid indeksitega 0 ja 1 (lõppindeks ei kuulu komplekti).</li>
+            <li><code>s[:3]</code> -> algusest kuni indeksini 3 (mitte k.a).</li>
+            <li><code>s[2:]</code> -> alates indeksist 2 kuni lõpuni.</li>
+            <li><code>s[::-1]</code> -> sõne tagurpidi.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Sõne meetodid</h2>
+        <p>Sõnede töötlemiseks on Pythonis palju sisseehitatud meetodeid:</p>
+        <ul>
+            <li><code>lower()</code> / <code>upper()</code> - muudab kõik tähed väikseks või suureks.</li>
+            <li><code>strip()</code> - eemaldab tühikud algusest ja lõpust.</li>
+            <li><code>replace(vana, uus)</code> - asendab osasõne uuega.</li>
+            <li><code>split(eralda)</code> - jagab sõne listiks (nt tühiku järgi).</li>
+            <li><code>count(märk)</code> - loendab, mitu korda sümbol esineb.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Sõnede liitmine ja korrutamine</h2>
+        <ul>
+            <li><strong>Liitmine (+):</strong> ühendab kaks sõne. <code>"Tere" + " " + "maailm"</code>.</li>
+            <li><strong>Korrutamine (*):</strong> kordab sõne. <code>"Vau!" * 3</code>.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Sõne formaatimine (f-string)</h2>
+        <p>Alates Python 3.6-st on eelistatud meetod f-stringid:</p>
+        <pre>
+name = "Ago"
+age = 30
+print(f"Tere, {name}! Sa oled {age} aastat vana.")
+        </pre>
+    </section>
+
+    <section>
+        <h2>Erimärgid</h2>
+        <ul>
+            <li><code>\n</code> - reavahetus.</li>
+            <li><code>\t</code> - tabulaator.</li>
+            <li><code>\\</code> - kaldkriips ise.</li>
+            <li><code>\"</code> või <code>\'</code> - jutumärkide kuvamiseks sõne sees.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Kokkuvõte</h2>
+        <ul>
+            <li>Sõne on muutumatu (<em>immutable</em>) – sisu ei saa otse muuta, saab luua uue sõne.</li>
+            <li>Sõne pikkuse leiab funktsiooniga <code>len()</code>.</li>
+            <li>Märkidele pääseb ligi indeksite abil.</li>
+            <li>F-stringid on mugavaim viis teksti ja muutujate kombineerimiseks.</li>
+        </ul>
+    </section>
+<a href="jarjend.html">Next topic</a>
+<footer>
+    <hr>
+    <div style="text-align: center; padding: 20px;">
+        <p>&copy; 2025 Juri.</p>
+        <p style="font-size: small; color: #666;">
+            Lehekülg on osa õppematerjalist. Viimati uuendatud: detsember 2025.
+        </p>
+    </div>
+</footer>
+</body>
+</html>

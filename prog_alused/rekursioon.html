@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minu Programmeerimise Alused Ainemapp</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header>
+    <img src="../icons/logojs2.svg" alt="" width="50" height="50" align="left">
+
+    <a class="navbar" href="../index.html">Tarkvara Arendusprotsess</a>
+    <a class="navbar" href="index.html">Programmeerimine</a>
+    <a class="navbar" href="../multimedia/index.html">Multimeedia</a>
+    <br>
+    <br>
+</header>
+<h1>Rekursioon (Recursion)</h1>
+
+    <section>
+        <h2>Mis on rekursioon?</h2>
+        <ul>
+            <li>Rekursioon on funktsiooni defineerimine iseenda kaudu.</li>
+            <li>Programmeerimises tähendab see seda, et funktsioon kutsub iseennast välja.</li>
+            <li>See on meetod probleemide lahendamiseks, kus lahendus sõltub sama probleemi väiksematest osadest.</li>
+        </ul>
+
+    </section>
+
+    <section>
+        <h2>Kaks peamist osa</h2>
+        <p>Iga korrektne rekursiivne funktsioon peab koosnema kahest osast:</p>
+        <ol>
+            <li><strong>Baasjuht (Base case):</strong> Tingimus, mille puhul rekursioon lõpetatakse ja funktsioon tagastab väärtuse ilma iseennast uuesti välja kutsumata. See väldib lõpmatut kordust.</li>
+            <li><strong>Rekursiivne samm:</strong> Funktsioon kutsub end välja uute parameetritega, mis on "lähemal" baasjuhule.</li>
+        </ol>
+    </section>
+
+    <section>
+        <h2>Näide: Faktoriaal</h2>
+        <p>Matemaatiline definitsioon: <code>n! = n * (n - 1)!</code> ja <code>0! = 1</code>.</p>
+        <pre>
+def factorial(n):
+    if n == 0:  # Baasjuht
+        return 1
+    return n * factorial(n - 1)  # Rekursiivne samm
+        </pre>
+
+    </section>
+
+    <section>
+        <h2>Näide: Fibonacci jadad</h2>
+        <p>Jada, kus järgmine arv on kahe eelmise summa: 0, 1, 1, 2, 3, 5, 8, 13...</p>
+        <pre>
+def fibonacci(n):
+    if n <= 1:
+        return n
+    return fibonacci(n - 1) + fibonacci(n - 2)
+        </pre>
+    </section>
+
+    <section>
+        <h2>Miks kasutada rekursiooni?</h2>
+        <ul>
+            <li>Mõned probleemid on rekursiivselt esitatuna palju loetavamad ja lihtsamad (nt puu-struktuuride läbimine, fraktalid).</li>
+            <li>See võimaldab kirjutada koodi, mis vastab otseselt matemaatilistele definitsioonidele.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Ohud ja piirangud</h2>
+        <ul>
+            <li><strong>RecursionError:</strong> Kui baasjuht puudub või selleni ei jõuta, tekib lõpmatu rekursioon (Stack Overflow).</li>
+            <li><strong>Mälukasutus:</strong> Iga funktsiooni väljakutse võtab arvuti mälus ruumi (call stack).</li>
+            <li><strong>Efektiivsus:</strong> Ilma optimiseerimata (nt memoization) võib rekursioon olla väga aeglane (nt Fibonacci näide).</li>
+        </ul>
+        <p>Pythonis on rekursiooni sügavuse limiit tavaliselt 1000 väljakutset.</p>
+    </section>
+
+    <section>
+        <h2>Rekursioon vs Iteratsioon</h2>
+        <ul>
+            <li>Kõiki rekursiivseid ülesandeid on võimalik lahendada ka tsüklitega (iteratsioon).</li>
+            <li>Tsükkel on sageli mälu säästvam, kuid rekursioon võib olla elegantsem keeruliste andmestruktuuride puhul.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Kokkuvõte</h2>
+        <ul>
+            <li>Funktsioon kutsub end ise välja.</li>
+            <li>Vajalik on selge lõpetamise tingimus (baasjuht).</li>
+            <li>Probleem jagatakse järjest väiksemateks sarnasteks tükkideks.</li>
+        </ul>
+    </section>
+<a href="testimine.html">Next topic</a>
+<footer>
+    <hr>
+    <div style="text-align: center; padding: 20px;">
+        <p>&copy; 2025 Juri.</p>
+        <p style="font-size: small; color: #666;">
+            Lehekülg on osa õppematerjalist. Viimati uuendatud: detsember 2025.
+        </p>
+    </div>
+</footer>
+</body>
+</html>

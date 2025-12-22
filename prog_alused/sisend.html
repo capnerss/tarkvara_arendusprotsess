@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minu Programmeerimise Alused Ainemapp</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header>
+    <img src="../icons/logojs2.svg" alt="" width="50" height="50" align="left">
+
+    <a class="navbar" href="../index.html">Tarkvara Arendusprotsess</a>
+    <a class="navbar" href="index.html">Programmeerimine</a>
+    <a class="navbar" href="../multimedia/index.html">Multimeedia</a>
+    <br>
+    <br>
+</header>
+<h1>Väljund ja sisend Pythonis</h1>
+
+    <section>
+        <h2>1. Funktsioon print()</h2>
+        <p>Kasutatakse andmete ekraanile kuvamiseks.</p>
+        <ul>
+            <li>Väärtuste vahele lisatakse komaga eraldades tühik.</li>
+            <li>Erimärgid: <code>\n</code> (uus rida), <code>\t</code> (taane).</li>
+            <li>Parameetrid: <code>sep</code> (eraldaja) ja <code>end</code> (rea lõpp).</li>
+        </ul>
+        <p>Näide:</p>
+        <code>print("Tere", "maailm", sep=", ")</code>
+    </section>
+
+    <hr>
+
+    <section>
+        <h2>2. Funktsioon input()</h2>
+        <p>Kasutatakse kasutajalt andmete küsimiseks. Programm peatub, kuni vajutatakse Enter.</p>
+        <p><strong>Oluline:</strong> Kõik sisestatud andmed loetakse tekstina (string).</p>
+        <p>Näide:</p>
+        <code>nimi = input("Sisesta oma nimi: ")</code>
+    </section>
+
+    <hr>
+
+    <section>
+        <h2>3. Andmetüüpide muutmine</h2>
+        <p>Kui sisestatud arvuga on vaja arvutada, tuleb see teisendada:</p>
+        <ul>
+            <li><code>int()</code> - täisarvuks.</li>
+            <li><code>float()</code> - komaga arvuks.</li>
+        </ul>
+        <p>Näide:</p>
+        <code>vanus = int(input("Lisa vanus: "))</code>
+    </section>
+
+    <hr>
+
+    <section>
+        <h2>4. f-stringid</h2>
+        <p>Võimaldab panna muutujaid otse teksti sisse, kasutades loogelisi sulge <code>{}</code>.</p>
+        <p>Näide:</p>
+        <code>print(f"Tere, {nimi}!")</code>
+    </section>
+
+    <hr>
+
+    <section>
+        <h2>Terviklik näidiskood</h2>
+        <pre>
+nimi = input("Nimi: ")
+pikkus = float(input("Pikkus (m): "))
+print(f"Kasutaja {nimi} on {pikkus} meetrit pikk.")
+        </pre>
+    </section>
+<a href="koodistill.html">Next topic</a>
+<footer>
+    <hr>
+    <div style="text-align: center; padding: 20px;">
+        <p>&copy; 2025 Juri.</p>
+        <p style="font-size: small; color: #666;">
+            Lehekülg on osa õppematerjalist. Viimati uuendatud: detsember 2025.
+        </p>
+    </div>
+</footer>
+</body>
+</html>
