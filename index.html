@@ -16,6 +16,29 @@
     <br>
     <br>
 </header>
+<a href="https://sinu-api-aadress.ee" id="year-counter-link">
+        <span>Aasta lõpuni:</span>
+        <span id="days-number">0</span>
+        <span>päeva</span>
+    </a>
+
+    <script>
+        function updateCounter() {
+            const now = new Date();
+            const currentYear = now.getFullYear();
+            const nextYear = currentYear + 1;
+            const targetDate = new Date(`January 1, ${nextYear} 00:00:00`);
+
+            const diff = targetDate - now;
+            const daysLeft = Math.ceil(diff / (1000 * 60 * 60 * 24));
+
+            document.getElementById('days-number').innerText = daysLeft;
+        }
+
+        updateCounter();
+        // Kontrollime iga tunni järel
+        setInterval(updateCounter, 3600000);
+    </script>
     <h1>Tarkvara Arendusprotsessi tunni raames koostatud ainemapp</h1>
     <br>
     <p>

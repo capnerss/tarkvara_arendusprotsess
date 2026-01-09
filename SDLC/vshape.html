@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+    <meta charset="UTF-8">
+    <title>V-mudel tarkvaraarenduses</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<a href="sdlc.html" id="floatingButton">Tagasi</a>
+
+    <h1>V-mudel: Süsteemne arendusmetoodika</h1>
+
+    <div class="note">
+        <strong>Mis on V-mudel?</strong><br>
+        V-mudel (V-shape model) on tarkvaraarenduse elutsükli mudel, mis on kaskaadmudeli (Waterfall) edasiarendus. Selle põhierinevus on see, et arendusprotsess ei liigu ainult lineaarselt alla, vaid pärast kodeerimisetappi liigub see ülespoole, moodustades "V" tähe kuju. Igal arendusetapil on vastav testimisetapp.
+    </div>
+
+    <h2>V-mudeli etapid</h2>
+    <p>Mudel jaguneb kaheks peamiseks haruks: vasakpoolne (arendus ja verifitseerimine) ning parempoolne (testimine ja valideerimine).</p>
+
+
+    <h3>1. Vasak haru: Verifitseerimine (Arendus)</h3>
+    <ul>
+        <li><strong>Nõuete analüüs:</strong> Kogutakse süsteemi nõuded ja koostatakse testimisplaan kliendi vaatepunktist.</li>
+        <li><strong>Süsteemidisain:</strong> Määratakse süsteemi üldine arhitektuur ja riistvara/tarkvara nõuded.</li>
+        <li><strong>Arhitektuurne disain:</strong> Defineeritakse andmevahetus moodulite vahel.</li>
+        <li><strong>Moodulite disain:</strong> Detailne plaan iga üksiku komponendi jaoks.</li>
+    </ul>
+
+    <h3>2. Põhi: Kodeerimine</h3>
+    <p>See on V-kuju tipp, kus toimub tegelik programmeerimine vastavalt disainidokumentidele.</p>
+
+    <h3>3. Parem haru: Valideerimine (Testimine)</h3>
+    <ul>
+        <li><strong>Ühiktestimine (Unit Testing):</strong> Testitakse koodi väikseimaid osi (mooduleid).</li>
+        <li><strong>Integratsioonitestimine:</strong> Kontrollitakse moodulite omavahelist koostööd.</li>
+        <li><strong>Süsteemitestimine:</strong> Testitakse kogu süsteemi funktsionaalsust tervikuna.</li>
+        <li><strong>Aktsepteerimistestimine:</strong> Viimane etapp, kus kontrollitakse süsteemi vastavust kasutaja algsetele nõuetele.</li>
+    </ul>
+
+    <hr>
+
+    <h2>Alamvariandid ja variatsioonid</h2>
+    <p>Kuigi klassikaline V-mudel on jäik, on sellest loodud mitmeid alamvariante:</p>
+    <ul>
+        <li><strong>Dual Vee Model:</strong> Kasutatakse keeruliste süsteemide puhul, kus on mitu paralleelset arendustsüklit.</li>
+        <li><strong>W-mudel:</strong> Veelgi detailsem variant, kus testimistegevused jooksevad arendusega täielikult paralleelselt (testimine algab kohe koos nõuete kogumisega).</li>
+        <li><strong>Iteratiivne V-mudel:</strong> Kohandatud versioon, mis võimaldab V-mudelit rakendada lühemates tsüklites (sarnaneb Agile-lähenemisele).</li>
+    </ul>
+
+    <hr>
+
+    <h2>Tähtsaim omadus ja miks?</h2>
+    <p>V-mudeli tähtsaim omadus on <strong>varajane testimise planeerimine</strong> (<em>Early Test Planning</em>).</p>
+    <p><strong>Miks see oluline on?</strong> Erinevalt kaskaadmudelist, kus testimine toimub alles lõpus, nõuab V-mudel, et testimisstrateegia ja testloojaid koostataks paralleelselt arendusetappidega. See võimaldab vigu ja ebakõlasid nõuetes avastada väga varajases faasis, mis hoiab kokku aega ja vähendab oluliselt paranduskulusid.</p>
+
+    <h2>V-mudeli plussid ja miinused</h2>
+    <table>
+        <tr>
+            <th>Head (Plussid)</th>
+            <th>Vead (Miinused)</th>
+        </tr>
+        <tr>
+            <td>Lihtne ja kergesti mõistetav ning juhitav.</td>
+            <td>Väga jäik ja vähepaindlik muudatustele.</td>
+        </tr>
+        <tr>
+            <td>Testimine algab varakult, mis tagab kõrge kvaliteedi.</td>
+            <td>Töötavat tarkvara nähakse alles elutsükli lõpus.</td>
+        </tr>
+        <tr>
+            <td>Vähendab vigade parandamise kulusid läbi varajase avastamise.</td>
+            <td>Suur risk projektides, kus nõuded on ebaselged.</td>
+        </tr>
+        <tr>
+            <td>Sobib hästi projektidele, kus turvalisus on kriitiline.</td>
+            <td>Ei sobi pikkadeks ja keerulisteks projektideks.</td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <a href="https://github.com" style="color: white; text-decoration: none;">Vaata lisaks GitHubist</a>
+            </td>
+        </tr>
+    </table>
+
+    <hr>
+
+    <div class="note">
+        <h3>Kasutatud allikad</h3>
+        <ul>
+            <li>ISTQB Foundation Level Syllabus - Tarkvara testimise standardid.</li>
+            <li>GeeksforGeeks: SDLC V-Model Guide.</li>
+            <li>TutorialsPoint: Software Engineering V-Model.</li>
+            <li>Tehisintellekt (Gemini 3 Flash): Info süstematiseerimine, seoste loomine ja koodi genereerimine (2026).</li>
+        </ul>
+    </div>
+
+    <a href="#" id="year-counter-link">
+        Täna on <span id="days-number">9. jaanuar 2026</span>
+    </a>
+
+</body>
+</html>

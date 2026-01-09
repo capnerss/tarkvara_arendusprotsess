@@ -1,72 +1,115 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="et">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prototüüpimine</title>
+    <title>Tarkvaraarenduse Metoodikad</title>
     <link rel="stylesheet" type="text/css" href="../style.css">
 </head>
 <body>
-    <a href="sdlc.html" id="floatingButton">Tagasi</a>
-    <h1>Prototüüpimine</h1><br/>
-    <p>
-        Prototüüpimine on oluline tarkvaraarenduse meetod, mis hõlmab süsteemi esialgse, <br/>
-        mittetäieliku versiooni ehk prototüübi loomist eesmärgiga koguda tagasisidet ja täpsustada nõudeid. <br/>
-       
-    </p>
-    <h2>Prototüüpimine etapid:<br/></h2>
-    <p>
-        Prototüüpimise mudeli tsükkel koosneb tüüpiliselt kolmest põhitegevusest, mida korratakse (iteratsioon): <br/>
-        Nendeks on: Nõuete kogumine, Kiire kavandamine, Iteratsioon prototüübi parandamiseks. <br/> <br/>
-    </p>
-    <h3>1. Nõuete kogumine ja defineerimine</h3> <br/>
-    <p>
-        Seda tehakse esialgu üldisemal tasemel. Määratletakse süsteemi põhinõuded ja fikseeritakse, <br/>
-        milliseid osi on kindlasti vaja edaspidi täpsustama hakata. Eesmärk on saada kiiresti kätte esmane arusaam. <br/>
-    </p>
-    <h3> 2. Kiire kavandamine ja prototüübi loomine</h3>
-    <p>
-        Keskendutakse tavaliselt kasutajaliidesele ja nähtavale osale (sisend, väljund, vormid jms),<br/>
-        mis on kliendile kõige paremini arusaadav. Selle tulemuseks on prototüüp.<br/> <br/>
-    </p>
-    <h3>3. Prototüübi hindamine ja parandamine (iteratsioon)</h3>
-    <p>
-        Klient hindab prototüüpi ja saab selle alusel oma soove ja puudujääke täpsustada. <br/>
-        Järgneb iteratsioon (prototüübi parandamine), kuni prototüüp rahuldab kasutajat. <br/>
-        Iga tsükliga saab arendaja uusi teadmisi kliendi tegelike soovide ja vajaduste kohta. <br/>
-        Prototüüp kas visatakse ära ja alustatakse lõpliku süsteemi arendust puhtalt lehelt (throwaway prototyping) <br/>
-        või arendatakse edasi lõpptooteks (evolutionary prototyping).<br/> 
-    </p>
+<a href="sdlc.html" id="floatingButton">Tagasi</a>
 
-    <p>Prototüübi arendamisel on oluline, et see saaks loodud kiiresti, kasutades selleks abivahendeid (kiire prototüüpimise keeled ja tööriistad). <br/>
-      Prototüüp ei pea sisaldama kogu funktsionaalsust - ta peab keskenduma sellele, millest ei ole hästi aru saadud; <br/>
-      prototüübis ei pea olema vigade kontrolli ning prototüüp on suunatud funktsionaalsetele nõuetele (mitte näiteks turvalisuse probleemidele)</p> <br/> 
-   <p>Kokkuvõtvalt, erinevalt koskmudelist ei koostata iteratiivsete arendusmudelite järgi esmalt kõikehõlmavat analüüsidokumenti, <br/>
-      milline sisaldab muutumatuid kasutajate vajadusi ning „kirjutatakse verega alla" süsteemi tellija ja realiseerija vahel - <br/>
-      iteratiivsed mudelid võimaldavad lihtsamalt viia sisse muudatusi süsteemi, saada kasutajatelt varajast tagasisidet, <br/>
-      testida arendusprojekti varajases faasis süsteemi arhitektuurilise lahenduse sobivust jmt.</p><br/>
-<h2>Prototüüpimine joonis:</h2>
-<img src="../pildid/proto.jpeg" alt="">
-<br/><br/><br/>
-<h2>Prototüüpimine head ja vead:<br/></h2>
-<table>
-    <tr>
-        <td>Head</td>
-        <td>Vead</td>
-    </tr>   
-    <tr>
-        <th>Parem kliendisuhtlus ja tagasiside (klient näeb lahendust ja saab soove täpsustada)</th>
-        <th>Ebapiisav testimine prototüübi faasis võib viia probleemideni hiljem.</th>
-    </tr>   
-    <tr>
-        <th>Vähendab arenduskulusid hilisemates faasides (muudatusi on odavam teha alguses).</th>
-        <th>Liigne detailiseerimine ja ajakulukus, eriti kui puudub selge struktuur.</th>
-    </tr> 
- 
-</table>
-<p>
-    Viited infole:
-    <a href="https://eopearhiiv.edu.ee/e-kursused/eucip/arendus/1224_prototpimine.html">eopearhiiv</a>
-</p>
+<header>
+        <h1>Mis on DevOps?</h1>
+        <p>
+            <strong>DevOps</strong> (tuleneb sõnadest <em>Development</em> ja <em>Operations</em>) ei ole pelgalt tarkvaraarenduse meetod, vaid <strong>kultuuriline filosoofia ja tavade kogum</strong>. Selle eesmärk on ühendada tarkvaraarendus (Dev) ja IT-halduse (Ops) meeskonnad, et lühendada süsteemide arendustsüklit ning pakkuda kvaliteetset tarkvara pidevalt ja usaldusväärselt.
+        </p>
+    </header>
+
+    <section>
+        <h2>DevOps-i etapid</h2>
+        <p>DevOps-i protsessi kujutatakse tavaliselt lõpmatuse sümbolina, mis koosneb järgmistest korduvatest etappidest:</p>
+        <ul>
+            <li><strong>Planeerimine (Plan):</strong> Eesmärkide püstitamine ja nõuete kogumine.</li>
+            <li><strong>Kodeerimine (Code):</strong> Tarkvara kirjutamine ja versioonihaldus.</li>
+            <li><strong>Ehitamine (Build):</strong> Koodi kompileerimine ja artefaktide loomine.</li>
+            <li><strong>Testimine (Test):</strong> Automaattestid kvaliteedi tagamiseks.</li>
+            <li><strong>Väljalase (Release):</strong> Valmis koodi ettevalmistamine paigalduseks.</li>
+            <li><strong>Paigaldus (Deploy):</strong> Tarkvara viimine toodangukeskkonda.</li>
+            <li><strong>Kasutamine (Operate):</strong> Rakenduse haldamine ja töös hoidmine.</li>
+            <li><strong>Seire (Monitor):</strong> Kasutajakogemuse ja süsteemi jõudluse jälgimine tagasisideks.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Arendusmudeli joonis</h2>
+        <p>DevOps-i elutsükkel moodustab pideva ringluse arenduse ja halduse vahel.</p>
+
+
+    </section>
+
+    <section>
+        <h2>DevOps-i alamvariandid</h2>
+        <p>Kuna DevOps on evolutsioneerunud, on sellest tekkinud spetsiifilisemad alamvariandid vastavalt fookusele:</p>
+        <ul>
+            <li><strong>DevSecOps:</strong> Turvalisuse (Security) integreerimine protsessi igasse etappi, mitte ainult lõppu.</li>
+            <li><strong>GitOps:</strong> Operatsioonide ja infrastruktuuri haldamine läbi Git-i versioonihalduse.</li>
+            <li><strong>MLOps:</strong> Masinõppe mudelite arendamise ja juurutamise automatiseerimine.</li>
+            <li><strong>DataOps:</strong> Fookus andmete kvaliteedil ja andmevoogude kiirendamisel.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Tähtsaim omadus: Automatiseerimine</h2>
+        <div class="note">
+            <h3>Miks on automatiseerimine (CI/CD) kõige olulisem?</h3>
+            <p>
+                DevOps-i südameks on <strong>pidev integreerimine ja pidev tarne (CI/CD)</strong>. See on tähtsaim omadus, sest see kõrvaldab inimlikud eksimused, tagab kiire tagasiside ja võimaldab uusi funktsioone kasutajateni viia tundide, mitte kuudega. Ilma automatiseerimiseta jääks DevOps vaid teoreetiliseks ideeks, mis praktikas ei suudaks kiirust ja kvaliteeti säilitada.
+            </p>
+        </div>
+    </section>
+
+    <section>
+        <h2>Heade ja Veade tabel</h2>
+        <table>
+            <tr>
+                <th>Eelis (Head)</th>
+                <th>Puudus (Vead)</th>
+            </tr>
+            <tr>
+                <td>Kiirem tarkvara tarnimine ja turule jõudmine.</td>
+                <td>Nõuab suurt kultuurilist muutust ja meeskondade koostööd.</td>
+            </tr>
+            <tr>
+                <td>Parem stabiilsus ja kiirem vigade parandamine.</td>
+                <td>Algne seadistamine ja tööriistade valik on kallis ja keeruline.</td>
+            </tr>
+            <tr>
+                <td>Suurem automatiseeritus vähendab rutiinset tööd.</td>
+                <td>Vajadus pideva õppimise ja uute tehnoloogiate omandamise järele.</td>
+            </tr>
+            <tr>
+                <td>Parem suhtlus arendajate ja haldurite vahel.</td>
+                <td>Turvariskid, kui automatiseerimist ei tehta korrektselt (nt saladuste leke).</td>
+            </tr>
+            <tr>
+                <td>Kvaliteetsem lõpptoode tänu pidevale testimisele.</td>
+                <td>Skaleerimine suurtes organisatsioonides võib olla vaevaline.</td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    Loe lisaks: <a href="https://en.wikipedia.org/wiki/DevOps">Wikipedia DevOps</a>
+                </td>
+            </tr>
+        </table>
+    </section>
+
+    <hr>
+
+    <footer>
+        <h3>Kasutatud allikad</h3>
+        <ul>
+            <li>Atlassian. (2024). <em>What is DevOps?</em></li>
+            <li>AWS. (2024). <em>DevOps Explained.</em></li>
+            <li>Google Cloud. <em>DevOps capabilities.</em></li>
+            <li>Tehisintellekt (Gemini 3 Flash) - struktuuri loomine, teksti toimetamine ja kokkuvõtete tegemine.</li>
+        </ul>
+    </footer>
+
+    <a href="#" id="year-counter-link">
+        <span>DevOps on tulevik</span>
+        <span id="days-number">∞</span>
+    </a>
+
 </body>
 </html>

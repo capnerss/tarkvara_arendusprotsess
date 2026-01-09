@@ -2,537 +2,103 @@
 <html lang="et">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Extreme Programming (XP) Interaktiivne Teejuht</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <style>
-        body { font-family: 'Inter', sans-serif; background-color: #f5f5f4; color: #44403c; }
-        
-        /* Chart Container Styling - MANDATORY */
-        .chart-container {
-            position: relative;
-            width: 100%;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-            height: 300px;
-            max-height: 400px;
-        }
-        @media (min-width: 768px) {
-            .chart-container {
-                height: 350px;
-            }
-        }
-
-        /* Custom Transition Styles */
-        .fade-in { animation: fadeIn 0.5s ease-in-out; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        
-        .nav-item.active {
-            background-color: #e7e5e4;
-            border-left: 4px solid #ea580c; /* Orange-600 */
-            font-weight: 600;
-            color: #292524;
-        }
-
-        .phase-card {
-            transition: all 0.3s ease;
-        }
-        .phase-card:hover {
-            transform: translateX(5px);
-            border-color: #ea580c;
-        }
-        
-        /* TDD Traffic Light */
-        .tdd-light {
-            transition: all 0.3s ease;
-            opacity: 0.3;
-            transform: scale(0.9);
-        }
-        .tdd-light.active {
-            opacity: 1;
-            transform: scale(1.1);
-            box-shadow: 0 0 15px currentColor;
-        }
-    </style>
-    <!-- Chosen Palette: Warm Neutrals (Stone) with Orange/Amber Accents for energy and focus. -->
-    <!-- Application Structure Plan:
-         1. 'Ülevaade' (Overview): Introduction and the 'Extreme' philosophy interactive transformer.
-         2. 'Protsess' (Process): Interactive timeline of the 5 phases (Planning to Testing).
-         3. 'Praktikad' (Practices): Detailed interactive modules for TDD (Traffic Light) and Pair Programming.
-         4. 'Tagasiside' (Feedback): Chart.js visualization of feedback loop speeds.
-         5. 'Plussid ja Miinused' (Pros/Cons): Interactive filterable grid.
-         Navigation: Sidebar for desktop, drawer for mobile. Content is loaded dynamically via JS state.
-    -->
-    <!-- Visualization & Content Choices:
-         - Philosophy Transformer: JS-based text swap. Goal: Explain the core concept of XP immediately.
-         - Process Timeline: Vertical clickable list. Goal: Break down the 5 phases without overwhelming text.
-         - TDD Traffic Light: Interactive colored circles. Goal: Visual memory aid for Red-Green-Refactor. NO SVG.
-         - Feedback Chart: Horizontal Bar Chart. Goal: Compare time magnitudes (Seconds vs Weeks).
-         - Pros/Cons Grid: JS Filter. Goal: Allow focused study of benefits vs costs.
-    -->
-    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <title>Extreme Programming (XP) ülevaade</title>
+    <link rel="stylesheet" href="../style.css">
 </head>
-<body class="h-screen flex flex-col md:flex-row overflow-hidden">
+<body>
 
-    <!-- Mobile Header -->
-    <div class="md:hidden bg-stone-100 border-b border-stone-200 p-4 flex justify-between items-center z-20">
-        <h1 class="text-lg font-bold text-stone-800">XP Teejuht</h1>
-        <button id="mobile-menu-btn" class="text-stone-600 font-bold text-2xl">☰</button>
+    <a href="sdlc.html" id="floatingButton">Tagasi</a>
+
+    <h1>Mis on Extreme Programming (XP)?</h1>
+    <p>
+        Extreme Programming (XP) on üks tuntumaid <b>agiilseid tarkvaraarenduse metoodikaid</b>, mis keskendub tarkvara kvaliteedi parandamisele ja muutuvatele kliendinõudmistele reageerimisele. Selle looja on Kent Beck ning see põhineb viiel väärtusel: suhtlus, lihtsus, tagasiside, julgus ja austus. "Extreme" (äärmuslik) tuleneb ideest viia traditsioonilised head arenduspraktikad äärmuslikule tasemele (näiteks kui testimine on hea, testime kogu aeg).
+    </p>
+
+    <div class="note">
+        <b>Peamine fookus:</b> XP eesmärk on vähendada muudatuste maksumust läbi lühikeste arendustsüklite ja pideva tagasiside.
     </div>
 
-    <!-- Sidebar Navigation -->
-    <nav id="sidebar" class="bg-white border-r border-stone-200 w-full md:w-64 flex-shrink-0 absolute md:relative z-10 transform -translate-x-full md:translate-x-0 transition-transform duration-300 h-full flex flex-col">
-        <div class="p-6 border-b border-stone-100 hidden md:block">
-            <h1 class="text-2xl font-bold text-stone-800 tracking-tight">XP Teejuht</h1>
-            <p class="text-xs text-stone-500 mt-1">Extreme Programming Õppematerjal</p>
-        </div>
-        <div class="flex-1 overflow-y-auto py-4">
-            <ul class="space-y-1">
-                <li><button onclick="navigate('overview')" class="nav-item w-full text-left px-6 py-3 text-stone-600 hover:bg-stone-50 transition-colors active" id="nav-overview">🔎 Ülevaade & Filosoofia</button></li>
-                <li><button onclick="navigate('process')" class="nav-item w-full text-left px-6 py-3 text-stone-600 hover:bg-stone-50 transition-colors" id="nav-process">🔄 Arendusprotsess</button></li>
-                <li><button onclick="navigate('practices')" class="nav-item w-full text-left px-6 py-3 text-stone-600 hover:bg-stone-50 transition-colors" id="nav-practices">🛠 Tehnilised Praktikad</button></li>
-                <li><button onclick="navigate('feedback')" class="nav-item w-full text-left px-6 py-3 text-stone-600 hover:bg-stone-50 transition-colors" id="nav-feedback">📈 Tagasiside Kiirus</button></li>
-                <li><button onclick="navigate('proscons')" class="nav-item w-full text-left px-6 py-3 text-stone-600 hover:bg-stone-50 transition-colors" id="nav-proscons">⚖️ Plussid ja Miinused</button></li>
-            </ul>
-        </div>
-        <div class="p-4 border-t border-stone-100 text-xs text-stone-400 text-center">
-            Põhineb XP Õppematerjalil
-        </div>
-    </nav>
+    <h2>XP arendustsüklid ja etapid</h2>
+    <p>XP arendusprotsess on iteratiivne ja koosneb järgmistest korduvatest etappidest:</p>
+    <ul>
+        <li><b>Planeerimine (Planning):</b> Kirjutatakse "kasutajalood" (User Stories), hinnatakse nende keerukust ja lepitakse kokku järgmise iteratsiooni sisu.</li>
+        <li><b>Disain (Designing):</b> Keskendutakse lihtsusele. Kasutatakse süsteemi metafoore ja CRC-kaarte (Class, Responsibilities, Collaborators). Reegel on: "Ära lisa funktsionaalsust enne, kui seda on vaja".</li>
+        <li><b>Arendus (Coding):</b> See on XP süda. Siia kuuluvad paaristöö (Pair Programming) ja ühine koodiomand. Kood peab vastama kokkulepitud standarditele.</li>
+        <li><b>Testimine (Testing):</b> Rakendatakse testpõhist arendust (TDD - Test-Driven Development). Enne koodi kirjutamist kirjutatakse test. Toimub pidev üksustestimine ja kliendi aktsepteerimistestimine.</li>
+        <li><b>Kuulamine (Listening):</b> Arendajad kuulavad klienti, et mõista ärivajadusi, ja annavad tagasisidet tehnilise teostatavuse kohta.</li>
+    </ul>
 
-    <!-- Main Content Area -->
-    <main class="flex-1 overflow-y-auto bg-stone-50 relative p-4 md:p-8" id="main-content">
-        
-        <!-- SECTION: OVERVIEW -->
-        <section id="section-overview" class="fade-in max-w-4xl mx-auto">
-            <div class="mb-6">
-                <h2 class="text-3xl font-bold text-stone-800 mb-2">Mis on Extreme Programming?</h2>
-                <p class="text-stone-600 leading-relaxed">Extreme Programming (XP) on agiilne raamistik, mille looja Kent Beck seadis eesmärgiks tarkvara kvaliteedi tõstmise ja kiire reageerimise muutustele. See sektsioon selgitab XP põhilist filosoofiat: heade tavade viimist äärmustesse.</p>
-            </div>
+    <h2>Kas XP-l on alamvariante?</h2>
+    <p>
+        XP ise on konkreetne raamistik, kuid sellel ei ole ametlikke "alamvariante" samamoodi nagu näiteks kosemudelil on V-mudel. Küll aga esineb XP-d praktikas peamiselt kahel kujul:
+    </p>
+    <ol>
+        <li><b>Puhas XP:</b> Kõigi 12 XP põhipraktika (nt paaristöö, TDD, pidev integratsioon) range järgimine.</li>
+        <li><b>Hübriidmeetodid:</b> Kõige tavalisem on <b>Scrum + XP</b>. Selles kombinatsioonis kasutatakse Scrumi projektijuhtimiseks (koosolekud, rollid, sprint) ja XP-d tehniliste praktikate jaoks (TDD, paaristöö, koodi refaktoreerimine).</li>
+    </ol>
 
-            <!-- Interactive Philosophy Transformer -->
-            <div class="bg-white rounded-xl shadow-sm border border-stone-200 p-6 mb-8">
-                <h3 class="text-xl font-semibold text-orange-700 mb-4">Filosoofia: "Vii äärmustesse"</h3>
-                <p class="text-sm text-stone-500 mb-6">Vali vasakult traditsiooniline "hea tava", et näha, kuidas XP selle "ekstreemseks" muudab.</p>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-                    <div class="space-y-3">
-                        <button onclick="transformConcept(0)" class="transform-btn w-full text-left p-4 rounded-lg border border-stone-200 hover:border-orange-300 hover:bg-orange-50 transition-all active ring-2 ring-orange-500 bg-orange-50" data-idx="0">
-                            <span class="font-bold text-stone-700 block">Koodi ülevaatus (Code Review)</span>
-                            <span class="text-xs text-stone-400">on hea...</span>
-                        </button>
-                        <button onclick="transformConcept(1)" class="transform-btn w-full text-left p-4 rounded-lg border border-stone-200 hover:border-orange-300 hover:bg-orange-50 transition-all" data-idx="1">
-                            <span class="font-bold text-stone-700 block">Testimine</span>
-                            <span class="text-xs text-stone-400">on hea...</span>
-                        </button>
-                        <button onclick="transformConcept(2)" class="transform-btn w-full text-left p-4 rounded-lg border border-stone-200 hover:border-orange-300 hover:bg-orange-50 transition-all" data-idx="2">
-                            <span class="font-bold text-stone-700 block">Disainimine</span>
-                            <span class="text-xs text-stone-400">on hea...</span>
-                        </button>
-                         <button onclick="transformConcept(3)" class="transform-btn w-full text-left p-4 rounded-lg border border-stone-200 hover:border-orange-300 hover:bg-orange-50 transition-all" data-idx="3">
-                            <span class="font-bold text-stone-700 block">Lühike integratsioon</span>
-                            <span class="text-xs text-stone-400">on hea...</span>
-                        </button>
-                    </div>
+    <h2>Arendusmudeli joonis</h2>
+    <p>Extreme Programming järgib tsüklilist ja tagasisidepõhist mudelit, kus erineva pikkusega tagasisideringid on üksteise sees.</p>
 
-                    <div class="h-full min-h-[200px] flex items-center justify-center p-6 bg-stone-100 rounded-xl border-2 border-dashed border-stone-300 relative overflow-hidden text-center">
-                        <div id="concept-result" class="transition-all duration-300">
-                            <!-- Dynamic Content -->
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-            <!-- Key Values Cards -->
-            <div class="grid grid-cols-2 md:grid-cols-5 gap-3 mt-8">
-                <div class="bg-white p-3 rounded shadow-sm text-center border-t-4 border-blue-500"><div class="text-2xl mb-1">💬</div><div class="text-xs font-bold text-stone-700">Suhtlus</div></div>
-                <div class="bg-white p-3 rounded shadow-sm text-center border-t-4 border-green-500"><div class="text-2xl mb-1">✂️</div><div class="text-xs font-bold text-stone-700">Lihtsus</div></div>
-                <div class="bg-white p-3 rounded shadow-sm text-center border-t-4 border-yellow-500"><div class="text-2xl mb-1">🔄</div><div class="text-xs font-bold text-stone-700">Tagasiside</div></div>
-                <div class="bg-white p-3 rounded shadow-sm text-center border-t-4 border-red-500"><div class="text-2xl mb-1">🦁</div><div class="text-xs font-bold text-stone-700">Julgus</div></div>
-                <div class="bg-white p-3 rounded shadow-sm text-center border-t-4 border-purple-500"><div class="text-2xl mb-1">🤝</div><div class="text-xs font-bold text-stone-700">Austus</div></div>
-            </div>
-        </section>
 
-        <!-- SECTION: PROCESS -->
-        <section id="section-process" class="hidden fade-in max-w-4xl mx-auto">
-            <div class="mb-6">
-                <h2 class="text-3xl font-bold text-stone-800 mb-2">Arendusmudeli Etapid</h2>
-                <p class="text-stone-600">XP on iteratiivne protsess. Siin on viis põhietappi, mis korduvad pidevalt, et tagada tarkvara vastavus kliendi tegelikele vajadustele.</p>
-            </div>
+    <h2>Arendusmudeli tähtsaim omadus: Tagasiside</h2>
+    <p>
+        XP tähtsaim omadus on <b>pidev ja kiire tagasiside (Continuous Feedback)</b>.
+    </p>
+    <p>
+        <b>Miks see on oluline?</b> Tarkvaraarenduses on vead ja möödarääkimised seda kallimad, mida hiljem need avastatakse. XP-s saadakse tagasisidet:
+    </p>
+    <ul>
+        <li>Sekunditega (paarisprogrammeerimine).</li>
+        <li>Minutitega (üksustestid).</li>
+        <li>Päevadega (kliendi ülevaatused).</li>
+        <li>Nädalatega (iteratsiooni lõpp).</li>
+    </ul>
+    <p>See tagab, et meeskond ehitab õiget asja ja teeb seda kvaliteetselt.</p>
 
-            <div class="flex flex-col md:flex-row gap-6">
-                <!-- Phases List -->
-                <div class="w-full md:w-1/3 space-y-3">
-                    <button onclick="showPhase(0)" class="phase-btn w-full text-left p-4 bg-white rounded-lg shadow-sm border-l-4 border-orange-500 hover:bg-orange-50 transition-all font-bold text-stone-700 active-phase">1. Planeerimine</button>
-                    <button onclick="showPhase(1)" class="phase-btn w-full text-left p-4 bg-white rounded-lg shadow-sm border-l-4 border-stone-200 hover:bg-stone-50 transition-all font-bold text-stone-700">2. Analüüs</button>
-                    <button onclick="showPhase(2)" class="phase-btn w-full text-left p-4 bg-white rounded-lg shadow-sm border-l-4 border-stone-200 hover:bg-stone-50 transition-all font-bold text-stone-700">3. Disain (KISS)</button>
-                    <button onclick="showPhase(3)" class="phase-btn w-full text-left p-4 bg-white rounded-lg shadow-sm border-l-4 border-stone-200 hover:bg-stone-50 transition-all font-bold text-stone-700">4. Arendus (Coding)</button>
-                    <button onclick="showPhase(4)" class="phase-btn w-full text-left p-4 bg-white rounded-lg shadow-sm border-l-4 border-stone-200 hover:bg-stone-50 transition-all font-bold text-stone-700">5. Testimine</button>
-                </div>
+    <h2>Heade ja Veade tabel</h2>
+    <table>
+        <tr>
+            <th>Eelised (Head)</th>
+            <th>Puudused (Vead)</th>
+        </tr>
+        <tr>
+            <td>Kõrge tarkvara kvaliteet tänu pidevale testimisele (TDD).</td>
+            <td>Nõuab suurt ressurssi (paaristöö võib tunduda alguses kallis).</td>
+        </tr>
+        <tr>
+            <td>Väga paindlik – muudatused on teretulnud igal ajal.</td>
+            <td>Vajab kliendi pidevat kohalolu ja kaasamõtlemist.</td>
+        </tr>
+        <tr>
+            <td>Vähendab arendajate stressi tänu realistlikele tähtaegadele.</td>
+            <td>Raske rakendada suurtes, geograafiliselt hajutatud meeskondades.</td>
+        </tr>
+        <tr>
+            <td>Kood on selge ja kergesti hooldatav (refaktoreerimine).</td>
+            <td>Dokumentatsiooni on vähe, rõhk on töötaval koodil.</td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <a href="https://www.agilealliance.org/glossary/xp/" target="_blank">Loe lähemalt Agile Alliance lehelt</a>
+            </td>
+        </tr>
+    </table>
 
-                <!-- Phase Detail View -->
-                <div class="w-full md:w-2/3 bg-white p-6 rounded-xl shadow-md border border-stone-100 flex flex-col justify-center min-h-[300px]">
-                    <div id="phase-content">
-                        <!-- Dynamic Content -->
-                    </div>
-                </div>
-            </div>
-        </section>
+    <hr>
 
-        <!-- SECTION: PRACTICES -->
-        <section id="section-practices" class="hidden fade-in max-w-4xl mx-auto">
-            <div class="mb-6">
-                <h2 class="text-3xl font-bold text-stone-800 mb-2">Tehnilised Praktikad</h2>
-                <p class="text-stone-600">XP eristub teistest agiilsetest meetoditest oma rangete tehniliste nõuete poolest. Siin saad uurida kahte kõige olulisemat.</p>
-            </div>
+    <h3>Viited ja allikad</h3>
+    <ul>
+        <li>Beck, K. (1999). <i>Extreme Programming Explained: Embrace Change</i>. Addison-Wesley.</li>
+        <li>Agile Alliance: Extreme Programming (XP).</li>
+        <li>Wells, D. (2013). Extreme Programming: A Gentle Introduction.</li>
+        <li>Tehisintellekt (Gemini 3 Flash) – kasutatud info süstematiseerimiseks, koodi genereerimiseks ja eesti keelde tõlkimiseks.</li>
+    </ul>
 
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                <!-- TDD Simulator -->
-                <div class="bg-white p-6 rounded-xl shadow-sm border border-stone-200">
-                    <h3 class="text-xl font-bold text-stone-800 mb-4 border-b pb-2">Test-Driven Development (TDD)</h3>
-                    <p class="text-sm text-stone-500 mb-4">Klõpsa tuledel, et läbida TDD tsükkel.</p>
-                    
-                    <div class="flex justify-center gap-6 mb-6">
-                        <div onclick="setTDD(0)" class="cursor-pointer tdd-light w-16 h-16 rounded-full bg-red-500 flex items-center justify-center text-white font-bold text-xl active shadow-lg shadow-red-500/50" id="light-red">1</div>
-                        <div onclick="setTDD(1)" class="cursor-pointer tdd-light w-16 h-16 rounded-full bg-green-500 flex items-center justify-center text-white font-bold text-xl" id="light-green">2</div>
-                        <div onclick="setTDD(2)" class="cursor-pointer tdd-light w-16 h-16 rounded-full bg-blue-500 flex items-center justify-center text-white font-bold text-xl" id="light-blue">3</div>
-                    </div>
-                    
-                    <div id="tdd-desc" class="bg-stone-50 p-4 rounded text-center min-h-[100px] flex items-center justify-center font-medium text-stone-700">
-                        Vali "1" (Punane), et alustada tsüklit.
-                    </div>
-                </div>
+    <a href="#" id="year-counter-link">
+        Täna on <span id="days-number">9. jaanuar 2026</span>
+    </a>
 
-                <!-- Pair Programming -->
-                <div class="bg-white p-6 rounded-xl shadow-sm border border-stone-200">
-                    <h3 class="text-xl font-bold text-stone-800 mb-4 border-b pb-2">Paarisprogrammeerimine</h3>
-                    <p class="text-sm text-stone-500 mb-4">Kaks rolli ühe arvuti taga. Klõpsa, et näha vastutust.</p>
-                    
-                    <div class="space-y-4">
-                        <div class="cursor-pointer group p-4 border border-stone-200 rounded hover:bg-orange-50 transition-colors" onclick="toggleRole('driver')">
-                            <div class="flex items-center gap-3">
-                                <span class="text-2xl">⌨️</span>
-                                <h4 class="font-bold text-stone-800">Juht (Driver)</h4>
-                            </div>
-                            <p class="text-sm text-stone-600 mt-2 hidden" id="role-driver">
-                                Hoiab klaviatuuri. Keskendub praegusele koodireale, süntaksile ja detailidele. Kirjutab lahenduse.
-                            </p>
-                        </div>
-
-                        <div class="cursor-pointer group p-4 border border-stone-200 rounded hover:bg-blue-50 transition-colors" onclick="toggleRole('navigator')">
-                            <div class="flex items-center gap-3">
-                                <span class="text-2xl">🗺️</span>
-                                <h4 class="font-bold text-stone-800">Navigaator (Navigator)</h4>
-                            </div>
-                            <p class="text-sm text-stone-600 mt-2 hidden" id="role-navigator">
-                                Jälgib tervikpilti. Otsib vigu reaalajas, mõtleb strateegiale ja järgmistele sammudele.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- SECTION: FEEDBACK -->
-        <section id="section-feedback" class="hidden fade-in max-w-4xl mx-auto">
-            <div class="mb-6">
-                <h2 class="text-3xl font-bold text-stone-800 mb-2">Pidev Tagasiside</h2>
-                <p class="text-stone-600">XP tähtsaim omadus. Mida kiiremini saame tagasisidet, seda odavam on vigu parandada.</p>
-            </div>
-
-            <div class="bg-white p-6 rounded-xl shadow-sm border border-stone-200">
-                <div class="chart-container">
-                    <canvas id="feedbackChart"></canvas>
-                </div>
-                <div class="mt-4 text-center text-sm text-stone-500">
-                    Võrdlus: Kui kaua kulub aega, et teada saada, kas midagi on valesti?
-                </div>
-            </div>
-        </section>
-
-        <!-- SECTION: PROS & CONS -->
-        <section id="section-proscons" class="hidden fade-in max-w-4xl mx-auto">
-            <div class="mb-6 flex flex-col md:flex-row justify-between items-center">
-                <div>
-                    <h2 class="text-3xl font-bold text-stone-800 mb-2">Plussid ja Miinused</h2>
-                    <p class="text-stone-600">Tasakaalustatud vaade XP tugevustele ja nõrkustele.</p>
-                </div>
-                
-                <div class="mt-4 md:mt-0 flex gap-2 bg-white p-1 rounded border border-stone-200">
-                    <button onclick="filterProsCons('all')" class="px-3 py-1 text-sm rounded hover:bg-stone-100 font-bold text-stone-600 bg-stone-100" id="filter-all">Kõik</button>
-                    <button onclick="filterProsCons('pros')" class="px-3 py-1 text-sm rounded hover:bg-green-50 text-stone-600" id="filter-pros">Eelised (Head)</button>
-                    <button onclick="filterProsCons('cons')" class="px-3 py-1 text-sm rounded hover:bg-red-50 text-stone-600" id="filter-cons">Puudused (Vead)</button>
-                </div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="pc-grid">
-                <!-- Items injected via JS -->
-            </div>
-        </section>
-
-    </main>
-
-    <script>
-        // --- DATA ---
-        const philosophyData = [
-            {
-                title: "Paarisprogrammeerimine",
-                desc: "Kui <strong>koodi ülevaatus</strong> on kasulik, siis XP-s teeme seda <strong>kogu aeg</strong> (2 inimest, 1 arvuti). Tagasiside sekunditega.",
-                icon: "👥"
-            },
-            {
-                title: "Test-Driven Development (TDD)",
-                desc: "Kui <strong>testimine</strong> on hea, siis XP-s kirjutame testid <strong>enne koodi</strong>. See tagab 100% kaetuse ja kindlustunde.",
-                icon: "🧪"
-            },
-            {
-                title: "Refaktoreerimine",
-                desc: "Kui <strong>disainimine</strong> on hea, siis XP-s teeme seda <strong>pidevalt</strong>, iga päev, hoides süsteemi lihtsana (KISS).",
-                icon: "🔨"
-            },
-            {
-                title: "Pidev Integreerimine (CI)",
-                desc: "Kui <strong>integratsioon</strong> on riskantne, siis XP-s teeme seda <strong>mitu korda päevas</strong>, et vältida suuri konflikte.",
-                icon: "🚀"
-            }
-        ];
-
-        const phasesData = [
-            { title: "Planeerimine", content: "<strong>Tegevus:</strong> Kasutajad kirjutavad 'kasutajalood' (User Stories).<br><strong>Tulemus:</strong> Arendajad hindavad mahtu ja lepitakse kokku iteratsiooni sisu." },
-            { title: "Analüüs", content: "<strong>Tegevus:</strong> Nõuete täpsustamine.<br><strong>Eripära:</strong> Toimub vahetu suhtluse kaudu kliendiga, kes on ideaalis osa meeskonnast." },
-            { title: "Disain", content: "<strong>Printsiip:</strong> KISS (Keep It Simple, Stupid).<br><strong>Tööriistad:</strong> Süsteemi metafoorid ja CRC kaardid. Väldi üledisainimist (YAGNI)." },
-            { title: "Arendus", content: "<strong>Süda:</strong> Paarisprogrammeerimine ja ühine koodiomand.<br><strong>Rütm:</strong> Pidev integreerimine ja refaktoreerimine." },
-            { title: "Testimine", content: "<strong>Meetod:</strong> TDD (Test-Driven Development).<br><strong>Tasemed:</strong> Üksustestid (arendajad) ja Vastuvõtutestid (klient)." }
-        ];
-
-        const tddSteps = [
-            { color: "text-red-600", bg: "bg-red-50", title: "1. Punane (Red)", text: "Kirjuta test, mis ebaõnnestub (sest funktsionaalsust pole veel). See kinnitab testi paikapidavust." },
-            { color: "text-green-600", bg: "bg-green-50", title: "2. Roheline (Green)", text: "Kirjuta minimaalne kood, et test läbi läheks. Ära muretse veel ilu pärast." },
-            { color: "text-blue-600", bg: "bg-blue-50", title: "3. Refaktoreeri (Refactor)", text: "Paranda koodi struktuuri ja loetavust, olles kindel, et testid kaitsevad sind vigade eest." }
-        ];
-
-        const prosConsData = [
-            { type: 'pros', title: 'Kõrge Kvaliteet', text: 'Tänu TDD-le ja paarisprogrammeerimisele on vigu oluliselt vähem.' },
-            { type: 'pros', title: 'Paindlikkus', text: 'Muudatusi saab sisse viia igal ajal ilma projekti kokkukukkumiseta.' },
-            { type: 'pros', title: 'Kliendi Rahulolu', text: 'Klient näeb tulemusi kiiresti ja on protsessi kaasatud.' },
-            { type: 'pros', title: 'Vähem Stressi', text: 'Pidev testimine vähendab ületunnitöö vajadust lõpus.' },
-            { type: 'cons', title: 'Ressursimahukus', text: 'Paarisprogrammeerimine tundub alguses kallis (2 inimest, 1 arvuti).' },
-            { type: 'cons', title: 'Inimfaktor', text: 'Nõuab suurt distsipliini ja head läbisaamist meeskonnas.' },
-            { type: 'cons', title: 'Dokumentatsiooni Vähesus', text: 'Rõhk koodil võib raskendada hilisemat haldust ilma algse tiimita.' },
-            { type: 'cons', title: 'Nõuab Kogemust', text: 'Algajatel on raske XP tempot ja tehnilisi nõudeid järgida.' }
-        ];
-
-        // --- NAVIGATION STATE ---
-        function navigate(sectionId) {
-            // Update Menu UI
-            document.querySelectorAll('.nav-item').forEach(el => {
-                el.classList.remove('active', 'bg-stone-100', 'border-l-4', 'border-orange-600', 'font-bold');
-                el.classList.add('text-stone-600');
-            });
-            const activeBtn = document.getElementById(`nav-${sectionId}`);
-            if(activeBtn) {
-                activeBtn.classList.add('active');
-                activeBtn.classList.remove('text-stone-600');
-            }
-
-            // Hide/Show Sections
-            document.querySelectorAll('section').forEach(el => el.classList.add('hidden'));
-            const target = document.getElementById(`section-${sectionId}`);
-            if(target) {
-                target.classList.remove('hidden');
-            }
-
-            // Mobile Menu Close
-            const sidebar = document.getElementById('sidebar');
-            if(window.innerWidth < 768) {
-                sidebar.classList.add('-translate-x-full');
-            }
-
-            // Trigger Chart Render if visible
-            if(sectionId === 'feedback') {
-                renderChart();
-            }
-        }
-
-        // --- INTERACTION LOGIC ---
-
-        // Overview Transformer
-        function transformConcept(index) {
-            const data = philosophyData[index];
-            const container = document.getElementById('concept-result');
-            
-            // Highlight button
-            document.querySelectorAll('.transform-btn').forEach(btn => btn.classList.remove('ring-2', 'ring-orange-500', 'bg-orange-50'));
-            document.querySelector(`.transform-btn[data-idx="${index}"]`).classList.add('ring-2', 'ring-orange-500', 'bg-orange-50');
-
-            // Animate content
-            container.style.opacity = 0;
-            setTimeout(() => {
-                container.innerHTML = `
-                    <div class="text-4xl mb-2">${data.icon}</div>
-                    <h4 class="text-xl font-bold text-stone-800 mb-2">${data.title}</h4>
-                    <p class="text-stone-600">${data.desc}</p>
-                `;
-                container.style.opacity = 1;
-            }, 200);
-        }
-
-        // Process Phase Logic
-        function showPhase(index) {
-            const data = phasesData[index];
-            const contentDiv = document.getElementById('phase-content');
-            
-            // Highlight Button
-            document.querySelectorAll('.phase-btn').forEach((btn, idx) => {
-                if(idx === index) {
-                    btn.classList.add('border-orange-500', 'bg-orange-50');
-                    btn.classList.remove('border-stone-200');
-                } else {
-                    btn.classList.remove('border-orange-500', 'bg-orange-50');
-                    btn.classList.add('border-stone-200');
-                }
-            });
-
-            contentDiv.innerHTML = `
-                <h3 class="text-2xl font-bold text-orange-600 mb-4">${data.title}</h3>
-                <div class="text-lg text-stone-700 leading-relaxed">${data.content}</div>
-            `;
-        }
-
-        // TDD Traffic Light Logic
-        function setTDD(index) {
-            const data = tddSteps[index];
-            const desc = document.getElementById('tdd-desc');
-            const lights = document.querySelectorAll('.tdd-light');
-
-            lights.forEach((l, idx) => {
-                if(idx === index) {
-                    l.classList.add('active');
-                    l.style.opacity = 1;
-                } else {
-                    l.classList.remove('active');
-                    l.style.opacity = 0.3;
-                }
-            });
-
-            desc.className = `p-4 rounded text-center min-h-[100px] flex flex-col items-center justify-center font-medium transition-colors ${data.bg}`;
-            desc.innerHTML = `
-                <span class="${data.color} font-bold text-lg mb-1">${data.title}</span>
-                <span class="text-stone-600 text-sm">${data.text}</span>
-            `;
-        }
-
-        // Pair Programming Toggle
-        function toggleRole(roleId) {
-            const el = document.getElementById(`role-${roleId}`);
-            if(el.classList.contains('hidden')) {
-                el.classList.remove('hidden');
-            } else {
-                el.classList.add('hidden');
-            }
-        }
-
-        // Pros Cons Filter
-        function filterProsCons(filter) {
-            const grid = document.getElementById('pc-grid');
-            grid.innerHTML = ''; // Clear
-
-            // Update Buttons
-            document.querySelectorAll('#section-proscons button').forEach(btn => btn.classList.remove('bg-stone-100', 'font-bold'));
-            document.getElementById(`filter-${filter}`).classList.add('bg-stone-100', 'font-bold');
-
-            const filtered = prosConsData.filter(item => filter === 'all' || item.type === filter);
-
-            filtered.forEach(item => {
-                const isPro = item.type === 'pros';
-                const div = document.createElement('div');
-                div.className = `p-4 rounded border-l-4 shadow-sm bg-white ${isPro ? 'border-green-500' : 'border-red-500'}`;
-                div.innerHTML = `
-                    <h4 class="font-bold ${isPro ? 'text-green-700' : 'text-red-700'} mb-1 flex items-center gap-2">
-                        ${isPro ? '✅' : '⚠️'} ${item.title}
-                    </h4>
-                    <p class="text-sm text-stone-600">${item.text}</p>
-                `;
-                grid.appendChild(div);
-            });
-        }
-
-        // Chart.js Rendering
-        let chartInstance = null;
-        function renderChart() {
-            if(chartInstance) return;
-            
-            const ctx = document.getElementById('feedbackChart').getContext('2d');
-            chartInstance = new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: ['Paarisprogrammeerimine (Sekundid)', 'Üksustestid (Minutid)', 'Vastuvõtutestid (Päevad)', 'Release (Nädalad)'],
-                    datasets: [{
-                        label: 'Tagasiside aeg',
-                        data: [1, 2, 3, 4], // Conceptual scale
-                        backgroundColor: [
-                            'rgba(234, 88, 12, 0.7)', // Orange
-                            'rgba(34, 197, 94, 0.7)', // Green
-                            'rgba(59, 130, 246, 0.7)', // Blue
-                            'rgba(168, 85, 247, 0.7)'  // Purple
-                        ],
-                        borderColor: [
-                            'rgb(234, 88, 12)',
-                            'rgb(34, 197, 94)',
-                            'rgb(59, 130, 246)',
-                            'rgb(168, 85, 247)'
-                        ],
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    indexAxis: 'y',
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    scales: {
-                        x: { display: false, max: 5 },
-                        y: { grid: { display: false } }
-                    },
-                    plugins: {
-                        legend: { display: false },
-                        tooltip: {
-                            callbacks: {
-                                label: (ctx) => {
-                                    const msgs = [
-                                        "Viga parandatakse kohe partneri poolt.",
-                                        "Viga leitakse automaattestiga enne commit'i.",
-                                        "Klient leiab vea funktsionaalsuse kontrollimisel.",
-                                        "Turg/Kasutajad annavad tagasisidet tootele."
-                                    ];
-                                    return msgs[ctx.dataIndex];
-                                }
-                            }
-                        }
-                    }
-                }
-            });
-        }
-
-        // Mobile Menu Toggle
-        document.getElementById('mobile-menu-btn').addEventListener('click', () => {
-            const sidebar = document.getElementById('sidebar');
-            if(sidebar.classList.contains('-translate-x-full')) {
-                sidebar.classList.remove('-translate-x-full');
-            } else {
-                sidebar.classList.add('-translate-x-full');
-            }
-        });
-
-        // Initialize
-        document.addEventListener('DOMContentLoaded', () => {
-            transformConcept(0);
-            showPhase(0);
-            filterProsCons('all');
-        });
-
-    </script>
 </body>
 </html>

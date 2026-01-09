@@ -160,4 +160,36 @@ ul {
     font-weight: bold;
     box-shadow: 0 0px 0px rgba(0, 0, 0, 0); /* Subtle shadow */
 }
+/* Muudame elemendi lingiks ja stiilime selle */
+        #year-counter-link {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #f26417; /* Süsimust taust */
+            color: white;
+            padding: 15px 20px;
+            border-radius: 12px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 14px;
+            text-decoration: none; /* Eemaldab lingi alusjoone */
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+            z-index: 1000;
+            transition: transform 0.2s, background-color 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border: 1px solid #333;
+        }
 
+        /* Efekt hiirega peale liikudes */
+        #year-counter-link:hover {
+            background-color: #333;
+            transform: translateY(-5px); /* Tõuseb veidi ülespoole */
+            color: #ffffff;
+        }
+
+        #days-number {
+            font-weight: bold;
+            color: #00ff88; /* Keskendume erkrohelisele (äpi tunnetus) */
+            font-size: 1.2em;
+        }
