@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarkvaraarenduse Metoodikad</title>
+
+    <link rel="stylesheet" href="../../css/style.css">
+
+    <style>
+        /* Lisastiil SVG joonise jaoks (säilitatud algsest koodist) */
+        .diagram-container {
+            text-align: center;
+            padding: 20px;
+            background-color: #fff;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        svg {
+            max-width: 100%;
+            height: auto;
+        }
+        .step-text { font-family: Arial, sans-serif; font-weight: bold; font-size: 14px; fill: #333; }
+        .step-desc { font-family: Arial, sans-serif; font-size: 12px; fill: #666; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div style="margin-bottom: 15px;">
+            <a href="agile.html">&larr; Tagasi</a>
+        </div>
+
+        <h1>Tarkvaraarenduse Metoodikad</h1>
+
+        <nav style="margin-top: 10px;">
+            <a href="#driven" class="navbar">Testimispõhine arendus</a>
+            <a href="#design" class="navbar">Disain ja Turvalisus</a>
+            <a href="#summary" class="navbar">Kokkuvõte</a>
+        </nav>
+    </header>
+
+    <section id="driven">
+        <h2>Testimis- ja Käitumispõhine Arendus</h2>
+
+        <div class="note">
+            <strong>NB!</strong> Need metoodikad keskenduvad koodi kvaliteedi tagamisele läbi varajase testimise ja selge kommunikatsiooni.
+        </div>
+
+        <article>
+            <h3>TDD – Test-Driven Development</h3>
+            <p>Arendaja kirjutab enne koodi loomist automaatse testi. See tagab, et kood vastab täpselt nõuetele ja on hiljem kergesti hooldatav.</p>
+            <a href="testdriven.html" target="_blank">Loe lähemalt: TDD</a>
+        </article>
+
+        <article>
+            <h3>BDD – Behavior-Driven Development</h3>
+            <p>Keskendub tarkvara käitumisele kasutaja vaatepunktist. Kasutatakse "Given-When-Then" stsenaariume, et äripoolel ja arendajatel oleks ühine keel.</p>
+            <a href="bdd.html" target="_blank">Loe lähemalt: BDD</a>
+        </article>
+
+        <article>
+            <h3>SbE – Specification by Example</h3>
+            <p>Koostööl põhinev lähenemine. Abstraktsete spetsifikatsioonide asemel kasutatakse konkreetseid näiteid, et luua ühine arusaam arendajate, testijate ja äripoole vahel.</p>
+            <a href="byexample.html" target="_blank">Loe lähemalt: SbE</a>
+        </article>
+
+        <article>
+            <h3>ATDD & CTDD – Vastuvõtu- ja Pidevtestimine</h3>
+            <p>Need metoodikad laiendavad testimist kogu arendustsüklile:</p>
+            <ul>
+                <li><strong>ATDD (Acceptance TDD):</strong> Kogu meeskonna koostöös defineeritud vastuvõtutestid enne arendust.</li>
+                <li><strong>CTDD (Continuous TDD):</strong> Pidev testimine, kus testid jooksevad taustal automaatselt iga muudatusega.</li>
+            </ul>
+            <div style="margin-top: 10px;">
+                <a href="acceptance.html" target="_blank">Loe: ATDD</a>
+                <a href="countinus.html" target="_blank">Loe: CTDD</a>
+            </div>
+        </article>
+    </section>
+
+    <section id="design">
+        <h2>Disain ja Arhitektuur</h2>
+
+        <article>
+            <h3>DDD – Design-Driven Development</h3>
+            <p>Disainist juhitud arendus, kus protsessi ja kasutajakogemust (UX) dikteerib disain, mitte tehnilised piirangud.</p>
+            <a href="desingdriven.html" target="_blank">Design Driven Development</a>
+        </article>
+
+        <article>
+            <h3>DDD – Domain-Driven Design</h3>
+            <p>Keskendub keerulise äriloogika mudeldamisele. Eesmärk on, et koodi struktuur ühtiks reaalse ärivaldkonna (domeeni) mõistetega.</p>
+            <a href="domaindriven.html" target="_blank">Domain-Driven Design</a>
+        </article>
+
+        <article>
+            <h3>SbD – Secure by Design</h3>
+            <p>Turvalisuse põhimõtted on sisse ehitatud süsteemi arhitektuuri algusest peale, mitte lisatud hiljem "plaastrina".</p>
+            <a href="securebydesing.html" target="_blank">Secure by Design</a>
+        </article>
+
+        <article>
+            <h3>DOD – Data-Oriented Design</h3>
+            <p>Fookus on andmete paigutusel mälus (mäluhaldus), et saavutada maksimaalne jõudlus. Eriti oluline mänguarenduses ja reaalajasüsteemides.</p>
+            <a href="dataorient.html" target="_blank">Data-Oriented Design</a>
+        </article>
+
+        <article>
+            <h3>DDD – Data-Driven Development</h3>
+            <p>Andmetepõhine arendus, kus otsuseid ja prioriteete määravad kogutud kvantitatiivsed ja kvalitatiivsed andmed, mitte kõhutunne.</p>
+            <a href="datadriven.html" target="_blank">Data Driven Development</a>
+        </article>
+    </section>
+
+    <hr>
+
+    <section id="summary">
+        <table>
+            <tr>
+                <th style="width: 15%;">Lühend</th>
+                <th style="width: 35%;">Täispikk nimi</th>
+                <th>Peamine fookus / Eesmärk</th>
+            </tr>
+
+            <tr>
+                <td><strong>TDD</strong></td>
+                <td>Test-Driven Development</td>
+                <td>Koodi korrektsus (test enne koodi)</td>
+            </tr>
+            <tr>
+                <td><strong>BDD</strong></td>
+                <td>Behavior-Driven Development</td>
+                <td>Kasutaja käitumine (Given-When-Then)</td>
+            </tr>
+            <tr>
+                <td><strong>SbE</strong></td>
+                <td>Specification by Example</td>
+                <td>Nõuete selgitamine läbi konkreetsete näidete</td>
+            </tr>
+            <tr>
+                <td><strong>ATDD</strong></td>
+                <td>Acceptance TDD</td>
+                <td>Vastuvõtutestide defineerimine enne arendust</td>
+            </tr>
+            <tr>
+                <td><strong>CTDD</strong></td>
+                <td>Continuous TDD</td>
+                <td>Pidev automaattestimine taustal</td>
+            </tr>
+
+            <tr>
+                <td><strong>DDD</strong></td>
+                <td><em>Design</em>-Driven Development</td>
+                <td>Protsessi juhib visuaalne disain ja UX</td>
+            </tr>
+            <tr>
+                <td><strong>DDD</strong></td>
+                <td><em>Domain</em>-Driven Design</td>
+                <td>Keerulise äriloogika mudeldamine</td>
+            </tr>
+            <tr>
+                <td><strong>DDD</strong></td>
+                <td><em>Data</em>-Driven Development</td>
+                <td>Otsused põhinevad andmetel ja statistikal</td>
+            </tr>
+            <tr>
+                <td><strong>SbD</strong></td>
+                <td>Secure by Design</td>
+                <td>Turvalisus sisse ehitatud arhitektuuri</td>
+            </tr>
+            <tr>
+                <td><strong>DOD</strong></td>
+                <td>Data-Oriented Design</td>
+                <td>Mäluhaldus ja jõudlus (CPU cache)</td>
+            </tr>
+
+            <tr>
+            </tr>
+        </table>
+    </section>
+
+    <p style="text-align: center; margin-top: 30px; font-style: italic;">
+        Vali sobiv metoodika vastavalt oma projekti vajadustele ja meeskonna suurusele.
+    </p>
+
+
+</body>
+</html>

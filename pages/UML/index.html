@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UML diagrammikeel</title>
+    <link rel="stylesheet" type="text/css" href="../../css/style.css">
+</head>
+<body>
+<header>
+    <a href="../../index.html" id="floatingButton">Tagasi</a>
+
+</header>
+
+    <h1>UML-i diagrammikeel</h1>
+
+    <br>
+
+        <h2>Mis on UML?</h2>
+<p>
+    UML (Unified Modeling Language – ühtne modelleerimiskeel) on <b>visuaalne modelleerimiskeel</b>, mis aitab tarkvaraarendusel. <br>
+    See võimaldab nii <b>kliendile</b> kui ka <b>arendajale</b> endale ning erinevatele protsessiga seotud isikutele täpsemalt kuvada, milline arendatava toote <b>sisemine struktuur</b> peaks erinevatel tasanditel olema. <br>
+    UML on aga ka <b>harukeel</b>, ehk teisisõnu on olemas erinevaid diagramme. <br>
+    UML defineerib ära nende erinevate diagrammitüüpide representatsioonid, keskendudes spetsiifilisel tasemel vajaminevale kirjeldusele. <br>
+    Näiteks tarkvaratoote <b>käitumise</b> kirjeldamiseks on olemas <b>käitumisdiagrammid</b>, andmestruktuuri kirjeldamiseks on näiteks <b>olemite diagramm (ERD)</b> ja nii edasi, erinevate aspektide kohta. <br>
+    UML-i kasutatakse nii uue arendustöö kirjeldamiseks kui ka olemasoleva dokumenteerimiseks.
+</p>
+    <br>
+<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vQ527ZQXNlgaUSsGZaqWBfh5C5D2vVp7PMBTeDfC1RCwogXh9JqAoj7ii9SG5W9SX4Vvw_4RbiIhcC6/pubembed?start=false&loop=false&delayms=3000" frameborder="0" width="900" height="700"  allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+    <hr>
+
+    <h2>Kuidas UML tekkis?</h2>
+    <p>
+        UML tekkis vajadusest kujutada <b>objektorienteeritud programmeerimise</b> jaoks ühtset keelt, mis kuvaks protsessi ilma koodita. <br>
+        Algselt tekkis see, kui <b>Grady Booch</b> ja <b>James Rumbaugh</b> ühendasid oma diagrammikeeled, <br>
+        kuhu aja jooksul tekkis ka teisi harusid juurde. UML ise on akronüüm ingliskeelsest terminist <b>"Unified Modeling Language"</b>.
+    </p>
+    <br>
+    <hr>
+
+    <h1>Mida saab kujutada UML-iga – ehk kui palju diagrammiliike on olemas?</h1>
+    <p>
+        Erinevaid UML-i liike on palju, mis jagunevad laias laastus <b>struktuuridiagrammideks</b> (näiteks klassi-, komponendi- ja juurutusdiagrammid) ja <b>käitumisdiagrammideks</b> (näiteks kasutusjuhtumi-, tegevus- ja jadadiagrammid). Mõned näited on:
+        <img src="../../assets/images/01-use-case-diagram-in-uml-hierarchy.webp" alt="">
+
+<ul>
+            <li><a href="flowchart.html"><b>Vooskeem</b> (Flowchart)</a><b>non-UML</b></li>
+    <li><a href="ERD.html"><b>Olemidiagramm</b> (Entity Relationship Diagram - ERD)</a><b>non-UML</b></li>
+            <li><b>Klassidiagramm</b> (Class Diagram)</li>
+            <li><b>Objektidiagramm</b> (Object Diagram)</li>
+            <li><b>Koostöödiagramm</b> (Collaboration Diagram) <b> UML 1.4 </b></li>
+            <li><b>Kasutusjuhtude diagramm</b> (Use Case Diagram)</li>
+            <li><b>Olekuskeem</b> (State Machine Diagram / State Diagram)</li>
+            <li><b>Tegevusdiagramm</b> (Activity Diagram)</li>
+            <li><b>Komponendidiagramm</b> (Component Diagram)</li>
+            <li><b>Kommunikatsioonidiagramm</b> (Communication Diagram) <b>UML 2.5.1</b></li>
+            <li><b>Ajastuskeem</b> (Timing Diagram)</li>
+            <li><b>Jadaskeem</b> (Sequence Diagram)</li>
+            <li><b>Juurutus-/Levitusskeem</b> (Deployment Diagram)</li>
+            <li><b>Paketiskeem</b> (Package Diagram)</li>
+            <li><b>Profiilidiagramm</b> (Profile Diagram)</li>
+        </ul>
+
+    <br>
+    <hr>
+
+    <h1>Mõningaid UML-i liike lähemalt</h1>
+
+    <section id="usecase"><h2>Kasutusjuhtude diagramm (Use Case Diagram)</h2>
+<h3>Lühikirjeldus (Iseloomustus)</h3>
+    <p>
+        <b>Kasutusjuhtude diagramm</b> (Use Case Diagram) on üks peamisi tööriistu süsteemi analüüsis ja disainis. <br>
+        See diagramm kajastab süsteemi ja selle kasutajate (<b>aktorite</b>) vahelisi suhteid, näidates, <br>
+        kuidas kasutajad suhtlevad süsteemi komponentidega ja milliseid teenuseid süsteem pakub. <br>
+        Kasutusjuhtumite skeem aitab arendajatel ja analüütikutel mõista, kuidas süsteem peaks käituma ja kuidas tagada, et kõik kasutusjuhtumid katavad kasutajate vajadused.
+    </p>
+<h3>Kujundite/Joonte lahtiseletus</h3>
+<table>
+    <tr>
+        <td></td><td></td>
+    </tr>
+    <tr>
+        <td><b>Näitleja</b>
+<ul>
+<li> Keegi suhtleb kasutusjuhtumiga (süsteemi funktsiooniga).</li>
+<li>Nimetatud nimisõna järgi.</li>
+<li>Näitlejal on äris oma roll</li>
+<li>Sarnane kasutaja mõistega, kuid kasutajal võib olla erinevaid rolle.</li>
+    <li>Tegelane käivitab kasutusjuhtumi(d).</li>
+<li>Tegejal on süsteemi ees vastutus (sisendid) ja tegutsejal on süsteemi suhtes ootused (väljundid).</li>
+</ul></td><td><img src="../../assets/images/03-use-case-diagram-notation-actor.webp" alt=""> </td>
+    </tr>
+    <tr>
+        <td><b>Kasutusjuhtum</b>
+
+<ul>
+    <li>Süsteemi funktsioon (protsess - automatiseeritud või käsitsi)</li>
+    <li>Nimetatud tegusõna + nimisõna (või nimisõnafraasi) abil.</li>
+    <li>Tee midagi</li>
+    <li>Iga tegelane peab olema seotud kasutusjuhtumiga, samas kui mõned kasutusjuhud ei pruugi olla tegelastega seotud.</li>
+</ul></td><td><img src="../../assets/images/04-use-case-diagram-notation-use-case.webp" alt=""></td>
+    </tr>
+    <tr>
+        <td><b>Sideühendus</b>
+            <ul>
+<li>Tegelase osalemist kasutusjuhul näidatakse tegelase ühendamisega kasutusjuhuga kindla lingi abil.</li>
+<li>Tegelased võivad olla kasutusjuhtudega seotud seoste kaudu, mis näitab, et tegelane ja kasutusjuhtum suhtlevad omavahel sõnumite abil.</li></ul></td><td>
+        <img src="../../assets/images/05-use-case-diagram-notation-communication-link.webp" alt=""></td>
+    </tr>
+    <tr>
+        <td><b>Süsteemi piir</b>
+            <ul>
+
+           <li>Süsteemi piir on potentsiaalselt kogu süsteem, nagu see on määratletud nõuete dokumendis.</li>
+            <li>Suurte ja keerukate süsteemide puhul võib iga moodul olla süsteemi piir.</li>
+            <li>Näiteks organisatsiooni ERP-süsteemi puhul on kõik moodulid, näiteks personal, palgaarvestus, raamatupidamine jne.</li>
+        <li>saab moodustada süsteemi piiri iga ärifunktsiooni spetsiifiliste kasutusjuhtude jaoks.</li>
+            <li>Kogu süsteem võib hõlmata kõiki neid mooduleid, mis kujutavad süsteemi üldist piiri.</li>
+        </ul></td><td><img src="../../assets/images/06-use-case-diagram-notation-system-boundary.webp" alt=""></td>
+    </tr>
+    <tr>
+        <td></td><td></td>
+    </tr>
+</table>
+
+<h3>Üks näidisjoonis</h3>
+     <p>
+         <img src="../../assets/images/02-use-case-diagram-annotated.webp" alt="">
+
+     </p>
+    <br>
+
+    <h2>Klassidiagramm (Class Diagram)</h2>
+     <p>
+        Üks silmapaistvamaid <b>struktuurseid</b> UML-i liike on <b>klassidiagramm</b>. Seda kasutatakse tarkvarainseneride seas tarkvaraarhitektuuri dokumenteerimiseks. <br>
+         Klassidiagrammid on struktuursete diagrammide vorm, kuna need täpsustavad, millest peab modelleeritud süsteem koosnema (klassid, atribuudid, operatsioonid ja seosed nende vahel).
+     </p>
+
+     <h3>Lühikirjeldus (Iseloomustus)</h3>
+     <p>
+        Klassidiagrammi peamine eesmärk on kirjeldada süsteemi <b>staatilist struktuuri</b>. See näitab <b>klasside</b>, nende <b>atribuutide</b> (andmeväljade), <b>operatsioonide</b> (meetodite) ning nendevaheliste <b>seoste</b> (nt. pärilus, assotsiatsioon, kompositsioon) esitust. See on aluseks objektorienteeritud süsteemide kavandamisele.
+     </p>
+
+     <h3>Kujundite/Joonte lahtiseletus</h3>
+     <ul>
+        <li><b>Klass (ristkülik kolme sektsiooniga):</b> Jaguneb kolmeks osaks: nimi, atribuudid (andmed) ja operatsioonid (meetodid).</li>
+        <li><b>Assotsiatsioon (pidev joon):</b> Kaks klassi on omavahel seotud. Seose otstesse lisatakse sageli <b>kardinaalsus</b> (nt. 1..* – üks või rohkem).</li>
+        <li><b>Pärilus/Generaliseerimine (pidev joon tühja kolmnurgaga):</b> Näitab, et üks klass (alamklass/subklass) pärib omadused teiselt klassilt (ülemklass/superklass).</li>
+        <li><b>Agregeerimine (pidev joon tühja rombiga):</b> Tervik-osa suhe, kus osad võivad eksisteerida ka ilma tervikuta (nt. auto ja ratas).</li>
+        <li><b>Kompositsioon (pidev joon täidetud rombiga):</b> Tervik-osa suhe, kus osad ei saa eksisteerida ilma tervikuta (nt. raamat ja lehekülg).</li>
+        <li><b>Implementeerimine (katkendlik joon tühja kolmnurgaga):</b> Näitab, et klass realiseerib liidese (Interface).</li>
+     </ul>
+
+     <h3>Üks näidisjoonis</h3>
+     <p>
+         <img src="../../assets/images/class_template.jpg" alt="">
+
+     </p>
+    <br>
+</section>
+    <h2>Jadaskeem (Sequence Diagram)</h2>
+     <p>
+        <b>Jadaskeem</b> (Sequence Diagram) esitab süsteemi <b>objektide omavahelist suhtlemist</b>. <br>
+        Jadaskeemi oluliseks omaduseks on selle <b>ajaline järjestus</b>. <br>
+         S.o. esitatakse samm-sammult täpne objektide vaheline interaktsioon. Erinevad objektid jadaskeemil suhtlevad omavahel <b>sõnumite</b> edastamise kaudu.
+     </p>
+<h3>Lühikirjeldus (Iseloomustus)</h3>
+<p>UML-i järjestusskeemid on interaktsioonidiagrammid, mis kirjeldavad toimingute teostamist.
+    Need jäädvustavad objektidevahelist interaktsiooni koostöö kontekstis. Järjestusskeemid on ajaliselt keskendunud ja näitavad interaktsioonide järjekorda visuaalselt,
+    kasutades diagrammi vertikaaltelge aja, sõnumite saatmise aja ja aja esitamiseks.</p>
+<h3>Kujundite/Joonte lahtiseletus</h3>
+<table>
+    <tr><td></td><td></td></tr>
+    <tr><td><b>Näitleja (Actor)</b>
+        <p>Roll, mida üksus subjektiga suhtleb (nt signaalide ja andmete vahetamise kaudu). Subjekti suhtes väline (st selles mõttes, et toimija eksemplar ei ole osa vastava subjekti eksemplarist). Esindavad inimeste, välise riistvara või muude subjektide rolle.</p>
+        <p>Pane tähele, et: Tegelane ei esinda tingimata konkreetset füüsilist üksust, vaid lihtsalt mingi üksuse konkreetset rolli. Inimene võib mängida mitme erineva näitleja rolli ja vastupidi, antud näitlejat võivad mängida mitu erinevat inimest.*</p>
+    </td><td><img src="../../assets/images/02-actor.webp" alt=""></td></tr>
+    <tr><td><b>Päästerõngas (Lifeline)</b>
+        <p>Päästerõngas esindab interaktsioonis osalejat.</p>
+    </td><td><img src="../../assets/images/03-lifeline.webp" alt=""></td></tr>
+    <tr><td><b>Aktiveerimised (Activations)</b>
+        <p>Õhuke ristkülik eluliinil tähistab perioodi, mille jooksul element toimingut teeb. Ristküliku ülemine ja alumine serv on joondatud vastavalt algus- ja lõppajaga.</p>
+    </td><td><img src="../../assets/images/04-activation.webp" alt=""></td></tr>
+    <tr><td><b>Helista Sõnum (Call Message)</b>
+        <p>Sõnum määratleb konkreetse suhtluse eluliinide vahel interaktsioonis. Kutseteade on teatud tüüpi teade, mis esindab sihtmärgi päästerõnga toimimise kutsumist.</p>
+    </td><td><img src="../../assets/images/05-call-message.webp" alt=""></td></tr>
+    <tr><td><b>Vastussõnum (Reply Message)</b>
+        <p>Sõnum määratleb konkreetse suhtluse eluliinide vahel interaktsioonis. Vastussõnum on teatud tüüpi sõnum, mis esindab teabe edastamist vastava eelmise sõnumi helistajale.</p>
+    </td><td><img src="../../assets/images/06-return-message.webp" alt=""></td></tr>
+    <tr><td><b>Enda sõnum (Self Message)</b>
+        <p>Sõnum määratleb konkreetse suhtluse eluliinide vahel interaktsioonis. Endasõnum on omamoodi sõnum, mis esindab sama eluliini sõnumi kutsumist.</p>
+    </td><td><img src="../../assets/images/07-self-message.webp" alt=""></td></tr>
+    <tr><td><b>Rekursiivne sõnum (Recursive Message)</b>
+        <p>Sõnum määratleb konkreetse suhtluse eluliinide vahel interaktsioonis. Rekursiivne sõnum on sõnumitüüp, mis esindab sama eluliini sõnumi käivitamist. Selle sihtmärk osutab aktiveerimisele, mis on kõrgem aktiveerimisest, kust sõnum käivitati.</p>
+    </td><td><img src="../../assets/images/08-recursive-message.webp" alt=""></td></tr>
+    <tr><td><b>Loo sõnum (Create Message)</b>
+        <p>Sõnum määratleb konkreetse suhtluse eluliinide vahel interaktsioonis. Loo sõnum on teatud tüüpi sõnum, mis esindab (siht) päästerõnga instantsi.</p>
+    </td><td><img src="../../assets/images/09-create-message.webp" alt=""></td></tr>
+    <tr><td><b>Hävita sõnum (Destroy Message)</b>
+        <p>Sõnum määratleb konkreetse suhtluse eluliinide vahel interaktsioonis. Hävitusteade on teade, mis esindab sihtmärgiks oleva päästerõnga elutsükli hävitamise taotlust.</p>
+    </td><td><img src="../../assets/images/10-destroy-message.png" alt=""></td></tr>
+    <tr><td><b>Kestussõnum (Duration Message)</b>
+        <p>Sõnum määratleb konkreetse suhtluse eluliinide vahel interaktsioonis. Sõnumi kestus näitab sõnumi kutsumise kahe ajahetke vahelist kaugust.</p>
+    </td><td><img src="../../assets/images/11-duration-message.png" alt=""></td></tr>
+    <tr><td><b>Märkus (Note)</b>
+        <p>Märkus (kommentaar) annab võimaluse elementidele erinevaid märkusi lisada. Kommentaaril ei ole semantilist jõudu, kuid see võib sisaldada modelleerijale kasulikku teavet.</p>
+    </td><td><img src="../../assets/images/12-note.webp" alt=""></td></tr>
+    <tr><td></td><td></td></tr>
+</table>
+<h3>Üks näidisjoonis</h3>
+     <p>
+         <img src="../../assets/images/01-sequence-diagram-example.webp" alt="">
+
+     </p>
+    <br>
+
+    <h2>Olekuskeem</h2>
+     <p>
+        Nagu ka nimi ütleb, näitab <b>olekuskeem</b> (State Machine Diagram) erinevaid <b>olekuid</b>, mida süsteemis olevad objektid oma elutsükli jooksul läbivad. <br>
+
+     </p>
+<h3>Lühikirjeldus (Iseloomustus)</h3>
+<p>Süsteemis olevad objektid muudavad oma olekut vastavalt süsteemis toimuvatele <b>sündmustele</b>. <br>
+         Lisaks sellele näitab olekuskeem ka objekti <b>oleku üleminekut</b> (transitsiooni) algolekust lõppolekusse vastavalt süsteemi mõjutavatele sündmustele.</p>
+<h3>Kujundite/Joonte lahtiseletus</h3>
+<table>
+    <tr><td></td><td></td></tr>
+    <tr><td>Algolek, Start</td><td>⚫</td></tr>
+    <tr><td>Olek,"Puhkehetk" või tegevusperiood.</td><td>▢ (ümara nurgaga)</td></tr>
+    <tr><td>Üleminek, Liikumine olekute vahel.</td><td>⟶</td></tr>
+    <tr><td>Valik, "Kas X või Y?" (Tingimuslik hargnemine).</td><td>◇</td></tr>
+    <tr><td>Lõppolek, Finiš.</td><td>◉</td></tr>
+    <tr><td></td><td></td></tr>
+</table>
+<h3>Üks näidisjoonis</h3>
+     <p>
+         <img src="../../assets/images/13-state-machine-diagram.webp" alt="">
+
+     </p>
+    <br>
+
+    <h2>Profiilidiagramm (Profile Diagram)</h2>
+     <p>
+     Tarkvaratehnika valdkonnas kasutatavas ühtses modelleerimiskeeles (UML) töötab <b>profiilidiagramm</b> metamudeli tasandil. <br>
+     See kuvab <b>stereotüüpe</b> klassidena ja <b>profiile</b> pakettidena, koos spetsiaalsete märgetega. <br>
+     <b>Laiendusseos</b> (pidev joon täidetud nooleotsaga) näitab, millist metamudeli elementi antud stereotüüp laiendab. See võimaldab UML-i kohandada konkreetsete valdkondade või platvormide jaoks (nt. Java, C++ jne.).
+    </p>
+<h3>Lühikirjeldus (Iseloomustus)</h3>
+<p>Kui klassidiagramm kirjeldab koodi ja objektidiagramm käitusaegseid objekte, siis profiilidiagramm töötab metamudeli tasemel.
+<ul>
+<li>Eesmärk: Luua domeenispetsiifilisi keeli (DSL) või kohandada UML-i konkreetse tehnoloogia jaoks (nt Java, .NET, reaalaja süsteemid).
+</li>
+<li>Kuidas see töötab: See ei muuda UML-i tuuma, vaid lisab sinna uusi "silte" ja reegleid.
+</li>
+<li>Näide: Selle asemel, et kasutada lihtsalt tavalist "Klassi", saate luua profiili, mis defineerib täpsema elemendi nagu "Veebiteenus" või "Sensor".</p>
+</li></ul>
+<h3>Kujundite/Joonte lahtiseletus</h3>
+<table>
+    <tr><td></td><td></td></tr>
+    <tr><td><b>Profiil</b> (Profile)	Pakett (konteiner), mis koondab kõik sinu loodud reeglid ja laiendused ühte kohta.</td><td>📁 «profile»</td></tr>
+    <tr><td><b>Stereotüüp</b>	Sinu loodud "uus" element. See defineerib, milline spetsiifiline asi (nt "Nupp") süsteemis on.</td><td>▭ «stereotype»</td></tr>
+    <tr><td><b>Metaklass</b>	Standardne UML element (nt "Class"), mida sa tahad muuta või täpsustada.</td><td>▭ «metaclass»</td></tr>
+    <tr><td><b>Laiendamine</b> (Extension)	Kõige tähtsam joon. Ühendab Stereotüübi Metaklassiga. Näitab, et "see stereotüüp laiendab seda standardset elementi".</td><td>──▲ (Must)</td></tr>
+    <tr><td><b>Piirang</b> (Constraint)	Reegel, mis peab kehtima (nt {suurus peab olema > 0}).</td><td>{ }</td></tr>
+    <tr><td><b>Märgistatud väärtus</b>	Lisaandmed stereotüübi sees (nt autor: "Jüri", versioon: "1.2").</td><td>tag: value</td></tr>
+    <tr><td></td><td></td></tr>
+</table>
+<h3>Üks näidisjoonis</h3>
+     <p>
+         <img src="../../assets/images/07-profile-diagram-example-it-management.png" alt="">
+
+     </p>
+    <br>
+    <hr>
+
+<!--    <h3>Lisatavate teemade lühikirjeldus</h3>-->
+<!--    <ul>-->
+<!--        <li><b>Lühikirjeldus (Iseloomustus):</b> Diagrammiliigi peamine eesmärk ja fookus.</li>-->
+<!--        <li><b>Kujundite/Joonte lahtiseletus:</b> Diagrammis kasutatavate sümbolite (nt. ristkülikud, nooled, teemandid) tähendused.</li>-->
+<!--        <li><b>Üks näidisjoonis:</b> Konkreetse diagrammi visuaalne näide.</li>-->
+<!--    </ul>-->
+
+</body>
+</html>

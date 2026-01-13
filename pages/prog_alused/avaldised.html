@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tehted arvudega (Computing with numbers)</title>
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+<header>
+    <img src="../../assets/icons/logojs2.svg" alt="" width="50" height="50" align="left">
+
+    <a class="navbar" href="../../index.html">Tarkvara Arendusprotsess</a>
+    <a class="navbar" href="index.html">Programmeerimine</a>
+    <a class="navbar" href="../multimedia/index.html">Multimeedia</a>
+    <br>
+    <br>
+</header>
+<h1>Tehted arvudega (Computing with numbers)</h1>
+
+    <section>
+        <h2>Andmetüübid</h2>
+        <ul>
+            <li>Protsessor opereerib arvudega. Kõik andmetüübid esitatakse lõpuks arvudena (0 ja 1 jadana).</li>
+            <li>Programm käitub täis- ja murdarvudega erinevalt.</li>
+            <li>Pythonis on väärtusel andmetüüp, kuid muutujal endal andmetüüpi pole.</li>
+            <li>Funktsioon <code>type()</code> tagastab väärtuse andmetüübi.</li>
+        </ul>
+        <pre>
+print(type(3)) # &lt;class 'int'&gt;
+print(type(3.14)) # &lt;class 'float'&gt;
+print(type(3.0)) # &lt;class 'float'&gt;
+        </pre>
+        <p>Kuigi 3.0 on matemaatiliselt sama mis 3, on nende andmetüübid erinevad.</p>
+    </section>
+
+    <section>
+        <h2>Ujukomaarvud (float)</h2>
+        <ul>
+            <li>Ujukomaarvud on ebatäpsed.</li>
+            <li>Näide: <code>0.1 + 0.1 + 0.1</code> annab tulemuseks <code>0.30000000000000004</code>.</li>
+            <li>Võimalusel kasuta täisarve (nt hindade puhul 4.30 euro asemel 430 senti).</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Tehted arvudega</h2>
+        <ul>
+            <li><code>+</code> liitmine</li>
+            <li><code>-</code> lahutamine</li>
+            <li><code>*</code> korrutamine</li>
+            <li><code>/</code> jagamine (tulemus on alati float)</li>
+            <li><code>**</code> astendamine</li>
+            <li><code>abs()</code> absoluutväärtus</li>
+            <li><code>//</code> täisarvuline jagamine</li>
+            <li><code>%</code> jääk</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Teisendamine</h2>
+        <ul>
+            <li>Kui avaldis sisaldab ujukomaarvu, teisendatakse kõik täisarvud ujukomaarvudeks.</li>
+            <li><code>int()</code> - teisendab täisarvuks (murdosa kaotatakse, nt <code>int(4.9) =&gt; 4</code>).</li>
+            <li><code>float()</code> - teisendab ujukomaarvuks.</li>
+            <li>Saab teisendada ka korrektse sisuga sõnesid: <code>int("12") =&gt; 12</code>.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Täisarvuline jagamine ja jääk</h2>
+        <ul>
+            <li><strong>a // b</strong> - näitab, mitu korda jagaja jagatava sisse mahub (<code>10 // 3 =&gt; 3</code>).</li>
+            <li><strong>a % b</strong> - näitab, palju jääb jagamisel üle (<code>10 % 3 =&gt; 1</code>).</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Matemaatika moodul (math)</h2>
+        <p>Täiendavate funktsioonide jaoks tuleb moodul importida: <code>import math</code></p>
+        <ul>
+            <li><code>math.pi</code> - pii väärtus</li>
+            <li><code>math.sqrt()</code> - ruutjuur</li>
+            <li>Sisaldab ka trigonomeetriat, logaritme ja ümardamist.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Tehete järjekord</h2>
+        <ol>
+            <li>Astendamine</li>
+            <li>Korrutamine, jagamine</li>
+            <li>Liitmine, lahutamine</li>
+        </ol>
+        <p>Sulgudega saab järjekorda muuta: <code>(2 + 3) * 4 = 20</code>.</p>
+    </section>
+
+    <section>
+        <h2>Kokkuvõte</h2>
+        <ul>
+            <li>Väärtustel on andmetüüp (peamiselt <code>int</code> ja <code>float</code>).</li>
+            <li>Operatsioonide tulemus sõltub andmetüübist.</li>
+            <li>Tüüpe saab teisendada funktsioonidega <code>int()</code> ja <code>float()</code>.</li>
+            <li>Keerukamad arvutused on kättesaadavad <code>math</code> moodulis.</li>
+        </ul>
+    </section>
+<a href="funkt.html">Next topic</a>
+<footer>
+    <hr>
+    <div style="text-align: center; padding: 20px;">
+        <p>&copy; 2025 Juri.</p>
+        <p style="font-size: small; color: #666;">
+            Lehekülg on osa õppematerjalist. Viimati uuendatud: detsember 2025.
+        </p>
+    </div>
+</footer>
+</body>
+</html>

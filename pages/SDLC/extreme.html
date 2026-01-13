@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+    <meta charset="UTF-8">
+    <title>Extreme Programming (XP) ülevaade</title>
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+
+    <a href="sdlc.html" id="floatingButton">Tagasi</a>
+
+    <h1>Mis on Extreme Programming (XP)?</h1>
+    <p>
+        Extreme Programming (XP) on üks tuntumaid <b>agiilseid tarkvaraarenduse metoodikaid</b>, mis keskendub tarkvara kvaliteedi parandamisele ja muutuvatele kliendinõudmistele reageerimisele. Selle looja on Kent Beck ning see põhineb viiel väärtusel: suhtlus, lihtsus, tagasiside, julgus ja austus. "Extreme" (äärmuslik) tuleneb ideest viia traditsioonilised head arenduspraktikad äärmuslikule tasemele (näiteks kui testimine on hea, testime kogu aeg).
+    </p>
+
+    <div class="note">
+        <b>Peamine fookus:</b> XP eesmärk on vähendada muudatuste maksumust läbi lühikeste arendustsüklite ja pideva tagasiside.
+    </div>
+
+    <h2>XP arendustsüklid ja etapid</h2>
+    <p>XP arendusprotsess on iteratiivne ja koosneb järgmistest korduvatest etappidest:</p>
+    <ul>
+        <li><b>Planeerimine (Planning):</b> Kirjutatakse "kasutajalood" (User Stories), hinnatakse nende keerukust ja lepitakse kokku järgmise iteratsiooni sisu.</li>
+        <li><b>Disain (Designing):</b> Keskendutakse lihtsusele. Kasutatakse süsteemi metafoore ja CRC-kaarte (Class, Responsibilities, Collaborators). Reegel on: "Ära lisa funktsionaalsust enne, kui seda on vaja".</li>
+        <li><b>Arendus (Coding):</b> See on XP süda. Siia kuuluvad paaristöö (Pair Programming) ja ühine koodiomand. Kood peab vastama kokkulepitud standarditele.</li>
+        <li><b>Testimine (Testing):</b> Rakendatakse testpõhist arendust (TDD - Test-Driven Development). Enne koodi kirjutamist kirjutatakse test. Toimub pidev üksustestimine ja kliendi aktsepteerimistestimine.</li>
+        <li><b>Kuulamine (Listening):</b> Arendajad kuulavad klienti, et mõista ärivajadusi, ja annavad tagasisidet tehnilise teostatavuse kohta.</li>
+    </ul>
+
+    <h2>Kas XP-l on alamvariante?</h2>
+    <p>
+        XP ise on konkreetne raamistik, kuid sellel ei ole ametlikke "alamvariante" samamoodi nagu näiteks kosemudelil on V-mudel. Küll aga esineb XP-d praktikas peamiselt kahel kujul:
+    </p>
+    <ol>
+        <li><b>Puhas XP:</b> Kõigi 12 XP põhipraktika (nt paaristöö, TDD, pidev integratsioon) range järgimine.</li>
+        <li><b>Hübriidmeetodid:</b> Kõige tavalisem on <b>Scrum + XP</b>. Selles kombinatsioonis kasutatakse Scrumi projektijuhtimiseks (koosolekud, rollid, sprint) ja XP-d tehniliste praktikate jaoks (TDD, paaristöö, koodi refaktoreerimine).</li>
+    </ol>
+
+    <h2>Arendusmudeli joonis</h2>
+    <p>Visuaalselt näeb mudel välja järgmine:</p>
+    <img src="../../assets/images/extreme_programming_process_cycle.jpg" alt="">
+
+
+
+    <h2>Arendusmudeli tähtsaim omadus: Tagasiside</h2>
+    <p>
+        XP tähtsaim omadus on <b>pidev ja kiire tagasiside (Continuous Feedback)</b>.
+    </p>
+    <p>
+        <b>Miks see on oluline?</b> Tarkvaraarenduses on vead ja möödarääkimised seda kallimad, mida hiljem need avastatakse. XP-s saadakse tagasisidet:
+    </p>
+    <ul>
+        <li>Sekunditega (paarisprogrammeerimine).</li>
+        <li>Minutitega (üksustestid).</li>
+        <li>Päevadega (kliendi ülevaatused).</li>
+        <li>Nädalatega (iteratsiooni lõpp).</li>
+    </ul>
+    <p>See tagab, et meeskond ehitab õiget asja ja teeb seda kvaliteetselt.</p>
+
+    <h2>Heade ja Veade tabel</h2>
+    <table>
+        <tr>
+            <th>Eelised (Head)</th>
+            <th>Puudused (Vead)</th>
+        </tr>
+        <tr>
+            <td>Kõrge tarkvara kvaliteet tänu pidevale testimisele (TDD).</td>
+            <td>Nõuab suurt ressurssi (paaristöö võib tunduda alguses kallis).</td>
+        </tr>
+        <tr>
+            <td>Väga paindlik – muudatused on teretulnud igal ajal.</td>
+            <td>Vajab kliendi pidevat kohalolu ja kaasamõtlemist.</td>
+        </tr>
+        <tr>
+            <td>Vähendab arendajate stressi tänu realistlikele tähtaegadele.</td>
+            <td>Raske rakendada suurtes, geograafiliselt hajutatud meeskondades.</td>
+        </tr>
+        <tr>
+            <td>Kood on selge ja kergesti hooldatav (refaktoreerimine).</td>
+            <td>Dokumentatsiooni on vähe, rõhk on töötaval koodil.</td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <a href="https://www.agilealliance.org/glossary/xp/" target="_blank">Loe lähemalt Agile Alliance lehelt</a>
+            </td>
+        </tr>
+    </table>
+
+    <hr>
+
+    <h3>Viited ja allikad</h3>
+    <ul>
+        <li><a href="https://books.google.ee/books?id=G8EL4H4vf7UC&pg=PA51&hl=ru&source=gbs_toc_r&cad=2#v=onepage&q&f=false" target="_blank">Beck,K. (1999). <i>Extreme Programming Explained: Embrace Change</i>. Addison-Wesley.</a> </li>
+        <li><a href="https://agilealliance.org/glossary/xp/" target="_blank">Alliance: Extreme Programming (XP).</a> </li>
+        <li><a href="http://www.extremeprogramming.org/" target="_blank">Extreme Programming: A Gentle Introduction.</a> </li>
+        <li>Tehisintellekt (Gemini 3 Flash) – kasutatud info süstematiseerimiseks, koodi genereerimiseks ja eesti keelde tõlkimiseks.</li>
+    </ul>
+
+    <a href="#" id="year-counter-link">
+        Täna on <span id="days-number">9. jaanuar 2026</span>
+    </a>
+
+</body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funktsioon (function)</title>
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+<header>
+    <img src="../../assets/icons/logojs2.svg" alt="" width="50" height="50" align="left">
+
+    <a class="navbar" href="../../index.html">Tarkvara Arendusprotsess</a>
+    <a class="navbar" href="index.html">Programmeerimine</a>
+    <a class="navbar" href="../multimedia/index.html">Multimeedia</a>
+    <br>
+    <br>
+</header>
+<h1>Funktsioon (function)</h1>
+
+    <section>
+        <h2>Mis on funktsioon?</h2>
+        <ul>
+            <li>Funktsiooniga saab kirjeldada alamprogrammi või alamülesannet.</li>
+            <li>See on koodiosa, mis täidab konkreetset ülesannet või arvutab midagi.</li>
+            <li>Funktsioonil on üldiselt nimi.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Funktsiooni kirjeldamine ja parameetrid</h2>
+        <p>Funktsioon defineeritakse märksõnaga <code>def</code>, millele järgneb nimi ja sulud parameetritega.</p>
+        <pre>
+def hello_name(name):
+    print(f"Hello {name}!")
+        </pre>
+        <ul>
+            <li><strong>Parameeter:</strong> muutuja funktsiooni kirjelduses (nt <code>name</code>).</li>
+            <li><strong>Argument:</strong> väärtus, mis funktsiooni saadetakse (nt <code>"Guido"</code>).</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Tagastamine (return)</h2>
+        <ul>
+            <li>Pythonis tagastab funktsioon alati midagi. Kui <code>return</code> puudub, tagastatakse <code>None</code>.</li>
+            <li><code>return</code> lõpetab funktsiooni täitmise.</li>
+            <li>Tagastada võib ka mitu väärtust korraga (tulemus on ennik ehk <em>tuple</em>).</li>
+        </ul>
+        <pre>
+def triangle_area(a, h):
+    return a * h / 2
+        </pre>
+    </section>
+
+    <section>
+        <h2>return vs print()</h2>
+        <ul>
+            <li><code>return</code> tagastab tulemuse, mida saab edasi kasutada (nt panna muutujasse).</li>
+            <li><code>print()</code> lihtsalt kuvab väärtuse ekraanile, kuid ei "anna" seda väärtust programmile edasiseks tööks.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Vaikeväärtused ja nimelised argumendid</h2>
+        <ul>
+            <li>Parameetritele saab määrata vaikeväärtusi: <code>def greet(name, type="Human"):</code>.</li>
+            <li>Funktsiooni väljakutsel saab argumente anda ka nimega, muutes nende järjekorda: <code>print_full_name(lastname="Kaal", name="Mati")</code>.</li>
+            <li><code>*args</code> - võtab vastu suvalise arvu positsioonilisi argumente järjendina.</li>
+            <li><code>**kwargs</code> - võtab vastu suvalise arvu märksõnaga argumente sõnastikuna.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Anonüümsed funktsioonid (lambda)</h2>
+        <p>Lühikesed, ilma nimeta funktsioonid, mida kirjeldatakse kujul: <code>lambda args: tulemus</code>.</p>
+        <pre>
+ta = lambda a, h: a * h / 2
+print(ta(10, 10))
+        </pre>
+    </section>
+
+    <section>
+        <h2>filter() ja map()</h2>
+        <ul>
+            <li><strong>filter():</strong> rakendab funktsiooni järjendile ja jätab alles elemendid, kus funktsioon tagastab True.</li>
+            <li><strong>map():</strong> rakendab funktsiooni järjendi igale elemendile (nt korrutab kõik arvud kahega).</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Tüübivihjed (Type Hints)</h2>
+        <p>Alates Python 3.5 versioonist saab määrata oodatavad andmetüübid, mida IDE-d kasutavad vigade leidmiseks.</p>
+        <pre>
+def greeting(name: str) -> str:
+    return f'Hello {name}'
+        </pre>
+    </section>
+
+    <section>
+        <h2>Miks kasutada funktsioone?</h2>
+        <ul>
+            <li><strong>DRY (Don't Repeat Yourself):</strong> väldi koodi dubleerimist.</li>
+            <li><strong>Abstraktsioon:</strong> programmi jagamine alamülesanneteks.</li>
+            <li><strong>Testimine:</strong> funktsioone on lihtsam ühekaupa kontrollida ja vigu leida.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Head tavad</h2>
+        <ul>
+            <li>Funktsioon peaks tegema ühte konkreetset asja.</li>
+            <li>Soovituslik pikkus on 10–15 rida.</li>
+            <li>Nimi peab kirjeldama tegevust (nt <code>calculate_area</code>).</li>
+            <li>Kasuta docstringe (<code>""" kirjeldus """</code>) sisu selgitamiseks.</li>
+        </ul>
+    </section>
+<a href="ting.html">Next topic</a>
+<footer>
+    <hr>
+    <div style="text-align: center; padding: 20px;">
+        <p>&copy; 2025 Juri.</p>
+        <p style="font-size: small; color: #666;">
+            Lehekülg on osa õppematerjalist. Viimati uuendatud: detsember 2025.
+        </p>
+    </div>
+</footer>
+</body>
+</html>

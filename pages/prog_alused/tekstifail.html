@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Töö tekstifailidega</title>
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+<header>
+    <img src="../../assets/icons/logojs2.svg" alt="" width="50" height="50" align="left">
+
+    <a class="navbar" href="../../index.html">Tarkvara Arendusprotsess</a>
+    <a class="navbar" href="index.html">Programmeerimine</a>
+    <a class="navbar" href="../multimedia/index.html">Multimeedia</a>
+    <br>
+    <br>
+</header>
+<h2>Töö tekstifailidega</h2>
+
+
+Pythonis on võimalik tekstifaile (.txt) kiirelt ja efektiivselt kasutada, olgu siis selleks informatsiooni talletamine või selle lugemine ja analüüsimine.
+Esmalt tuleb õige tekstifail avada, mida hiljem edasi kasutada. Selleks saame kasutada järgnevat käsku, et avada lugemiseks (read) fail nimega readme.txt:
+<br>
+f = open("readme.txt", "r") <br>
+Peale seda, kui oleme tekstifaili lugenud, kirjutanud või ridu juurde lisanud, tuleb meil töö lõpetamiseks tekstifail ka sulgeda. Selleks saame kasutada järgnevat käsku:
+<br>
+f.close() <br>
+
+Olulisemad meetodid failidega opereerimiseks leiad alljärgnevast tabelist. <br>
+ read: r <br>
+
+ Avab faili lugemiseks. <br>
+
+ write: w <br>
+
+ Avab faili kirjutamiseks. Fail kirjutatakse üle. Luuakse uus fail, kui see puudub. <br>
+
+ append: a <br>
+
+ Avab faili teksti lisamiseks faili lõppu. <br>
+
+
+<a href="erindid.html">Next topic</a>
+<footer>
+    <hr>
+    <div style="text-align: center; padding: 20px;">
+        <p>&copy; 2025 Juri.</p>
+        <p style="font-size: small; color: #666;">
+            Lehekülg on osa õppematerjalist. Viimati uuendatud: detsember 2025.
+        </p>
+    </div>
+</footer>
+</body>
+</html>

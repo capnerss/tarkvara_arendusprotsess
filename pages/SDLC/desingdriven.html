@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design Driven Development</title>
+    <style>
+        /* Define the main colors using CSS variables for easy updates */
+        :root {
+            --primary-color: #FF8C00; /* Darker Orange */
+            --secondary-color: #FFA500; /* Bright Orange */
+            --background-color: #FFFFFF; /* White */
+            --text-color: #333333; /* Dark Gray for readability */
+            --link-color: #FF4500; /* Red-Orange for links - will be used for button border */
+        }
+
+        /* Basic styles for the entire page (same as before) */
+        body {
+            background-image:  url('../../assets/images/background.png');
+            background-repeat: no-repeat, no-repeat, no-repeat;
+            font-family: Arial, sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            padding: 20px;
+            line-height: 1.6;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* Header styling (same as before) */
+        h1, h2 {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 5px;
+            margin-top: 25px;
+        }
+
+        /* Sub-header styling (same as before) */
+        h3 {
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+        }
+
+        /* Paragraph text styling (same as before) */
+        p {
+            line-height: 1.6;
+        }
+
+        /* --- BUTTON STYLING FOR LINKS --- */
+        a {
+            /* Basic Button Look */
+            display: inline-block; /* Allows padding and keeps them side-by-side if space allows */
+            background-color: var(--secondary-color);
+            color: var(--background-color); /* White text */
+            text-decoration: none;
+            padding: 10px 15px; /* Adds space inside the button */
+            margin: 5px 10px 5px 0; /* Adds space around the button */
+            border-radius: 5px; /* Rounded corners */
+            border: 1px solid var(--link-color); /* Darker border */
+            transition: background-color 0.3s ease, transform 0.1s ease; /* Smooth hover effects */
+            font-weight: bold;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+        }
+
+        a:hover {
+            background-color: var(--primary-color); /* Darker orange on hover */
+            color: var(--background-color); /* Keep text white */
+            text-decoration: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Lifted shadow */
+        }
+
+        a:active {
+            transform: translateY(1px); /* Little press down effect when clicked */
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        }
+        /* ---------------------------------- */
+
+
+        /* Table styling (mostly same as before) */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        /* Table header row background (same as before) */
+        table tr:first-child {
+            background-color: var(--primary-color);
+            color: var(--background-color);
+            font-weight: bold;
+        }
+
+        /* Zebra-striping for table body rows (same as before) */
+        table tr:nth-child(even) {
+            background-color: #FFF5EE;
+        }
+
+        /* Style the image in the table (same as before) */
+        table img {
+            border: 3px solid var(--secondary-color);
+            border-radius: 5px;
+            display: block;
+        }
+
+        /* Style the link row spanning 4 columns (same as before) */
+        table tr:last-child td {
+            background-color: var(--secondary-color);
+            text-align: center;
+        }
+
+        /* Style the link inside the last table cell (adjusted to override button styles) */
+        table tr:last-child a {
+            /* Reset button styles for the GitHub link in the table */
+            background-color: transparent;
+            border: none;
+            box-shadow: none;
+            color: var(--background-color);
+            font-weight: bold;
+            display: inline;
+            padding: 0;
+            margin: 0;
+        }
+
+        table tr:last-child a:hover {
+             color: var(--text-color);
+             background-color: transparent;
+        }
+
+        /* Style the divider line (same as before) */
+        hr {
+            border: 0;
+            height: 1px;
+            background-image: linear-gradient(to right, rgba(0, 0, 0, 0), var(--secondary-color), rgba(0, 0, 0, 0));
+            margin: 20px 0;
+        }
+        .note {
+            background-color: #fff9e6;
+            border-left: 5px solid #ffcc00;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        ul {
+            list-style-type: disc;
+            margin-left: 20px;
+        }
+
+        .navbar {
+            display: inline-block; /* Allows padding and keeps them side-by-side if space allows */
+            background-color: #f26417;
+            color: var(--background-color); /* White text */
+            text-decoration: none;
+            padding: 10px 10px; /* Adds space inside the button */
+            margin: 0px 0px 20px 0; /* Adds space around the button */
+            border-radius: 0px; /* Rounded corners */
+            border: none; /* Darker border */
+            transition: background-color 0.3s ease, transform 0.1s ease; /* Smooth hover effects */
+            font-weight: bold;
+            box-shadow: 0 0px 0px rgba(0, 0, 0, 0); /* Subtle shadow */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">Arendusmudelid: DDD</div>
+
+    <h1>Mis on Design Driven Development?</h1>
+    <p><strong>Design Driven Development (DDD)</strong> ehk disainist juhitud arendus on tarkvaraarenduse metoodika, kus disainiprotsess ja kasutajakogemus (UX) dikteerivad arenduse suuna, mitte vastupidi. Erinevalt traditsioonilisest mudelist, kus disain on sageli vaid "ilusa välimuse lisamine" pärast tehnilist lahendust, algab DDD probleemi mõistmisest disaini vaatevinklist.</p>
+
+    <p>Eesmärk on luua tooteid, mis ei ole mitte ainult funktsionaalsed, vaid mida kasutajad <em>soovivad</em> kasutada. See aitab vältida olukorda, kus arendatakse valmis keerukas tehniline lahendus, mida tegelikult kellelgi vaja ei lähe.</p>
+
+    <hr>
+
+    <h2>Arendusmudeli etapid</h2>
+    <p>Design Driven Development järgib sageli <em>Design Thinking</em> põhimõtteid. Peamised etapid on:</p>
+    <ul>
+        <li><strong>Empaatia (Empathize):</strong> Kasutajate vajaduste, valupunktide ja motivatsiooni süvauurimine.</li>
+        <li><strong>Defineerimine (Define):</strong> Probleemi selge sõnastamine kasutaja vaatenurgast.</li>
+        <li><strong>Ideede genereerimine (Ideate):</strong> Lahenduste ja kontseptsioonide väljamõtlemine (ajurünnakud).</li>
+        <li><strong>Prototüüpimine (Prototype):</strong> Kiirete ja odavate mudelite loomine (paberil, Figmas jne).</li>
+        <li><strong>Testimine (Test):</strong> Prototüüpide valideerimine reaalsete kasutajatega <em>enne</em> koodi kirjutamist.</li>
+        <li><strong>Arendus (Build/Develop):</strong> Alles nüüd algab tehniline teostus, mis põhineb valideeritud disainil.</li>
+    </ul>
+
+    <h2>Alamvariandid ja seotud mudelid</h2>
+    <p>DDD on pigem katusmõiste või filosoofia, kuid praktikas realiseerub see tihti läbi järgmiste metoodikate:</p>
+
+    <h3>1. Dual-Track Agile</h3>
+    <p>Kõige levinum praktiline väljund. Arendus ja disain toimuvad paralleelselt kahel rajal:
+    <br>1) <strong>Discovery Track (Avastamine):</strong> Disainerid uurivad ja valideerivad ideid, olles arendajatest ajaliselt eespool.
+    <br>2) <strong>Delivery Track (Tarnimine):</strong> Arendajad ehitavad valmis juba valideeritud ja disainitud lahendusi.</p>
+
+    <h3>2. Lean UX</h3>
+    <p>Keskendub vähem dokumentatsioonile ja rohkem koostööle ning kiirele tagasisidele. Tsükkel on: Mõtle > Tee > Kontrolli (Think > Make > Check). Eesmärk on minimeerida raiskamist.</p>
+
+    <hr>
+
+    <h2>Milline näeb välja arendusmudel joonisena?</h2>
+    <p>Joonisena ei ole DDD sirgjooneline (lineaarne), vaid pigem <strong>tsükliline ja kattuv</strong>. Seda kujutatakse tihti kahe põimunud ringina (Discovery ja Delivery) või lõpmatuse märgina, kus info liigub pidevalt disaini ja arenduse vahel.</p>
+
+    <div class="note">
+        <strong>Visuaalne kirjeldus:</strong>
+        Vasakul on "Disaini tsükkel" (Uurimine -> Ideed -> Prototüüp), mis söödab sisendit parempoolsesse "Arenduse tsüklisse" (Planeerimine -> Kood -> Testimine). Kui arenduses tekib tehniline takistus, liigub info tagasi disaini, et lahendust kohandada.
+    </div>
+
+
+
+    <h2>Kõige tähtsam omadus</h2>
+
+    <div class="note">
+        <h3>Kasutajakesksus (User-Centricity)</h3>
+        <p>See on DDD kõige kriitilisem omadus. <strong>Miks?</strong> Sest kõige kallim viga arenduses on ehitada tarkvara, mida keegi ei vaja või ei oska kasutada. Seades kasutaja vajadused ettepoole tehnilistest piirangutest, maandab see kõige suurema riski – ärilise ebaõnnestumise riski. Tehnoloogia on vahend, mitte eesmärk.</p>
+    </div>
+
+    <h2>Head ja Vead (Plussid ja Miinused)</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Omadus</th>
+                <th>Plussid (Head)</th>
+                <th>Miinused (Vead)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Kasutajakogemus</strong></td>
+                <td>Väga kõrge kasutajarahulolu ja intuitiivsus.</td>
+                <td>Oht sattuda "over-design" lõksu (lihvitakse liiga kaua).</td>
+            </tr>
+            <tr>
+                <td><strong>Arenduse kiirus</strong></td>
+                <td>Vähem ümbertegemist hiljem, sest nõuded on selged.</td>
+                <td>Projekti algfaas on aeglasem ja nõuab kannatust.</td>
+            </tr>
+            <tr>
+                <td><strong>Riskid</strong></td>
+                <td>Maandab riski ehitada valet asja.</td>
+                <td>Risk, et tekivad eraldatud "silod" (disainerid vs arendajad).</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <a href="https://www.interaction-design.org/literature/topics/design-thinking">Loe põhjalikumalt: Interaction Design Foundation</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <hr>
+
+    <h2>Viited ja allikad</h2>
+    <p>Alljärgnevalt lingid usaldusväärsetele materjalidele, mis selgitavad metoodikat süvitsi:</p>
+    <ul>
+        <li><a href="https://www.nngroup.com/articles/design-thinking/">Nielsen Norman Group: Design Thinking 101</a></li>
+        <li><a href="https://www.atlassian.com/agile/product-management/dual-track-agile">Atlassian: Dual Track Agile selgitus</a></li>
+        <li><a href="https://www.agilealliance.org/glossary/lean-ux/">Agile Alliance: Lean UX definitsioon</a></li>
+    </ul>
+
+</body>
+</html>

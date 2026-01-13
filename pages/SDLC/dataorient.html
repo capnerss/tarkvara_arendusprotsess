@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data-Oriented Design (DOD)</title>
+    <link rel="stylesheet" href="../../css/style.css">
+ <style> /* --- LISASTIILID DOD JOONISTE JAOKS --- */
+
+.memory-block {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    font-family: monospace;
+}
+
+.ram-stick {
+    border: 2px solid #333;
+    padding: 10px;
+    border-radius: 5px;
+    background: #f0f0f0;
+    flex: 1;
+}
+
+.data-unit {
+    display: inline-block;
+    padding: 5px;
+    margin: 2px;
+    border: 1px solid #999;
+    color: white;
+    font-size: 0.8em;
+    text-align: center;
+    width: 30px;
+}
+
+.color-a { background-color: var(--primary-color); }
+.color-b { background-color: #333; }
+.color-c { background-color: #999; }
+</style>
+</head>
+<body>
+
+    <h1>Data-Oriented Design (DOD)</h1>
+
+    <p><strong>Data-Oriented Design</strong> (andmetele orienteeritud disain) on tarkvaraarenduse paradigma, mis keskendub andmete paigutusele arvuti mälus, andmete lugemise mustritele ja riistvara (eriti CPU vahemälu) tõhusale kasutamisele. Erinevalt objektorienteeritud programmeerimisest (OOP), mis modelleerib maailma "asjade" ja nende suhetena, modelleerib DOD maailma andmevoogudena.</p>
+
+    <h2>Mis etapid seal on?</h2>
+    <p>DOD ei ole range protsess nagu "Waterfall", kuid selle rakendamisel läbitakse tavaliselt järgmised mõttelised etapid:</p>
+
+    <ul>
+        <li><strong>1. Andmete analüüs (Data Analysis):</strong> Mõistetakse, milliseid andmeid tegelikult vajatakse ja kui tihti. Loobutakse "objektist" kui tervikust ja vaadatakse ainult vajalikke atribuute (nt positsioon, elud, kiirus).</li>
+        <li><strong>2. Andmete paigutus (Data Layout):</strong> Andmete organiseerimine mälus viisil, mis minimeerib tühja ruumi ja maksimeerib järjestikust lugemist. Eesmärk on muuta andmestruktuurid CPU-sõbralikuks (nt <em>Structure of Arrays</em>).</li>
+        <li><strong>3. Transformatsioonide disain (Transformations):</strong> Funktsioonide või süsteemide kirjutamine, mis võtavad sisendiks hulga andmeid, töötlevad neid ja väljastavad uued andmed. Kood kirjutatakse töötlema massiive, mitte üksikuid objekte.</li>
+    </ul>
+
+    <h2>Alamvariandid ja seotud mustrid</h2>
+    <p>Kuna DOD on pigem filosoofia kui konkreetne reeglistik, on tal mitmeid implementatsioone ja alamvariante:</p>
+    <ul>
+        <li><strong>ECS (Entity Component System):</strong> Kõige kuulsam DOD rakendus (eriti mänguarenduses). See jagab koodi kolmeks: <em>Entity</em> (ID), <em>Component</em> (puhas andmekogum) ja <em>System</em> (loogika, mis töötleb komponente).</li>
+        <li><strong>Data-Driven Design:</strong> Sageli aetakse segi DOD-iga. See tähendab, et programmi loogikat juhitakse väliste andmete (nt skriptid, JSON failid) poolt, samas kui DOD keskendub mälu ja CPU efektiivsusele.</li>
+        <li><strong>SOA (Structure of Arrays):</strong> Spetsiifiline andmete hoidmise viis, mis on DOD alustala (vastandina OOP <em>Array of Structures</em> lähenemisele).</li>
+    </ul>
+
+    <h2>Arendusmudel joonisena (Visualiseering)</h2>
+    <p>Kujuta ette mälu kui pikka linti. Allpool on visualiseeritud erinevus OOP ja DOD vahel mälus.</p>
+
+    <h3>OOP (Array of Structures - AoS)</h3>
+    <p>Andmed on killustatud. Kui süsteem vajab ainult "Oranži" infot, peab CPU laadima mälust ka "Musta" ja "Halli" info, mis raiskab vahemälu ruumi.</p>
+    <div class="memory-block">
+        <div class="ram-stick">
+            <span class="data-unit color-a">A1</span><span class="data-unit color-b">B1</span><span class="data-unit color-c">C1</span>
+            <span class="data-unit color-a">A2</span><span class="data-unit color-b">B2</span><span class="data-unit color-c">C2</span>
+            <span class="data-unit color-a">A3</span><span class="data-unit color-b">B3</span><span class="data-unit color-c">C3</span>
+        </div>
+    </div>
+
+    <h3>DOD (Structure of Arrays - SoA)</h3>
+    <p>Andmed on pakitud tüübi järgi. Kui süsteem vajab "Oranži" infot, saab CPU lugeda järjest ainult oranže plokke. See on ülikiire.</p>
+    <div class="memory-block">
+        <div class="ram-stick">
+            <span class="data-unit color-a">A1</span><span class="data-unit color-a">A2</span><span class="data-unit color-a">A3</span>
+            <span class="data-unit color-b">B1</span><span class="data-unit color-b">B2</span><span class="data-unit color-b">B3</span>
+            <span class="data-unit color-c">C1</span><span class="data-unit color-c">C2</span><span class="data-unit color-c">C3</span>
+        </div>
+    </div>
+
+    <h2>Tähtsaim omadus ja miks</h2>
+
+    <div class="note">
+        <h3>Cache Locality (Vahemälu lokaalsus)</h3>
+        <p>See on DOD kõige kriitilisem omadus. <strong>Miks?</strong> Tänapäeva protsessorid on sadu kordi kiiremad kui põhimälu (RAM). CPU veedab enamuse ajast oodates andmeid mälust ("Von Neumann bottleneck").</p>
+        <p>DOD paigutab andmed nii, et kui CPU loeb ühe tüki, laetakse vahemällu (Cache Line) automaatselt ka järgmised vajalikud tükid. See vähendab drastiliselt <em>cache miss</em>-ide arvu ja tõstab jõudlust kordades.</p>
+    </div>
+
+    <hr>
+
+    <h2>DOD Plussid ja Miinused</h2>
+
+    <table>
+        <tr>
+            <th>Head (Pros)</th>
+            <th>Vead (Cons)</th>
+        </tr>
+        <tr>
+            <td><strong>Jõudlus:</strong> Maksimaalne riistvara ärakasutamine ja kiirem töötlus.</td>
+            <td><strong>Õppimiskurv:</strong> Raske mõista arendajatel, kes on harjunud OOP-ga.</td>
+        </tr>
+        <tr>
+            <td><strong>Skaleeritavus:</strong> Lihtne töödelda tuhandeid või miljoneid objekte korraga.</td>
+            <td><strong>Jäikus:</strong> Andmestruktuuride muutmine võib nõuda suuremat ümberkirjutamist.</td>
+        </tr>
+        <tr>
+            <td><strong>Paralleelsus:</strong> Kuna andmed on eraldatud ja sõltuvused minimaalsed, on koodi lihtne jagada mitme tuuma vahel (multithreading).</td>
+            <td><strong>Koodi maht:</strong> Võib nõuda rohkem "boilerplate" koodi lihtsate asjade tegemiseks.</td>
+        </tr>
+        <tr>
+            <td><strong>Testitavus:</strong> Süsteemid on sageli "puhtad funktsioonid" (sisend -> väljund), mida on kerge testida.</td>
+            <td><strong>Intuitiivsus:</strong> Ei vasta alati sellele, kuidas inimesed maailma tajuvad (objektidena).</td>
+        </tr>
+      <tr></tr>
+    </table>
+
+    <hr>
+
+    <h3>Viited ja lisalugemine</h3>
+    <p>Info põhineb tunnustatud materjalidel andmetele orienteeritud disaini kohta:</p>
+
+
+    <a href="https://www.youtube.com/watch?v=rX0ItVEVjHc" target="_blank">Mike Acton: Data-Oriented Design and C++ (CppCon)</a>
+    <a href="https://unity.com/dots" target="_blank">Unity DOTS (ECS näide)</a>
+
+</body>
+</html>

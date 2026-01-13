@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tsüklid (Looping)</title>
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+<header>
+    <img src="../../assets/icons/logojs2.svg" alt="" width="50" height="50" align="left">
+
+    <a class="navbar" href="../../index.html">Tarkvara Arendusprotsess</a>
+    <a class="navbar" href="index.html">Programmeerimine</a>
+    <a class="navbar" href="../multimedia/index.html">Multimeedia</a>
+    <br>
+    <br>
+</header>
+<h1>Tsüklid (Looping)</h1>
+
+    <section>
+        <h2>Milleks tsüklid?</h2>
+        <ul>
+            <li>Tsüklit kasutatakse koodi korduvaks täitmiseks.</li>
+            <li>Selle asemel, et kirjutada sama koodi mitu korda, kasutame tsüklit.</li>
+            <li>Pythonis on kaks peamist tsüklit: <code>while</code> ja <code>for</code>.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>while tsükkel</h2>
+        <p>Tsükli sisu täidetakse seni, kuni tingimus on tõene.</p>
+        <pre>
+count = 0
+while count < 3:
+    print(f"Count: {count}")
+    count += 1
+        </pre>
+        <p>Kui tingimus on kohe alguses väär, ei täideta tsükli sisu kordagi.</p>
+
+
+[Image of flowchart of a while loop in programming]
+
+    </section>
+
+    <section>
+        <h2>Lõpmatu tsükkel</h2>
+        <ul>
+            <li>Kui tsükli tingimus jääbki tõeseks, tekib lõpmatu tsükkel.</li>
+            <li>Programmi seiskamiseks tuleb see tavaliselt sunnitult katkestada (nt Ctrl+C).</li>
+            <li>Näide: <code>while True: print("Running...")</code></li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>for tsükkel</h2>
+        <p>Kasutatakse andmehulkade (list, sõne, vahemik) läbimiseks.</p>
+        <pre>
+numbers = [1, 2, 5]
+for number in numbers:
+    print(number)
+        </pre>
+        <p>Tsükkel lõpetab töö, kui kõik elemendid on läbi käidud.</p>
+    </section>
+
+    <section>
+        <h2>range() funktsioon</h2>
+        <p>Kasutatakse teatud arv kordi kordamiseks või numbrite vahemiku loomiseks.</p>
+        <ul>
+            <li><code>range(5)</code> -> 0, 1, 2, 3, 4</li>
+            <li><code>range(1, 6)</code> -> 1, 2, 3, 4, 5</li>
+            <li><code>range(1, 10, 2)</code> -> 1, 3, 5, 7, 9 (sammuga 2)</li>
+        </ul>
+        <pre>
+for i in range(3):
+    print("Hello!")
+        </pre>
+    </section>
+
+    <section>
+        <h2>Tsükli katkestamine ja jätkamine</h2>
+        <ul>
+            <li><strong>break:</strong> katkestab tsükli koheselt ja liigub koodiga edasi peale tsüklit.</li>
+            <li><strong>continue:</strong> jätab käimasoleva sammu vahele ja hüppab järgmise tsükli ringi juurde.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>else blokk tsüklitel</h2>
+        <p>Pythonis saab tsüklitele lisada <code>else</code> osa.</p>
+        <ul>
+            <li><code>else</code> sisu käivitatakse siis, kui tsükkel lõpetas loomulikult (tingimus sai vääraks või andmed said otsa).</li>
+            <li>Kui tsükkel katkestati <code>break</code> abil, siis <code>else</code> osa ei käivitata.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Kokkuvõte</h2>
+        <ul>
+            <li><code>while</code> - kordab, kuni tingimus on tõene.</li>
+            <li><code>for</code> - käib läbi andmehulga.</li>
+            <li><code>range()</code> - mugav numbrite jada genereerimiseks.</li>
+            <li><code>break</code> ja <code>continue</code> - kontrollivad tsükli kulgu.</li>
+        </ul>
+    </section>
+<a href="sone.html">Next topic</a>
+<footer>
+    <hr>
+    <div style="text-align: center; padding: 20px;">
+        <p>&copy; 2025 Juri.</p>
+        <p style="font-size: small; color: #666;">
+            Lehekülg on osa õppematerjalist. Viimati uuendatud: detsember 2025.
+        </p>
+    </div>
+</footer>
+</body>
+</html>

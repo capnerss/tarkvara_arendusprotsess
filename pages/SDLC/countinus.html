@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Continuous Test Driven Development (CTDD)</title>
+    <link rel="stylesheet" href="../../css/style.css">
+  <style>
+        /* Väike lisastiil joonise jaoks, et tekst oleks loetav */
+        .diagram-text { font-family: Arial, sans-serif; font-weight: bold; font-size: 14px; }
+        .diagram-label { font-size: 12px; fill: #555; }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        CTDD Ülevaade
+    </div>
+
+    <h1>Continuous Test Driven Development (CTDD)</h1>
+
+    <h2>Mis on CTDD?</h2>
+    <p>
+        <strong>Continuous Test Driven Development (CTDD)</strong> ehk pidev testipõhine arendus on tarkvaraarenduse metoodika, mis ühendab endas kaks populaarset praktikat: <strong>TDD</strong> (Test Driven Development) ja <strong>CI</strong> (Continuous Integration).
+    </p>
+    <p>
+        Selle mudeli puhul kirjutavad arendajad testid enne koodi kirjutamist (TDD), kuid lisaks käivitatakse neid teste automaatselt taustal iga kord, kui koodi muudetakse või salvestatakse (Continuous Testing). See tagab, et vigu märgatakse koheselt, mitte alles hiljem testimisfaasis.
+    </p>
+
+    <hr>
+
+    <h2>CTDD Etapid</h2>
+    <p>CTDD järgib laiendatud TDD tsüklit, mida tuntakse sageli "Red-Green-Refactor" nime all, millele lisandub pidev integratsioon:</p>
+    <ul>
+        <li><strong>1. Punane (Red):</strong> Kirjuta väike test, mis ebaõnnestub (sest funktsionaalsust pole veel loodud).</li>
+        <li><strong>2. Roheline (Green):</strong> Kirjuta minimaalne kogus koodi, et test õnnestuks.</li>
+        <li><strong>3. Refaktoreeri (Refactor):</strong> Puhasta ja optimeeri koodi ilma selle käitumist muutmata.</li>
+        <li><strong>4. Pidev integratsioon (CI):</strong> Kood lükatakse (push) repositooriumisse, kus CI-server (nt Jenkins, GitHub Actions) jooksutab automaatselt kõiki teste uuesti, et veenduda süsteemi terviklikkuses.</li>
+    </ul>
+
+    <h2>Kas sellel on alamvariante?</h2>
+    <p>
+        Kuigi CTDD on ise TDD edasiarendus, eksisteerib sellega tihedalt seotud variatsioone, mis keskenduvad testimise erinevatele aspektidele:
+    </p>
+    <ul>
+        <li><strong>ATDD (Acceptance Test Driven Development):</strong> Keskendub ärinõuetele. Testid kirjutatakse kliendi vaatepunktist enne koodi.</li>
+        <li><strong>BDD (Behavior Driven Development):</strong> Keskendub süsteemi käitumise kirjeldamisele inimkeeles (nt "Given-When-Then" formaat), mis seejärel muudetakse automaattestideks.</li>
+    </ul>
+
+    <hr>
+
+    <h2>Arendusmudeli joonis</h2>
+    <p>Allpool on CTDD tsükli visuaalne joonis (Red-Green-Refactor + CI):</p>
+
+    <table>
+        <tr>
+            <th>CTDD Tsükkel</th>
+        </tr>
+        <tr>
+            <td style="text-align: center; background-color: #ffffff;">
+                <svg width="100%" height="300" viewBox="0 0 500 300" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+                            <polygon points="0 0, 10 3.5, 0 7" fill="#333" />
+                        </marker>
+                    </defs>
+
+                    <circle cx="250" cy="60" r="45" fill="#FF4500" stroke="#333" stroke-width="2" opacity="0.9"/>
+                    <text x="250" y="65" text-anchor="middle" fill="white" class="diagram-text">RED</text>
+                    <text x="250" y="125" text-anchor="middle" class="diagram-label">1. Kirjuta ebaõnnestuv test</text>
+
+                    <circle cx="400" cy="180" r="45" fill="#32CD32" stroke="#333" stroke-width="2" opacity="0.9"/>
+                    <text x="400" y="185" text-anchor="middle" fill="white" class="diagram-text">GREEN</text>
+                    <text x="400" y="245" text-anchor="middle" class="diagram-label">2. Kirjuta kood (Pass)</text>
+
+                    <circle cx="100" cy="180" r="45" fill="#FFA500" stroke="#333" stroke-width="2" opacity="0.9"/>
+                    <text x="100" y="185" text-anchor="middle" fill="white" class="diagram-text">REFACTOR</text>
+                    <text x="100" y="245" text-anchor="middle" class="diagram-label">3. Puhasta kood</text>
+
+                    <rect x="20" y="10" width="460" height="280" rx="20" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="5,5"/>
+                    <text x="35" y="30" fill="#333" font-weight="bold">Continuous Integration (CI)</text>
+
+                    <line x1="285" y1="85" x2="370" y2="150" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)" />
+                    <line x1="355" y1="180" x2="155" y2="180" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)" />
+                    <line x1="130" y1="150" x2="215" y2="85" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)" />
+
+                </svg>
+                </td>
+        </tr>
+    </table>
+
+    <h2>Tähtsaim omadus ja miks</h2>
+
+    <div class="note">
+        <h3>Kiire ja automaatne tagasiside (Immediate Feedback)</h3>
+        <p>
+            CTDD tähtsaim omadus on <strong>tagasisideahela lühendamine</strong>.
+        </p>
+        <p>
+            <strong>Miks see on oluline?</strong> Tavapärases arenduses leitakse vead alles tunde või päevi hiljem. CTDD puhul saab arendaja teada vea olemasolust sekunditega. See hoiab koodi kvaliteedi pidevalt kõrgena ja vähendab drastiliselt aega, mis kulub vigade (bugide) otsimisele.
+        </p>
+    </div>
+
+    <h2>Head ja Vead</h2>
+    <table>
+        <tr>
+            <th>Omadus</th>
+            <th>Head (Plussid)</th>
+            <th>Vead (Miinused)</th>
+        </tr>
+        <tr>
+            <td><strong>Kvaliteet</strong></td>
+            <td>Väga kõrge koodikvaliteet ja vähem vigu (bugisid).</td>
+            <td>Nõuab distsipliini, et mitte kirjutada "halbu" teste, mis annavad valepositiivseid tulemusi.</td>
+        </tr>
+        <tr>
+            <td><strong>Dokumentatsioon</strong></td>
+            <td>Testid toimivad elava dokumentatsioonina – näitavad täpselt, mida kood teeb.</td>
+            <td>Testide ja koodi sünkroonis hoidmine nõuab lisatööd.</td>
+        </tr>
+        <tr>
+            <td><strong>Kiirus</strong></td>
+            <td>Pikas perspektiivis säästab aega, kuna silumist (debugimist) on vähem.</td>
+            <td>Alguses aeglasem, kuna iga liigutus nõuab testi kirjutamist.</td>
+        </tr>
+        <tr>
+            <td><strong>Refaktoreerimine</strong></td>
+            <td>Võimaldab julgelt koodi muuta, kartmata, et miski katki läheb.</td>
+            <td>Suure pärandkoodi (legacy code) puhul on keeruline rakendada.</td>
+        </tr>
+      <tr></tr>
+    </table>
+
+    <hr>
+
+    <h2>Viited ja lisainfo</h2>
+    <p>Siit leiad allikad ja lisalugemist antud teema kohta:</p>
+
+    <a href="https://martinfowler.com/bliki/TestDrivenDevelopment.html" target="_blank">Martin Fowler: TDD</a>
+    <a href="https://www.agilealliance.org/glossary/atdd/" target="_blank">Agile Alliance: ATDD</a>
+    <a href="https://www.guru99.com/test-driven-development.html" target="_blank">Guru99: TDD Guide</a>
+
+</body>
+</html>

@@ -1,0 +1,331 @@
+/* Define the main colors using CSS variables for easy updates */
+:root {
+    --primary-color: #FF8C00; /* Darker Orange */
+    --secondary-color: #FFA500; /* Bright Orange */
+    --background-color: #FFFFFF; /* White */
+    --text-color: #333333; /* Dark Gray for readability */
+    --link-color: #FF4500; /* Red-Orange for links - will be used for button border */
+}
+
+/* Basic styles for the entire page (same as before) */
+body {
+    background-image:  url('../assets/images/background.png');
+    background-repeat: no-repeat, no-repeat, no-repeat;
+
+
+
+    font-family: Arial, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    padding: 20px;
+    line-height: 1.6;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* Header styling (same as before) */
+h1, h2 {
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--secondary-color);
+    padding-bottom: 5px;
+    margin-top: 25px;
+}
+
+/* Sub-header styling (same as before) */
+h3 {
+    color: var(--secondary-color);
+    margin-bottom: 10px;
+}
+
+/* Paragraph text styling (same as before) */
+p {
+    line-height: 1.6;
+}
+
+/* --- BUTTON STYLING FOR LINKS --- */
+a {
+    /* Basic Button Look */
+    display: inline-block; /* Allows padding and keeps them side-by-side if space allows */
+    background-color: var(--secondary-color);
+    color: var(--background-color); /* White text */
+    text-decoration: none;
+    padding: 10px 15px; /* Adds space inside the button */
+    margin: 5px 10px 5px 0; /* Adds space around the button */
+    border-radius: 5px; /* Rounded corners */
+    border: 1px solid var(--link-color); /* Darker border */
+    transition: background-color 0.3s ease, transform 0.1s ease; /* Smooth hover effects */
+    font-weight: bold;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+}
+
+a:hover {
+    background-color: var(--primary-color); /* Darker orange on hover */
+    color: var(--background-color); /* Keep text white */
+    text-decoration: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Lifted shadow */
+}
+
+a:active {
+    transform: translateY(1px); /* Little press down effect when clicked */
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+/* ---------------------------------- */
+
+
+/* Table styling (mostly same as before) */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+/* Table header row background (same as before) */
+table tr:first-child {
+    background-color: var(--primary-color);
+    color: var(--background-color);
+    font-weight: bold;
+}
+
+/* Zebra-striping for table body rows (same as before) */
+table tr:nth-child(even) {
+    background-color: #FFF5EE;
+}
+
+/* Style the image in the table (same as before) */
+table img {
+    border: 3px solid var(--secondary-color);
+    border-radius: 5px;
+    display: block;
+}
+
+/* Style the link row spanning 4 columns (same as before) */
+table tr:last-child td {
+    background-color: var(--secondary-color);
+    text-align: center;
+}
+
+/* Style the link inside the last table cell (adjusted to override button styles) */
+table tr:last-child a {
+    /* Reset button styles for the GitHub link in the table */
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+    color: var(--background-color);
+    font-weight: bold;
+    display: inline;
+    padding: 0;
+    margin: 0;
+}
+
+table tr:last-child a:hover {
+     color: var(--text-color);
+     background-color: transparent;
+}
+
+/* Style the divider line (same as before) */
+hr {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), var(--secondary-color), rgba(0, 0, 0, 0));
+    margin: 20px 0;
+}
+.note {
+            background-color: #fff9e6;
+            border-left: 5px solid #ffcc00;
+            padding: 15px;
+            margin: 20px 0;
+        }
+ul {
+            list-style-type: disc;
+            margin-left: 20px;
+        }
+
+.navbar {
+    display: inline-block; /* Allows padding and keeps them side-by-side if space allows */
+    background-color: #f26417;
+    color: var(--background-color); /* White text */
+    text-decoration: none;
+    padding: 10px 10px; /* Adds space inside the button */
+    margin: 0px 0px 0px 0; /* Adds space around the button */
+    border-radius: 0px; /* Rounded corners */
+    border: none; /* Darker border */
+    transition: background-color 0.3s ease, transform 0.1s ease; /* Smooth hover effects */
+    font-weight: bold;
+    box-shadow: 0 0px 0px rgba(0, 0, 0, 0); /* Subtle shadow */
+}
+/* Muudame elemendi lingiks ja stiilime selle */
+        #year-counter-link {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: white; /* Süsimust taust */
+            color: white;
+            padding: 15px 20px;
+            border-radius: 12px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 14px;
+            text-decoration: none; /* Eemaldab lingi alusjoone */
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+            z-index: 1000;
+            transition: transform 0.2s, background-color 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border: 0 solid #333;
+        }
+
+        /* Efekt hiirega peale liikudes */
+        #year-counter-link:hover {
+            background-color: #333;
+            transform: translateY(-5px); /* Tõuseb veidi ülespoole */
+            color: #ffffff;
+        }
+
+        #days-number {
+            font-weight: bold;
+            color: #00ff88; /* Keskendume erkrohelisele (äpi tunnetus) */
+            font-size: 1.2em;
+        }
+/* =========================================
+   СТИЛИ ДЛЯ ПОИСКА В МЕНЮ (INLINE)
+   ========================================= */
+
+.search-box {
+    /* Раньше было absolute, теперь делаем его частью строки */
+    display: inline-flex;
+    align-items: center;
+    vertical-align: middle;     /* Выравнивание по центру относительно текста ссылок */
+    margin-left: 15px;          /* Отступ от кнопки "Multimeedia" */
+
+    background: white;
+    height: 35px;               /* Чуть компактнее под высоту ссылок */
+    border-radius: 40px;
+    padding: 2px;
+    transition: 0.4s;
+    position: relative;         /* Чтобы результаты выпадали относительно этого блока */
+}
+
+/* При открытии */
+.search-box.active {
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    border: 1px solid #ddd;
+    background: white;
+}
+
+/* Кнопка лупы */
+.btn-search {
+    width: 35px;
+    height: 35px;
+    border-style: none;
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #333;
+}
+
+/* Поле ввода */
+.input-search {
+    border: none;
+    background: none;
+    outline: none;
+    padding: 0;
+    color: #333;
+    font-size: 15px;
+    transition: 0.4s;
+    line-height: 35px;
+    width: 0px;
+    opacity: 0;
+}
+
+/* Раскрытие поля */
+.search-box.active .input-search {
+    width: 200px;
+    padding: 0 10px;
+    opacity: 1;
+}
+
+/* Результаты поиска */
+#results-container {
+    position: absolute;
+    top: 110%;      /* Появляется сразу под поиском */
+    left: 0;        /* Выравнивание по левому краю поиска */
+    width: 300px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    display: none;
+    overflow: hidden;
+    z-index: 9999;
+}
+
+.result-item {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    text-align: left;
+}
+
+.result-item a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    display: block;
+}
+
+.result-item p {
+    margin: 2px 0 0;
+    font-size: 0.8em;
+    color: #777;
+}
+/* =========================================
+   СТИЛИ ДЛЯ УВЕЛИЧЕНИЯ КАРТИНОК (LIGHTBOX)
+   ========================================= */
+
+/* 1. Класс для картинок, которые можно увеличивать */
+.zoomable {
+    cursor: zoom-in; /* Курсор-лупа при наведении */
+    transition: transform 0.2s; /* Плавное нажатие */
+}
+
+.zoomable:active {
+    transform: scale(0.95); /* Эффект нажатия */
+}
+
+/* 2. Сама темная область (изначально скрыта) */
+#image-modal {
+    display: none; /* Скрыто по умолчанию */
+    position: fixed;
+    z-index: 10000; /* Поверх всего */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9); /* Черный фон 90% непрозрачности */
+    justify-content: center;
+    align-items: center;
+    cursor: zoom-out; /* Курсор "уменьшить" */
+}
+
+/* 3. Картинка внутри модального окна */
+#image-modal img {
+    max-width: 90%;  /* Не шире экрана */
+    max-height: 90%; /* Не выше экрана */
+    object-fit: contain; /* Сохраняет пропорции */
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    animation: zoomOpen 0.3s ease; /* Анимация появления */
+}
+
+/* Анимация открытия */
+@keyframes zoomOpen {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}

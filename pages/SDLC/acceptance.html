@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acceptance Test Driven Development (ATDD)</title>
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+
+    <div class="navbar">
+        ATDD Ülevaade
+    </div>
+
+    <h1>Mis on Acceptance Test Driven Development (ATDD)?</h1>
+
+    <p>
+        <strong>Acceptance Test Driven Development</strong> (ATDD) ehk vastuvõtutestidel põhinev arendus on tarkvaraarenduse metoodika,
+        kus "kolm sõpra" (<em>The Three Amigos</em>) – <strong>arendaja, testija ja tooteomanik (või äriklient)</strong> –
+        koostavad enne koodi kirjutamist ühiselt vastuvõtutestid.
+    </p>
+    <p>
+        Need testid defineerivad täpselt, mida süsteem peab tegema, et see loetaks "valmis" olevaks.
+        Erinevalt klassikalisest TDD-st (mis keskendub ühiktestidele ja koodi tehnilisele õigsusele),
+        keskendub ATDD süsteemi <strong>käitumisele ja ärilistele nõuetele</strong>.
+    </p>
+
+    <div class="note">
+        <strong>Põhimõte:</strong> Me ei kirjuta koodi enne, kui meil on olemas ebaõnnestuv vastuvõtutest, mis kirjeldab soovitud ärifunktsionaalsust.
+    </div>
+
+    <h2>ATDD Etapid</h2>
+    <p>ATDD protsess järgib tavaliselt nelja peamist sammu, mida tuntakse ka kui <strong>4 D-d</strong>:</p>
+
+    <ul>
+        <li><strong>1. Arutelu (Discuss):</strong> Meeskond (äri, arendus, testimine) arutab läbi kasutajaloo (User Story) ja selgitab välja, mida on vaja ehitada.</li>
+        <li><strong>2. Täpsustamine (Distill):</strong> Arutelu tulemused vormistatakse konkreetseteks, testitavateks aktsepteerimiskriteeriumiteks (testideks), mis on masinloetavad (nt Gherkin keeles).</li>
+        <li><strong>3. Arendus (Develop):</strong> Arendajad kirjutavad koodi ja ühikteste (TDD), kuni vastuvõtutestid lähevad läbi.</li>
+        <li><strong>4. Esitlus (Demo):</strong> Töötavat lahendust näidatakse huvigruppidele ja viiakse läbi uuriv testimine.</li>
+    </ul>
+
+    <h2>Alamvariandid ja seotud metoodikad</h2>
+    <p>
+        ATDD on katusmõiste ja seda aetakse tihti segi või kasutatakse koos teiste sarnaste lähenemistega.
+        Otseseid "alamvariante" on raske eristada, pigem on need erinevad implementatsioonid:
+    </p>
+    <ul>
+        <li><strong>BDD (Behavior Driven Development):</strong> Väga lähedane ATDD-le. Kui ATDD keskendub <em>testimisele</em>, siis BDD rõhutab ühist keelt ja süsteemi <em>käitumise</em> kirjeldamist (nt "Given-When-Then" formaat).</li>
+        <li><strong>SBE (Specification by Example):</strong> Keskendub nõuete defineerimisele konkreetsete näidete varal, mis muutuvad hiljem testideks.</li>
+    </ul>
+
+    <h2>Arendusmudeli joonis</h2>
+    <p>ATDD tsükkel on iteratiivne. Allpool on kirjeldatud visuaalne protsess:</p>
+
+    <table>
+        <tr>
+            <th>ATDD Arendustsükkel</th>
+        </tr>
+        <tr>
+            <td class="diagram-container">
+                <svg viewBox="0 0 800 220" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+                          <polygon points="0 0, 10 3.5, 0 7" fill="#FF8C00" />
+                        </marker>
+                    </defs>
+
+                    <circle cx="100" cy="100" r="60" fill="#FFF5EE" stroke="#FF8C00" stroke-width="3"/>
+                    <text x="100" y="95" text-anchor="middle" class="step-text">1. DISCUSS</text>
+                    <text x="100" y="115" text-anchor="middle" class="step-desc">Arutelu</text>
+
+                    <line x1="165" y1="100" x2="235" y2="100" stroke="#FF8C00" stroke-width="2" marker-end="url(#arrowhead)" />
+
+                    <circle cx="300" cy="100" r="60" fill="#FFF5EE" stroke="#FF8C00" stroke-width="3"/>
+                    <text x="300" y="95" text-anchor="middle" class="step-text">2. DISTILL</text>
+                    <text x="300" y="115" text-anchor="middle" class="step-desc">Täpsustamine</text>
+
+                    <line x1="365" y1="100" x2="435" y2="100" stroke="#FF8C00" stroke-width="2" marker-end="url(#arrowhead)" />
+
+                    <circle cx="500" cy="100" r="60" fill="#FF8C00" stroke="#333" stroke-width="3"/> <text x="500" y="95" text-anchor="middle" class="step-text" style="fill:white;">3. DEVELOP</text>
+                    <text x="500" y="115" text-anchor="middle" class="step-desc" style="fill:#eee;">TDD & Kood</text>
+
+                    <line x1="565" y1="100" x2="635" y2="100" stroke="#FF8C00" stroke-width="2" marker-end="url(#arrowhead)" />
+
+                    <circle cx="700" cy="100" r="60" fill="#FFF5EE" stroke="#FF8C00" stroke-width="3"/>
+                    <text x="700" y="95" text-anchor="middle" class="step-text">4. DEMO</text>
+                    <text x="700" y="115" text-anchor="middle" class="step-desc">Esitlus</text>
+
+                    <path d="M 700 165 Q 400 240 100 165" stroke="#ccc" stroke-width="2" fill="none" stroke-dasharray="5,5" marker-end="url(#arrowhead)"/>
+                    <text x="400" y="210" text-anchor="middle" class="step-desc">Uus iteratsioon</text>
+                </svg>
+            </td>
+        </tr>
+    </table>
+
+    <h2>Tähtsaim omadus ja miks?</h2>
+    <h3>Koostöö ja ühine arusaam (Shared Understanding)</h3>
+    <p>
+        ATDD kõige kriitilisem omadus ei ole mitte automatiseerimine, vaid <strong>kommunikatsioon</strong>.
+    </p>
+    <p>
+        <strong>Miks?</strong> Tarkvaraarenduse suurim ja kulukaim probleem on "vale asja ehitamine".
+        Kui arendaja saab nõudest valesti aru, on hilisem parandamine kordades kallim.
+        ATDD sunnib äripoole ja arendajad enne esimest koodirida kokku leppima täpsed kriteeriumid.
+    </p>
+
+    <h2>Head ja Vead (Plussid ja Miinused)</h2>
+
+    <table>
+        <tr>
+            <th>Omadus</th>
+            <th>Plussid (Head)</th>
+            <th>Miinused (Vead)</th>
+        </tr>
+        <tr>
+            <td><strong>Kvaliteet</strong></td>
+            <td>Vähendab oluliselt defektide arvu ja ümbertegemise vajadust, kuna nõuded on selged.</td>
+            <td>Võib tunduda alguses aeglane, kuna "koodi ei toodeta" kohe.</td>
+        </tr>
+        <tr>
+            <td><strong>Dokumentatsioon</strong></td>
+            <td>Testid toimivad kui "elav dokumentatsioon" (Living Documentation), mis on alati ajakohane.</td>
+            <td>Testide ja dokumentatsiooni haldamine nõuab distsipliini ja aega.</td>
+        </tr>
+        <tr>
+            <td><strong>Koostöö</strong></td>
+            <td>Lõhub barjäärid arendajate, testijate ja äripoole vahel.</td>
+            <td>Nõuab suurt kultuurilist muutust ja kõigi osapoolte (eriti äripoole) aktiivset aega.</td>
+        </tr>
+        <tr>
+            <td><strong>Hooldus</strong></td>
+            <td>Lihtsustab hilisemat koodi muutmist (regression testing on automaatne).</td>
+            <td>Halvasti kirjutatud vastuvõtutestid võivad muutuda rabedaks (brittle tests) ja vajada pidevat parandamist.</td>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <a href="https://en.wikipedia.org/wiki/Acceptance_test%E2%80%93driven_development" target="_blank">Loe rohkem Wikipediast</a>
+            </td>
+        </tr>
+    </table>
+
+    <hr>
+
+    <h2>Viited ja lisamaterjalid</h2>
+    <p>Info koondamisel on kasutatud järgmisi allikaid:</p>
+
+    <a href="https://www.agilealliance.org/glossary/atdd/" target="_blank">Agile Alliance: ATDD</a>
+    <a href="https://cucumber.io/docs/bdd/" target="_blank">Cucumber & BDD (Seotud teema)</a>
+    <a href="https://www.geeksforgeeks.org/software-engineering/acceptance-test-driven-development-atdd-in-software-engineering/" target="_blank">GeeksForGeeks: ATDD</a>
+
+    <div id="year-counter-link">
+        <span id="days-number">2026</span>
+        <span>Aasta on alanud!</span>
+    </div>
+
+</body>
+</html>

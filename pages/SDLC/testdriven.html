@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Driven Development (TDD)</title>
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+
+    <h1>Test Driven Development (TDD)</h1>
+
+    <p><strong>Test Driven Development</strong> (TDD) ehk testipõhine arendus on tarkvaraarenduse metoodika, kus testid kirjutatakse enne tegelikku programmi koodi. Protsess sunnib arendajat mõtlema läbi nõuded ja disaini enne koodi kirjutamist, tagades, et iga koodirida omab eesmärki.</p>
+
+    <h2>TDD etapid (Red-Green-Refactor)</h2>
+    <p>TDD põhineb väga lühikesel ja korduval tsüklil, mis koosneb kolmest põhietapist:</p>
+
+    <ul>
+        <li><strong>🔴 Red (Punane):</strong> Kirjuta väike test uue funktsionaalsuse jaoks. Käivita test ja veendu, et see ebaõnnestub (kuna funktsionaalsust pole veel loodud). See kinnitab testi enda toimimist.</li>
+        <li><strong>🟢 Green (Roheline):</strong> Kirjuta ainult nii palju koodi, kui on minimaalselt vajalik testi läbimiseks. Koodi kvaliteet pole selles etapis esmatähtis, oluline on toimivus.</li>
+        <li><strong>🔵 Refactor (Refaktoreerimine):</strong> Vaata kood üle ja paranda selle struktuuri (eemalda kordused, paranda nimetusi), olles kindel, et testid jäävad roheliseks. See tagab koodi puhtuse.</li>
+    </ul>
+
+    <h2>Kas TDD-l on alamvariante?</h2>
+    <p>Jah, kuna TDD on laiema kontseptsiooniga lähenemine, on sellest välja kasvanud mitmeid spetsiifilisemaid alamvariante ja edasiarendusi:</p>
+    <ul>
+        <li><strong>ATDD (Acceptance Test Driven Development):</strong> Keskendub süsteemi äriliste nõuete (vastuvõtutestide) täitmisele. Testid kirjutatakse koostöös tooteomaniku või kliendiga.</li>
+        <li><strong>BDD (Behavior Driven Development):</strong> TDD edasiarendus, mis keskendub tarkvara <em>käitumise</em> kirjeldamisele inimloetavas keeles (nt "Given-When-Then" formaat). See parandab suhtlust arendajate ja äripoole vahel.</li>
+    </ul>
+
+    <h2>Arendusmudel joonisena</h2>
+    <p>TDD mudelit kujutatakse tavaliselt <strong>lõputu tsüklina</strong> või ringina, mis sümboliseerib pidevat arendust.</p>
+
+    <div class="note">
+        <h3>Tsükli visuaalne kirjeldus:</h3>
+        <p>Kujuta ette kolme noolega ringi, mis liigub päripäeva:</p>
+        <ol>
+            <li>Alustad <strong>Punasest</strong> kastist (Test Failing).</li>
+            <li>Liigud <strong>Rohelisse</strong> kasti (Code Passing).</li>
+            <li>Liigud <strong>Sinisesse</strong> kasti (Refactoring).</li>
+            <li>Seejärel alustad uuesti Punasest kastist uue funktsionaalsusega.</li>
+        </ol>
+    </div>
+
+    <h2>Tähtsaim omadus ja miks?</h2>
+    <p>TDD kõige tähtsam omadus on <strong>koodi usaldusväärsus ja turvavõrk (Safety Net)</strong>.</p>
+    <p><strong>Miks?</strong> Kuna iga koodirida on kaetud testiga, saab arendaja teha muudatusi, lisada uusi funktsioone või refaktoreerida vana koodi ilma hirmuta, et miski ootamatult katki läheb. Kui viga tekib, annavad testid sellest koheselt märku ("Fast Feedback"). See vähendab drastiliselt vigade leidmise ja parandamise kulu projekti hilisemates faasides.</p>
+
+    <h2>TDD Heade ja Veade tabel</h2>
+
+    <table>
+        <tr>
+            <th>Head omadused (Plussid)</th>
+            <th>Vead ja riskid (Miinused)</th>
+        </tr>
+
+        <tr>
+            <td><strong>Kõrge koodikvaliteet:</strong> Sunnib kirjutama modulaarset koodi.</td>
+            <td><strong>Ajakulu alguses:</strong> Esmane arendus on aeglasem.</td>
+        </tr>
+        <tr>
+            <td><strong>Vähem vigu:</strong> Vead leitakse kohe arenduse käigus.</td>
+            <td><strong>Raske õppida:</strong> Nõuab arendajalt uut mõtteviisi.</td>
+        </tr>
+        <tr>
+            <td><strong>Julge refaktoreerimine:</strong> Muudatusi on turvaline teha.</td>
+            <td><strong>Üle-testimine:</strong> Oht testida triviaalseid asju.</td>
+        </tr>
+        <tr>
+            <td><strong>Dokumentatsioon:</strong> Testid on nagu elav juhend.</td>
+            <td><strong>Hooldus:</strong> Kui nõuded muutuvad, tuleb muuta ka teste.</td>
+        </tr>
+
+        <tr>
+            <td colspan="2">
+                <a href="https://en.wikipedia.org/wiki/Test-driven_development" target="_blank">Loe lisaks TDD kohta Wikipediast &rarr;</a>
+            </td>
+        </tr>
+    </table>
+
+    <hr>
+
+    <h2>Allikad ja lisalugemist</h2>
+    <p>Info pärineb tuntud tarkvaraarenduse praktikatest ja järgmistest allikatest:</p>
+
+    <div>
+        <a href="https://martinfowler.com/bliki/TestDrivenDevelopment.html" target="_blank">Martin Fowler: TDD</a>
+        <a href="https://en.wikipedia.org/wiki/Test-driven_development" target="_blank">Wikipedia: TDD</a>
+        <a href="https://www.agilealliance.org/glossary/tdd/" target="_blank">Agile Alliance: TDD</a>
+    </div>
+
+    <a href="#" id="year-counter-link">
+        <span id="days-number">365</span> päeva TDD-d
+    </a>
+
+</body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testimine (Testing)</title>
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+<header>
+    <img src="../../assets/icons/logojs2.svg" alt="" width="50" height="50" align="left">
+
+    <a class="navbar" href="../../index.html">Tarkvara Arendusprotsess</a>
+    <a class="navbar" href="index.html">Programmeerimine</a>
+    <a class="navbar" href="../multimedia/index.html">Multimeedia</a>
+    <br>
+    <br>
+</header>
+<h1>Testimine (Testing)</h1>
+
+    <section>
+        <h2>Miks testida?</h2>
+        <ul>
+            <li>Tagab, et kood töötab nii nagu oodatud.</li>
+            <li>Aitab leida vigu varajases staadiumis.</li>
+            <li>Võimaldab julgemalt koodi muuta ja täiendada (refaktoreerida).</li>
+            <li>Dokumenteerib koodi käitumist.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Testimise tasemed</h2>
+        <ul>
+            <li><strong>Ühiktestimine (Unit testing):</strong> Testitakse koodi väikseimaid osi (funktsioonid, meetodid) isoleeritult.</li>
+            <li><strong>Integratsioonitestimine:</strong> Kontrollitakse süsteemi eri osade koostööd.</li>
+            <li><strong>Süsteemitestimine:</strong> Testitakse kogu tarkvara tervikuna.</li>
+            <li><strong>Aktsepttestimine:</strong> Kontrollitakse vastavust tellija ootustele.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>pytest raamistik</h2>
+        <p>Pythonis on levinuim testimisraamistik <strong>pytest</strong>. See on lihtne ja võimas.</p>
+        <ul>
+            <li>Testfailide nimed peaksid algama <code>test_</code>.</li>
+            <li>Testfunktsioonide nimed peaksid algama <code>test_</code>.</li>
+            <li>Kontrollimiseks kasutatakse tavalist Pythoni <code>assert</code> lauset.</li>
+        </ul>
+        <pre>
+def test_addition():
+    assert 1 + 2 == 3
+        </pre>
+    </section>
+
+    <section>
+        <h2>assert lause</h2>
+        <p><code>assert</code> kontrollib, kas sellele järgnev tingimus on tõene. Kui on väär, siis test ebaõnnestub.</p>
+        <pre>
+assert calculate_area(2, 5) == 10
+assert "Python" in "Hello Python world"
+        </pre>
+    </section>
+
+    <section>
+        <h2>Testide käivitamine</h2>
+        <p>Käsurealt käivitamiseks sisestatakse käsk:</p>
+        <pre>pytest</pre>
+        <p>See otsib üles kõik <code>test_*.py</code> failid ja käivitab seal olevad testid. Tulemustes märgitakse:</p>
+        <ul>
+            <li><code>.</code> (punkt) - test läbis.</li>
+            <li><code>F</code> (failed) - test ebaõnnestus.</li>
+            <li><code>E</code> (error) - testi täitmisel tekkis viga väljaspool kontrolli (nt koodi viga).</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Erandite testimine</h2>
+        <p>Mõnikord on vaja kontrollida, kas funktsioon viskab vea vale sisendi korral.</p>
+        <pre>
+import pytest
+
+def test_zero_division():
+    with pytest.raises(ZeroDivisionError):
+        1 / 0
+        </pre>
+    </section>
+
+    <section>
+        <h2>Testide grupeerimine</h2>
+        <p>Teste saab grupeerida klassidesse:</p>
+        <pre>
+class TestCalculator:
+    def test_add(self):
+        assert 1 + 1 == 2
+
+    def test_sub(self):
+        assert 5 - 2 == 3
+        </pre>
+    </section>
+
+    <section>
+        <h2>Koodi kaetus (Code Coverage)</h2>
+        <ul>
+            <li>Näitab, kui suur osa koodist on testidega läbi käidud.</li>
+            <li>Ei garanteeri vigade puudumist, kuid aitab leida testimata kohti.</li>
+            <li>Tööriist: <code>pytest-cov</code>.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Test-Driven Development (TDD)</h2>
+
+        <ol>
+            <li><strong>Red:</strong> Kirjutatakse test, mis ebaõnnestub (sest funktsionaalsust pole veel).</li>
+            <li><strong>Green:</strong> Kirjutatakse minimaalne kood, et test läbi läheks.</li>
+            <li><strong>Refactor:</strong> Parandatakse koodi kvaliteeti, tagades, et testid jäävad läbituks.</li>
+        </ol>
+    </section>
+
+    <section>
+        <h2>Kokkuvõte</h2>
+        <ul>
+            <li>Testimine on arendusprotsessi loomulik osa.</li>
+            <li><code>pytest</code> teeb testimise mugavaks.</li>
+            <li>Head testid on kiired, sõltumatud ja kergesti loetavad.</li>
+        </ul>
+    </section>
+
+<footer>
+    <hr>
+    <div style="text-align: center; padding: 20px;">
+        <p>&copy; 2025 Juri.</p>
+        <p style="font-size: small; color: #666;">
+            Lehekülg on osa õppematerjalist. Viimati uuendatud: detsember 2025.
+        </p>
+    </div>
+</footer>
+</body>
+</html>

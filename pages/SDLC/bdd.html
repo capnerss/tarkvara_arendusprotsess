@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BDD Arendusmudeli Ülevaade</title>
+    <style>
+        /* Kasutaja poolt antud CSS stiilid */
+        :root {
+            --primary-color: #FF8C00;
+            --secondary-color: #FFA500;
+            --background-color: #FFFFFF;
+            --text-color: #333333;
+            --link-color: #FF4500;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            padding: 20px;
+            line-height: 1.6;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        h1, h2 {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 5px;
+            margin-top: 25px;
+        }
+
+        h3 {
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+        }
+
+        p {
+            line-height: 1.6;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        table tr:first-child {
+            background-color: var(--primary-color);
+            color: var(--background-color);
+            font-weight: bold;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #FFF5EE;
+        }
+
+        .note {
+            background-color: #fff9e6;
+            border-left: 5px solid #ffcc00;
+            padding: 15px;
+            margin: 20px 0;
+        }
+
+        ul {
+            list-style-type: disc;
+            margin-left: 20px;
+        }
+
+        /* SVG konteineri stiil */
+        .diagram-container {
+            text-align: center;
+            margin: 30px 0;
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 10px;
+        }
+
+        .reference-list a {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: var(--background-color);
+            text-decoration: none;
+            padding: 5px 10px;
+            margin: 5px;
+            border-radius: 5px;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+<a href="sdlc.html" id="floatingButton">Tagasi</a>
+
+    <h1>Behavior-Driven Development (BDD)</h1>
+
+    <p><strong>Behavior-Driven Development</strong> (käitumispõhine arendus) on agiilne tarkvaraarenduse protsess, mis julgustab koostööd arendajate, testimisspetsialistide ning mittetehniliste osapoolte (ärianalüütikud, kliendid) vahel. See on välja kasvanud testipõhisest arendusest (TDD) ja keskendub tarkvara käitumisele kasutaja vaatepunktist.</p>
+
+    <h2>Mis etapid seal on?</h2>
+    <p>BDD protsess koosneb tavaliselt kolmest põhilisest etapist, mida kutsutakse tihti "kolmeks sõbraks" (The Three Amigos):</p>
+    <ul>
+        <li><strong>Discovery (Avastamine):</strong> Äripoole esindajad ja tehniline tiim arutavad läbi uue funktsionaalsuse. Eesmärk on leida ühine arusaam ja tuvastada võimalikud segased kohad.</li>
+        <li><strong>Formulation (Sõnastamine):</strong> Arutelu tulemused pannakse kirja konkreetsete näidetena (stsenaariumitena), kasutades <em>Gherkin</em> keelt (Given-When-Then formaat).</li>
+        <li><strong>Automation (Automatiseerimine):</strong> Need kirjapandud stsenaariumid muudetakse automaattestideks, mis juhivad koodi kirjutamist.</li>
+    </ul>
+
+    <h2>Kas tal on alamvariante?</h2>
+    <p>BDD ise on tarkvaraarenduse filosoofia ja metodoloogia, kuid seda seostatakse tihedalt järgmiste lähenemistega, mida võib pidada selle laiendusteks või alamvariantideks:</p>
+    <ul>
+        <li><strong>Specification by Example (SbE):</strong> Keskendub nõuete defineerimisele läbi reaalsete eluliste näidete.</li>
+        <li><strong>Acceptance Test-Driven Development (ATDD):</strong> Sarnane BDD-le, kuid rõhutab just vastuvõtutestide (acceptance tests) rolli arenduse juhtimisel.</li>
+        <li><strong>Gherkin-põhine arendus:</strong> Spetsiifiline tehniline rakendus, kus kasutatakse kindlat süntaksit testide kirjeldamiseks.</li>
+    </ul>
+
+    <h2>Arendusmudeli joonis</h2>
+    <div class="diagram-container">
+        <h3>BDD elutsükkel</h3>
+        <svg width="600" height="300" viewBox="0 0 600 300">
+            <!-- Arrows/Flow -->
+            <defs>
+                <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+                    <polygon points="0 0, 10 3.5, 0 7" fill="#FF8C00" />
+                </marker>
+            </defs>
+
+            <!-- Circles -->
+            <circle cx="100" cy="150" r="60" fill="none" stroke="#FF8C00" stroke-width="3" />
+            <text x="100" y="155" text-anchor="middle" font-weight="bold" fill="#333">1. Avastamine</text>
+
+            <circle cx="300" cy="150" r="60" fill="none" stroke="#FF8C00" stroke-width="3" />
+            <text x="300" y="155" text-anchor="middle" font-weight="bold" fill="#333">2. Sõnastamine</text>
+
+            <circle cx="500" cy="150" r="60" fill="none" stroke="#FF8C00" stroke-width="3" />
+            <text x="500" y="155" text-anchor="middle" font-weight="bold" fill="#333">3. Automaatika</text>
+
+            <!-- Connectors -->
+            <line x1="160" y1="150" x2="230" y2="150" stroke="#FF8C00" stroke-width="2" marker-end="url(#arrowhead)" />
+            <line x1="360" y1="150" x2="430" y2="150" stroke="#FF8C00" stroke-width="2" marker-end="url(#arrowhead)" />
+            <path d="M 500 90 Q 300 10 100 90" fill="none" stroke="#FFA500" stroke-width="2" stroke-dasharray="5,5" marker-end="url(#arrowhead)" />
+            <text x="300" y="40" text-anchor="middle" font-style="italic" fill="#666">Tagasiside ring</text>
+        </svg>
+        <p><em>Joonis: BDD pidev tsükkel avastamisest automatiseerimiseni.</em></p>
+    </div>
+
+    <h2>Tähtsaim omadus ja miks?</h2>
+    <div class="note">
+        <p>BDD tähtsaim omadus on <strong>ühine keel (Ubiquitous Language)</strong>.</p>
+        <p><strong>Miks?</strong> See eemaldab tõlkebarjääri äri ja tehnoloogia vahel. Kui kõik osapooled räägivad funktsionaalsusest samas keeles (näiteks "Kasutaja logib sisse" asemel kirjeldatakse konkreetset käitumist), väheneb vigade ja vääriti mõistmise oht drastiliselt. See tagab, et arendaja ehitab täpselt seda, mida äripool vajab.</p>
+    </div>
+
+    <h2>BDD kokkuvõte: Heade ja Veade tabel</h2>
+    <table>
+        <tr>
+            <th>Head (Eelised)</th>
+            <th>Vead (Puudused)</th>
+        </tr>
+        <tr>
+            <td>Parandab suhtlust ja koostööd meeskonnas.</td>
+            <td>Nõuab suurt ajakulu algfaasis (koosolekud).</td>
+        </tr>
+        <tr>
+            <td>Fookus on kasutaja vajadustel ja äriväärtusel.</td>
+            <td>Vajab kõigi osapoolte (ka kliendi) aktiivset osalust.</td>
+        </tr>
+        <tr>
+            <td>Tekib "elav dokumentatsioon", mis on alati ajakohane.</td>
+            <td>Stsenaariumid võivad muutuda liiga mahukaks ja raskesti hooldatavaks.</td>
+        </tr>
+        <tr>
+            <td>Vähendab kulusid hilisemate paranduste arvelt.</td>
+            <td>Nõuab distsipliini ja kultuurilist muutust organisatsioonis.</td>
+        </tr>
+    </table>
+
+    <hr>
+
+    <h2>Viited ja allikad</h2>
+    <div class="reference-list">
+        <a href="https://cucumber.io/docs/bdd/" target="_blank">Cucumber BDD Guide</a>
+        <a href="https://www.agilealliance.org/glossary/bdd/" target="_blank">Agile Alliance: BDD</a>
+        <a href="https://en.wikipedia.org/wiki/Behavior-driven_development" target="_blank">Wikipedia: BDD</a>
+        <p><strong>Tehisintellekti viited:</strong></p>
+        <p>Info koondamisel ja joonise loomisel on kasutatud Google Gemini (09-2025 preview) abi järgmistes küsimustes: BDD etapid, alamvariandid ning plusside-miinuste võrdlus.</p>
+    </div>
+
+</body>
+</html>

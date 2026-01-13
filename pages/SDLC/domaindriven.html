@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Domain-Driven Design (DDD)</title>
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+
+    <h1>Domain-Driven Design (DDD)</h1>
+
+    <div class="note">
+        <strong>Mis see on?</strong><br>
+        Domain-Driven Design (DDD) on tarkvaraarenduse lähenemine, mis keskendub keerukate süsteemide loomisele, sidudes koodi tugevalt reaalse äriloogikaga. Eesmärk on, et tarkvara struktuur ja keel vastaksid täpselt päriselu äriprotsessidele.
+    </div>
+
+    <h2>Mis etapid seal on?</h2>
+    <p>DDD ei ole lineaarne protsess, vaid jaguneb kaheks disainitasandiks:</p>
+
+    <h3>1. Strateegiline disain (Strategic Design)</h3>
+    <p>Suure pildi haldamine ja süsteemi osadeks jagamine:</p>
+    <ul>
+        <li><strong>Ubiquitous Language (Ühtne keel):</strong> Ühine sõnavara, mida kasutavad nii arendajad kui ka ärieksperdid, et vältida tõlkimisvigu.</li>
+        <li><strong>Bounded Contexts (Piiritletud kontekstid):</strong> Süsteemi jagamine selgeteks mooduliteks, kus igal terminil on kindel tähendus.</li>
+    </ul>
+
+    <h3>2. Taktikaline disain (Tactical Design)</h3>
+    <p>Koodi tasandi mustrid lahenduste elluviimiseks:</p>
+    <ul>
+        <li><strong>Entities & Value Objects:</strong> Kuidas modelleerida objekte (kas identiteedi või väärtuse põhjal).</li>
+        <li><strong>Aggregates:</strong> Objektide grupeerimine tehingute terviklikkuse tagamiseks.</li>
+        <li><strong>Repositories:</strong> Abstraktsioon andmebaasisuhtluseks.</li>
+    </ul>
+
+    <hr>
+
+    <h2>Kas sellel on alamvariante?</h2>
+    <p>DDD-d kombineeritakse sageli järgmiste arhitektuurimustritega:</p>
+
+    <ul>
+        <li><strong>CQRS (Command Query Responsibility Segregation):</strong> Kirjutamise ja lugemise operatsioonide eraldamine efektiivsuse tõstmiseks.</li>
+        <li><strong>Event Sourcing:</strong> Oleku salvestamine sündmuste jadana (mitte ainult hetkeseisuna).</li>
+        <li><strong>Hexagonal Architecture (Ports & Adapters):</strong> Äriloogika isoleerimine välisest maailmast (UI, andmebaasid).</li>
+    </ul>
+
+    <h2>Arendusmudel joonisena</h2>
+
+    <table>
+        <tr>
+            <th>DDD Sibularhitektuur (Onion Architecture)</th>
+        </tr>
+        <tr>
+            <td>
+                <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 400' width='600' height='400'><rect width='100%25' height='100%25' fill='white'/><circle cx='300' cy='200' r='190' fill='%23FF4500' opacity='0.8'/><text x='300' y='30' font-family='Arial' font-size='14' font-weight='bold' fill='white' text-anchor='middle'>Infrastructure / UI (Väline)</text><circle cx='300' cy='200' r='140' fill='%23FF8C00'/><text x='300' y='85' font-family='Arial' font-size='14' font-weight='bold' fill='white' text-anchor='middle'>Application Services</text><circle cx='300' cy='200' r='90' fill='%23FFA500'/><text x='300' y='135' font-family='Arial' font-size='14' font-weight='bold' fill='white' text-anchor='middle'>Domain Services</text><circle cx='300' cy='200' r='50' fill='%23FFFFFF'/><text x='300' y='205' font-family='Arial' font-size='12' font-weight='bold' fill='%23333333' text-anchor='middle'>Domain Model</text></svg>"
+                alt="DDD Sibularhitektuur"
+                style="width:100%; max-width:600px; margin:auto;">
+
+                <p><em>Joonise selgitus:</em> Kõige keskel on puhas äriloogika (Domain Model), mis ei sõltu ühestki andmebaasist ega tehnoloogiast. Sõltuvused liiguvad alati väljast sissepoole.</p>
+            </td>
+        </tr>
+    </table>
+
+    <h2>Tähtsaim omadus: Ühtne keel (Ubiquitous Language)</h2>
+    <p>See on DDD kõige kriitilisem osa. Kui koodis kasutatavad terminid erinevad sellest, mida äriinimesed räägivad, tekivad vead.</p>
+    <div class="note">
+        <strong>Näide:</strong> Kui logistikajuht ütleb "Kaup on teele pandud", siis koodis peab olema meetod <code>shipment.dispatch()</code>, mitte lihtsalt andmebaasi välja muutmine <code>update status = 3</code>.
+    </div>
+
+    <h2>Head ja Vead</h2>
+
+    <table>
+        <tr>
+            <th>Omadus</th>
+            <th>Head (Plussid)</th>
+            <th>Vead (Miinused)</th>
+        </tr>
+        <tr>
+            <td><strong>Äriline täpsus</strong></td>
+            <td>Tarkvara käitub täpselt nii nagu äri vajab.</td>
+            <td>Nõuab arendajatelt süvenemist äridetailidesse (mitte ainult koodi).</td>
+        </tr>
+        <tr>
+            <td><strong>Hooldatavus</strong></td>
+            <td>Kood on modulaarne ja muudatused on ohutumad.</td>
+            <td>Algne arendus on aeglasem suurema hulga failide ja kihtide tõttu.</td>
+        </tr>
+        <tr>
+            <td><strong>Kasutusala</strong></td>
+            <td>Ideaalne pikaajaliste ja keeruliste projektide jaoks.</td>
+            <td>Liiga keeruline (over-engineering) lihtsate veebilehtede jaoks.</td>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <a href="https://martinfowler.com/bliki/DomainDrivenDesign.html" target="_blank">Loe Martin Fowleri DDD kokkuvõtet</a>
+            </td>
+        </tr>
+    </table>
+
+    <hr>
+
+    <h3>Kasutatud allikad ja lisalugemist</h3>
+    <p>Selle mudeli süvitsi õppimiseks soovitame järgmisi materjale:</p>
+
+    <a href="https://www.domainlanguage.com/ddd/" target="_blank">Eric Evansi "Domain Language" (DDD kodu)</a>
+    <a href="https://learn.microsoft.com/en-us/azure/architecture/patterns/cqrs" target="_blank">Microsofti juhend: CQRS ja DDD</a>
+    <a href="https://martinfowler.com/tags/domain%20driven%20design.html" target="_blank">Martin Fowleri artiklid DDD-st</a>
+
+    <div id="year-counter-link">
+        <span>Tehtud koostöös AI-ga</span>
+        <span id="days-number">2026</span>
+    </div>
+
+</body>
+</html>

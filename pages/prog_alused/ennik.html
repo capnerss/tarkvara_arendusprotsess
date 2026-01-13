@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ennik (Tuple)</title>
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+<header>
+    <img src="../../assets/icons/logojs2.svg" alt="" width="50" height="50" align="left">
+
+    <a class="navbar" href="../../index.html">Tarkvara Arendusprotsess</a>
+    <a class="navbar" href="index.html">Programmeerimine</a>
+    <a class="navbar" href="../multimedia/index.html">Multimeedia</a>
+    <br>
+    <br>
+</header>
+<h1>Ennik (Tuple)</h1>
+
+    <section>
+        <h2>Mis on ennik?</h2>
+        <ul>
+            <li>Ennik on <strong>muutumatu</strong> (immutable) jada.</li>
+            <li>Sarnane järjendile (list), kuid selle sisu ei saa pärast loomist muuta.</li>
+            <li>Kasutatakse tavaliselt omavahel seotud andmete grupeerimiseks.</li>
+            <li>Kirjeldatakse ümarsulgude abil: <code>()</code>.</li>
+        </ul>
+
+    </section>
+
+    <section>
+        <h2>Enniku loomine</h2>
+        <pre>
+empty_tuple = ()
+point = (10, 20)
+person = ("Ago", 30, "Tallinn")
+# Ühe elemendiga ennik vajab koma:
+single_element = (5,)
+        </pre>
+        <p>Ennikut saab luua ka ilma sulgudeta, eraldades väärtused komadega: <code>point = 10, 20</code>.</p>
+    </section>
+
+    <section>
+        <h2>Kasutamine ja indekseerimine</h2>
+        <ul>
+            <li>Elemendid on järjekorras ja neile pääseb ligi indeksi kaudu: <code>person[0]</code>.</li>
+            <li>Viilutamine (slicing) töötab samamoodi nagu listide ja sõnede puhul: <code>point[0:1]</code>.</li>
+            <li><strong>NB!</strong> Elemendi väärtuse muutmine (<code>point[0] = 5</code>) annab vea (TypeError).</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Lahtipakkimine (Unpacking)</h2>
+        <p>Enniku väärtusi saab mugavalt määrata mitmesse muutuja korraga:</p>
+        <pre>
+point = (10, 20)
+x, y = point
+# x on nüüd 10 ja y on 20
+        </pre>
+        <p>Seda kasutatakse sageli funktsioonides, mis tagastavad mitu väärtust.</p>
+    </section>
+
+    <section>
+        <h2>Ennik vs List</h2>
+        <table>
+            <tr>
+                <th>Omadus</th>
+                <th>List (järjend)</th>
+                <th>Tuple (ennik)</th>
+            </tr>
+            <tr>
+                <td>Muudetavus</td>
+                <td>Jah (mutable)</td>
+                <td>Ei (immutable)</td>
+            </tr>
+            <tr>
+                <td>Süntaks</td>
+                <td><code>[ ]</code></td>
+                <td><code>( )</code></td>
+            </tr>
+            <tr>
+                <td>Kiirus</td>
+                <td>Aeglasem</td>
+                <td>Kiirem</td>
+            </tr>
+            <tr>
+                <td>Kasutusala</td>
+                <td>Sarnased andmed, mida on vaja muuta</td>
+                <td>Fikseeritud struktuuriga andmed</td>
+            </tr>
+        </table>
+    </section>
+
+    <section>
+        <h2>Meetodid</h2>
+        <p>Kuna ennik on muutumatu, on sellel vaid kaks meetodit:</p>
+        <ul>
+            <li><code>count(väärtus)</code> - loendab, mitu korda väärtus esineb.</li>
+            <li><code>index(väärtus)</code> - leiab esimese esinemise indeksi.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Kokkuvõte</h2>
+        <ul>
+            <li>Ennik on fikseeritud pikkuse ja sisuga jada.</li>
+            <li>Tagab andmete turvalisuse (neid ei saa kogemata muuta).</li>
+            <li>Sobib ideaalselt funktsioonide tagastusväärtusteks ja sõnastiku võtmeteks.</li>
+        </ul>
+    </section>
+<a href="hulk.html">Next topic</a>
+<footer>
+    <hr>
+    <div style="text-align: center; padding: 20px;">
+        <p>&copy; 2025 Juri.</p>
+        <p style="font-size: small; color: #666;">
+            Lehekülg on osa õppematerjalist. Viimati uuendatud: detsember 2025.
+        </p>
+    </div>
+</footer>
+</body>
+</html>

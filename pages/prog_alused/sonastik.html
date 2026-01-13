@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sõnastik (Dictionary)</title>
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+<header>
+    <img src="../../assets/icons/logojs2.svg" alt="" width="50" height="50" align="left">
+
+    <a class="navbar" href="../../index.html">Tarkvara Arendusprotsess</a>
+    <a class="navbar" href="index.html">Programmeerimine</a>
+    <a class="navbar" href="../multimedia/index.html">Multimeedia</a>
+    <br>
+    <br>
+</header>
+<h1>Sõnastik (Dictionary)</h1>
+
+    <section>
+        <h2>Mis on sõnastik?</h2>
+        <ul>
+            <li>Sõnastik on muudetav (mutable) andmetüüp.</li>
+            <li>Andmed hoitakse <strong>võti-väärtus</strong> (key-value) paaridena.</li>
+            <li>Sõnastik on "asotsiatiivne massiiv" – väärtustele pääseb ligi võtme kaudu, mitte indeksi järgi.</li>
+            <li>Võtmed on unikaalsed.</li>
+            <li>Kirjeldatakse loogeliste sulgude abil: <code>{}</code>.</li>
+        </ul>
+
+    </section>
+
+    <section>
+        <h2>Sõnastiku loomine</h2>
+        <pre>
+empty_dict = {}
+person = {
+    "name": "Ago",
+    "age": 30,
+    "city": "Tallinn"
+}
+        </pre>
+    </section>
+
+    <section>
+        <h2>Väärtuste kasutamine</h2>
+        <ul>
+            <li><strong>Lugemine:</strong> <code>person["name"]</code> tagastab "Ago".</li>
+            <li><strong>Lisamine ja muutmine:</strong> <code>person["job"] = "Teacher"</code> või <code>person["age"] = 31</code>.</li>
+            <li><strong>get() meetod:</strong> <code>person.get("name")</code>. Erinevalt nurksulgudest ei anna see viga, kui võtit pole, vaid tagastab <code>None</code>.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Eemaldamine</h2>
+        <ul>
+            <li><code>del person["age"]</code> - eemaldab võtme ja selle väärtuse.</li>
+            <li><code>pop("key")</code> - eemaldab võtme ja tagastab selle väärtuse.</li>
+            <li><code>clear()</code> - tühjendab kogu sõnastiku.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Sõnastiku läbimine</h2>
+        <p>Sõnastikku saab läbida mitmel viisil:</p>
+        <ul>
+            <li><code>for key in person:</code> - käib läbi ainult võtmed.</li>
+            <li><code>for value in person.values():</code> - käib läbi ainult väärtused.</li>
+            <li><code>for key, value in person.items():</code> - käib läbi mõlemad korraga.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Võtmete piirangud</h2>
+        <ul>
+            <li>Võti peab olema <strong>muutumatu</strong> (immutable).</li>
+            <li>Sobilikud: sõned, arvud, ennikud (tuple).</li>
+            <li>Mittesobilikud: listid, sõnastikud (sest need on muudetavad).</li>
+            <li>Väärtus võib olla ükskõik milline andmetüüp.</li>
+        </ul>
+
+    </section>
+
+    <section>
+        <h2>Sõnastiku operatsioonid</h2>
+        <ul>
+            <li><code>len(person)</code> - paaride arv sõnastikus.</li>
+            <li><code>"name" in person</code> - kontrollib võtme olemasolu (tagastab True/False).</li>
+            <li><code>person.keys()</code> - tagastab kõik võtmed.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Kokkuvõte</h2>
+        <ul>
+            <li>Sõnastik koosneb unikaalsetest võtmetest ja neile vastavatest väärtustest.</li>
+            <li>Väärtusi saab kiiresti leida võtme järgi.</li>
+            <li>Sõnastik on muudetav ja dünaamilise suurusega.</li>
+        </ul>
+    </section>
+<a href="ennik.html">Next topic</a>
+<footer>
+    <hr>
+    <div style="text-align: center; padding: 20px;">
+        <p>&copy; 2025 Juri.</p>
+        <p style="font-size: small; color: #666;">
+            Lehekülg on osa õppematerjalist. Viimati uuendatud: detsember 2025.
+        </p>
+    </div>
+</footer>
+</body>
+</html>

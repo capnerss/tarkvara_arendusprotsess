@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Specification by Example</title>
+
+    <link rel="stylesheet" href="../../css/style.css">
+
+    <style>
+        .diagram-box {
+            border: 2px dashed var(--secondary-color, #FFA500);
+            padding: 20px;
+            text-align: center;
+            background-color: #FFF5EE;
+            border-radius: 10px;
+            margin: 20px 0;
+            font-weight: bold;
+        }
+        .arrow {
+            font-size: 20px;
+            color: var(--primary-color, #FF8C00);
+            padding: 0 10px;
+        }
+    </style>
+</head>
+<body>
+
+
+    <h1>Specification by Example (SbE)</h1>
+
+    <div class="note">
+        <p><strong>Specification by Example (SbE)</strong> on koostööl põhinev lähenemine tarkvaranõuete ja äriliste testide määratlemiseks. Selle asemel, et kirjutada abstraktseid spetsifikatsioone, kasutatakse konkreetseid näiteid, et luua ühine arusaam arendajate, testijate ja äripoole vahel.</p>
+    </div>
+
+    <h2>Mis etapid seal on?</h2>
+    <p>SbE protsess ei ole rangelt lineaarne, vaid pigem tsükliline. Gojko Adzici järgi on peamised sammud:</p>
+    <ul>
+        <li><strong>Eesmärkide seadmine:</strong> Määratletakse, miks me midagi teeme ja mis on äriline väärtus.</li>
+        <li><strong>Spetsifitseerimine (Collaborative Specification):</strong> "Three Amigos" (arendaja, testija, tooteomanik) arutavad nõudeid ja loovad konkreetseid näiteid.</li>
+        <li><strong>Illustreerimine:</strong> Näited kirjutatakse üles struktureeritud kujul (nt Gherkin keeles).</li>
+        <li><strong>Automatiseerimine:</strong> Näited seotakse koodiga, muutes need käivitatavateks testideks.</li>
+        <li><strong>Valideerimine:</strong> Testide käivitamine veendumaks, et süsteem vastab näidetele.</li>
+        <li><strong>Elav dokumentatsioon (Living Documentation):</strong> Edukalt läbitud testid muutuvad usaldusväärseks dokumentatsiooniks.</li>
+    </ul>
+
+    <h2>Kas see on arendusmudel ja kas tal on alamvariante?</h2>
+    <p>SbE on pigem <strong>metoodika või praktika</strong> kui täiemahuline arendusmudel (nagu Waterfall või Scrum), kuid see integreerub tihedalt Agile protsessidega. See on osa laiemast perekonnast:</p>
+
+    <h3>Alamvariandid ja seotud terminid:</h3>
+    <ul>
+        <li><strong>ATDD (Acceptance Test-Driven Development):</strong> Väga sarnane SbE-le. Fookus on vastuvõtutestide kirjutamisel enne koodi kirjutamist.</li>
+        <li><strong>BDD (Behavior-Driven Development):</strong> SbE edasiarendus, mis keskendub süsteemi käitumise kirjeldamisele inimkeeles (nt "Given-When-Then" formaat). BDD on sageli see tehniline raamistik, mida SbE rakendamiseks kasutatakse.</li>
+    </ul>
+
+    <h2>Milline näeb välja arendusmudel joonisena?</h2>
+    <p>Kuna SbE on tsükliline protsess, võib seda visualiseerida järgmise ahelana, mis kordub iga uue funktsionaalsusega:</p>
+
+    <div class="diagram-box">
+        Äriline eesmärk <span class="arrow">➜</span>
+        Arutelu & Näited <span class="arrow">➜</span>
+        Täpsustatud Spetsifikatsioon <span class="arrow">➜</span>
+        Käivitatav Test (Kood) <span class="arrow">➜</span>
+        Elav Dokumentatsioon
+    </div>
+
+    <p>Joonise keskne idee on see, et <strong>spetsifikatsioon ja test on üks ja seesama asi</strong>.</p>
+
+    <h2>Arendusmudeli tähtsaim omadus ja miks</h2>
+    <div class="note">
+        <h3>Elav Dokumentatsioon (Living Documentation)</h3>
+        <p><strong>Miks?</strong> Traditsioonilises arenduses vananeb paberil (või Wikis) olev dokumentatsioon kohe, kui kood muutub. SbE puhul on dokumentatsiooniks <strong>automatiseeritud testid</strong>. Kui kood muutub ja testid enam ei läbi, siis "dokumentatsioon" karjub punaselt. See tagab, et dokumentatsioon on alati tõene ja sünkroonis tegeliku süsteemiga (Single Source of Truth).</p>
+    </div>
+
+    <h2>Head ja Vead (Plussid ja Miinused)</h2>
+
+    <table>
+        <tr>
+            <th>Omadus</th>
+            <th>Plussid (Head)</th>
+            <th>Miinused (Vead)</th>
+        </tr>
+        <tr>
+            <td><strong>Kommunikatsioon</strong></td>
+            <td>Vähendab drastiliselt arusaamatusi äri ja IT vahel. Kõik räägivad "sama keelt".</td>
+            <td>Nõuab suurt kultuurilist muutust ja aktiivset osalust äripoolelt (mis võib olla raske).</td>
+        </tr>
+        <tr>
+            <td><strong>Kvaliteet</strong></td>
+            <td>Vähem vigu (bugisid), kuna nõuded on algusest peale selged ja testitud.</td>
+            <td>Esialgne ajakulu on suurem, kuna analüüs on põhjalikum enne koodi kirjutamist.</td>
+        </tr>
+        <tr>
+            <td><strong>Hooldatavus</strong></td>
+            <td>Tekib "Elav dokumentatsioon", mis on alati ajakohane.</td>
+            <td>Testide (näidete) haldamine võib muutuda koormavaks, kui neid on tuhandeid ja neid ei refaktoreerita.</td>
+        </tr>
+        <tr>
+            <td><strong>Selgus</strong></td>
+            <td>Konkreetsed näited välistavad mitmeti mõistetavuse (nt "kiire" vs "vastab 200ms").</td>
+            <td>Liiga keeruliste ärireeglite puhul võib näidete arv muutuda liiga suureks ja raskesti loetavaks.</td>
+        </tr>
+      <tr></tr>
+    </table>
+
+    <hr>
+
+    <h3>Viited ja lisalugemist</h3>
+    <p>Alljärgnevalt lingid usaldusväärsetesse allikatesse, kust info pärineb:</p>
+
+    <a href="https://en.wikipedia.org/wiki/Specification_by_example" target="_blank">Wikipedia - SbE</a>
+    <a href="https://martinfowler.com/bliki/SpecificationByExample.html" target="_blank">Martin Fowler - SbE</a>
+
+</body>
+</html>

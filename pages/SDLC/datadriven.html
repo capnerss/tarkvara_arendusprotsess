@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Driven Development</title>
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+
+    <h1>Data Driven Development (DDD)</h1>
+
+    <p>
+        <strong>Data Driven Development</strong> (andmetepõhine arendus) on tarkvaraarenduse metoodika, kus otsuseid ja prioriteete ei määra mitte "kõhutunne" või hierarhia (nt kõrgeima palgaga isiku arvamus), vaid kogutud kvantitatiivsed ja kvalitatiivsed andmed.
+    </p>
+    <p>
+        Selle mudeli eesmärk on vähendada ebakindlust, valideerides hüpoteese reaalsete kasutajate peal võimalikult vara. See on tihedalt seotud <em>Lean Startup</em> ja <em>Agile</em> põhimõtetega.
+    </p>
+
+    <h2>Arendusmudeli etapid</h2>
+    <p>DDD protsess on tsükliline, mitte lineaarne. Tüüpilised etapid on järgmised:</p>
+
+    <ul>
+        <li><strong>1. Eesmärgi seadmine ja hüpotees:</strong> Määratletakse, millist mõõdikut (KPI) tahetakse parandada ja püstitatakse hüpotees (nt "Nupu värvi muutmine tõstab konversiooni 5%").</li>
+        <li><strong>2. Andmete kogumise planeerimine:</strong> Otsustatakse, milliseid andmeid on vaja hüpoteesi tõestamiseks ja kuidas neid logida.</li>
+        <li><strong>3. Arendus (Build):</strong> Luuakse minimaalne vajalik funktsionaalsus (MVP) või muudatus.</li>
+        <li><strong>4. Mõõtmine (Measure):</strong> Funktsionaalsus lastakse kasutajateni ja kogutakse kasutusstatistikat.</li>
+        <li><strong>5. Analüüs ja õppimine (Learn):</strong> Võrreldakse tulemusi eesmärgiga. Kas hüpotees pidas paika?</li>
+        <li><strong>6. Otsustamine:</strong> Kas jätkata (persevere), muuta suunda (pivot) või lahendus hüljata.</li>
+    </ul>
+
+    <h2>Kas sellel on alamvariante?</h2>
+    <p>Kuigi DDD ise on pigem katusmõiste või "mõtteviis", eksisteerib selle all spetsiifilisemaid lähenemisi ja alamvariante:</p>
+
+    <div class="note">
+        <strong>Tähelepanu:</strong> Ära aja segi TDD-ga (Test Driven Development). TDD räägib koodi tehnilisest testimisest, DDD aga toote ärilisest valideerimisest andmete abil.
+    </div>
+
+    <ul>
+        <li><strong>Hypothesis-Driven Development (HDD):</strong> Väga rangelt teaduslikule meetodile allutatud variant. Iga arendusülesanne sõnastatakse eksperimendina: <em>"Usume, et [tegevus] toob kaasa [tulemuse]. Teame, et see on tõsi, kui näeme [mõõdik]."</em></li>
+        <li><strong>A/B Testimine kui arendusmudel:</strong> Lähenemine, kus uusi lahendusi ei rullita kunagi välja 100% kasutajatele korraga, vaid arendusprotsessi loomulik osa on pidev variantide võrdlemine kontrollgrupiga.</li>
+        <li><strong>Telemetry-First Development:</strong> DevOps-keskne alamliik, kus monitooring ja logimine ehitatakse süsteemi sisse enne äriloogikat, et tagada kohene nähtavus (observability).</li>
+    </ul>
+
+    <<h2>Arendusmudel joonisena</h2>
+    <p>
+        Data Driven Development mudelit kujutatakse kõige sagedamini <strong>ringdiagrammina</strong> (tagasiside silmusena), mis on tuntud kui "Build-Measure-Learn" tsükkel.
+    </p>
+
+    <div style="text-align: center; margin: 30px 0;">
+        <svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+            <style>
+                .cycle-text { font-family: Arial, sans-serif; font-weight: bold; font-size: 16px; fill: #333; }
+                .cycle-arrow { stroke: #FF8C00; stroke-width: 4; fill: none; marker-end: url(#arrowhead); }
+                .cycle-box { fill: #FFF5EE; stroke: #FFA500; stroke-width: 2; rx: 10; }
+            </style>
+
+            <defs>
+                <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                <polygon points="0 0, 10 3.5, 0 7" fill="#FF8C00" />
+                </marker>
+            </defs>
+
+            <rect x="150" y="20" width="100" height="50" class="cycle-box" />
+            <text x="200" y="50" text-anchor="middle" class="cycle-text">BUILD</text>
+
+            <rect x="280" y="150" width="100" height="50" class="cycle-box" />
+            <text x="330" y="180" text-anchor="middle" class="cycle-text">MEASURE</text>
+
+            <rect x="20" y="150" width="100" height="50" class="cycle-box" />
+            <text x="70" y="180" text-anchor="middle" class="cycle-text">LEARN</text>
+
+            <path d="M250 45 Q330 45 330 140" class="cycle-arrow" />
+
+            <path d="M330 210 Q200 280 70 210" class="cycle-arrow" />
+
+            <path d="M70 140 Q70 45 140 45" class="cycle-arrow" />
+
+        </svg>
+        <p style="font-size: 0.9em; color: #666;"><em>Joonis: Build-Measure-Learn tagasiside tsükkel</em></p>
+    </div>
+
+    <p>
+        Joonis on iteratiivne: see algab ideest, liigub koodi kirjutamiseni, sealt andmete kogumiseni ja lõpuks tagasi uue ideeni, mis põhineb õpitul.
+    </p>
+
+    <h2>Mudeli tähtsaim omadus</h2>
+    <h3>Tagasiside ahel (Feedback Loop)</h3>
+    <p>
+        Kõige kriitilisem omadus on <strong>lühike ja objektiivne tagasiside ahel</strong>.
+    </p>
+    <p>
+        <strong>Miks?</strong> Ilma kiire tagasisideta on andmete kogumine vaid "edevusmõõdik" (vanity metric). Mudeli väärtus seisneb selles, et arendustiim ei raiska aega funktsioonidele, mida keegi ei kasuta. See asendab subjektiivsed arvamused objektiivse reaalsusega, võimaldades ebaõnnestuda kiiresti ja odavalt (<em>fail fast</em>).
+    </p>
+
+    <h2>Heade ja Veade tabel</h2>
+
+    <table>
+        <tr>
+            <th>Positiivne (Head)</th>
+            <th>Negatiivne (Vead) / Riskid</th>
+        </tr>
+        <tr>
+            <td>
+                <strong>Objektiivsus:</strong> Vähendab isiklikel arvamustel põhinevaid vaidlusi ja poliitikat organisatsioonis.
+            </td>
+            <td>
+                <strong>Analüüsi halvatus (Analysis Paralysis):</strong> Oht jääda andmeid jõllitama ja lõputult analüüsima, lükates otsuseid edasi.
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <strong>Parem ROI (Tasuvus):</strong> Ressurss suunatakse sinna, mis päriselt toob tulu või väärtust kasutajale.
+            </td>
+            <td>
+                <strong>Konteksti puudumine:</strong> Andmed näitavad "mis" juhtus, aga harva "miks". Võib tekkida valesid järeldusi ilma kvalitatiivse uuringuta.
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <strong>Parem kasutajakogemus (UX):</strong> Toodet arendatakse vastavalt sellele, kuidas inimesed seda tegelikult kasutavad.
+            </td>
+            <td>
+                <strong>Lokaalne maksimum:</strong> Andmed võivad optimeerida olemasolevat lahendust, kuid ei pruugi viidata vajadusele radikaalse innovatsiooni järele (mida andmetes veel pole).
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <strong>Riskide maandamine:</strong> Vigased ideed praagitakse välja enne suuremahulist investeeringut.
+            </td>
+            <td>
+                <strong>Privaatsusprobleemid:</strong> Liigne andmekorje võib minna vastuollu GDPR-i või kasutajate usaldusega.
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                Loe lähemalt: <a href="https://www.thoughtworks.com/insights/articles/how-implement-hypothesis-driven-development" target="_blank">How to Implement Hypothesis-Driven Development (ThoughtWorks)</a>
+            </td>
+        </tr>
+    </table>
+
+    <hr>
+
+    <h3>Viited</h3>
+    <ul>
+        <li> ThoughtWorks / Barry O'Reilly - "How to Implement Hypothesis-Driven Development". <a href="https://www.thoughtworks.com/insights/articles/how-implement-hypothesis-driven-development" target="_blank">Link artiklile</a></li>
+
+    </ul>
+
+
+</body>
+</html>
