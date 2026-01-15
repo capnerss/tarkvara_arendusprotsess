@@ -133,7 +133,9 @@ document.addEventListener('click', function(e) {
         openModal(e.target.src);
     }
 });
-
+/* ==========================================
+   3. Логика (Quiz)
+   ========================================== */
 function checkQuiz() {
         let score = 0;
         const answers = {
