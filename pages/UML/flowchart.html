@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="../../css/style.css">
 </head>
 <header>
-    <a href="html" id="floatingButton">Tagasi</a>
+    <a href="./index.html" id="floatingButton">Tagasi</a>
 
 </header>
 <body>
@@ -49,6 +49,66 @@ Vooskeem kirjeldavad, kuidas tegevusi koordineeritakse teenuse osutamiseks, mis 
 <h2>Vooskeem illustreerib programmi tööloogikat visuaalselt samm-sammult.</h2>
 
     <img src="../../assets/images/btc.png" alt="Bitcoini kalkulaatori programmi vooskeem" style="max-width: 100%; height: auto; display: block; margin: 20px 0;">
+
+<!-- Quiz Section -->
+<div class="quiz-container">
+    <h2>Kontrolli oma teadmisi</h2>
+    <div id="quiz">
+        <div class="quiz-question">1. Mida kirjeldab vooskeem (Flowchart)?</div>
+        <div class="quiz-options">
+            <label><input type="radio" name="q1" value="a"> Andmebaasi staatilist struktuuri</label>
+            <label><input type="radio" name="q1" value="b"> Süsteemi dünaamilisi aspekte ja liikumist tegevuste vahel</label>
+            <label><input type="radio" name="q1" value="c"> Riistvara komponentide paigutust</label>
+        </div>
+
+        <div class="quiz-question">2. Milline sümbol tähistab tegevuste algust (Initial Node)?</div>
+        <div class="quiz-options">
+            <label><input type="radio" name="q2" value="a"> Täidetud ring (Start)</label>
+            <label><input type="radio" name="q2" value="b"> Romb (Otsus)</label>
+            <label><input type="radio" name="q2" value="c"> Ristkülik (Tegevus)</label>
+        </div>
+
+        <div class="quiz-question">3. Milleks kasutatakse otsustussõlme (Decision Node)?</div>
+        <div class="quiz-options">
+            <label><input type="radio" name="q3" value="a"> Tegevuse lõpetamiseks</label>
+            <label><input type="radio" name="q3" value="b"> Tegevuste järjestuse näitamiseks</label>
+            <label><input type="radio" name="q3" value="c"> Testitingimuse esitamiseks ja voo suunamiseks</label>
+        </div>
+
+        <button class="quiz-submit-btn" onclick="checkQuiz()">Kontrolli vastuseid</button>
+        <div id="quiz-result" class="quiz-result"></div>
+    </div>
+</div>
+
+<script>
+    function checkQuiz() {
+        let score = 0;
+        const answers = {
+            q1: 'b',
+            q2: 'a',
+            q3: 'c'
+        };
+
+        const resultDiv = document.getElementById('quiz-result');
+        resultDiv.innerHTML = '';
+
+        for (let q in answers) {
+            const selected = document.querySelector(`input[name="${q}"]:checked`);
+            if (selected && selected.value === answers[q]) {
+                score++;
+            }
+        }
+
+        resultDiv.innerText = `Sa said ${score} punkti 3-st!`;
+        if (score === 3) {
+            resultDiv.style.color = 'green';
+            resultDiv.innerText += " Suurepärane töö!";
+        } else {
+            resultDiv.style.color = 'red';
+            resultDiv.innerText += " Proovi uuesti!";
+        }
+    }
+</script>
 
 <a href="https://www.visual-paradigm.com/"> Viited infoallikaile</a>
 </body>

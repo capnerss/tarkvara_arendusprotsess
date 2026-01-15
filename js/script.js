@@ -133,3 +133,31 @@ document.addEventListener('click', function(e) {
         openModal(e.target.src);
     }
 });
+
+function checkQuiz() {
+        let score = 0;
+        const answers = {
+            q1: 'b',
+            q2: 'c',
+            q3: 'a'
+        };
+
+        const resultDiv = document.getElementById('quiz-result');
+        resultDiv.innerHTML = '';
+
+        for (let q in answers) {
+            const selected = document.querySelector(`input[name="${q}"]:checked`);
+            if (selected && selected.value === answers[q]) {
+                score++;
+            }
+        }
+
+        resultDiv.innerText = `Sa said ${score} punkti 3-st!`;
+        if (score === 3) {
+            resultDiv.style.color = 'green';
+            resultDiv.innerText += " Suurepärane töö!";
+        } else {
+            resultDiv.style.color = 'red';
+            resultDiv.innerText += " Proovi uuesti!";
+        }
+    }

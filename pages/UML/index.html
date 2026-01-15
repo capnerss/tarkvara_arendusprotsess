@@ -272,6 +272,38 @@
     <br>
     <hr>
 
+<!-- Quiz Section -->
+<div class="quiz-container">
+    <h2>Kontrolli oma teadmisi UML-ist</h2>
+    <div id="quiz">
+        <div class="quiz-question">1. Mida tähendab lühend UML?</div>
+        <div class="quiz-options">
+            <label><input type="radio" name="q1" value="a"> Universal Modeling Language</label>
+            <label><input type="radio" name="q1" value="b"> Unified Modeling Language</label>
+            <label><input type="radio" name="q1" value="c"> Unique Modeling Language</label>
+        </div>
+
+        <div class="quiz-question">2. Milline neist on käitumisdiagramm?</div>
+        <div class="quiz-options">
+            <label><input type="radio" name="q2" value="a"> Klassidiagramm</label>
+            <label><input type="radio" name="q2" value="b"> Komponendidiagramm</label>
+            <label><input type="radio" name="q2" value="c"> Kasutusjuhtude diagramm</label>
+        </div>
+
+        <div class="quiz-question">3. Mida tähistab klassidiagrammil pidev joon tühja kolmnurgaga?</div>
+        <div class="quiz-options">
+            <label><input type="radio" name="q3" value="a"> Pärilust (Generaliseerimist)</label>
+            <label><input type="radio" name="q3" value="b"> Assotsiatsiooni</label>
+            <label><input type="radio" name="q3" value="c"> Kompositsiooni</label>
+        </div>
+
+        <button class="quiz-submit-btn" onclick="checkQuiz()">Kontrolli vastuseid</button>
+        <div id="quiz-result" class="quiz-result"></div>
+    </div>
+</div>
+
+<script src="../../js/script.js"></script>
+
 <!--    <h3>Lisatavate teemade lühikirjeldus</h3>-->
 <!--    <ul>-->
 <!--        <li><b>Lühikirjeldus (Iseloomustus):</b> Diagrammiliigi peamine eesmärk ja fookus.</li>-->

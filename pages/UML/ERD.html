@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="../../css/style.css">
 </head>
 <header>
-    <a href="html" id="floatingButton">Tagasi</a>
+    <a href="./index.html" id="floatingButton">Tagasi</a>
 
 </header>
 <body>
@@ -100,6 +100,41 @@ See paar on korraga nii selle tabeli primaarvõti (PK) kui ka viited teistesse t
 
 
 <img src="../../assets/images/erd-example.svg" alt="">
+
+
+<!-- Quiz Section -->
+<div class="quiz-container">
+    <h2>Kontrolli oma teadmisi</h2>
+    <div id="quiz">
+        <div class="quiz-question">1. Mis on ER-diagramm?</div>
+        <div class="quiz-options">
+            <label><input type="radio" name="q1" value="a"> Andmebaasi programmeerimiskeel</label>
+            <label><input type="radio" name="q1" value="b"> Vooskeem, mis illustreerib olemite vahelisi seoseid</label>
+            <label><input type="radio" name="q1" value="c"> Tarkvara testimise meetod</label>
+        </div>
+
+        <div class="quiz-question">2. Mis on Primaarvõti (Primary Key)?</div>
+        <div class="quiz-options">
+            <label><input type="radio" name="q2" value="a"> Võti, mis avab andmebaasi ukse</label>
+            <label><input type="radio" name="q2" value="b"> Veerg, mis viitab teise tabeli võtmele</label>
+            <label><input type="radio" name="q2" value="c"> Unikaalne tunnus, mis identifitseerib rea üheselt</label>
+        </div>
+
+        <div class="quiz-question">3. Mida tähistab Välisvõti (Foreign Key)?</div>
+        <div class="quiz-options">
+            <label><input type="radio" name="q3" value="a"> Seost kahe tabeli vahel</label>
+            <label><input type="radio" name="q3" value="b"> Andmebaasi parooli</label>
+            <label><input type="radio" name="q3" value="c"> Kõige tähtsamat võtit tabelis</label>
+        </div>
+
+        <button class="quiz-submit-btn" onclick="checkQuiz()">Kontrolli vastuseid</button>
+        <div id="quiz-result" class="quiz-result"></div>
+    </div>
+</div>
+
+<script src="../../js/script.js"></script>
 <a href="https://www.lucidchart.com/pages/er-diagrams">Viited infoallikaile</a>
+
+
 </body>
 </html>
