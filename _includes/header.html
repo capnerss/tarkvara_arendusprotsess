@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<header>
+  <nav>
+    <a href="{{ '/index.html' | relative_url }}">Главная</a>
+    <a href="{{ '/pages/prog_alused/index.html' | relative_url }}">Programmeerimine</a>
+    <a href="{{ '/pages/multimedia/index.html' | relative_url }}">Multimeedia</a>
+    <a href="{{ '/pages/targe25/index.html' | relative_url }}">Networking</a>
+    <div class="search-box">
+        <button class="btn-search">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+        </button>
+        <label for="search-input"></label><input type="text" class="input-search" id="search-input" placeholder="Otsi...">
+        <div id="results-container"></div>
+    </div>
+
+    </nav>
+</header>
+
+</body>
+</html>

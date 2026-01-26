@@ -270,6 +270,11 @@ const siteContent = [
         "desc": "Koskmudel (ehk waterfall) on üks esimesi tarkvaraarenduse elutsükli mudeleid. See põhineb tavalise \n..."
     },
     {
+        "title": "TARge25",
+        "url": "pages/targe25/index.html",
+        "desc": ""
+    },
+    {
         "title": "ERD",
         "url": "pages/UML/ERD.html",
         "desc": "ER-diagramm ehk olemi-seose diagramm on vooskeemi tüüp, mis illustreerib, kuidas \"olemid\" (nt inimes..."
