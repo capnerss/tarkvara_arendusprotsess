@@ -7,7 +7,7 @@ ROOT_DIR = '.'  # Текущая папка
 OUTPUT_FILE = os.path.join('js', 'data.js')
 
 # Папки, которые скрипт будет игнорировать
-IGNORE_DIRS = {'.git', '.idea', 'venv', '__pycache__', 'css', 'js', 'assets', 'fonts'}
+IGNORE_DIRS = {'.git', '.idea', 'venv', '__pycache__', 'css', 'js', 'assets', 'fonts', '.github', '_includes'}
 
 
 def clean_html(raw_html):

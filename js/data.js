@@ -288,5 +288,10 @@ const siteContent = [
         "title": "UML diagrammikeel",
         "url": "pages/UML/index.html",
         "desc": "UML (Unified Modeling Language – ühtne modelleerimiskeel) on visuaalne modelleerimiskeel, mis aitab ..."
+    },
+    {
+        "title": "Title",
+        "url": "_includes/header.html",
+        "desc": "Vaata lähemalt..."
     }
 ];
