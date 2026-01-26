@@ -1,29 +1,6 @@
-/* ==========================================
-   1. Счетчик дней до Нового года
-   ========================================== */
-function updateCounter() {
-    const now = new Date();
-    const currentYear = now.getFullYear();
-    const nextYear = currentYear + 1;
-    const targetDate = new Date(`January 1, ${nextYear} 00:00:00`);
-
-    const diff = targetDate - now;
-    const daysLeft = Math.ceil(diff / (1000 * 60 * 60 * 24));
-
-    // Проверка на случай ошибки элемента
-    const daysElement = document.getElementById('days-number');
-    if (daysElement) {
-        daysElement.innerText = daysLeft;
-    }
-}
-
-// Запускаем сразу и обновляем каждый час
-updateCounter();
-setInterval(updateCounter, 3600000);
-
 
 /* ==========================================
-   2. Поиск по сайту (Fuse.js)
+    Поиск по сайту (Fuse.js)
    ========================================== */
 
 const fuseOptions = {
@@ -74,9 +51,31 @@ if (typeof Fuse !== 'undefined') {
                 resultsBox.style.display = 'block';
                 results.forEach(result => {
                     const item = result.item;
+                    // --- НАЧАЛО ИСПРАВЛЕНИЯ ---
+                    let correctUrl = item.url;
+
+                    // 2. Проверка глубины вложенности
+                    // Если мы находимся внутри папки "pages", нужно добавить "../" для выхода в корень
+                    if (window.location.pathname.includes('/pages/')) {
+                        // Разбиваем текущий путь по слэшам и убираем пустые элементы
+                        const pathParts = window.location.pathname.split('/').filter(part => part.length > 0);
+                        const pagesIndex = pathParts.indexOf('pages');
+
+                        if (pagesIndex !== -1) {
+                            // Считаем, сколько папок нужно пройти вверх, чтобы вернуться в корень
+                            // Формула: Длина пути - Индекс папки 'pages' - 1 (сам файл)
+                            const depth = pathParts.length - pagesIndex - 1;
+
+                            // Создаем префикс (например, "../../")
+                            const prefix = '../'.repeat(depth);
+                            correctUrl = prefix + correctUrl;
+                        }
+                    }
+                    // --- КОНЕЦ ИСПРАВЛЕНИЯ ---
+
                     const html = `
                         <div class="result-item">
-                            <a href="${item.url}">${item.title}</a>
+                            <a href="${correctUrl}">${item.title}</a>
                             <p>${item.desc}</p>
                         </div>
                     `;

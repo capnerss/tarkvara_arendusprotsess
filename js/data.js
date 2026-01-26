@@ -1,87 +1,87 @@
 const siteContent = [
     {
         "title": "Minu Tarkvara Arendusprotsessi Ainemapp",
-        "url": "/index.html",
+        "url": "index.html",
         "desc": "Tarkvara Arendusprotsessi aines tehtud ainemapp, kus on selle aine ja kõikide teiste ainete ülesande..."
     },
     {
         "title": "Bitcoin kalkulaator: BIC",
-        "url": "/pages/BTC/index.html",
+        "url": "pages/BTC/index.html",
         "desc": "Selle programmi eesmärk on teisendada Bitcoini (BTC) kogus teistesse valuutadesse (nt EUR, USD, GBP,..."
     },
     {
         "title": "CASE vahendid",
-        "url": "/pages/CASE/index.html",
+        "url": "pages/CASE/index.html",
         "desc": "Tarkvaraaarenduse elutsükkel koosneb erinevatest etappidest, milles tehtavad tegevused on väga erine..."
     },
     {
         "title": "Lower-CASE vahendid",
-        "url": "/pages/CASE/lowercase.html",
+        "url": "pages/CASE/lowercase.html",
         "desc": "Lower-CASE vahendid (inglise keeles Lower Computer-Aided Software Engineering) „alumise taseme\" CASE..."
     },
     {
         "title": "Upper-CASE vahendid",
-        "url": "/pages/CASE/uppercase.html",
+        "url": "pages/CASE/uppercase.html",
         "desc": "Upper-CASE vahendid (inglise keeles Upper Computer-Aided Software Engineering)„ülemise taseme\" CASE-..."
     },
     {
         "title": "Documentatsioon",
-        "url": "/pages/DOCS/index.html",
+        "url": "pages/DOCS/index.html",
         "desc": "Tarkvara arenduse elutsuklis on olemas erinevaid tegevusi, nende tegevuse tulemusel tekib hulk artif..."
     },
     {
         "title": "4. Adobe Animate",
-        "url": "/pages/multimedia/animate.html",
+        "url": "pages/multimedia/animate.html",
         "desc": "Adobe Animate on professionaalne tarkvara vektorgraafikal põhinevate animatsioonide ja interaktiivse..."
     },
     {
         "title": "5. Adobe Illustrator",
-        "url": "/pages/multimedia/illustrator.html",
+        "url": "pages/multimedia/illustrator.html",
         "desc": "Adobe Illustrator on professionaalne vektorgraafika programm, mida kasutatakse logode, ikoonide, joo..."
     },
     {
         "title": "Minu Multimeedia Ainemapp",
-        "url": "/pages/multimedia/index.html",
+        "url": "pages/multimedia/index.html",
         "desc": "Multimeedia valikaine on õppeaine, kus õpitakse looma ja kombineerima erinevaid digitaalseid meedium..."
     },
     {
         "title": "2. Videoprojekt (Monteerimine)",
-        "url": "/pages/multimedia/monterimine.html",
+        "url": "pages/multimedia/monterimine.html",
         "desc": "Valisin välja sobivad videoklipid, teostasin nende montaaži ja lisasin vajalikud üleminekud. Kõik fa..."
     },
     {
         "title": "3. Adobe Photoshop",
-        "url": "/pages/multimedia/photoshop.html",
+        "url": "pages/multimedia/photoshop.html",
         "desc": "Adobe Photoshop on maailma juhtiv pilditöötlus- ja graafikadisaini tarkvara, mida kasutatakse fotode..."
     },
     {
         "title": "1. Videoprojekt (Skript ja filmimine)",
-        "url": "/pages/multimedia/videoprojekt.html",
+        "url": "pages/multimedia/videoprojekt.html",
         "desc": "Osalesin Multimedia tunni raames toimunud õppefilmide loomise projektis rühma AAU koosseisus.\n      ..."
     },
     {
         "title": "Toodet",
-        "url": "/pages/PNC/index.html",
+        "url": "pages/PNC/index.html",
         "desc": "Vaata lähemalt..."
     },
     {
         "title": "Oma projektiplaani koostamine Project Librega",
-        "url": "/pages/PRO/index.html",
+        "url": "pages/PRO/index.html",
         "desc": "Project Details\n    Who Does What"
     },
     {
         "title": "prodet.html",
-        "url": "/pages/PRO/prodet.html",
+        "url": "pages/PRO/prodet.html",
         "desc": "Vaata lähemalt..."
     },
     {
         "title": "wdw.html",
-        "url": "/pages/PRO/wdw.html",
+        "url": "pages/PRO/wdw.html",
         "desc": "Vaata lähemalt..."
     },
     {
         "title": "Tehted arvudega (Computing with numbers)",
-        "url": "/pages/prog_alused/avaldised.html",
+        "url": "pages/prog_alused/avaldised.html",
         "desc": "Kuigi 3.0 on matemaatiliselt sama mis 3, on nende andmetüübid erinevad."
     },
     {
