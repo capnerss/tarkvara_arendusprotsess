@@ -1,18 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UML diagrammikeel</title>
-    <link rel="stylesheet" type="text/css" href="../../assets/css/style.css">
-</head>
-<body>
-<header>
-    <a href="../../index.html" id="floatingButton">Tagasi</a>
-
-</header>
-
-    <h1>UML-i diagrammikeel</h1>
+---
+layout: default
+title: UML diagrammikeel
+---
+<h1>UML-i diagrammikeel</h1>
 
     <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vQrXc83gXNFyyk-MVbT45TiCb-hoT4xXFz88_nfXnhCQ9HI8Xry3cPJt8Po-te2b0tEXUCSzNnpFvsg/pubembed?start=false&loop=true&delayms=3000" frameborder="0" width="960" height="749" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
 
@@ -302,7 +292,35 @@
     </div>
 </div>
 
-<script src="../../js/script.js"></script>
+<script>
+    function checkQuiz() {
+        let score = 0;
+        const answers = {
+            q1: 'b',
+            q2: 'c',
+            q3: 'a'
+        };
+
+        const resultDiv = document.getElementById('quiz-result');
+        resultDiv.innerHTML = '';
+
+        for (let q in answers) {
+            const selected = document.querySelector(`input[name="${q}"]:checked`);
+            if (selected && selected.value === answers[q]) {
+                score++;
+            }
+        }
+
+        resultDiv.innerText = `Sa said ${score} punkti 3-st!`;
+        if (score === 3) {
+            resultDiv.style.color = 'green';
+            resultDiv.innerText += " Suurepärane töö!";
+        } else {
+            resultDiv.style.color = 'red';
+            resultDiv.innerText += " Proovi uuesti!";
+        }
+    }
+</script>
 
 <!--    <h3>Lisatavate teemade lühikirjeldus</h3>-->
 <!--    <ul>-->
