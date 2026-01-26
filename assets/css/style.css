@@ -9,7 +9,7 @@
 
 /* Basic styles for the entire page (same as before) */
 body {
-    background-image:  url('../assets/images/background.png');
+    background-image:  url('../images/background.png');
     background-repeat: no-repeat, no-repeat, no-repeat;
 
 
