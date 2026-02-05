@@ -1,0 +1,184 @@
+---
+layout: default
+title: IT organisatsiooni juhtimine ja taristu
+---
+<body>
+<div class="navbar">
+    <a href="#mis">MIS & Äri</a>
+    <a href="#hardware">Riistvara</a>
+    <a href="#software">Tarkvara</a>
+    <a href="#networks">Võrgud</a>
+    <a href="#cloud">Pilveteenused</a>
+    <a href="#asp">ASP</a>
+
+    <div class="search-box">
+        <button class="btn-search"><i class="fas fa-search"></i>🔍</button>
+        <input type="text" class="input-search" placeholder="Otsi...">
+        <div id="results-container"></div>
+    </div>
+</div>
+
+<h1>IT organisatsiooni juhtimine ja taristu</h1>
+
+<p>Infotehnoloogia (IT) on kaasaegse ettevõtluse lahutamatu osa, hõlmates riist- ja tarkvara andmete haldamiseks. See materjal annab ülevaate IT rollist äris, riist- ja tarkvarast, võrkudest ning pilvetehnoloogiatest.</p>
+
+<hr>
+
+<h2 id="mis">1. IT ettevõtluses ja MIS (Juhtimisinfosüsteemid)</h2>
+
+<h3>IT eelised ja piirangud</h3>
+<p>Infotehnoloogia võimaldab ettevõtetel laieneda globaalselt ja töötada virtuaalselt.</p>
+<ul>
+    <li><strong>Eelised:</strong> Võimalus palgata töötajaid üle maailma, videokonverentsid, kaugtöö, mitmekesisuse edendamine ja 24/7 ligipääs andmetele.</li>
+    <li><strong>Piirangud:</strong> Turvariskid (häkkimine, andmepüük ehk <em>phishing</em>), "inimliku elemendi" puudumine suhtluses ja töökohtade vähenemine automatiseerimise tõttu (nt pangaautomaadid asendavad tellereid).</li>
+</ul>
+
+<div class="note">
+    <strong>MIS (Management Information Systems)</strong> on süsteem, mis kogub ja analüüsib andmeid, et aidata juhtidel teha paremaid otsuseid. See ühendab riistvara, tarkvara ja inimesed.
+</div>
+
+<h3>MIS alamkategooriad ja andmed</h3>
+<p>MIS aitab optimeerida äriprotsesse, kasutades kahte tüüpi andmeid:</p>
+
+<table>
+    <tr>
+        <th>Andmete tüüp</th>
+        <th>Kirjeldus</th>
+        <th>Näide</th>
+    </tr>
+    <tr>
+        <td><strong>Kvalitatiivsed andmed</strong></td>
+        <td>Vaatluspõhised, raskesti mõõdetavad, subjektiivsed. Kirjeldatakse sõnadega.</td>
+        <td>Töötajate rahulolu, kliendi arvamus toote värvist.</td>
+    </tr>
+    <tr>
+        <td><strong>Kvantitatiivsed andmed</strong></td>
+        <td>Statistilised, mõõdetavad numbrid.</td>
+        <td>Toodetud ühikute arv päevas, käive.</td>
+    </tr>
+</table>
+
+<p><strong>MIS karjäärivõimalused:</strong> IT-konsultatsioon, veebi- ja süsteemiarendus, ärianalüüs, võrguadministreerimine.</p>
+
+<hr>
+
+<h2 id="hardware">2. Arvuti riistvara (Hardware)</h2>
+
+<p><strong>Riistvara</strong> on arvuti füüsilised komponendid, mida saab katsuda ja näha. See jaguneb sisemiseks ja väliseks.</p>
+
+<div style="display: flex; gap: 20px; justify-content: space-around; flex-wrap: wrap;">
+    <div style="text-align: center;">
+        <img src="images/desktop_case.jpg" alt="Lauaarvuti korpus" class="zoomable" style="width: 300px; height: auto;">
+        <p><em>Lauaarvuti (Desktop)</em></p>
+    </div>
+    <div style="text-align: center;">
+        <img src="images/laptop.jpg" alt="Sülearvuti" class="zoomable" style="width: 300px; height: auto;">
+        <p><em>Sülearvuti (Laptop)</em></p>
+    </div>
+</div>
+
+<h3>Peamised komponendid</h3>
+<ul>
+    <li><strong>Motherboard (Emaplaat):</strong> Peamine trükkplaat, mis ühendab kõiki komponente.</li>
+    <li><strong>CPU (Central Processing Unit):</strong> Arvuti "aju", mis töötleb käske. Kiirust mõõdetakse taktsageduses.</li>
+    <li><strong>GPU (Graphics Processing Unit):</strong> Vastutab pildi ja graafika renderdamise eest ekraanile.</li>
+    <li><strong>RAM (Memory):</strong> Ajutine mälu programmide käitamiseks.</li>
+    <li><strong>HDD / SSD:</strong> Sisemised kettaseadmed andmete pikaajaliseks salvestamiseks.</li>
+    <li><strong>PSU (Power Supply Unit):</strong> Toiteplokk, mis muundab elektri arvutile sobivaks.</li>
+</ul>
+
+<hr>
+
+<h2 id="software">3. Arvutitarkvara (Software)</h2>
+
+<p><strong>Tarkvara</strong> on programmeerimiskood ja juhised, mis ütlevad riistvarale, mida teha. Tarkvara ei saa katsuda.</p>
+
+<div class="note">
+    Tarkvara jaguneb kaheks: <strong>Süsteemitarkvara</strong> (arvuti tööshoidmiseks) ja <strong>Rakendustarkvara</strong> (kasutaja tööülesanneteks).
+</div>
+
+<table>
+    <tr>
+        <th>Kategooria</th>
+        <th>Kirjeldus</th>
+        <th>Näited</th>
+    </tr>
+    <tr>
+        <td><strong>Süsteemitarkvara</strong></td>
+        <td>Sild riistvara ja rakenduste vahel. Hädavajalik arvuti tööks.</td>
+        <td>Operatsioonisüsteemid (Windows, macOS, Linux), BIOS, Draiverid.</td>
+    </tr>
+    <tr>
+        <td><strong>Rakendustarkvara</strong></td>
+        <td>Programmid spetsiifiliste ülesannete täitmiseks.</td>
+        <td>Veebibrauserid (Chrome), Microsoft Word, Excel, mängud.</td>
+    </tr>
+</table>
+
+<hr>
+
+<h2 id="networks">4. Arvutivõrgud</h2>
+
+<p>Arvutivõrk on ühendatud arvutite rühm (sõlmed), mis jagavad ressursse. Internet on suurim võrk (GAN - Global Area Network).</p>
+
+<h3>Võrkude tüübid ulatuse järgi</h3>
+<ul>
+    <li><strong>PAN (Personal Area Network):</strong> Isiklikud seadmed (telefon, arvuti, Bluetooth).</li>
+    <li><strong>LAN (Local Area Network):</strong> Kohalik võrk (kodu, kontor, kool).</li>
+    <li><strong>MAN (Metropolitan Area Network):</strong> Linna hõlmav võrk.</li>
+    <li><strong>WAN (Wide Area Network):</strong> Ühendab seadmeid suurtel vahemaadel (nt riikide vahel).</li>
+    <li><strong>VPN (Virtual Private Network):</strong> Turvaline tunnel avalikus võrgus.</li>
+</ul>
+
+<h3>Topoloogiad (Võrgu kuju)</h3>
+<p>Kuidas arvutid on omavahel ühendatud:</p>
+<ol>
+    <li><strong>Siini topoloogia (Bus):</strong> Kõik seadmed ühe kaabli taga. Ebastabiilne.</li>
+    <li><strong>Ringi topoloogia (Ring):</strong> Seadmed on ühendatud ringikujuliselt.</li>
+    <li><strong>Täht-topoloogia (Star):</strong> Kõige levinum. Kõik seadmed on ühendatud keskse seadmega. Kui üks kaabel puruneb, töötab võrk edasi.</li>
+</ol>
+
+<hr>
+
+<h2 id="cloud">5. Pilvandmetöötlus (Cloud Computing)</h2>
+
+<p>Pilvandmetöötlus tähendab andmete ja programmide kasutamist interneti kaudu, mitte kohalikus kõvakettas. Andmed asuvad kauges "Host" arvutis (serveris).</p>
+
+<div class="note">
+    "Pilv" on metafoor internetile. Kasutaja ei pea teadma, kus server füüsiliselt asub.
+</div>
+
+<h3>Teenusmudelid</h3>
+<ul>
+    <li><strong>IaaS (Infrastructure as a Service):</strong> Renditakse servereid ja salvestusruumi (nt Amazon AWS).</li>
+    <li><strong>PaaS (Platform as a Service):</strong> Arendajatele mõeldud platvormid tarkvara loomiseks.</li>
+    <li><strong>SaaS (Software as a Service):</strong> Valmis tarkvara kasutamine internetis (nt Google Docs, Dropbox).</li>
+</ul>
+
+<p><strong>Eelised:</strong> Kulude kokkuhoid (pole vaja oma serveriruumi), ligipääs igalt poolt, kiirus.<br>
+<strong>Puudused:</strong> Turvariskid, privaatsus, sõltuvus internetiühendusest.</p>
+
+<hr>
+
+<h2 id="asp">6. Rakendusteenuse pakkuja (ASP)</h2>
+
+<p><strong>ASP (Application Service Provider)</strong> on ettevõte, mis rendib tarkvara kasutamist interneti kaudu (SaaS mudel).</p>
+
+<ul>
+    <li>Ettevõtted ei pea ostma kallist tarkvara litsentsi ega riistvara.</li>
+    <li>Näited: Veebipõhine e-post (Gmail, Yahoo), raamatupidamistarkvara pilves.</li>
+    <li><strong>Kultuur:</strong> "Omamise asemel rentimine".</li>
+</ul>
+
+<div class="quiz-container">
+    <div class="quiz-question">KONTROLLKÜSIMUS: Milline komponent on arvuti "aju"?</div>
+    <div class="quiz-options">
+        <label><input type="radio" name="q1" value="hdd"> HDD (Kõvaketas)</label>
+        <label><input type="radio" name="q1" value="cpu"> CPU (Protsessor)</label>
+        <label><input type="radio" name="q1" value="ram"> RAM (Mälu)</label>
+    </div>
+    <button class="quiz-submit-btn" onclick="alert('Õige vastus on CPU!')">Kontrolli vastust</button>
+</div>
+
+
+</body>
