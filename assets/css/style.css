@@ -38,14 +38,27 @@ h3 {
 }
 
 /* Paragraph text styling (same as before) */
-p {
-    line-height: 1.6;
+body > p {
     background-color: #fff;
     padding: 20px;
-    margin-top: 30px;
+    margin: 20px 0;               /* Отступ сверху и снизу */
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border: 1px solid #ddd;
+    line-height: 1.6;
+}
+
+/* Убираем "карточный" стиль для параграфов внутри заметок и квизов,
+   чтобы не было двойных рамок */
+.note p,
+.quiz-container p,
+table p {
+    background-color: transparent;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+    border: none;
+    border-radius: 0;
 }
 
 /* --- BUTTON STYLING FOR LINKS --- */
