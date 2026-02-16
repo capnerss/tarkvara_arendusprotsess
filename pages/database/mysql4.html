@@ -1,0 +1,78 @@
+---
+layout: default
+title: Approximate Numerics
+---
+<body>
+   <h1>Ligikaudsed numbrilised andmetüübid (Approximate Numerics)</h1>
+
+<p>Ligikaudsed numbrilised andmetüübid on loodud ujukomaarvude (<em>floating-point numbers</em>) salvestamiseks. See tähendab, et neid numbreid ei pruugita andmebaasis hoida sajaprotsendilise matemaatilise täpsusega, vaid väga lähedase ligikaudse väärtusena. Neid kasutatakse peamiselt teaduslikes, insenertehnilistes ja statistilistes rakendustes, kus on vaja töötada kas väga väikeste (mikroskoopiliste) või väga suurte (astronoomiliste) arvudega.</p>
+
+<div class="note">
+    <p><strong>Kriitiline reegel:</strong> Ära KUNAGI kasuta ligikaudseid andmetüüpe finantsandmete (raha, kontoseisud, hinnad) või unikaalsete identifikaatorite hoidmiseks! Kuna väärtusi võidakse salvestamisel mikroskoopiliselt ümardada (näiteks 10.00 võib süsteemis olla kujul 9.9999999999999), rikub see ära raamatupidamise ja tingimuslaused (<code>WHERE hind = 10</code> ei pruugi toimida).</p>
+</div>
+
+<h2>Ujukomaarvude andmetüübid</h2>
+<p>MS SQL Server pakub ligikaudsete arvude jaoks kahte peamist andmetüüpi:</p>
+
+<ul>
+    <li><strong>float [(n)]:</strong> See on kõige paindlikum ujukomaarvu tüüp. Parameeter <strong>"n"</strong> tähistab bittide arvu, mida kasutatakse arvu mantissi salvestamiseks (vahemikus 1 kuni 53).
+        <ul>
+            <li>Kui sa määrad <code>float</code> ilma numbrita (või <code>float(53)</code>), kasutab see <strong>8 baiti</strong> mälu ja suudab mahutada kuni 15 komakohta. See on analoogne teiste programmeerimiskeelte <em>double</em> tüübile.</li>
+        </ul>
+    </li>
+    <li><strong>real:</strong> See on MS SQL-i spetsiifiline andmetüüp, mis on tegelikult täpselt sama asi mis <code>float(24)</code>. See võtab mälus <strong>4 baiti</strong> ruumi ja suudab tagada umbes 7-kohalise täpsuse. See on analoogne teiste programmeerimiskeelte standardsele <em>float</em> tüübile.</li>
+</ul>
+
+<h2>Millal neid siis päriselt vaja läheb?</h2>
+<p>Kuna <code>decimal</code> on nii täpne ja turvaline, siis miks meile üldse <code>float</code> meeldib? Vastus on <strong>kiirus ja maht</strong>. Ujukomaarvudega arvutamine toimub protsessori (CPU) tasemel palju kiiremini kui fikseeritud komakohtadega <code>decimal</code> tüüpidega. Lisaks mahutab 8-baidine <code>float</code> matemaatiliselt palju laiema diapasooniga arve kui isegi kõige suurem 17-baidine <code>decimal</code>.</p>
+
+<h2>Kiire võrdlustabel</h2>
+<table>
+    <tr>
+        <th>Andmetüüp</th>
+        <th>Mälumaht</th>
+        <th>Täpsus</th>
+        <th>Kõige parem kasutuskoht</th>
+    </tr>
+    <tr>
+        <td><code>real</code> / <code>float(24)</code></td>
+        <td>4 baiti</td>
+        <td>Kuni 7 numbrikohta</td>
+        <td>Geograafilised koordinaadid, mängumootorite füüsika, sensorite toorandmed</td>
+    </tr>
+    <tr>
+        <td><code>float</code> / <code>float(53)</code></td>
+        <td>8 baiti</td>
+        <td>Kuni 15 numbrikohta</td>
+        <td>Teadusarvutused, masinõpe, astronoomilised suurused ja distantsid</td>
+    </tr>
+    <tr>
+        <td colspan="4">
+            <a href="https://learn.microsoft.com/en-us/sql/t-sql/data-types/float-and-real-transact-sql" target="_blank">Loe täpsemalt Microsofti dokumentatsioonist</a>
+        </td>
+    </tr>
+</table>
+
+
+<img src="../../assets/images/numeric-sql-data-types.png" alt="Float vs Decimal" class="zoomable" style="max-width: 100%; display: block; margin: 20px auto;">
+
+<hr>
+
+<div class="quiz-container">
+    <p class="quiz-question">Küsimus: Milline andmetüüp on parim valik, kui lood füüsikasimulaatorit ja pead salvestama planeetide masse (mis on väga massiivsed arvud, kuid mille puhul paari grammi suurune matemaatiline kõikumine ei muuda simulaatoris midagi)?</p>
+
+    <div class="quiz-options">
+        <label><input type="radio" name="q4" value="decimal"> decimal(38, 2)</label>
+        <label><input type="radio" name="q4" value="float"> float</label>
+        <label><input type="radio" name="q4" value="money"> money</label>
+        <label><input type="radio" name="q4" value="int"> int</label>
+    </div>
+
+    <button class="quiz-submit-btn" onclick="alert('Õige vastus on: float! Kuna planeedi mass on hiiglaslik arv ja absoluutne täpsus komakohtades (nagu raamatupidamises) ei ole oluline, on ujukomaarv (float) selle jaoks kõige kiirem ja sobivam andmetüüp.')">Kontrolli vastust</button>
+</div>
+
+
+<p>Kõik numbrid on nüüd kaetud! Järgmiseks teemaks vaatame, kuidas salvestada andmebaasi pildifaile, PDF-dokumente ja unikaalseid süsteemseid identifikaatoreid.</p>
+
+
+</body>

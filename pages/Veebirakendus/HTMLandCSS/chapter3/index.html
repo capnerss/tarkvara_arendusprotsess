@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List, Tables and Forms</title>
+    <link rel="stylesheet" href="css/example.css">
+</head>
+<body>
+<h1>Poetry Workshops</h1>
+<p>
+    We will be conducting a number of poetry Workshops and symposiums throughout the year.
+</p>
+<p>Please note then the following events are free to members: </p>
+<ul>
+    <li>A Poetic Perspective</li>
+    <li>Walt Whitman at War</li>
+    <li>Found Poems and Outsider Poetry</li>
+</ul>
+<table>
+    <tr>
+        <th></th>
+        <th>New York</th>
+        <th>Chicago</th>
+        <th>San Francisco</th>
+    </tr>
+    <tr>
+        <th>Walt Whitman at Art</th>
+        <td>Sat, 5 mar 2026 <br> 11am - 2pm</td>
+        <td>Friday, 6 mar 2026 <br> 11am - 2pm</td>
+        <td>Sat, 15 mar 2026 <br> 11am - 2pm</td>
+    </tr>
+    <tr>
+        <th>Found poems &amp; Outsider Poetry</th>
+        <td>Sat, 5 mar 2026 <br> 11am - 2pm</td>
+        <td>Friday, 6 mar 2026 <br> 11am - 2pm</td>
+        <td>Sat, 15 mar 2026 <br> 11am - 2pm</td>
+    </tr>
+    <tr>
+        <th>Natural Art: An Exploration</th>
+        <td>Sat, 5 mar 2026 <br> 11am - 2pm</td>
+        <td>Friday, 6 mar 2026 <br> 11am - 2pm</td>
+        <td>Sat, 15 mar 2026 <br> 11am - 2pm</td>
+    </tr>
+</table>
+<form action="" method="post">
+    <fieldset>
+        <legend>Register your interest</legend>
+        <p>
+            <label for="name" class="title">Your name:</label>
+            <input type="text" name="name" id="name"> <br>
+            <label for="email" class="title">Your email:</label>
+            <input type="text" name="email" id="email"> <br>
+        </p>
+        <p>
+            <label for="location" class="title">Your closest center</label>
+            <select name="location" id="location">
+                <option value="ny">New York</option>
+                <option value="il">Chicago</option>
+                <option value="ca">San Fransisco</option>
+            </select>
+        </p>
+        <span>Are you a member?</span>
+        <label > <input type="radio" name="member" value="yes">Yes</label>
+        <label > <input type="radio" name="member" value="no">No</label>
+    </fieldset>
+    <div class="submit"><input type="submit" value="Register"></div>
+</form>
+</body>
+</html>

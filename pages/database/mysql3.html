@@ -1,0 +1,102 @@
+---
+layout: default
+title: Date and Time
+---
+<body>
+   <h1>Kuupäeva ja kellaaja andmetüübid (Date and Time)</h1>
+
+<p>Aja ja kuupäevade salvestamine on pea iga andmebaasi lahutamatu osa, olgu selleks siis kasutaja registreerumise hetk, tellimuse täitmise tähtaeg või töötaja sünnikuupäev. MS SQL Server pakub mitmeid erinevaid andmetüüpe, mis võimaldavad salvestada kas ainult kuupäeva, ainult kellaaega või mõlemat koos erineva täpsusastmega.</p>
+
+<div class="note">
+    <p><strong>Hea tava (Best Practice):</strong> Alates SQL Server 2008 versioonist on soovitatav uute andmebaaside loomisel vältida vana <code>datetime</code> andmetüüpi. Selle asemel kasuta alati <code>datetime2</code>, <code>date</code> või <code>time</code> tüüpe. Need on paindlikumad, pakuvad suuremat täpsust (kuni nanosekunditeni), võtavad sageli vähem mäluruumi ja vastavad paremini rahvusvahelistele SQL standarditele.</p>
+</div>
+
+<h2>1. Eraldiseisvad kuupäeva ja kellaaja tüübid</h2>
+<p>Sageli ei ole meil vaja salvestada mõlemat – nii kuupäeva kui ka kellaaega. Eraldades need, säästame andmebaasi mahtu ja teeme päringud (näiteks "leia kõik tänased sünnipäevad") palju lihtsamaks.</p>
+
+<ul>
+    <li><strong>date:</strong> Salvestab ainult kuupäeva formaadis <code>YYYY-MM-DD</code> (aasta-kuu-päev). Vahemik on 0001-01-01 kuni 9999-12-31. Võtab mälus ainult 3 baiti. Ideaalne sünnikuupäevade ja tähtaegade jaoks.</li>
+    <li><strong>time:</strong> Salvestab ainult kellaaja, ilma ajavööndita. See põhineb 24-tunnisel kellal ja võimaldab määrata sekundi murdosa täpsust (kuni 100 nanosekundit).</li>
+</ul>
+
+<h2>2. Kombineeritud andmetüübid</h2>
+<p>Kui süsteem nõuab sündmuse toimumise täpse hetke salvestamist (näiteks logi kirje või tehingu aeg), kasutatakse kombineeritud andmetüüpe.</p>
+
+<ul>
+    <li><strong>datetime2:</strong> Uus ja soovitatav standard. Salvestab nii kuupäeva kui kellaaja. Sarnaselt <code>time</code> tüübile saab siin ise määrata, mitme komakoha täpsusega (0–7) sekundeid salvestatakse.</li>
+    <li><strong>datetimeoffset:</strong> Väga oluline andmetüüp globaalsete rakenduste puhul. See on sisuliselt <code>datetime2</code>, mis sisaldab lisaks ajavööndi nihet (näiteks +02:00 Eesti aja jaoks) koordineeritud maailmaaja (UTC) suhtes. Tagab, et sündmuste järjekord on alati selge, sõltumata kasutaja asukohast.</li>
+</ul>
+
+<h2>3. Aegunud tüübid (Legacy)</h2>
+<p>Need tüübid on vanades süsteemides endiselt laialt levinud, kuid uutes arendustes tuleks neid vältida.</p>
+<ul>
+    <li><strong>datetime:</strong> Vana standard. Vahemik algab alles aastast 1753 ja kellaaja täpsus on ümardatud 0.00333 sekundi peale, mis võib tekitada veidraid ümardamisvigu.</li>
+    <li><strong>smalldatetime:</strong> Väiksema mahuga (4 baiti) vana tüüp, mis ümardab kellaaja alati lähima minutini (sekundeid ei salvestata).</li>
+</ul>
+
+<h2>Tüüpide võrdlustabel</h2>
+<table>
+    <tr>
+        <th>Andmetüüp</th>
+        <th>Maht (baite)</th>
+        <th>Täpsus / Eripära</th>
+        <th>Kõige parem kasutuskoht</th>
+    </tr>
+    <tr>
+        <td><code>date</code></td>
+        <td>3</td>
+        <td>Ainult kuupäev (1 päev)</td>
+        <td>Sünnipäevad, riiklikud pühad, lepingu algus</td>
+    </tr>
+    <tr>
+        <td><code>time</code></td>
+        <td>3–5</td>
+        <td>Kuni 100 nanosekundit</td>
+        <td>Töövahetuse algusaeg, äratuskell</td>
+    </tr>
+    <tr>
+        <td><code>datetime2</code></td>
+        <td>6–8</td>
+        <td>Kuupäev + väga täpne kellaaeg</td>
+        <td>Süsteemi logid, tellimuse kinnitamise hetk</td>
+    </tr>
+    <tr>
+        <td><code>datetimeoffset</code></td>
+        <td>8–10</td>
+        <td>Aeg + ajavööndi UTC nihe</td>
+        <td>Globaalsed süsteemid, rahvusvahelised tehingud</td>
+    </tr>
+    <tr>
+        <td colspan="4">
+            <a href="https://learn.microsoft.com/en-us/sql/t-sql/data-types/date-and-time-types" target="_blank">Loe täpsemalt Microsofti dokumentatsioonist</a>
+        </td>
+    </tr>
+</table>
+
+
+<img src="../../assets/images/date-and-time-sql-data-types.png" alt="Date and Time Types" class="zoomable" style="max-width: 100%; display: block; margin: 20px auto;">
+
+<hr>
+
+<div class="quiz-container">
+    <p class="quiz-question">Küsimus: Milline andmetüüp on kõige õigem valik, kui soovid luua ülemaailmse lennupiletite broneerimissüsteemi, kus on vaja salvestada lennu täpne väljumisaeg koos kohaliku lennujaama ajavööndiga?</p>
+
+    <div class="quiz-options">
+        <label><input type="radio" name="q3" value="datetime"> datetime</label>
+        <label><input type="radio" name="q3" value="datetime2"> datetime2</label>
+        <label><input type="radio" name="q3" value="datetimeoffset"> datetimeoffset</label>
+        <label><input type="radio" name="q3" value="date"> date</label>
+    </div>
+
+    <button class="quiz-submit-btn" onclick="alert('Õige vastus on: datetimeoffset! See on ainus tüüp, mis salvestab automaatselt ajavööndi nihke (nt +02:00 või -05:00), tagades, et lennu aeg on arusaadav sõltumata sellest, mis riigis kasutaja server asub.')">Kontrolli vastust</button>
+</div>
+
+<div id="image-modal">
+    <img id="modal-img" src="" alt="Suurendatud pilt">
+</div>
+
+<p>Kuupäevad ja ajad on paigas! Nüüd on jäänud veel viimane suurem kategooria, mis puudutab muutuvaid ja spetsiifilisi andmeid (nagu failid ja unikaalsed ID-d).</p>
+
+
+
+</body>

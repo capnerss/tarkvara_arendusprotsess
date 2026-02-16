@@ -1,0 +1,99 @@
+---
+layout: default
+title: Exact Numerics
+---
+<body>
+    <h1>Täpsed numbrilised andmetüübid (Exact Numerics)</h1>
+
+<p>Täpsed numbrilised andmetüübid (<em>Exact Numerics</em>) on MS SQL Serveris kasutusel olukordades, kus matemaatiline täpsus on kriitiline ning igasugused ümardamisvead on lubamatud. Need andmetüübid salvestavad numbreid täpselt nii, nagu need sisestatakse, olles seega ideaalsed finantsandmete, loendurite, identifikaatorite (ID) ja muude konkreetsete väärtuste hoidmiseks.</p>
+
+<div class="note">
+    <p><strong>Jõudluse kuldreegel:</strong> Vali alati kõige väiksem andmetüüp, mis sinu oodatavaid andmeid turvaliselt mahutab. Näiteks pole mõtet kasutada 8-baidist <code>bigint</code> tüüpi inimese vanuse salvestamiseks – selleks sobib ideaalselt 1-baidine <code>tinyint</code>. Andmetüübi optimeerimine säästab oluliselt ketta- ja mäluruumi ning kiirendab andmebaasi päringuid.</p>
+</div>
+
+<h2>1. Täisarvude (Integers) andmetüübid</h2>
+<p>Need on kõige levinumad andmetüübid numbrite hoidmiseks, millel puuduvad komakohad.</p>
+
+<ul>
+    <li><strong>tinyint:</strong> Võtab mälus 1 baidi. Vahemik on 0 kuni 255. Ideaalne vanuse, staatuste koodide või väikeste loendite jaoks.</li>
+    <li><strong>smallint:</strong> Võtab mälus 2 baiti. Vahemik on -32 768 kuni 32 767. Sobib näiteks aastate või keskmise suurusega koguste hoidmiseks.</li>
+    <li><strong>int:</strong> Standardne täisarv, võtab mälus 4 baiti. Vahemik on ligikaudu -2,14 miljardit kuni 2,14 miljardit. See on kõige sagedamini kasutatav tüüp primaarvõtmete (ID-de) ja üldiste numbrite jaoks.</li>
+    <li><strong>bigint:</strong> Suur täisarv, võtab mälus 8 baiti. Kasutatakse siis, kui <code>int</code> piirangutest jääb väheks (näiteks massiivsed logifailide süsteemid või suurte sotsiaalvõrgustike globaalsed ID-d).</li>
+</ul>
+
+<h2>2. Murdarvud ja finantsandmed</h2>
+<p>Kui on vaja hoida komakohti täpselt (ilma ujukomaarvudele iseloomulike ümardamisvigadeta), kasutatakse järgmisi tüüpe:</p>
+
+<ul>
+    <li><strong>decimal(p, s) või numeric(p, s):</strong> Need kaks on SQL Serveris funktsionaalselt täiesti identsed. <strong>"p"</strong> (<em>precision</em> ehk täpsus) näitab numbrite koguarvu ja <strong>"s"</strong> (<em>scale</em> ehk skaala) komakohtade arvu. Näiteks <code>decimal(10,2)</code> mahutab 8 numbrit enne ja 2 numbrit pärast koma. See on ideaalne raamatupidamis- ja finantstarkvara jaoks.</li>
+    <li><strong>money ja smallmoney:</strong> Spetsiaalsed andmetüübid valuuta hoidmiseks nelja komakoha täpsusega. Kuigi neid on mugav kasutada, eelistavad paljud arendajad täpsema kontrolli huvides ja porditavuse tagamiseks pigem <code>decimal</code> tüüpi.</li>
+</ul>
+
+<h2>3. Loogilised väärtused (Boolean)</h2>
+<p>Eraldi väärib väljatoomist üks väiksemaid ja levinumaid andmetüüpe loogiliste (Jah/Ei) väärtuste jaoks.</p>
+<ul>
+    <li><strong>bit:</strong> Salvestab väärtuse 0 (väär), 1 (tõene) või NULL. SQL Server pakib mitu <code>bit</code>-tüüpi veergu mälus automaatselt kokku, muutes selle süsteemi jaoks väga efektiivseks. See on ideaalne sätete (nt "kas_aktiivne", "on_kustutatud", "on_tellija") hoidmiseks.</li>
+</ul>
+
+<h2>Kiire ülevaatetabel</h2>
+<table>
+    <tr>
+        <th>Andmetüüp</th>
+        <th>Mälumaht</th>
+        <th>Vahemik / Täpsus</th>
+        <th>Kõige parem kasutuskoht</th>
+    </tr>
+    <tr>
+        <td><code>tinyint</code></td>
+        <td>1 bait</td>
+        <td>0 kuni 255</td>
+        <td>Inimese vanus, kategooria ID (kui &lt; 255)</td>
+    </tr>
+    <tr>
+        <td><code>int</code></td>
+        <td>4 baiti</td>
+        <td>~ -2.14 kuni +2.14 miljardit</td>
+        <td>Tabelite peamised ID-d (Primary Key), kogused</td>
+    </tr>
+    <tr>
+        <td><code>bit</code></td>
+        <td>1 bit (pakitakse)</td>
+        <td>0, 1 või NULL</td>
+        <td>Tõeväärtused: Jah/Ei, Tõene/Väär</td>
+    </tr>
+    <tr>
+        <td><code>decimal(10,2)</code></td>
+        <td>Sõltub täpsusest (5-17 baiti)</td>
+        <td>Määratud pikkus ja komakohad</td>
+        <td>Pangandussüsteemid, toodete hinnad, kaal</td>
+    </tr>
+    <tr>
+        <td colspan="4">
+            <a href="https://learn.microsoft.com/en-us/sql/t-sql/data-types/numeric-types" target="_blank">Loe täpsemalt Microsofti dokumentatsioonist</a>
+        </td>
+    </tr>
+</table>
+
+<img src="../../assets/images/numeric-sql-data-types.png" alt="Exact Numerics" class="zoomable" style="max-width: 100%; display: block; margin: 20px auto;">
+
+<hr>
+
+<div class="quiz-container">
+    <p class="quiz-question">Küsimus: Milline andmetüüp on kõige optimaalsem veebipoe ostukorvi toote staatuse ("kas on laos", mis saab olla vaid Jah või Ei) salvestamiseks?</p>
+
+    <div class="quiz-options">
+        <label><input type="radio" name="q2" value="tinyint"> tinyint</label>
+        <label><input type="radio" name="q2" value="varchar"> varchar(3)</label>
+        <label><input type="radio" name="q2" value="bit"> bit</label>
+        <label><input type="radio" name="q2" value="int"> int</label>
+    </div>
+
+    <button class="quiz-submit-btn" onclick="alert('Õige vastus on: bit! See salvestab vaid väärtusi 0, 1 või NULL ja võtab andmebaasis kõige vähem ruumi (Jah/Ei tõeväärtuse puhul on see alati parim valik).')">Kontrolli vastust</button>
+</div>
+
+
+
+<p>Kui täpsed numbrid on selged, saame liikuda edasi nende numbrite juurde, mis hoiavad ligikaudseid väärtusi väga spetsiifiliste suurte arvutuste jaoks.</p>
+
+
+</body>
