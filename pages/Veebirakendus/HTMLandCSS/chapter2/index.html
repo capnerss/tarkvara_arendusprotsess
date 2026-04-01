@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boxes</title>
+    <style>
+        body {
+            font-size: 80%;
+            font-family: 'Courier New', Courier, monospace;
+            letter-spacing: 0.15em;
+            background-color: #efefef;
+        }
+        #page {
+            max-width: 940px;
+            min-width: 720px;
+            margin: 10px auto 10px auto;
+            padding: 20px;
+            border: 4px double #000;
+            background-color: #ffffff;
+        }
+        #logo {
+            width: 150px;
+            margin: 10px auto 25px auto;
+        }
+        ul {
+            width: 570px;
+            padding: 15px;
+            margin: 0px auto 0px auto;
+            border-top: 2px solid #000;
+            border-bottom: 1px solid #000;
+            text-align: center;
+        }
+        li {
+            display: inline;
+            margin: 0px 3px;
+        }
+        p {
+            text-align: center;
+            width: 600px;
+            margin: 20px auto 20px auto;
+            font-weight: normal;
+        }
+        a {
+            color: #000000;
+            text-transform: uppercase;
+            text-decoration: none;
+            padding: 6px 18px 5px 18px;
+        }
+        a:hover, a.on {
+            color: #764343;
+            background-color: #ffffff;
+
+        }
+        #navigation {
+
+        }
+        
+    </style>
+</head>
+<body>
+    <div id="page">
+        <div id="logo">
+            <img src="images/logo.gif" alt="The Analog Specialists">
+        </div>
+        <ul id="navigation">
+            <li><a href="#"class ="on">Home</a></li>
+            <li><a href="#">For Sale</a></li>
+            <li><a href="#">Repairs</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+        <p>
+            <img src="images/keys.jpg" alt="Fender Rhodes, Hohner Clavinet and Wurlitzer EP200">
+        </p>
+        <p>
+            We specialze in the sale and repair of classic keybords,
+            in particular the Fender Rhodes, Wurlitzer EP200,
+            and Hohner Clavinet.
+        </p>
+        <table>        <tr>
+            <th>Photo</th>
+            <th>Description</th>
+            <th>Price</th>
+        </tr>
+        <tr>
+            <td><img src="images/rhodes.jpg" width="200" height="150" alt="Fender Rhodes" /></td>
+            <td class="description">The Rhodes piano is an electro-mechanical piano, invented by Harold Rhodes during the fifties and later manufactured in a number of models, first in collaboration with Fender and after 1965 by CBS. It employs a piano-like keyboard with hammers that hit small metal tines, amplified by electromagnetic pickups.</td>
+            <td>$1400</td>
+        </tr>
+        <tr>
+            <td><img src="images/wurlitzer.jpg" width="200" height="150" alt="Wurlitzer EP200" /></td>
+            <td class="description">The Wurlitzer electric piano is an electro-mechanical piano, created by the Rudolph Wurlitzer Company of Mississippi. The Wurlitzer company itself never called the instrument an "electric piano", instead inventing the phrase "Electronic Piano" and using this as a trademark throughout the production of the instrument. It employs a piano-like keyboard with hammers that hit small metal tines, amplified by electromagnetic pickups.</td>
+            <td>$1600</td>
+        </tr>
+        <tr>
+            <td><img src="images/clavinet.jpg" width="200" height="150" alt="Hohner Clavinet D6" /></td>
+            <td class="description">A Clavinet is an electronically amplified clavichord manufactured by the Hohner company. Each key uses a rubber tip to perform a hammer on a string. Its distinctive bright staccato sound is often compared to that of an electric guitar. Various models were produced over the years, including the models I, II, L, C, D6, and E7.</td>
+            <td>$1200</td>
+        </tr></table>
+
+        
+    </div>
+</body>
+</html>

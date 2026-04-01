@@ -1,0 +1,86 @@
+---
+layout: default
+title: MS SQL Teksti Andmetüübid
+---
+<body>
+    <h1>MS SQL Teksti Andmetüübid (Character Strings)</h1>
+
+<p>Tekstiandmetüüpide õige valik MS SQL Serveris on kriitilise tähtsusega. Vale tüübi kasutamine võib raisata andmebaasi mahtu või tekitada probleeme erisümbolite (näiteks täpitähtede, teiste tähestike või isegi emojide) salvestamisel. Tekstiandmetüübid jagunevad peamiselt kaheks: tavaline tekst (Non-Unicode) ja rahvusvaheline tekst (Unicode).</p>
+
+<div class="note">
+    <p><strong>Kuldreegel:</strong> Kui sul on vaja andmebaasis hoida eesti keele täpitähti (õ, ä, ö, ü), võõrkeelseid sümboleid (nt kirillitsa) või emojisid 🚀, kasuta alati <strong>n</strong>-iga algavat andmetüüpi (nt <code>nvarchar</code>). See lülitab sisse Unicode totoe, kus iga märk võtab mälus 2 baiti, tagades andmete rikkumata säilimise.</p>
+</div>
+
+<h2>Kiire võrdlustabel</h2>
+<table>
+    <tr>
+        <th>Andmetüüp</th>
+        <th>Pikkuse tüüp</th>
+        <th>Unicode tugi (täpitähed)?</th>
+        <th>Kõige parem kasutuskoht</th>
+    </tr>
+    <tr>
+        <td><code>char(n)</code></td>
+        <td>Fikseeritud</td>
+        <td>Ei (1 bait = 1 märk)</td>
+        <td>Alati sama pikkusega koodid (nt isikukood, riigikood "EE")</td>
+    </tr>
+    <tr>
+        <td><code>varchar(n)</code></td>
+        <td>Muutuv</td>
+        <td>Ei (1 bait = 1 märk)</td>
+        <td>Tavaline ingliskeelne tekst, URL-id, süsteemsed logid</td>
+    </tr>
+    <tr>
+        <td><code>nchar(n)</code></td>
+        <td>Fikseeritud</td>
+        <td><strong>Jah (2 baiti = 1 märk)</strong></td>
+        <td>Rahvusvahelised kindla pikkusega lühendid</td>
+    </tr>
+    <tr>
+        <td><code>nvarchar(n)</code></td>
+        <td>Muutuv</td>
+        <td><strong>Jah (2 baiti = 1 märk)</strong></td>
+        <td>Kasutajate eesnimed, perekonnanimed, aadressid, kommentaarid</td>
+    </tr>
+    <tr></tr>
+</table>
+
+<h2>1. Tavalised tekstitüübid (Non-Unicode)</h2>
+<p>Need andmetüübid kasutavad ühe tähemärgi salvestamiseks 1 baiti. Need sobivad hästi siis, kui andmebaas sisaldab ainult ladina tähestikku ja standardseid sümboleid.</p>
+
+<ul>
+    <li><strong>char(n):</strong> Fikseeritud pikkusega tekst. Kui sisestad lühema teksti, täidab SQL Server ülejäänud tühja ruumi tühikutega. Mälu broneeritakse alati maksimaalselt.</li>
+    <li><strong>varchar(n):</strong> Muutuva pikkusega tekst. Salvestab kettale täpselt nii palju, kui tekst pikk on, pluss 2 baiti pikkuse info hoidmiseks. Ei lisa tühikuid lõppu.</li>
+    <li><strong>varchar(max):</strong> Muutuva pikkusega tekst, mis on mõeldud väga pikkade dokumentide jaoks (mahutab kuni 2 GB suurust teksti).</li>
+</ul>
+
+<h2>2. Rahvusvahelised tekstitüübid (Unicode)</h2>
+<p>Need andmetüübid algavad "n"-tähega (National) ja on tänapäeval sageli vaikimisi valikuks uute rakenduste loomisel, kuna andmed on globaalsed.</p>
+
+<ul>
+    <li><strong>nchar(n):</strong> Fikseeritud pikkusega Unicode tekst. Maksimaalne pikkus on 4000 märki.</li>
+    <li><strong>nvarchar(n):</strong> Muutuva pikkusega Unicode tekst. Kõige levinum andmetüüp tänapäevastes andmebaasides kasutaja sisestatud teksti hoidmiseks.</li>
+    <li><strong>nvarchar(max):</strong> Väga mahukas muutuva pikkusega Unicode tekst (asendab vananenud <code>ntext</code> tüüpi).</li>
+</ul>
+
+<h2>Skeem: Kuidas valida õige tüüp?</h2>
+<p>Visuaalne abimees õige andmetüübi valimiseks (klõpsa pildil, et seda suurendada):</p>
+<img src="../../assets/images/textual-sql-data-types.png" alt="SQL String Types" class="zoomable" style="max-width: 100%; display: block; margin: 10px 0;">
+
+<hr>
+
+<div class="quiz-container">
+    <p class="quiz-question">Küsimus: Milline andmetüüp on kõige optimaalsem ja turvalisem Eesti kodanike eesnimede (nt "Jüri", "Ülle") salvestamiseks andmebaasi?</p>
+
+    <div class="quiz-options">
+        <label><input type="radio" name="q1" value="char"> char(50)</label>
+        <label><input type="radio" name="q1" value="varchar"> varchar(50)</label>
+        <label><input type="radio" name="q1" value="nvarchar"> nvarchar(50)</label>
+    </div>
+
+    <button class="quiz-submit-btn" onclick="alert('Õige vastus on: nvarchar(50)! See toetab muutuva pikkusega teksti (kõik nimed pole sama pikad) ja salvestab täpitähed turvaliselt.')">Kontrolli vastust</button>
+</div>
+
+
+</body>

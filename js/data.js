@@ -1,71 +1,91 @@
 const siteContent = [
     {
-        "title": "Minu Tarkvara Arendusprotsessi Ainemapp",
+        "title": "index.html",
         "url": "index.html",
         "desc": "Tarkvara Arendusprotsessi aines tehtud ainemapp, kus on selle aine ja kõikide teiste ainete ülesande..."
     },
     {
-        "title": "Bitcoin kalkulaator: BIC",
+        "title": "index.html",
         "url": "pages/BTC/index.html",
         "desc": "Selle programmi eesmärk on teisendada Bitcoini (BTC) kogus teistesse valuutadesse (nt EUR, USD, GBP,..."
     },
     {
-        "title": "CASE vahendid",
+        "title": "index.html",
         "url": "pages/CASE/index.html",
         "desc": "Tarkvaraaarenduse elutsükkel koosneb erinevatest etappidest, milles tehtavad tegevused on väga erine..."
     },
     {
-        "title": "Lower-CASE vahendid",
+        "title": "lowercase.html",
         "url": "pages/CASE/lowercase.html",
         "desc": "Lower-CASE vahendid (inglise keeles Lower Computer-Aided Software Engineering) „alumise taseme\" CASE..."
     },
     {
-        "title": "Upper-CASE vahendid",
+        "title": "uppercase.html",
         "url": "pages/CASE/uppercase.html",
         "desc": "Upper-CASE vahendid (inglise keeles Upper Computer-Aided Software Engineering)„ülemise taseme\" CASE-..."
     },
     {
-        "title": "Documentatsioon",
+        "title": "index.html",
+        "url": "pages/database/index.html",
+        "desc": "Vaata lähemalt..."
+    },
+    {
+        "title": "index.html",
         "url": "pages/DOCS/index.html",
         "desc": "Tarkvara arenduse elutsuklis on olemas erinevaid tegevusi, nende tegevuse tulemusel tekib hulk artif..."
     },
     {
-        "title": "4. Adobe Animate",
+        "title": "blau.html",
+        "url": "pages/itjuht/blau.html",
+        "desc": "Tere tulemast IT organisatsiooni teooria õppematerjali. See leht katab organisatsioonide klassifikat..."
+    },
+    {
+        "title": "index.html",
+        "url": "pages/itjuht/index.html",
+        "desc": "Infotehnoloogia (IT) on kaasaegse ettevõtluse lahutamatu osa, hõlmates riist- ja tarkvara andmete ha..."
+    },
+    {
+        "title": "sise.html",
+        "url": "pages/itjuht/sise.html",
+        "desc": "Infotehnoloogia (IT) on kaasaegse ettevõtluse lahutamatu osa, hõlmates riist- ja tarkvara andmete ha..."
+    },
+    {
+        "title": "animate.html",
         "url": "pages/multimedia/animate.html",
         "desc": "Adobe Animate on professionaalne tarkvara vektorgraafikal põhinevate animatsioonide ja interaktiivse..."
     },
     {
-        "title": "5. Adobe Illustrator",
+        "title": "illustrator.html",
         "url": "pages/multimedia/illustrator.html",
         "desc": "Adobe Illustrator on professionaalne vektorgraafika programm, mida kasutatakse logode, ikoonide, joo..."
     },
     {
-        "title": "Minu Multimeedia Ainemapp",
+        "title": "index.html",
         "url": "pages/multimedia/index.html",
         "desc": "Multimeedia valikaine on õppeaine, kus õpitakse looma ja kombineerima erinevaid digitaalseid meedium..."
     },
     {
-        "title": "2. Videoprojekt (Monteerimine)",
+        "title": "monterimine.html",
         "url": "pages/multimedia/monterimine.html",
         "desc": "Valisin välja sobivad videoklipid, teostasin nende montaaži ja lisasin vajalikud üleminekud. Kõik fa..."
     },
     {
-        "title": "3. Adobe Photoshop",
+        "title": "photoshop.html",
         "url": "pages/multimedia/photoshop.html",
         "desc": "Adobe Photoshop on maailma juhtiv pilditöötlus- ja graafikadisaini tarkvara, mida kasutatakse fotode..."
     },
     {
-        "title": "1. Videoprojekt (Skript ja filmimine)",
+        "title": "videoprojekt.html",
         "url": "pages/multimedia/videoprojekt.html",
         "desc": "Osalesin Multimedia tunni raames toimunud õppefilmide loomise projektis rühma AAU koosseisus.\n      ..."
     },
     {
-        "title": "Toodet",
+        "title": "index.html",
         "url": "pages/PNC/index.html",
         "desc": "Vaata lähemalt..."
     },
     {
-        "title": "Oma projektiplaani koostamine Project Librega",
+        "title": "index.html",
         "url": "pages/PRO/index.html",
         "desc": "Project Details\n    Who Does What"
     },
@@ -80,92 +100,92 @@ const siteContent = [
         "desc": "Vaata lähemalt..."
     },
     {
-        "title": "Tehted arvudega (Computing with numbers)",
+        "title": "avaldised.html",
         "url": "pages/prog_alused/avaldised.html",
         "desc": "Kuigi 3.0 on matemaatiliselt sama mis 3, on nende andmetüübid erinevad."
     },
     {
-        "title": "Ennik (Tuple)",
+        "title": "ennik.html",
         "url": "pages/prog_alused/ennik.html",
         "desc": "Ennikut saab luua ka ilma sulgudeta, eraldades väärtused komadega: point = 10, 20."
     },
     {
-        "title": "Erind",
+        "title": "erindid.html",
         "url": "pages/prog_alused/erindid.html",
         "desc": "Erind (ingl exception) on mingi eriolukord (mitte tingimata viga), mis programmi töö jooksul ilmneb...."
     },
     {
-        "title": "Tsüklid (Looping)",
+        "title": "for.html",
         "url": "pages/prog_alused/for.html",
         "desc": "Tsükli sisu täidetakse seni, kuni tingimus on tõene."
     },
     {
-        "title": "Funktsioon (function)",
+        "title": "funkt.html",
         "url": "pages/prog_alused/funkt.html",
         "desc": "Funktsioon defineeritakse märksõnaga def, millele järgneb nimi ja sulud parameetritega."
     },
     {
-        "title": "Hulk (Set)",
+        "title": "hulk.html",
         "url": "pages/prog_alused/hulk.html",
         "desc": "Hulka saab panna vaid muutumatuid objekte (sõned, arvud, tõeväärtused, ennikud). Muutuvad objektid n..."
     },
     {
-        "title": "Minu Programmeerimise Alused Ainemapp",
+        "title": "index.html",
         "url": "pages/prog_alused/index.html",
         "desc": "Kursus \"Programmeerimise alused\" on esimene samm IT-maailma, pakkudes süsteemset sissevaadet selless..."
     },
     {
-        "title": "Järjend (List)",
+        "title": "jarjend.html",
         "url": "pages/prog_alused/jarjend.html",
         "desc": "Sarnaselt sõnele algavad indeksid 0-st."
     },
     {
-        "title": "Koodistiil (Coding style)",
+        "title": "koodistill.html",
         "url": "pages/prog_alused/koodistill.html",
         "desc": "Docstring on kommentaar funktsiooni, meetodi, klassi või mooduli (faili) kohta."
     },
     {
-        "title": "Rekursioon (Recursion)",
+        "title": "rekursioon.html",
         "url": "pages/prog_alused/rekursioon.html",
         "desc": "Iga korrektne rekursiivne funktsioon peab koosnema kahest osast:"
     },
     {
-        "title": "Väljund ja sisend Pythonis",
+        "title": "sisend.html",
         "url": "pages/prog_alused/sisend.html",
         "desc": "Kasutatakse andmete ekraanile kuvamiseks."
     },
     {
-        "title": "Sõnastik (Dictionary)",
+        "title": "sonastik.html",
         "url": "pages/prog_alused/sonastik.html",
         "desc": "Sõnastikku saab läbida mitmel viisil:"
     },
     {
-        "title": "Sõne (String)",
+        "title": "sone.html",
         "url": "pages/prog_alused/sone.html",
         "desc": "Sõne on indekseeritav jada, kus igal märgil on oma asukoht (indeks)."
     },
     {
-        "title": "Töö tekstifailidega",
+        "title": "tekstifail.html",
         "url": "pages/prog_alused/tekstifail.html",
-        "desc": "&copy; 2025 Juri."
+        "desc": "Vaata lähemalt..."
     },
     {
-        "title": "Testimine (Testing)",
+        "title": "testimine.html",
         "url": "pages/prog_alused/testimine.html",
         "desc": "Pythonis on levinuim testimisraamistik pytest. See on lihtne ja võimas."
     },
     {
-        "title": "Tingimuslause (Conditional)",
+        "title": "ting.html",
         "url": "pages/prog_alused/ting.html",
         "desc": "Tingimuslausele järgnev rida (taandega plokk) täidetakse vaid juhul, kui tingimus on tõene."
     },
     {
-        "title": "Acceptance Test Driven Development (ATDD)",
+        "title": "acceptance.html",
         "url": "pages/SDLC/acceptance.html",
         "desc": "Acceptance Test Driven Development (ATDD) ehk vastuvõtutestidel põhinev arendus on tarkvaraarenduse ..."
     },
     {
-        "title": "Agiilne Arendusmudel (Agile)",
+        "title": "agile.html",
         "url": "pages/SDLC/agile.html",
         "desc": "Agiilne arendusmudel on iteratiivne ja järkjärguline lähenemine tarkvaraarendusele, mis keskendub pa..."
     },
@@ -240,7 +260,7 @@ const siteContent = [
         "desc": "Scrum on agiilne raamistik keeruliste toodete arendamiseks, hoidmiseks ja edasiviimiseks. See ei ole..."
     },
     {
-        "title": "Mis on Tarkvaraarenduse Elutsükkel (SDLC - Software Development Life Cycle)",
+        "title": "sdlc.html",
         "url": "pages/SDLC/sdlc.html",
         "desc": "Tarkvaraarenduse elutsükkel on protsess, mille käigus tehakse mingi tarkvaratoode.\n        Sellega s..."
     },
@@ -270,28 +290,28 @@ const siteContent = [
         "desc": "Koskmudel (ehk waterfall) on üks esimesi tarkvaraarenduse elutsükli mudeleid. See põhineb tavalise \n..."
     },
     {
-        "title": "TARge25",
+        "title": "index.html",
         "url": "pages/targe25/index.html",
         "desc": ""
     },
     {
-        "title": "ERD",
+        "title": "ERD.html",
         "url": "pages/UML/ERD.html",
         "desc": "ER-diagramm ehk olemi-seose diagramm on vooskeemi tüüp, mis illustreerib, kuidas \"olemid\" (nt inimes..."
     },
     {
-        "title": "Flowchart",
+        "title": "flowchart.html",
         "url": "pages/UML/flowchart.html",
         "desc": "Vooskeem, kirjeldab süsteemi dünaamilisi aspekte. Mis modelleerib ühelt tegevuselt teisele liikumist..."
     },
     {
-        "title": "UML diagrammikeel",
+        "title": "index.html",
         "url": "pages/UML/index.html",
         "desc": "UML (Unified Modeling Language – ühtne modelleerimiskeel) on visuaalne modelleerimiskeel, mis aitab ..."
     },
     {
-        "title": "Title",
-        "url": "_includes/header.html",
+        "title": "{{ page.title }}",
+        "url": "_layouts/default.html",
         "desc": "Vaata lähemalt..."
     }
 ];

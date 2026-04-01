@@ -1,0 +1,423 @@
+---
+layout: default
+title: Andmebaaside tüüpide analüüs
+---
+<body>
+<h1>Andmebaaside tüüpide analüüs</h1>
+
+<p>Siin on ülevaade erinevatest andmebaasimudelitest, nende eelistest, puudustest ja peamistest kasutusjuhtudest.</p>
+
+<h2>1. Relatsioonilised andmebaasid</h2>
+<table>
+    <tr>
+        <th>Omadus</th>
+        <th>Kirjeldus</th>
+    </tr>
+    <tr>
+        <td>Andmemudel</td>
+        <td>Tabelid, read, veerud.</td>
+    </tr>
+    <tr>
+        <td>Struktuur</td>
+        <td>Rida on kirje, veerg on atribuut. Vältib andmete dubleerimist.</td>
+    </tr>
+    <tr>
+        <td>Eelised</td>
+        <td>SQL standardiseeritud päringukeel, küps tehnoloogia, andmete terviklikkus.</td>
+    </tr>
+    <tr>
+        <td>Puudused</td>
+        <td>Jäik struktuur, raske skaleerida horisontaalselt.</td>
+    </tr>
+    <tr>
+        <td>Kasutusjuhud</td>
+        <td>Pangad, e-poed, laod ja raamatupidamissüsteemid.</td>
+    </tr>
+    <tr>
+        <td>Pärimine</td>
+        <td>SQL.</td>
+    </tr>
+    <tr>
+        <td>Seosed</td>
+        <td>Lahendatud võõrvõtmete (Foreign Keys) ja JOIN-operatsioonidega.</td>
+    </tr>
+    <tr>
+        <td>Skeem</td>
+        <td>Jäik.</td>
+    </tr>
+    <tr>
+        <td>Skaleeruvus</td>
+        <td>Hea vertikaalne skaleeruvus, kuid keeruline horisontaalne.</td>
+    </tr>
+    <tr>
+        <td>Näited</td>
+        <td>PostgreSQL, MySQL, Oracle Database.</td>
+    </tr>
+    <tr>
+        <td colspan="2"></td>
+    </tr>
+</table>
+
+<h2>2. Võtme-väärtuse (Key-Value) andmebaasid</h2>
+<table>
+    <tr>
+        <th>Omadus</th>
+        <th>Kirjeldus</th>
+    </tr>
+    <tr>
+        <td>Andmemudel</td>
+        <td>Sõnastik, hash map.</td>
+    </tr>
+    <tr>
+        <td>Struktuur</td>
+        <td>Salvestatakse key-value (võti-väärtus) paaridena.</td>
+    </tr>
+    <tr>
+        <td>Eelised</td>
+        <td>Super kiire, lihtne, hea horisontaalne skaleerimine.</td>
+    </tr>
+    <tr>
+        <td>Puudused</td>
+        <td>Otsing on võimalik ainult läbi võtmete (keys), seosed puuduvad.</td>
+    </tr>
+    <tr>
+        <td>Kasutusjuhud</td>
+        <td>Sessioonide haldus, ostukorvid, vahemälud (caching).</td>
+    </tr>
+    <tr>
+        <td>Pärimine</td>
+        <td>GET, PUT, DELETE operatsioonid.</td>
+    </tr>
+    <tr>
+        <td>Seosed</td>
+        <td>Puuduvad.</td>
+    </tr>
+    <tr>
+        <td>Skeem</td>
+        <td>Skeem puudub täielikult.</td>
+    </tr>
+    <tr>
+        <td>Skaleeruvus</td>
+        <td>Väga hea horisontaalne skaleerimine.</td>
+    </tr>
+    <tr>
+        <td>Näited</td>
+        <td>Amazon DynamoDB, Redis.</td>
+    </tr>
+    <tr>
+        <td colspan="2"></td>
+    </tr>
+</table>
+
+<h2>3. Dokumendipõhised andmebaasid</h2>
+<table>
+    <tr>
+        <th>Omadus</th>
+        <th>Kirjeldus</th>
+    </tr>
+    <tr>
+        <td>Andmemudel</td>
+        <td>JSON, XML formaadid.</td>
+    </tr>
+    <tr>
+        <td>Struktuur</td>
+        <td>Hierarhilised puud (objektid on pesastatud).</td>
+    </tr>
+    <tr>
+        <td>Eelised</td>
+        <td>Paindlik, lihtne arendada, andmete lugemine on kiire.</td>
+    </tr>
+    <tr>
+        <td>Puudused</td>
+        <td>Andmete dubleerimine, väga suured dokumendid võivad olla aeglased.</td>
+    </tr>
+    <tr>
+        <td>Kasutusjuhud</td>
+        <td>CMS (sisuhaldus), kasutajaprofiilid, desktop rakendused.</td>
+    </tr>
+    <tr>
+        <td>Pärimine</td>
+        <td>Paindlikud päringkeeled, saab otsida sisu järgi.</td>
+    </tr>
+    <tr>
+        <td>Seosed</td>
+        <td>Lahendatud pesastamise ja viidete kaudu.</td>
+    </tr>
+    <tr>
+        <td>Skeem</td>
+        <td>Paindlik (Schemaless).</td>
+    </tr>
+    <tr>
+        <td>Skaleeruvus</td>
+        <td>Hea horisontaalne skaleeruvus.</td>
+    </tr>
+    <tr>
+        <td>Näited</td>
+        <td>MongoDB.</td>
+    </tr>
+    <tr>
+        <td colspan="2"></td>
+    </tr>
+</table>
+
+<h2>4. Veerupõhised andmebaasid</h2>
+<table>
+    <tr>
+        <th>Omadus</th>
+        <th>Kirjeldus</th>
+    </tr>
+    <tr>
+        <td>Andmemudel</td>
+        <td>Tabelid, kus andmed on salvestatud ja grupeeritud veergude kaupa.</td>
+    </tr>
+    <tr>
+        <td>Struktuur</td>
+        <td>Rida on võtmega ja sisaldab hulka veerge.</td>
+    </tr>
+    <tr>
+        <td>Eelised</td>
+        <td>Väga kiire kirjutamine ja lugemine suurte andmemahtude korral.</td>
+    </tr>
+    <tr>
+        <td>Puudused</td>
+        <td>Keeruline disain, piiratud tehingute tugi.</td>
+    </tr>
+    <tr>
+        <td>Kasutusjuhud</td>
+        <td>Big Data analüüs, logide salvestamine.</td>
+    </tr>
+    <tr>
+        <td>Pärimine</td>
+        <td>CQL, MapReduce.</td>
+    </tr>
+    <tr>
+        <td>Seosed</td>
+        <td>Seosed puuduvad.</td>
+    </tr>
+    <tr>
+        <td>Skeem</td>
+        <td>Paindlik veergude osas.</td>
+    </tr>
+    <tr>
+        <td>Skaleeruvus</td>
+        <td>Hea horisontaalne skaleerimine.</td>
+    </tr>
+    <tr>
+        <td>Näited</td>
+        <td>Apache Cassandra, HBase.</td>
+    </tr>
+    <tr>
+        <td colspan="2"></td>
+    </tr>
+</table>
+
+<h2>5. Graafitaolised andmebaasid</h2>
+<table>
+    <tr>
+        <th>Omadus</th>
+        <th>Kirjeldus</th>
+    </tr>
+    <tr>
+        <td>Andmemudel</td>
+        <td>Graafiteooria: sõlmed (Nodes), servad (Edges), omadused (Properties).</td>
+    </tr>
+    <tr>
+        <td>Struktuur</td>
+        <td>Andmed on sõlmed ja nendevahelised seosed on servad (suuna ja tüübiga).</td>
+    </tr>
+    <tr>
+        <td>Eelised</td>
+        <td>Väga kiire seoste ja mustrite otsimine.</td>
+    </tr>
+    <tr>
+        <td>Puudused</td>
+        <td>Raske skaleerida.</td>
+    </tr>
+    <tr>
+        <td>Kasutusjuhud</td>
+        <td>Sotsiaalvõrgustikud, soovitussüsteemid.</td>
+    </tr>
+    <tr>
+        <td>Pärimine</td>
+        <td>Cypher, Gremlin, SPARQL.</td>
+    </tr>
+    <tr>
+        <td>Seosed</td>
+        <td>Seosed on füüsiliselt salvestatud, mis teeb liikumise andmete vahel ülikiireks.</td>
+    </tr>
+    <tr>
+        <td>Skeem</td>
+        <td>Paindlik.</td>
+    </tr>
+    <tr>
+        <td>Skaleeruvus</td>
+        <td>Vertikaalne; horisontaalne skaleerimine on keeruline.</td>
+    </tr>
+    <tr>
+        <td>Näited</td>
+        <td>Neo4j, Amazon Neptune.</td>
+    </tr>
+    <tr>
+        <td colspan="2"></td>
+    </tr>
+</table>
+
+<h2>6. Objektorienteeritud andmebaasid</h2>
+<table>
+    <tr>
+        <th>Omadus</th>
+        <th>Kirjeldus</th>
+    </tr>
+    <tr>
+        <td>Andmemudel</td>
+        <td>Objektid, OOP (objektorienteeritud programmeerimine).</td>
+    </tr>
+    <tr>
+        <td>Struktuur</td>
+        <td>Salvestatakse otse objektina.</td>
+    </tr>
+    <tr>
+        <td>Eelised</td>
+        <td>Pole vaja ORM-i (Object-Relational Mapping), väga kiire keeruliste objektistruktuuride puhul.</td>
+    </tr>
+    <tr>
+        <td>Puudused</td>
+        <td>Väike kogukond, tihti seotud konkreetse programmeerimiskeelega.</td>
+    </tr>
+    <tr>
+        <td>Kasutusjuhud</td>
+        <td>CAD/CAM süsteemid, reaalajasüsteemid.</td>
+    </tr>
+    <tr>
+        <td>Pärimine</td>
+        <td>OQL või otse programmeerimiskeelega.</td>
+    </tr>
+    <tr>
+        <td>Seosed</td>
+        <td>Objektide viited.</td>
+    </tr>
+    <tr>
+        <td>Skeem</td>
+        <td>Seotud klassidega programmi koodis.</td>
+    </tr>
+    <tr>
+        <td>Skaleeruvus</td>
+        <td>Tavaliselt sobib paremini vertikaalne skaleerimine.</td>
+    </tr>
+    <tr>
+        <td>Näited</td>
+        <td>ObjectDB, db4o.</td>
+    </tr>
+    <tr>
+        <td colspan="2"></td>
+    </tr>
+</table>
+
+<h2>7. Ajalised andmebaasid</h2>
+<table>
+    <tr>
+        <th>Omadus</th>
+        <th>Kirjeldus</th>
+    </tr>
+    <tr>
+        <td>Andmemudel</td>
+        <td>Aeg on integreeritud igasse andmesse.</td>
+    </tr>
+    <tr>
+        <td>Struktuur</td>
+        <td>Ajalugu säilitatakse, igal real on "kehtiv alates" ja "kehtiv kuni" väärtused.</td>
+    </tr>
+    <tr>
+        <td>Eelised</td>
+        <td>Võimalik liikuda ajas tagasi, lihtne trendianalüüs.</td>
+    </tr>
+    <tr>
+        <td>Puudused</td>
+        <td>Kõik andmed jäävad alles, andmemaht ainult suureneb, mis võib muuta süsteemi aeglaseks.</td>
+    </tr>
+    <tr>
+        <td>Kasutusjuhud</td>
+        <td>Meditsiin, finantssektor, kindlustus.</td>
+    </tr>
+    <tr>
+        <td>Pärimine</td>
+        <td>SQL laiendustega.</td>
+    </tr>
+    <tr>
+        <td>Seosed</td>
+        <td>Sama mis relatsioonilistes andmebaasides + ajadimensioon.</td>
+    </tr>
+    <tr>
+        <td>Skeem</td>
+        <td>Jäik.</td>
+    </tr>
+    <tr>
+        <td>Skaleeruvus</td>
+        <td>Hea vertikaalne, kuid ajaloo säilitamine võtab palju ruumi.</td>
+    </tr>
+    <tr>
+        <td>Näited</td>
+        <td>MariaDB (Temporal Tables).</td>
+    </tr>
+    <tr>
+        <td colspan="2"></td>
+    </tr>
+</table>
+
+<h2>8. Multimudel andmebaasid</h2>
+<table>
+    <tr>
+        <th>Omadus</th>
+        <th>Kirjeldus</th>
+    </tr>
+    <tr>
+        <td>Andmemudel</td>
+        <td>Toetab mitut mudelit korraga (nt Dokument + Relatsiooniline).</td>
+    </tr>
+    <tr>
+        <td>Struktuur</td>
+        <td>Vastavalt valitud andmemudelile.</td>
+    </tr>
+    <tr>
+        <td>Eelised</td>
+        <td>Ei ole vaja kasutada mitut erinevat andmebaasi ühe rakenduse jaoks.</td>
+    </tr>
+    <tr>
+        <td>Puudused</td>
+        <td>Toob kaasa kasutatavate mudelite miinused ja plussid ning lisaks piirangud nende kooskasutamisel.</td>
+    </tr>
+    <tr>
+        <td>Kasutusjuhud</td>
+        <td>Projektid, kus on vaja suurt paindlikkust.</td>
+    </tr>
+    <tr>
+        <td>Pärimine</td>
+        <td>Ühtne päringukeel, mis kombineerib mudeleid.</td>
+    </tr>
+    <tr>
+        <td>Seosed</td>
+        <td>Oleneb mudelist.</td>
+    </tr>
+    <tr>
+        <td>Skeem</td>
+        <td>Tavaliselt paindlik.</td>
+    </tr>
+    <tr>
+        <td>Skaleeruvus</td>
+        <td>Hea.</td>
+    </tr>
+    <tr>
+        <td>Näited</td>
+        <td>ArangoDB, Azure Cosmos DB, OrientDB.</td>
+    </tr>
+    <tr>
+        <td colspan="2"></td>
+    </tr>
+</table>
+
+<div class="note">
+    <h3>Kokkuvõte</h3>
+    <p><strong>Miks ei ole olemas ühte universaalset andmebaasi, mis sobiks kõigeks?</strong></p>
+    <p>Andmebaasidel on erinevad eesmärgid ja ei ole võimalik luua sellist lahendust, mis hõlmaks kõiki plusse ja väldiks kõiki miinuseid.</p>
+</div>
+</body>

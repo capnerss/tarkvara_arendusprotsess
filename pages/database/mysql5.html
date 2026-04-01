@@ -1,0 +1,90 @@
+---
+layout: default
+title: Approximate Numerics
+---
+<body>
+   <h1>Binaarsed ja muud andmetüübid (Binary & Other)</h1>
+
+<p>Kõik andmed andmebaasis ei ole ilmtingimata tekstid, numbrid või kuupäevad. Tänapäevastes süsteemides on tihti vaja salvestada faile (pilte, PDF-dokumente), krüpteeritud andmeid, süsteemseid versiooninumbreid ja globaalselt unikaalseid identifikaatoreid. Selleks pakub MS SQL Server spetsiaalseid binaarseid ja süsteemseid andmetüüpe.</p>
+
+<div class="note">
+    <p><strong>Arhitektuurne valik (Best Practice):</strong> Kuigi MS SQL suudab suuri faile otse andmebaasis hoida (kasutades <code>varbinary(max)</code> tüüpi), on sageli süsteemi jõudluse ja varundamise kiiruse huvides mõistlikum salvestada failid eraldi failiserverisse (või pilve, nt AWS S3) ja andmebaasis hoida ainult faili URL-i tekstina (<code>varchar</code>). Binaarsed tüübid andmebaasis on parimad turvakriitiliste failide või väikeste krüptovõtmete jaoks.</p>
+</div>
+
+<h2>1. Binaarsed andmetüübid (Binary Strings)</h2>
+<p>Need andmetüübid salvestavad toorandmeid baitide jadanana (1 ja 0), mitte loetava tekstina.</p>
+
+<ul>
+    <li><strong>binary(n):</strong> Fikseeritud pikkusega binaarandmed, suurusega kuni 8000 baiti. Kui sisestatud andmed on lühemad, täidetakse ülejäänud ruum nullidega. Sobib näiteks lühikeste ja alati sama pikkusega krüptovõtmete hoidmiseks.</li>
+    <li><strong>varbinary(n):</strong> Muutuva pikkusega binaarandmed, samuti kuni 8000 baiti. Salvestab kettale vaid nii palju ruumi, kui reaalselt vaja on. Kasutatakse sageli paroolide räsiväärtuste (<em>hashes</em>) salvestamiseks.</li>
+    <li><strong>varbinary(max):</strong> Asendab äärmiselt vananenud <code>image</code> andmetüüpi. Suudab mahutada kuni 2 GB suuruseid faile. See on andmetüüp, mida kasutad, kui tahad salvestada profiilipilte, Wordi dokumente või PDF-e toorkujul otse andmebaasi ridadesse.</li>
+</ul>
+
+<h2>2. Unikaalsed ja spetsiifilised tüübid</h2>
+<p>SQL Server pakub ka mitmeid spetsiaalseid tüüpe, mis teevad süsteemiarhitektide ja arendajate elu oluliselt lihtsamaks.</p>
+
+<ul>
+    <li><strong>uniqueidentifier:</strong> 16-baidine globaalselt unikaalne identifikaator (GUID). See genereeritakse tavaliselt funktsiooniga <code>NEWID()</code> ja näeb välja umbes selline: <em>6F9619FF-8B86-D011-B42D-00C04FC964FF</em>. See on hädavajalik hajutatud süsteemides, kus andmeid luuakse mitmes erinevas serveris või isegi *offline*-seadmetes, aga need tuleb hiljem ühte peabaasi sünkroniseerida ilma ID-de konfliktideta.</li>
+    <li><strong>xml:</strong> Salvestab XML-dokumente ja fragmente. See pole lihtsalt tavaline tekst – SQL Server valideerib, et sisestatud andmed on korrektselt vormindatud XML, ja võimaldab selle sisu otse SQL-päringutega filtreerida (XQuery abil).</li>
+    <li><strong>rowversion (varasemalt tuntud kui timestamp):</strong> Hoolimata vanast nimest ei ole sellel midagi pistmist kuupäeva ega kellaajaga. See on automaatselt genereeritud 8-baidine binaarne number, mis muutub iga kord, kui rida uuendatakse. Kasutatakse nn "optimistlikuks lukustamiseks", et vältida olukorda, kus kaks kasutajat muudavad samal ajal sama rida ja kirjutavad üksteise andmed üle.</li>
+</ul>
+
+<h2>Kiire võrdlustabel</h2>
+<table>
+    <tr>
+        <th>Andmetüüp</th>
+        <th>Maht</th>
+        <th>Iseloomustus</th>
+        <th>Kõige parem kasutuskoht</th>
+    </tr>
+    <tr>
+        <td><code>varbinary(max)</code></td>
+        <td>Kuni 2 GB</td>
+        <td>Muutuva pikkusega toorandmed</td>
+        <td>Pildid, videod, PDF-failid, dokumendid</td>
+    </tr>
+    <tr>
+        <td><code>uniqueidentifier</code></td>
+        <td>16 baiti</td>
+        <td>GUID (Globaalselt unikaalne ID)</td>
+        <td>Hajutatud süsteemide identifikaatorid</td>
+    </tr>
+    <tr>
+        <td><code>xml</code></td>
+        <td>Kuni 2 GB</td>
+        <td>Struktureeritud XML</td>
+        <td>Süsteemide integratsioon, konfiguratsioonid</td>
+    </tr>
+    <tr>
+        <td><code>rowversion</code></td>
+        <td>8 baiti</td>
+        <td>Automaatne versiooninumber</td>
+        <td>Andmete sünkroniseerimine ja versioonihaldus</td>
+    </tr>
+    <tr>
+        <td colspan="4">
+            <a href="https://learn.microsoft.com/en-us/sql/t-sql/data-types/binary-and-varbinary-transact-sql" target="_blank">Loe täpsemalt Microsofti dokumentatsioonist</a>
+        </td>
+    </tr>
+</table>
+
+
+<hr>
+
+<div class="quiz-container">
+    <p class="quiz-question">Küsimus: Milline andmetüüp tuleb valida MS SQL andmebaasi tabelis, kui nõue on salvestada kasutaja üleslaetud avatar (pildifail) otse andmebaasi ritta, kusjuures failide suurused varieeruvad paarist kilobaidist mitme megabaidini?</p>
+
+    <div class="quiz-options">
+        <label><input type="radio" name="q5" value="varchar"> varchar(max)</label>
+        <label><input type="radio" name="q5" value="uniqueidentifier"> uniqueidentifier</label>
+        <label><input type="radio" name="q5" value="varbinary"> varbinary(max)</label>
+        <label><input type="radio" name="q5" value="image"> image</label>
+    </div>
+
+    <button class="quiz-submit-btn" onclick="alert('Õige vastus on: varbinary(max)! See on kaasaegne standard failide (binaarandmete) hoidmiseks andmebaasis. Vana &quot;image&quot; tüüp on iganenud (deprecated) ja seda ei tohiks uutes arendustes enam kasutada.')">Kontrolli vastust</button>
+</div>
+
+
+<p>Sellega oleme katnud MS SQL Serveri kõige olulisemad ja laialdasemalt kasutatavad andmetüübid – alates tekstist ja numbritest kuni kuupäevade ja binaarfailideni!</p>
+
+</body>
