@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interaktiivne veebileht</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>Interaktiivne veebileht</h1>
+    </header>
+
+    <div id="content">
+        <nav>
+            <ul>
+                <li><button type="button" class="nav-btn" id="myBtn">To-Do List</button></li>
+                <li><button type="button" class="nav-btn" id="myBtn2">Quiz</button></li>
+                <li><button type="button" class="nav-btn" id="myBtn3">Game</button></li>
+            </ul>
+        </nav>
+
+        <section id="to_do_list">
+            <h2>To-Do List</h2>
+            <label for="to_do_item" style="display: block; font-weight: 600;">Add to-do item:</label>
+            <input type="text" id="to_do_item" placeholder="Enter task here...">
+            <button type="submit" id="add-btn">Add</button>
+
+            <div id="to_do_list_items">
+                <h3 style="margin-bottom: 10px; color: #555;">To-do items:</h3>
+                <ul id="task-list"></ul>
+            </div>
+        </section>
+
+        <section id="quiz" style="display: none;">
+            <h2>Kontrolli oma teadmisi UML-ist</h2>
+
+            <div class="quiz-question">1. Mida tähendab lühend UML?</div>
+            <div class="quiz-options">
+                <label><input type="radio" name="q1" value="a"> Universal Modeling Language</label>
+                <label><input type="radio" name="q1" value="b"> Unified Modeling Language</label>
+                <label><input type="radio" name="q1" value="c"> Unique Modeling Language</label>
+            </div>
+
+            <div class="quiz-question">2. Milline neist on käitumisdiagramm?</div>
+            <div class="quiz-options">
+                <label><input type="radio" name="q2" value="a"> Klassidiagramm</label>
+                <label><input type="radio" name="q2" value="b"> Komponendidiagramm</label>
+                <label><input type="radio" name="q2" value="c"> Kasutusjuhtude diagramm</label>
+            </div>
+
+            <div class="quiz-question">3. Mida tähistab klassidiagrammil pidev joon tühja kolmnurgaga?</div>
+            <div class="quiz-options">
+                <label><input type="radio" name="q3" value="a"> Pärilust (Generaliseerimist)</label>
+                <label><input type="radio" name="q3" value="b"> Assotsiatsiooni</label>
+                <label><input type="radio" name="q3" value="c"> Kompositsiooni</label>
+            </div>
+
+            <button class="quiz-submit-btn" onclick="checkQuiz()">Kontrolli vastuseid</button>
+            <div id="quiz-result" class="quiz-result"></div>
+        </section>
+
+        <section id="game" style="display: none;">
+            <h2>Arva ära arv</h2>
+            <p style="margin-bottom: 20px; color: #555;">Ma mõtlesin ühele arvule 1 kuni 100.<br>Kas suudad selle ära arvata?</p>
+
+            <input type="number" id="guessInput" placeholder="Sisesta arv..." min="1" max="100">
+            <br>
+            <button id="guessBtn">Kontrolli</button>
+
+            <div id="message"></div>
+
+            <button id="restartBtn">Mängi uuesti</button>
+        </section>
+    </div>
+
+    <footer>Juri Sarki 2026</footer>
+</body>
+</html>
