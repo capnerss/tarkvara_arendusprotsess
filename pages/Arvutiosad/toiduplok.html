@@ -1,0 +1,91 @@
+---
+layout: default
+title: Toiteplokk
+---
+<body>
+
+
+    <h1>Toiteplokk</h1>
+
+    <div class="note">
+        <p>Toiteplokk on komponent, mis varustab arvutit vooluga.
+            Enamus personaalarvutitest võib liita tavalisse vooluvõrku.</p>
+    </div>
+
+    <h2>Põhifunktsioonid</h2>
+    <ul>
+        <li>Toiteplokk võtab võrgust vajamineva vooluhulga ja muudab vahelduvvoolu alalisvooluks.</li>
+        <li>Samas ta ka reguleerib pinget vähendamaks kõikumist, mis on vooluvõrgus tavaline.</li>
+        <li>Kõik toiteplokid ei saa sellega hakkama ja seepärast on arvutid pinge kõikumisele sageli tundlikud.</li>
+        <li>Toiteplokke eristatakse nende toodetava võimsuse alusel. Levinumad viimasel ajal on 450W toiteplokid.</li>
+    </ul>
+
+    <hr>
+
+    <h2>Toiteploki pinged</h2>
+    <p>Arvuti vajab mitmeid erinevaid pingeid, millega toidetakse eri komponente.
+        Pinged on värvitud vastavalt juhtmete värvidele, mis tulevad toiteplokist.</p>
+
+    <table>
+        <tr>
+            <th>Pinge</th>
+            <th>Kirjeldus ja kasutusala</th>
+        </tr>
+        <tr>
+            <td><strong>+12 V</strong></td>
+            <td>Seda pinget kasutatakse peamiselt kettadraivi mootorite toiteks.
+                Seda kasutavad ka ventilaatorid ja muud jahutusseadmed.
+                Kettadraivid saavad selle pinge otse eraldi juhtmete kaudu.</td>
+        </tr>
+        <tr>
+            <td><strong>+5 V</strong></td>
+            <td>Varem oli see peamiselt kasutatav pinge, aga +3.3V tulekust on selle kasutus vähenenud.
+                Siiani kasutab +5V pinget emaplaat ja paljud tema komponendid.</td>
+        </tr>
+        <tr>
+            <td><strong>+3.3 V</strong></td>
+            <td>Kõige uuem pinge, mida annavad kaasaegsed toiteplokid alates ATX-st.
+                Seda pinget kasutavad enamus uutest protsessoritest, samuti osad mälud,
+                AGP graafikakaardid ja teised vooluringid.</td>
+        </tr>
+        <tr>
+            <td><strong>0 V</strong></td>
+            <td>See on arvuti elektrisüsteemi maa. Maa signaali, mida toiteplokk annab,
+                kasutatakse vooluringi sulgemiseks teiste pingetega.</td>
+        </tr>
+        <tr>
+            <td><strong>-5 V / -12 V</strong></td>
+            <td>Need on vananenud pinged, mida ei vajata uuematel masinatel,
+                aga mis on alles, et säilitada ühilduvust vanema riistvaraga (nt ISA siinid ja osad jadapordid).</td>
+        </tr>
+    </table>
+
+    <hr>
+
+    <h2>Olulised signaalid</h2>
+    <ul>
+        <li><strong>Power Good (PWR OK):</strong> Et arvuti ei käivituks enne kui pinged korras on,
+            annab toiteplokk PWR OK signaali emaplaadile, mis alles seejärel käivitab ülejäänud komponendid.
+            Kui pinge liiga palju kõigub, katkestab toiteplokk signaali.</li>
+        <li><strong>Soft Power:</strong> Alates ATX-st ei lülitata voolu sisse lülitist,
+            vaid nupuga antakse signaal emaplaadile ja emaplaat ütleb toiteplokile, mida teha.
+            Tänu sellele suudab operatsioonisüsteem arvutil voolu välja lülitada
+            ja on võimalik arvuti klaviatuurilt sisse lülitada. Et see oleks võimalik,
+            on toiteplokil koguaeg üks +5V (+5VSB) ootel pinge.</li>
+    </ul>
+
+    <hr>
+
+    <h2>Kujutegurid (Form Factor)</h2>
+    <p>Leidub erineva suuruse ja kujuga toiteplokke ning neid liigitatakse järgmiselt:</p>
+    <ul>
+        <li><strong>PC/XT:</strong> Esimeste PC-de toiteplokk.</li>
+        <li><strong>AT ja Baby AT:</strong> 1984 tõi IBM turule AT. Baby AT (1985-1995) oli väga levinud
+            ja erineb AT-st suuruse poolest.</li>
+        <li><strong>LPX:</strong> "Low profile", mida eelistati AT-le tema suuruse poolest.</li>
+        <li><strong>ATX (NLX):</strong> 1995. aastal Inteli poolt välja toodud standard,
+            mis oli üks suurimaid muudatusi arvuti ehituses sinnamaani.</li>
+    </ul>
+
+
+</body>
