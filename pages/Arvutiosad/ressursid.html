@@ -1,0 +1,54 @@
+---
+layout: default
+title: Süsteemi ressursid
+---
+<body>
+
+    <h1>Süsteemi ressursid </h1>
+
+    <div class="note">
+        <p>See materjal põhineb loengul "Süsteemi ressursid", mille autoriks on Kristjan Kivikangur. Allpool on toodud ülevaade riistvara ressurssidest ja IRQ (Interrupt Request) lahendustest.</p>
+    </div>
+
+    <h2>Mis on süsteemi ressursid?</h2>
+    <p>Süsteemi ressursid on suhtluskanalid, mida riistvaraseadmed kasutavad arvuti protsessori ja mäluga andmete vahetamiseks. Peamised ressursid on:</p>
+    <ul>
+        <li><strong>IRQ (Katkestusenõue):</strong> Signaal, mille seade saadab protsessorile tähelepanu saamiseks.</li>
+        <li><strong>I/O pordid:</strong> Sisend- ja väljundaadressid seadmetega suhtlemiseks.</li>
+        <li><strong>Mäluaadressid:</strong> Piirkonnad RAM-is, mida seade kasutab.</li>
+        <li><strong>DMA kanalid:</strong> Otsepöördusmällu, mis lubab seadmetel mälu kasutada ilma protsessorit koormamata.</li>
+    </ul>
+
+    <hr>
+
+    <h2>Standardne IRQ tabel (näidis)</h2>
+    <table>
+        <tr>
+            <th>IRQ Number</th>
+            <th>Standardne seade</th>
+            <th>Staatus</th>
+        </tr>
+        <tr>
+            <td>0</td>
+            <td>Süsteemi taimer</td>
+            <td>Reserveeritud süsteemile</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>Klaviatuur</td>
+            <td>Kasutuses</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Kaskaad (IRQ 8-15 jaoks)</td>
+            <td>
+                Reserveeritud
+            </td>
+        </tr>
+    </table>
+
+    <hr>
+
+
+</body>
+
