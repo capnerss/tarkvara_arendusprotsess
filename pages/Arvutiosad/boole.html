@@ -1,0 +1,75 @@
+
+---
+layout: default
+title: Boole'i algebra
+---
+<body>
+
+    <h1>Boole'i algebra</h1>
+
+    <div class="note">
+        <p>Boole'i algebra on formaalne matemaatiline aparatuur (teooria, süsteem) oma muutujate väärtuste hulga, funktsioonide ja postulaatidega, mis sobib hästi mitmesuguste loogiliste süsteemide töö kirjeldamiseks ja vastavate skeemide projekteerimiseks.</p>
+    </div>
+
+    <h2>Üldmõisted ja kasutamine</h2>
+    <p>Boole'i funktsioonide kasutamisel arvutisüsteemi kirjeldamiseks toimub tegelikult
+        kahendnumbrite tõlgendamine Boole'i muutujatena. Võimaliku segaduse vältimiseks on soovitav pöörata esialgu
+        tähelepanu vaid Boole'i operatsioonide sisule ning mitte mõelda muutuja tähendusele.
+        Boole'i operatsioonide kohta esitatakse tavaliselt määratlus, avaldis (valem)
+        ja joonis koos olekutabeli ning sümboliga.</p>
+
+    <hr>
+
+    <h2>Põhilised loogikatehted</h2>
+
+    <h3>JA / AND (loogiline korrutamine ehk konjunktsioon) </h3>
+    <p>JA-tehte tulemus omab väärtust loogiline 1 ainult siis,
+        kui kõigi argumentide (sisendmuutujate) väärtused on loogilised 1-d, vastasel juhul on tulemus loogiline 0.
+        Valem: F=XY või F=X*Y.</p>
+    <table>
+        <tr>
+            <th>X</th>
+            <th>Y</th>
+            <th>F (Tulemus)</th>
+        </tr>
+        <tr><td>0</td><td>0</td><td>0</td></tr>
+        <tr><td>0</td><td>1</td><td>0</td></tr>
+        <tr><td>1</td><td>0</td><td>0</td></tr>
+        <tr><td>1</td><td>1</td><td>1</td></tr>
+    </table>
+
+    <h3>VÕI / OR (loogiline liitmine ehk disjunktsioon)</h3>
+    <p>VÕI-tehte tulemus on loogiline 0 ainult siis, kui kõik sisendmuutujad omavad väärtust loogiline 0.
+        Kui kas või üks sisendmuutuja omab väärtust loogiline 1, on ka tehte tulemus loogiline 1. Valem: F=X+Y.</p>
+
+    <h3>EI / NOT (eitus, inversioon, negatsioon) [cite: 79]</h3>
+    <p>EI-tehte tulemus on loogiline 1, kui sisendmuutuja väärtus on loogiline 0. Valem: F=\overline{X}.</p>
+
+    <hr>
+
+    <h2>Tuletatud loogikatehted</h2>
+    <ul>
+        <li><strong>JA-EI / NAND:</strong> Tulemus on loogiline 1 ainult siis,
+            kui vähemalt ühe sisendmuutuja väärtus on loogiline 0. Valem: F=\overline{(XY)}.</li>
+        <li><strong>VÕI-EI / NOR:</strong> Tulemus on loogiline 1 ainult siis,
+            kui kõigi sisendmuutujate väärtuseks on loogiline 0. Valem: F=\overline{(X+Y)}.</li>
+        <li><strong>VÄLISTAV VÕI / XOR:</strong> Tulemus on loogiline 1 vaid siis,
+            kui ainult üks sisendmuutujatest omab väärtust loogiline 1. Valem: F=X\oplus Y.</li>
+        <li><strong>VÄLISTAV VÕI-EI / XNOR:</strong> Tulemus on loogiline 1 ainult siis,
+            kui sisendmuutujad omavad ühesugust väärtust. Valem: F=\overline{X\oplus\overline{Y}}.</li>
+    </ul>
+
+    <hr>
+
+    <h2>Kommuteerimisseadmed</h2>
+    <p>Lisaks loogikaväravatele on olulised ka seadmed signaalide suunamiseks:</p>
+    <ul>
+        <li><strong>PUHVER (võimendi):</strong> Väljundis on sama loogilise väärtusega signaal nagu sisendis (F=X).</li>
+        <li><strong>MULTIPLEKSOR:</strong> Mitme sisendi signaalid (andmed) kommuteeritakse ühte,
+            juhtsignaalidega määratud väljundisse.
+        </li>
+        <li><strong>DEMULTIPLEKSOR:</strong> Lülitab loogikasignaali ühte mitmest väljundist, mis määratakse aadressiga.</li>
+    </ul>
+
+
+</body>
