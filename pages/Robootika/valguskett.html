@@ -3,11 +3,11 @@ layout: default
 title: Valguskett
 ---
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="et">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Симуляция световой цепочки</title>
+    <title>Valgusketi simulatsioon</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -59,7 +59,7 @@ title: Valguskett
             color: #ddd;
         }
 
-        /* Base styling for all lights when turned OFF */
+        /* Põhistiil kõikidele LED-idele, kui need on VÄLJA lülitatud */
         .light {
             width: 50px;
             height: 50px;
@@ -70,12 +70,12 @@ title: Valguskett
             transition: background-color 0.1s, box-shadow 0.1s;
         }
 
-        /* Colors for lights when turned ON (.active class) */
-        #led-1.active { background-color: #ff3333; box-shadow: 0 0 20px #ff3333; } /* Red */
-        #led-2.active { background-color: #33ff33; box-shadow: 0 0 20px #33ff33; } /* Green */
-        #led-3.active { background-color: #3333ff; box-shadow: 0 0 20px #3333ff; } /* Blue */
-        #led-4.active { background-color: #ffcc00; box-shadow: 0 0 20px #ffcc00; } /* Yellow */
-        #led-5.active { background-color: #ff33ff; box-shadow: 0 0 20px #ff33ff; } /* Purple */
+        /* LED-ide värvid, kui need on SISSE lülitatud (.active klass) */
+        #led-1.active { background-color: #ff3333; box-shadow: 0 0 20px #ff3333; } /* Punane */
+        #led-2.active { background-color: #33ff33; box-shadow: 0 0 20px #33ff33; } /* Roheline */
+        #led-3.active { background-color: #3333ff; box-shadow: 0 0 20px #3333ff; } /* Sinine */
+        #led-4.active { background-color: #ffcc00; box-shadow: 0 0 20px #ffcc00; } /* Kollane */
+        #led-5.active { background-color: #ff33ff; box-shadow: 0 0 20px #ff33ff; } /* Lilla */
 
         input[type=range] {
             width: 80%;
@@ -97,7 +97,7 @@ title: Valguskett
             box-shadow: 0 4px 6px rgba(0,0,0,0.3);
         }
 
-        /* Syntax highlighting */
+        /* Süntaksi esiletõstmine */
         .keyword { color: #569cd6; }
         .type { color: #4ec9b0; }
         .number { color: #b5cea8; }
@@ -107,33 +107,33 @@ title: Valguskett
 </head>
 <body>
 
-<h2>Задание: Световая цепочка</h2>
+<h2>Ülesanne: Valguskett</h2>
 
-<h3>Описание работы:</h3>
-<p>Создать световую цепочку, состоящую из нескольких светодиодов, работающих в нескольких различных режимах освещения, управляемых потенциометром.</p>
+<h3>Töö kirjeldus:</h3>
+<p>Luua valguskett, mis koosneb mitmest valgusdioodist ja töötab mitmes erinevas valgustusrežiimis, mida juhitakse potentsiomeetriga.</p>
 <ol>
-    <li>Все светодиоды мигают одновременно.</li>
-    <li>Все светодиоды мигают по очереди.</li>
-    <li>Светодиоды мигают группами.</li>
-    <li>Светодиоды мигают в случайном порядке (эффект свечи).</li>
-    <li>Бегущий огонек туда и обратно.</li>
+    <li>Kõik valgusdioodid vilguvad üheaegselt.</li>
+    <li>Kõik valgusdioodid vilguvad kordamööda.</li>
+    <li>Valgusdioodid vilguvad rühmadena (värvirežiim).</li>
+    <li>Valgusdioodid vilguvad juhuslikus järjekorras (küünla efekt).</li>
+    <li>Jooksev tuli edasi-tagasi.</li>
 </ol>
 
-<h3>Понадобится:</h3>
+<h3>Vaja läheb:</h3>
 <ul>
-    <li>Потенциометр - 1 шт.</li>
-    <li>LED-лампа - 5 шт.</li>
-    <li>Резистор (220 Ом) - 5 шт.</li>
-    <li>Провода - 10 шт.</li>
-    <li>Дополнительное питание 5V</li>
+    <li>Potentsiomeeter - 1 tk</li>
+    <li>LED-lamp - 5 tk</li>
+    <li>Takisti (220 Oomi) - 5 tk</li>
+    <li>Juhe - 10 tk</li>
+    <li>Lisatoide 5V</li>
 </ul>
 
-<h3>Симуляция:</h3>
-<p>Покрутите ползунок (потенциометр), чтобы переключать режимы работы (от 1 до 6).</p>
+<h3>Simulatsioon:</h3>
+<p>Keera liugurit (potentsiomeetrit), et vahetada töörežiime (1 kuni 6).</p>
 
 <div class="box">
     <div class="light-box">
-        <h2 class="foor">Светодиоды</h2>
+        <h2 class="foor">Valgusdioodid</h2>
         <div class="led-container">
             <div id="led-1" class="light"></div>
             <div id="led-2" class="light"></div>
@@ -143,7 +143,7 @@ title: Valguskett
         </div>
 
         <div class="controls">
-            <h2 class="foor" id="mode-text">Режим: 1 (Выключено)</h2>
+            <h2 class="foor" id="mode-text">Režiim: 1 (Välja lülitatud)</h2>
             <input type="range" id="potentiometer" min="0" max="1023" value="0">
             <span style="color:#aaa; font-size:12px;">AnalogRead: <span id="analog-val">0</span></span>
         </div>
@@ -164,15 +164,15 @@ title: Valguskett
 
         async function loop() {
             while (true) {
-                // Считываем значение ползунка
+                // Loeme liuguri väärtust
                 let sensorValue = document.getElementById('potentiometer').value;
                 document.getElementById('analog-val').innerText = sensorValue;
 
-                // Логика функции map из Arduino
+                // Arduino map funktsiooni loogika
                 let mode = Math.floor((sensorValue / 1023) * 6) + 1;
                 if (mode > 6) mode = 6;
 
-                document.getElementById('mode-text').innerText = `Режим: ${mode}` + (mode === 1 ? " (Выключено)" : "");
+                document.getElementById('mode-text').innerText = `Režiim: ${mode}` + (mode === 1 ? " (Välja lülitatud)" : "");
 
                 if (mode === 2) {
                     for(let i=1; i<=5; i++) digitalWrite(i, true);
@@ -228,9 +228,9 @@ title: Valguskett
     </script>
 </div>
 
-<h3>Программный код (Arduino C++):</h3>
+<h3>Programmi kood (Arduino C++):</h3>
 <div class="code-container">
-<pre><code><span class="comment">// Глобальный массив пинов для удобного управления</span>
+<pre><code><span class="comment">// Globaalne massiiv viikude mugavaks haldamiseks</span>
 <span class="type">int</span> ledPins[] = {<span class="number">13</span>, <span class="number">12</span>, <span class="number">11</span>, <span class="number">10</span>, <span class="number">9</span>};
 <span class="type">int</span> sensorPin = A0;
 
@@ -242,7 +242,7 @@ title: Valguskett
   <span class="function">randomSeed</span>(<span class="function">analogRead</span>(A1));
 }
 
-<span class="comment">// 1. Все светодиоды мигают одновременно</span>
+<span class="comment">// 1. Kõik LED-id vilguvad korraga</span>
 <span class="type">void</span> <span class="function">mode1</span>() {
   <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) {
     <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; <span class="number">5</span>; j++) <span class="function">digitalWrite</span>(ledPins[j], HIGH);
@@ -252,7 +252,7 @@ title: Valguskett
   }
 }
 
-<span class="comment">// 2. Светодиоды мигают по очереди</span>
+<span class="comment">// 2. LED-id vilguvad kordamööda</span>
 <span class="type">void</span> <span class="function">mode2</span>() {
   <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) {
     <span class="function">digitalWrite</span>(ledPins[i], HIGH);
@@ -261,7 +261,7 @@ title: Valguskett
   }
 }
 
-<span class="comment">// 3. "Цветной" режим (группировка)</span>
+<span class="comment">// 3. "Värviline" režiim (grupeerimine)</span>
 <span class="type">void</span> <span class="function">mode3</span>() {
   <span class="function">digitalWrite</span>(ledPins[<span class="number">0</span>], HIGH); <span class="function">digitalWrite</span>(ledPins[<span class="number">3</span>], HIGH);
   <span class="function">delay</span>(<span class="number">200</span>);
@@ -276,7 +276,7 @@ title: Valguskett
   <span class="function">digitalWrite</span>(ledPins[<span class="number">2</span>], LOW); <span class="function">digitalWrite</span>(ledPins[<span class="number">4</span>], LOW);
 }
 
-<span class="comment">// 4. Случайный порядок (эффект свечи)</span>
+<span class="comment">// 4. Juhuslik järjekord (küünla efekt)</span>
 <span class="type">void</span> <span class="function">mode4</span>() {
   <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) {
     <span class="type">int</span> randPin = ledPins[<span class="function">random</span>(<span class="number">0</span>, <span class="number">5</span>)];
@@ -286,7 +286,7 @@ title: Valguskett
   }
 }
 
-<span class="comment">// 5. Работают все (бегущий огонек туда-обратно)</span>
+<span class="comment">// 5. Kõik töötavad (jooksev tuli edasi-tagasi)</span>
 <span class="type">void</span> <span class="function">mode5</span>() {
   <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) {
     <span class="function">digitalWrite</span>(ledPins[i], HIGH);
@@ -300,7 +300,7 @@ title: Valguskett
   }
 }
 
-<span class="comment">// Выключение всех диодов</span>
+<span class="comment">// Kõikide dioodide väljalülitamine</span>
 <span class="type">void</span> <span class="function">turnOffAll</span>() {
   <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) {
     <span class="function">digitalWrite</span>(ledPins[i], LOW);
@@ -310,7 +310,7 @@ title: Valguskett
 <span class="type">void</span> <span class="function">loop</span>() {
   <span class="type">int</span> sensorValue = <span class="function">analogRead</span>(sensorPin);
 
-  <span class="comment">// Разбиваем на 7 частей для равных интервалов</span>
+  <span class="comment">// Jagame 7 osaks võrdsete intervallide saamiseks</span>
   <span class="type">int</span> mode = <span class="function">map</span>(sensorValue, <span class="number">0</span>, <span class="number">1023</span>, <span class="number">1</span>, <span class="number">7</span>);
   <span class="keyword">if</span> (mode &gt; <span class="number">6</span>) mode = <span class="number">6</span>;
 
