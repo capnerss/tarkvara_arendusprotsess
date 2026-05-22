@@ -1,0 +1,199 @@
+---
+layout: default
+title: Ilmajaam
+---
+<!DOCTYPE html>
+<html lang="et">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ilmajaama simulatsioon</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+            color: #333333;
+            padding: 20px;
+        }
+
+        .box {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            justify-content: center;
+            align-items: center;
+            margin-top: 40px;
+            color: #ffffff;
+        }
+
+        .light-box {
+            background: #333;
+            padding: 30px;
+            border-radius: 15px;
+            border: 4px solid #222;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+            width: 100%;
+            max-width: 600px;
+        }
+
+        /* LCD 16x2 Stiil */
+        .lcd-bezel {
+            background-color: #111;
+            padding: 15px;
+            border-radius: 10px;
+            border: 2px solid #555;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+        }
+
+        .lcd-screen {
+            background-color: #76b322; /* Klassikaline LCD roheline */
+            width: 320px;
+            height: 60px;
+            border-radius: 5px;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 5px 10px;
+            box-sizing: border-box;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 20px;
+            font-weight: bold;
+            color: #111;
+            text-shadow: 1px 1px 0px rgba(118, 179, 34, 0.5);
+        }
+
+        .lcd-row {
+            display: flex;
+            justify-content: space-between;
+            white-space: pre;
+            overflow: hidden;
+            letter-spacing: 2px;
+        }
+
+        .controls {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            gap: 15px;
+        }
+
+        .slider-group {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h2.foor {
+            margin: 0 0 5px 0;
+            font-size: 1.1rem;
+            text-align: center;
+            color: #ddd;
+        }
+
+        input[type=range] {
+            width: 80%;
+            margin: 5px 0;
+        }
+
+        .code-container {
+            background-color: #1e1e1e;
+            color: #d4d4d4;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 14px;
+            line-height: 1.5;
+            overflow-x: auto;
+            border: 1px solid #333;
+            max-width: 800px;
+            margin: 20px 0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        }
+
+        /* Süntaksi esiletõstmine */
+        .keyword { color: #569cd6; }
+        .type { color: #4ec9b0; }
+        .number { color: #b5cea8; }
+        .function { color: #dcdcaa;}
+        .comment { color: #6a9955; }
+        .string { color: #ce9178; }
+    </style>
+</head>
+<body>
+
+<h2>Ülesanne: Interaktiivne infoekraan «Ilmajaam»</h2>
+
+<h3>Töö kirjeldus:</h3>
+<p>Interaktiivne teabeekraan Ilmajaam, mis kuvab ekraanil ilma sõltuvalt temperatuurianduri temperatuurist ja fotoresistori heledusest. Ekraanil oleva teksti heledust (kontrastsust) saab muuta potentsiomeetri abil.</p>
+<p>Režiimid:</p>
+<ol>
+    <li>Jahe (Prokhladno)</li>
+    <li>Väga kuum (Ochen zharko)</li>
+    <li>Päikeseline päev (Solnechny den)</li>
+    <li>Pilvine (Pasmurno)</li>
+    <li>Soe ja selge (Teplo i yasno)</li>
+</ol>
+<p>Ekraanil: <strong>T</strong> = temperatuur, <strong>L</strong> = valgustase ja <strong>Time</strong> = töötamise aeg (MM:SS).</p>
+
+<h3>Kasutatud komponendid:</h3>
+<ul>
+    <li>Arduino UNO plaat (1tk)</li>
+    <li>Arendusplaat (1tk)</li>
+    <li>Juhtmed (22tk)</li>
+    <li>Takisti (2tk, 220 Oomi ja 10000 Oomi)</li>
+    <li>Fotoresistor (LDR) (1tk)</li>
+    <li>Temperatuuriandur (TMP36) (1tk)</li>
+    <li>Potentsiomeeter (1tk)</li>
+    <li>LCD ekraan 16×2 (1tk)</li>
+</ul>
+
+<h3>Simulatsioon:</h3>
+<p>Kasuta temperatuuri ja valguse liugureid ilma muutmiseks. Ekraani teksti nähtavuse (kontrastsuse) muutmiseks liiguta potentsiomeetri liugurit.</p>
+
+<div class="box">
+    <div class="light-box">
+        <h2 class="foor">LCD Ekraan 16x2</h2>
+        <div class="lcd-bezel">
+            <div class="lcd-screen" id="lcd-display">
+                <div class="lcd-row" id="lcd-row-1">T:20.0&deg; L:500   </div>
+                <div class="lcd-row" id="lcd-row-2"><span id="lcd-weather">Teplo i yasno</span><span id="lcd-time">00:00</span></div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <div class="slider-group">
+                <h2 class="foor" id="temp-text">Temperatuur (TMP36): 20 °C</h2>
+                <input type="range" id="temp-slider" min="-10" max="40" value="20">
+            </div>
+
+            <div class="slider-group" style="margin-top: 10px;">
+                <h2 class="foor" id="light-text">Valgustus (LDR): 500</h2>
+                <input type="range" id="ldr-slider" min="0" max="1023" value="500">
+            </div>
+
+            <div class="slider-group" style="margin-top: 10px;">
+                <h2 class="foor">Kontrastsus (Potentsiomeeter)</h2>
+                <input type="range" id="contrast-slider" min="0" max="100" value="100">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
+        let secondsPassed = 0;
+        let previousMillis = Date.now();
+
+        async function loop() {
+            while (true) {
+                // Aja arvestus (sarnaselt Arduino millis() funktsioonile)
+                let currentMillis = Date.now();
+                if (currentMillis - previousMillis >= 1000) {
+                    previousMillis = currentMillis;
+                    secondsPassed++;

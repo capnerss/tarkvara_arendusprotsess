@@ -1,0 +1,244 @@
+---
+layout: default
+title: Vaike Alarm Susteem
+---
+<!DOCTYPE html>
+<html lang="et">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Väike Alarm Süsteem</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+            color: #333333;
+            padding: 20px;
+        }
+
+        .box {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            justify-content: center;
+            align-items: center;
+            margin-top: 40px;
+            color: #ffffff;
+        }
+
+        .light-box {
+            background: #333;
+            padding: 30px;
+            border-radius: 15px;
+            border: 4px solid #222;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+            width: 100%;
+            max-width: 600px;
+        }
+
+        /* LCD 16x2 Stiil */
+        .lcd-bezel {
+            background-color: #111;
+            padding: 15px;
+            border-radius: 10px;
+            border: 2px solid #555;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            margin-bottom: 10px;
+        }
+
+        .lcd-screen {
+            background-color: #76b322;
+            width: 320px;
+            height: 60px;
+            border-radius: 5px;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 5px 10px;
+            box-sizing: border-box;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 20px;
+            font-weight: bold;
+            color: #111;
+            text-shadow: 1px 1px 0px rgba(118, 179, 34, 0.5);
+        }
+
+        .lcd-row {
+            display: flex;
+            white-space: pre;
+            overflow: hidden;
+            letter-spacing: 2px;
+        }
+
+        /* Buzzer Stiil */
+        .buzzer-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .buzzer {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: #222;
+            border: 4px solid #444;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            transition: all 0.2s;
+        }
+
+        .buzzer.active {
+            background-color: #ff3333;
+            border-color: #ffaaaa;
+            box-shadow: 0 0 20px #ff3333;
+            animation: pulse 0.5s infinite alternate;
+        }
+
+        .buzzer-text {
+            font-size: 12px;
+            color: #aaa;
+            font-weight: bold;
+            text-align: center;
+            height: 15px;
+        }
+
+        .buzzer.active + .buzzer-text {
+            color: #ff3333;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.1); }
+        }
+
+        .controls {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            gap: 15px;
+        }
+
+        .slider-group {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h2.foor {
+            margin: 0 0 5px 0;
+            font-size: 1.1rem;
+            text-align: center;
+            color: #ddd;
+        }
+
+        input[type=range] {
+            width: 80%;
+            margin: 5px 0;
+        }
+
+        .code-container {
+            background-color: #1e1e1e;
+            color: #d4d4d4;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 14px;
+            line-height: 1.5;
+            overflow-x: auto;
+            border: 1px solid #333;
+            max-width: 800px;
+            margin: 20px 0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        }
+
+        /* Süntaksi esiletõstmine */
+        .keyword { color: #569cd6; }
+        .type { color: #4ec9b0; }
+        .number { color: #b5cea8; }
+        .function { color: #dcdcaa;}
+        .comment { color: #6a9955; }
+        .string { color: #ce9178; }
+    </style>
+</head>
+<body>
+
+<h2>Ülesanne: Buzzeri kasutamine «Väike Alarm Süsteem»</h2>
+
+<h3>Töö kirjeldus:</h3>
+<p>Meteostatsioon koos häirega. See mõõdab temperatuuri TMP-anduriga ja valgustugevust fotoresistori abil. Kõik andmed kuvatakse LCD-ekraanil. Süsteem lülitatakse sisse potentsiomeetri abil (kui on välja lülitatud, näitab "System off"). Kui süsteem on sees ja temperatuur langeb alla 25 °C, käivitub häire, mängides pala keiserlikust marssist (Imperial March). Normaalse temperatuuri korral ei mängita midagi.</p>
+
+<h3>Kasutatud komponendid:</h3>
+<ul>
+    <li>Arduino UNO plaat (1tk)</li>
+    <li>Arendusplaat (1tk)</li>
+    <li>Juhtmed (25tk)</li>
+    <li>Takisti (2tk, 220 Oomi ja 10000 Oomi)</li>
+    <li>Fotoresistor (LDR) (1tk)</li>
+    <li>Temperatuuriandur TMP (1tk)</li>
+    <li>Potentsiomeeter (1tk)</li>
+    <li>LCD ekraan 16×2 (1tk)</li>
+    <li>Buzzer (kõlar) (1tk)</li>
+</ul>
+
+<h3>Simulatsioon:</h3>
+<p>Lülita süsteem potentsiomeetrist sisse (väärtus üle 512). Seejärel langeta temperatuur alla 25 °C, et testida häiresüsteemi (buzzerit).</p>
+
+<div class="box">
+    <div class="light-box">
+        <div style="display: flex; gap: 40px; align-items: center;">
+            <div>
+                <h2 class="foor">LCD Ekraan</h2>
+                <div class="lcd-bezel">
+                    <div class="lcd-screen" id="lcd-display">
+                        <div class="lcd-row" id="lcd-row-1">System off</div>
+                        <div class="lcd-row" id="lcd-row-2"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="buzzer-container">
+                <h2 class="foor">Buzzer</h2>
+                <div class="buzzer" id="buzzer-icon"></div>
+                <div class="buzzer-text" id="buzzer-text">Vaikus</div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <div class="slider-group">
+                <h2 class="foor" id="pot-text">Süsteemi toide (Potentsiomeeter): VÄLJAS (0)</h2>
+                <input type="range" id="pot-slider" min="0" max="1023" value="0">
+            </div>
+
+            <div class="slider-group" style="margin-top: 10px;">
+                <h2 class="foor" id="temp-text">Temperatuur (TMP): 26.0 °C</h2>
+                <input type="range" id="temp-slider" min="-10" max="50" value="26" step="0.1">
+            </div>
+
+            <div class="slider-group" style="margin-top: 10px;">
+                <h2 class="foor" id="light-text">Valgustus (LDR RAW): 500</h2>
+                <input type="range" id="ldr-slider" min="0" max="1023" value="500">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
+        async function loop() {
+            while (true) {
+                // Loeme väärtused simulaatori liuguritelt
+                let potVal = parseInt(document.getElementById('pot-slider').value);
+                let tempC = parseFloat(document.getElementById('temp-slider').value).toFixed(1);
+                let lightRaw = parseInt(document.getElementById('ldr-slider').value);
+
+                let systemOn = potVal > 5

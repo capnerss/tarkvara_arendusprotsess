@@ -1,0 +1,194 @@
+---
+layout: default
+title: Kasvuhoone
+---
+<!DOCTYPE html>
+<html lang="et">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kasvuhoone simulatsioon</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+            color: #333333;
+            padding: 20px;
+        }
+
+        .box {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            justify-content: center;
+            align-items: center;
+            margin-top: 40px;
+            color: #ffffff;
+        }
+
+        .light-box {
+            background: #333;
+            padding: 30px;
+            border-radius: 15px;
+            border: 4px solid #222;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .hardware-container {
+            display: flex;
+            gap: 40px;
+            align-items: flex-end;
+            margin-bottom: 20px;
+        }
+
+        /* LED Stiil */
+        .light {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: #111;
+            border: 2px solid #000;
+            box-shadow: inset 0 0 10px #000;
+            transition: background-color 0.1s, box-shadow 0.1s;
+        }
+        #led-blue.active {
+            background-color: #3388ff;
+            box-shadow: 0 0 25px #3388ff;
+        }
+
+        /* Servo Stiil */
+        .servo-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+        .servo-body {
+            width: 120px;
+            height: 60px;
+            background-color: #444;
+            border: 2px solid #222;
+            border-radius: 60px 60px 0 0;
+            position: relative;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+        }
+        .servo-arm {
+            width: 4px;
+            height: 55px;
+            background-color: #ff3333;
+            position: absolute;
+            bottom: 0;
+            left: 58px;
+            transform-origin: bottom center;
+            transform: rotate(0deg);
+            border-radius: 2px;
+        }
+
+        .controls {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            gap: 15px;
+        }
+
+        .slider-group {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h2.foor {
+            margin: 0 0 5px 0;
+            font-size: 1.1rem;
+            text-align: center;
+            color: #ddd;
+        }
+
+        input[type=range] {
+            width: 80%;
+            margin: 5px 0;
+        }
+
+        .code-container {
+            background-color: #1e1e1e;
+            color: #d4d4d4;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 14px;
+            line-height: 1.5;
+            overflow-x: auto;
+            border: 1px solid #333;
+            max-width: 800px;
+            margin: 20px 0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        }
+
+        /* Süntaksi esiletõstmine */
+        .keyword { color: #569cd6; }
+        .type { color: #4ec9b0; }
+        .number { color: #b5cea8; }
+        .function { color: #dcdcaa;}
+        .comment { color: #6a9955; }
+    </style>
+</head>
+<body>
+
+<h2>Ülesanne: Kasvuhoone</h2>
+
+<h3>Töö kirjeldus:</h3>
+<p>Temperatuuritundlik servojuhtimine, mis töötab koos ühe LED-fotoresistori ja temperatuuritakistiga. Servo pöörleb vastupäeva, kui temperatuur on väiksem või võrdne 20°C (kasvuhoone aken suletakse), ja kui temperatuur on suurem või võrdne 30°C, liigub see päripäeva (aken avatakse, et jahutada). LED töötab, kui on pime, ja valges lülitub välja.</p>
+
+<h3>Kasutatud komponendid:</h3>
+<ul>
+    <li>Arduino UNO plaat (1tk)</li>
+    <li>Arendusplaat (1tk)</li>
+    <li>Juhtmed (12tk)</li>
+    <li>Takisti (2tk, 220 Oomi ja 10000 Oomi)</li>
+    <li>LED (1tk: 1 sinine)</li>
+    <li>Fotoresistor (LDR) (1tk)</li>
+    <li>Temperatuuriandur (TMP36) (1tk)</li>
+    <li>Servomootor (1tk)</li>
+</ul>
+
+<h3>Simulatsioon:</h3>
+<p>Muuda temperatuuri, et näha, kuidas servomootor akent avab (sujuvalt) ja muuda valgustaset, et näha LED-i reageerimist.</p>
+
+<div class="box">
+    <div class="light-box">
+        <div class="hardware-container">
+            <div class="servo-wrapper">
+                <h2 class="foor">Aken (Servo)</h2>
+                <div class="servo-body">
+                    <div id="servo-arm" class="servo-arm"></div>
+                </div>
+            </div>
+            <div class="servo-wrapper">
+                <h2 class="foor">Valgus (LED)</h2>
+                <div id="led-blue" class="light"></div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <div class="slider-group">
+                <h2 class="foor" id="temp-text">Temperatuur: 0 °C (Suletud)</h2>
+                <input type="range" id="temp-slider" min="0" max="50" value="15">
+            </div>
+
+            <div class="slider-group" style="margin-top: 10px;">
+                <h2 class="foor" id="light-text">Valgustus: Pime (Tuli põleb)</h2>
+                <span style="color:#aaa; font-size:12px;">Fotoresistor: <span id="ldr-val">0</span></span>
+                <input type="range" id="ldr-slider" min="0" max="1023" value="300">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const delay = (ms) => new Promise(resolve

@@ -1,0 +1,281 @@
+---
+layout: default
+title: Robootika2
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traffic Light Simulation</title>
+    <style>
+        .box {
+            font-family: Arial, sans-serif;
+            display: flex;
+            gap: 50px;
+            justify-content: center;
+            margin-top: 80px;
+            color: #ffffff;
+        }
+
+        .light-box {
+            background: #333;
+            padding: 20px;
+            border-radius: 15px;
+            border: 4px solid #222;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: center;
+        }
+
+        h2.foor {
+            margin: 0 0 10px 0;
+            font-size: 1.2rem;
+            text-align: center;
+            color: #ddd;
+        }
+
+        /* Base styling for all lights when turned OFF */
+        .light {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background-color: #111; 
+            border: 2px solid #000;
+            box-shadow: inset 0 0 10px #000;
+        }
+
+        /* Colors for lights when turned ON (.active class) */
+        #car-red.active { background-color: #ff3333; box-shadow: 0 0 25px #ff3333; }
+        #car-yellow.active { background-color: #ffcc00; box-shadow: 0 0 25px #ffcc00; }
+        #car-green.active { background-color: #33ff33; box-shadow: 0 0 25px #33ff33; }
+        
+        #ped-red.active { background-color: #ff3333; box-shadow: 0 0 25px #ff3333; }
+        #ped-green.active { background-color: #33ff33; box-shadow: 0 0 25px #33ff33; }
+
+        /* Styling for the code block */
+        .code-container {
+            background-color: #1e1e1e; /* Dark background */
+            color: #d4d4d4;           /* Light text */
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 14px;
+            line-height: 1.5;
+            overflow-x: auto;         /* Adds a scrollbar if code is too wide */
+            border: 1px solid #333;
+            max-width: 600px;
+            margin: 20px auto;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        }
+
+        /* Optional: Change the color of specific keywords if you want to fake syntax highlighting */
+        .keyword { color: #569cd6; } /* Blue */
+        .type { color: #4ec9b0; }    /* Teal */
+        .number { color: #b5cea8; }  /* Light green */
+        .function { color: #dcdcaa;} /* Yellow */
+    </style>
+</head>
+<body>
+
+<h2 >Ülesanne 1 Valgusfoor</h2>
+
+
+
+<h3 >Töö kirjeldus:</h3>
+
+
+
+<p>Valgusanduril on kaks töörežiimi. Päevarežiim ja öörežiim.</p>
+
+
+
+<h3 >Töö protsess:</h3>
+
+
+
+<p>Ühendage dioodid, takisti ja juhtmed plaadile. Ühendage dioodid, pirn, valgusdioodid, valgusallikas ja liiteseade.</p>
+
+
+
+<p><strong>Päevarežiim (korda 4 korda) normaalne režiim:</strong><br>Esmalt hakkab see tööle punase tulega autodele ja rohelise tulega jalakäijatele (5 sekundit), seejärel vilgub jalakäijatele (6 vilkumist 0,5 sekundit). Seejärel hakkab tööle autode kollane tuli (3 sekundit) ja jalakäijatele punane. Seejärel põleb autodel roheline tuli (5 s) ja punane jalakäijatele, misjärel vilgub autode roheline tuli (6 vilkumist iga 0,5 sek). Viimane etapp on autodele kollane (3 sekundit) ja jalakäijatele punane.<br><strong>Öörežiim (korda 4 korda):</strong><br>Töötab ainult kollane tuli (põleb 1 sekund) ja kõik tuled kustuvad 1 sekundiks.<br><strong>Põhiline tsükkel</strong>:<br>Põhitsüklis kordub päevane režiim 2 korda ja öine režiim 1 kord. Kogu põhitsükkel kordub alati.</p>
+
+
+
+<h3 >Kasutatud komponeendid:</h3>
+
+
+
+<p >LED (punane) – 2<br>LED(kollane) – 1<br>LED(roheline) – 2<br>Taikisti – 5 (220 Om)<br>Juhe – 6<br>Arendusplaat – 1<br></p>
+
+
+
+<h3>Ühendamise skeem:</h3>
+
+
+
+<img  src="Nimetu.png" alt="LOH" width="400px" height="400px" >
+
+
+
+<h3 >Programm:</h3>
+
+
+
+<div class="box">
+    <div class="light-box">
+        <h2 class="foor">Cars</h2>
+        <div id="car-red" class="light"></div>
+        <div id="car-yellow" class="light"></div>
+        <div id="car-green" class="light"></div>
+    </div>
+
+    <div class="light-box">
+        <h2 class="foor">Pedestrians</h2>
+        <div id="ped-red" class="light"></div>
+        <div id="ped-green" class="light"></div>
+    </div>
+
+    <script>
+        // Helper function to replicate Arduino's delay()
+        const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
+        // Helper function to replicate Arduino's digitalWrite()
+        const digitalWrite = (elementId, isHigh) => {
+            const el = document.getElementById(elementId);
+            if (isHigh) {
+                el.classList.add('active'); // HIGH
+            } else {
+                el.classList.remove('active'); // LOW
+            }
+        };
+
+        // Main Loop
+        async function loop() {
+            let dayMode = true;
+
+            while (true) { // Replicates the continuous void loop()
+                
+                if (dayMode) {
+                    // Day mode sequence
+                    digitalWrite('car-red', true);
+                    digitalWrite('ped-red', false);
+                    digitalWrite('ped-green', true);
+                    await delay(5000);
+
+                    digitalWrite('ped-green', false);
+                    digitalWrite('ped-red', true);
+                    
+                    // Blinking yellow 3 times
+                    for (let i = 0; i < 3; i++) {
+                        digitalWrite('car-yellow', true);
+                        await delay(300);
+                        digitalWrite('car-yellow', false);
+                        await delay(300);
+                    }
+
+                    digitalWrite('car-red', false);
+                    digitalWrite('car-green', true);
+                    await delay(5000);
+
+                    // Blinking green 3 times
+                    for (let i = 0; i < 3; i++) {
+                        digitalWrite('car-green', false);
+                        await delay(300);
+                        digitalWrite('car-green', true);
+                        await delay(300);
+                    }
+
+                    digitalWrite('car-green', false);
+                    dayMode = false;
+                } 
+                
+                else {
+                    // Night mode sequence
+                    digitalWrite('ped-red', false);
+                    digitalWrite('ped-green', false);
+                    digitalWrite('car-red', false);
+                    digitalWrite('car-green', false);
+
+                    // Blinking yellow 10 times
+                    for (let i = 0; i < 10; i++) { 
+                        digitalWrite('car-yellow', true);
+                        await delay(500);
+                        digitalWrite('car-yellow', false);
+                        await delay(500);
+                    }
+                    dayMode = true;
+                }
+            }
+        }
+
+        // Equivalent to void setup() finishing and launching the loop
+        window.onload = () => {
+            loop();
+        };
+    </script>
+    
+</div>
+<div class="code-container">
+<pre><code><span class="type">int</span> red_car = <span class="number">13</span>;
+<span class="type">int</span> yellow_car = <span class="number">12</span>;
+<span class="type">int</span> green_car = <span class="number">11</span>;
+<span class="type">int</span> red_people = <span class="number">10</span>;
+<span class="type">int</span> green_people = <span class="number">9</span>;
+<span class="type">bool</span> dayMode = <span class="keyword">true</span>;
+ 
+<span class="type">void</span> <span class="function">setup</span>() {
+  <span class="function">pinMode</span>(red_car, OUTPUT);
+  <span class="function">pinMode</span>(yellow_car, OUTPUT);
+  <span class="function">pinMode</span>(green_car, OUTPUT);
+  <span class="function">pinMode</span>(red_people, OUTPUT);
+  <span class="function">pinMode</span>(green_people, OUTPUT);
+}
+ 
+<span class="type">void</span> <span class="function">loop</span>() {
+  <span class="keyword">if</span> (dayMode) {
+    <span class="function">digitalWrite</span>(red_car, HIGH);
+    <span class="function">digitalWrite</span>(red_people, LOW);
+    <span class="function">digitalWrite</span>(green_people, HIGH);
+    <span class="function">delay</span>(<span class="number">5000</span>);
+    <span class="function">digitalWrite</span>(green_people, LOW);
+    <span class="function">digitalWrite</span>(red_people, HIGH);
+    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; i++) {
+      <span class="function">digitalWrite</span>(yellow_car, HIGH);
+      <span class="function">delay</span>(<span class="number">300</span>);
+      <span class="function">digitalWrite</span>(yellow_car, LOW);
+      <span class="function">delay</span>(<span class="number">300</span>);
+    }
+    <span class="function">digitalWrite</span>(red_car, LOW);
+    <span class="function">digitalWrite</span>(green_car, HIGH);
+    <span class="function">delay</span>(<span class="number">5000</span>);
+    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; i++) {
+      <span class="function">digitalWrite</span>(green_car, LOW);
+      <span class="function">delay</span>(<span class="number">300</span>);
+      <span class="function">digitalWrite</span>(green_car, HIGH);
+      <span class="function">delay</span>(<span class="number">300</span>);
+    }
+    <span class="function">digitalWrite</span>(green_car, LOW);
+    dayMode = <span class="keyword">false</span>;
+  } 
+  <span class="keyword">else</span> {
+    <span class="function">digitalWrite</span>(red_people, LOW);
+    <span class="function">digitalWrite</span>(green_people, LOW);
+    <span class="function">digitalWrite</span>(red_car, LOW);
+    <span class="function">digitalWrite</span>(green_car, LOW);
+    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) { 
+      <span class="function">digitalWrite</span>(yellow_car, HIGH);
+      <span class="function">delay</span>(<span class="number">500</span>);
+      <span class="function">digitalWrite</span>(yellow_car, LOW);
+      <span class="function">delay</span>(<span class="number">500</span>);
+    }
+    dayMode = <span class="keyword">true</span>;
+  }
+}</code></pre>
+    </div>
+<h3 >Video:</h3>
+<a href="https://drive.google.com/file/d/1KD5onNlc2o6iJhHAXVppjC9xZ-D8rmbF/view?usp=sharing" target="_blank">G Drive</a>
+<body>
+
+</html>
