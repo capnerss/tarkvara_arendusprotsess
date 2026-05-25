@@ -7,7 +7,7 @@ title: oolamp
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Öölambi simulatsioon</title>
+    <title>Nutika öölambi simulatsioon</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -41,8 +41,8 @@ title: oolamp
 
         .led-container {
             display: flex;
-            gap: 30px;
-            margin-bottom: 10px;
+            gap: 25px;
+            margin-bottom: 20px;
         }
 
         .controls {
@@ -50,11 +50,10 @@ title: oolamp
             flex-direction: column;
             align-items: center;
             width: 100%;
-            margin-top: 10px;
             gap: 15px;
         }
 
-        .slider-group {
+        .control-group {
             width: 100%;
             display: flex;
             flex-direction: column;
@@ -68,20 +67,16 @@ title: oolamp
             color: #ddd;
         }
 
-        /* Põhistiil LED-idele, kui need on VÄLJA lülitatud */
+        /* Põhistiil kõikidele LED-idele, kui need on VÄLJA lülitatud */
         .light {
-            width: 60px;
-            height: 60px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             background-color: #111;
             border: 2px solid #000;
             box-shadow: inset 0 0 10px #000;
             transition: background-color 0.1s, box-shadow 0.1s;
         }
-
-        /* LED-ide värvid, kui need on SISSE lülitatud (.active klass) */
-        #led-white.active { background-color: #fffff0; box-shadow: 0 0 25px #ffffff; } /* Valge */
-        #led-green.active { background-color: #33ff33; box-shadow: 0 0 25px #33ff33; } /* Roheline */
 
         input[type=range] {
             width: 80%;
@@ -113,53 +108,52 @@ title: oolamp
 </head>
 <body>
 
-<h2>Ülesanne: Öölamp</h2>
+<h2>Ülesanne: Nutikas öölamp</h2>
 
 <h3>Töö kirjeldus:</h3>
-<p>Nelja töörežiimiga öövalgusti fotoresistoriga:</p>
+<p>Luua nutikas öölamp, mis loeb valgustaset fototakistilt (LDR) ja muudab vastavalt sellele LED-ide heledust. Värvi (punane, roheline või sinine) saab muuta potentsiomeetriga.</p>
 <ol>
-    <li><strong>Režiim 1:</strong> Kõik LED-id välja lülitatud.</li>
-    <li><strong>Režiim 2:</strong> Ainult üks kahest valgusdioodist on sisse lülitatud (sõltuvalt valgustusest).</li>
-    <li><strong>Režiim 3:</strong> Kõik kaks dioodi on sisse lülitatud (sõltuvalt valgustusest).</li>
-    <li><strong>Režiim 4:</strong> Kõik 2 dioodi töötavad täisvõimsusel sõltumata fotoresistori valgustusest!</li>
+    <li>Kui potentsiomeetri väärtus on alla 100, on lamp välja lülitatud.</li>
+    <li>Kui väärtus on vahemikus 100–399, süttib <b>punane</b> tuli.</li>
+    <li>Kui väärtus on vahemikus 400–699, süttib <b>roheline</b> tuli.</li>
+    <li>Kui väärtus on 700 või rohkem, süttib <b>sinine</b> tuli.</li>
+    <li>Valguse intensiivsus (heledus) sõltub fototakisti näidust (mida rohkem valgust on ruumis, seda heledamalt LED põleb).</li>
 </ol>
 
-<h3>Kasutatud komponendid:</h3>
+<h3>Vaja läheb:</h3>
 <ul>
-    <li>Arduino UNO plaat (1tk)</li>
-    <li>Arendusplaat (1tk)</li>
-    <li>Juhtmed (10tk)</li>
-    <li>Takisti (3tk, 220 Oomi ja 10000 Oomi)</li>
-    <li>LED (2tk: 1 valge ja 1 roheline)</li>
-    <li>Fotoresistor (1tk)</li>
-    <li>Potentsiomeeter (1tk)</li>
+    <li>Potentsiomeeter - 1 tk</li>
+    <li>Fototakisti (LDR) - 1 tk</li>
+    <li>LED-lamp (Punane, Roheline, Sinine) - 3 tk</li>
+    <li>Takisti (220 Oomi) - 3 tk</li>
+    <li>Takisti (10k Oomi fototakistile) - 1 tk</li>
+    <li>Juhe - 15 tk</li>
 </ul>
 
-<h3>Töö protsess ja LED-ide rakendamine:</h3>
-<p>Öövalgusti, millel on 4 erinevat töörežiimi, mida saab lülitada potentsiomeetri abil ja mis töötab fotoresistori ja valgusallikaga. Valgustus kodus või õues inimeste mugavuse huvides. Valgustub sõltuvalt ümbritsevast valguse hulgast.</p>
+<h3>Ühendamise skeem:</h3>
+<img src="Nimetu3.png" alt="Skeem" width="400px" height="400px" >
 
 <h3>Simulatsioon:</h3>
-<p>Kasuta potentsiomeetri liugurit režiimide vahetamiseks ja fotoresistori liugurit valgustaseme muutmiseks (pime vs valge).</p>
+<p>Keera potentsiomeetri liugurit, et vahetada värve, ning fototakisti liugurit, et muuta ruumi heledust (ja seeläbi lambi eredust).</p>
 
 <div class="box">
     <div class="light-box">
-        <h2 class="foor">Öölamp (LED-id)</h2>
+        <h2 class="foor">Valgusdioodid (R G B)</h2>
         <div class="led-container">
-            <div id="led-white" class="light" title="Valge LED"></div>
-            <div id="led-green" class="light" title="Roheline LED"></div>
+            <div id="led-r" class="light"></div>
+            <div id="led-g" class="light"></div>
+            <div id="led-b" class="light"></div>
         </div>
 
         <div class="controls">
-            <div class="slider-group">
-                <h2 class="foor" id="mode-text">Režiim: 1</h2>
-                <span style="color:#aaa; font-size:12px;">Potentsiomeeter (A1): <span id="pot-val">0</span></span>
+            <div class="control-group">
+                <h2 class="foor" id="pot-text">Potentsiomeeter (Värv): 0</h2>
                 <input type="range" id="potentiometer" min="0" max="1023" value="0">
             </div>
 
-            <div class="slider-group" style="margin-top: 15px;">
-                <h2 class="foor" id="light-text">Valgustus: Pime</h2>
-                <span style="color:#aaa; font-size:12px;">Fotoresistor (A0): <span id="ldr-val">0</span></span>
-                <input type="range" id="photoresistor" min="0" max="1023" value="0">
+            <div class="control-group">
+                <h2 class="foor" id="ldr-text">Fototakisti (Heledus): 950</h2>
+                <input type="range" id="photoresistor" min="50" max="950" value="950">
             </div>
         </div>
     </div>
@@ -167,49 +161,48 @@ title: oolamp
     <script>
         const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
-        const setLed = (id, isHigh) => {
-            const el = document.getElementById('led-' + id);
-            if (isHigh) el.classList.add('active');
-            else el.classList.remove('active');
-        };
-
-        const controlLeds = (numberOn) => {
-            setLed('white', numberOn >= 1);
-            setLed('green', numberOn >= 2);
-        };
-
         async function loop() {
             while (true) {
-                // Loeme väärtused
-                let potValue = document.getElementById('potentiometer').value;
-                let ldrValue = document.getElementById('photoresistor').value;
+                // Loeme andurite väärtused liuguritelt
+                let potValue = parseInt(document.getElementById('potentiometer').value);
+                let ldrValue = parseInt(document.getElementById('photoresistor').value);
 
-                document.getElementById('pot-val').innerText = potValue;
-                document.getElementById('ldr-val').innerText = ldrValue;
+                document.getElementById('pot-text').innerText = `Potentsiomeeter (Värv): ${potValue}`;
+                document.getElementById('ldr-text').innerText = `Fototakisti (Heledus): ${ldrValue}`;
 
-                // Režiimi arvutamine (1 kuni 4)
-                let mode = Math.floor((potValue / 1023) * 4) + 1;
-                if (mode > 4) mode = 4;
+                // Arvutame heleduse sarnaselt map funktsiooniga (50..950 -> 0..1)
+                let brightness = (ldrValue - 50) / (950 - 50);
+                if (brightness < 0) brightness = 0;
+                if (brightness > 1) brightness = 1;
 
-                document.getElementById('mode-text').innerText = `Režiim: ${mode}`;
-                document.getElementById('light-text').innerText = ldrValue < 500 ? "Valgustus: Pime (Tuli põleb)" : "Valgustus: Valge (Tuli kustub)";
+                // Algseadistame dioodid (lülitame välja)
+                document.getElementById('led-r').style.backgroundColor = '#111';
+                document.getElementById('led-r').style.boxShadow = 'inset 0 0 10px #000';
 
-                // Loogika switch-case vastavalt Arduino koodile
-                switch (mode) {
-                    case 1: // Kõik väljas
-                        controlLeds(0);
-                        break;
-                    case 2: // Üks LED, sõltub valgusest
-                        if (ldrValue < 500) controlLeds(1);
-                        else controlLeds(0);
-                        break;
-                    case 3: // Kaks LED-i, sõltub valgusest
-                        if (ldrValue < 500) controlLeds(2);
-                        else controlLeds(0);
-                        break;
-                    case 4: // Kõik alati sees, ei sõltu valgusest
-                        controlLeds(2);
-                        break;
+                document.getElementById('led-g').style.backgroundColor = '#111';
+                document.getElementById('led-g').style.boxShadow = 'inset 0 0 10px #000';
+
+                document.getElementById('led-b').style.backgroundColor = '#111';
+                document.getElementById('led-b').style.boxShadow = 'inset 0 0 10px #000';
+
+                // Lülitame sisse õige värvi vastavalt potentsiomeetri väärtusele
+                if (potValue < 100) {
+                    // Kõik jäävad välja
+                }
+                else if (potValue < 400) { // PUNANE
+                    let r = Math.floor(255 * brightness);
+                    document.getElementById('led-r').style.backgroundColor = `rgb(${r}, 0, 0)`;
+                    document.getElementById('led-r').style.boxShadow = `0 0 ${20 * brightness}px rgb(255, 0, 0)`;
+                }
+                else if (potValue < 700) { // ROHELINE
+                    let g = Math.floor(255 * brightness);
+                    document.getElementById('led-g').style.backgroundColor = `rgb(0, ${g}, 0)`;
+                    document.getElementById('led-g').style.boxShadow = `0 0 ${20 * brightness}px rgb(0, 255, 0)`;
+                }
+                else { // SININE
+                    let b = Math.floor(255 * brightness);
+                    document.getElementById('led-b').style.backgroundColor = `rgb(0, 0, ${b})`;
+                    document.getElementById('led-b').style.boxShadow = `0 0 ${20 * brightness}px rgb(0, 0, 255)`;
                 }
 
                 await delay(100);
@@ -222,67 +215,68 @@ title: oolamp
     </script>
 </div>
 
-<h3>Programmi kood (Arduino C++):</h3>
+<h3>Programmi kood:</h3>
 <div class="code-container">
-<pre><code><span class="comment">// Viigud</span>
-<span class="keyword">const</span> <span class="type">int</span> ldrPin = A0;
-<span class="keyword">const</span> <span class="type">int</span> potPin = A1;
+<pre><code><span class="type">int</span> PIN_RED = <span class="number">13</span>;
+<span class="type">int</span> PIN_GREEN = <span class="number">12</span>;
+<span class="type">int</span> PIN_BLUE = <span class="number">11</span>;
 
-<span class="comment">// 2 LED-i: valge ja roheline</span>
-<span class="keyword">const</span> <span class="type">int</span> ledPins[] = {<span class="number">9</span>, <span class="number">10</span>};
-<span class="keyword">const</span> <span class="type">int</span> ledCount = <span class="number">2</span>;
+<span class="type">int</span> PIN_POT = A0;
+<span class="type">int</span> PIN_LDR = A1;
 
 <span class="type">void</span> <span class="function">setup</span>() {
-  <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; ledCount; i++) {
-    <span class="function">pinMode</span>(ledPins[i], OUTPUT);
-    <span class="function">digitalWrite</span>(ledPins[i], LOW);
-  }
+  <span class="function">pinMode</span>(PIN_RED, OUTPUT);
+  <span class="function">pinMode</span>(PIN_GREEN, OUTPUT);
+  <span class="function">pinMode</span>(PIN_BLUE, OUTPUT);
 
-  Serial.<span class="function">begin</span>(<span class="number">9600</span>);
+  Serial.<span class="function">begin</span>(<span class="number">9600</span>); <span class="comment">// Lülitame sisse pordimonitori andurite kontrollimiseks</span>
 }
 
 <span class="type">void</span> <span class="function">loop</span>() {
-  <span class="type">int</span> lightLevel = <span class="function">analogRead</span>(ldrPin);
-  <span class="type">int</span> potValue = <span class="function">analogRead</span>(potPin);
+  <span class="type">int</span> potValue = <span class="function">analogRead</span>(PIN_POT); <span class="comment">// Potentsiomeeter (valib värvi)</span>
+  <span class="type">int</span> ldrValue = <span class="function">analogRead</span>(PIN_LDR); <span class="comment">// Fototakisti (valge/pime)</span>
 
-  <span class="comment">// Potentsiomeetri väärtus 4 tsooni kohta</span>
-  <span class="type">int</span> mode = <span class="function">map</span>(potValue, <span class="number">0</span>, <span class="number">1023</span>, <span class="number">1</span>, <span class="number">5</span>);
-  <span class="keyword">if</span> (mode &gt; <span class="number">4</span>) mode = <span class="number">4</span>; <span class="comment">// Kaitse maksimaalse väärtuse jaoks</span>
+  <span class="comment">// Prindime andurite väärtused, et näha neid jadapordimonitoris (Serial Monitor)</span>
+  Serial.<span class="function">print</span>("Pot: ");
+  Serial.<span class="function">print</span>(potValue);
+  Serial.<span class="function">print</span>(" | LDR: ");
+  Serial.<span class="function">println</span>(ldrValue);
 
-  Serial.<span class="function">print</span>("Režiim: ");
-  Serial.<span class="function">print</span>(mode);
-  Serial.<span class="function">print</span>(" | Valgustus: ");
-  Serial.<span class="function">println</span>(lightLevel);
+  <span class="comment">// 1. Arvutame heleduse. </span>
+  <span class="comment">// Tinkercadis annab fototakisti pimedas tavaliselt umbes 50 ja valguses 900+.</span>
+  <span class="comment">// Muudame need väärtused heleduseks vahemikus 0 kuni 255.</span>
+  <span class="type">int</span> brightness = <span class="function">map</span>(ldrValue, <span class="number">950</span>, <span class="number">50</span>, <span class="number">255</span>, <span class="number">0</span>);
 
-  <span class="keyword">switch</span> (mode) {
-    <span class="keyword">case</span> <span class="number">1</span>: <span class="comment">// Kõik välja lülitatud</span>
-      <span class="function">controlLeds</span>(<span class="number">0</span>);
-      <span class="keyword">break</span>;
+  <span class="comment">// Kaitse: et heledus ei väljuks piiridest 0-255</span>
+  <span class="keyword">if</span> (brightness &lt; <span class="number">0</span>) brightness = <span class="number">0</span>;
+  <span class="keyword">if</span> (brightness &gt; <span class="number">255</span>) brightness = <span class="number">255</span>;
 
-    <span class="keyword">case</span> <span class="number">2</span>: <span class="comment">// Üks LED sõltuvalt valgustusest</span>
-      <span class="keyword">if</span> (lightLevel &lt; <span class="number">500</span>) <span class="function">controlLeds</span>(<span class="number">1</span>);
-      <span class="keyword">else</span> <span class="function">controlLeds</span>(<span class="number">0</span>);
-      <span class="keyword">break</span>;
+  <span class="comment">// 2. Lülitame KÕIK valgusdioodid välja enne vajaliku sisselülitamist</span>
+  <span class="function">analogWrite</span>(PIN_RED, <span class="number">0</span>);
+  <span class="function">analogWrite</span>(PIN_GREEN, <span class="number">0</span>);
+  <span class="function">analogWrite</span>(PIN_BLUE, <span class="number">0</span>);
 
-    <span class="keyword">case</span> <span class="number">3</span>: <span class="comment">// Kaks valgusdioodi sõltuvalt valgustusest</span>
-      <span class="keyword">if</span> (lightLevel &lt; <span class="number">500</span>) <span class="function">controlLeds</span>(<span class="number">2</span>);
-      <span class="keyword">else</span> <span class="function">controlLeds</span>(<span class="number">0</span>);
-      <span class="keyword">break</span>;
-
-    <span class="keyword">case</span> <span class="number">4</span>: <span class="comment">// Kõik alati sees, olenemata valgusest</span>
-      <span class="function">controlLeds</span>(<span class="number">2</span>);
-      <span class="keyword">break</span>;
+  <span class="comment">// 3. Valime värvi sõltuvalt potentsiomeetrist</span>
+  <span class="keyword">if</span> (potValue &lt; <span class="number">100</span>) {
+    <span class="comment">// Kui nupp on nullis — öölamp on VÄLJA LÜLITATUD (jätame kõik dioodid 0 peale)</span>
+  }
+  <span class="keyword">else if</span> (potValue &lt; <span class="number">400</span>) {
+    <span class="comment">// Lülitame sisse PUNASE</span>
+    <span class="function">analogWrite</span>(PIN_RED, brightness);
+  }
+  <span class="keyword">else if</span> (potValue &lt; <span class="number">700</span>) {
+    <span class="comment">// Lülitame sisse ROHELISE</span>
+    <span class="function">analogWrite</span>(PIN_GREEN, brightness);
+  }
+  <span class="keyword">else</span> {
+    <span class="comment">// Lülitame sisse SINISE (nupp on keeratud üle 700)</span>
+    <span class="function">analogWrite</span>(PIN_BLUE, brightness);
   }
 
   <span class="function">delay</span>(<span class="number">100</span>);
-}
-
-<span class="type">void</span> <span class="function">controlLeds</span>(<span class="type">int</span> numberOn) {
-  <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; ledCount; i++) {
-    <span class="function">digitalWrite</span>(ledPins[i], i &lt; numberOn ? HIGH : LOW);
-  }
 }</code></pre>
 </div>
-
+<h3>Video:</h3>
+<a href="https://drive.google.com/file/d/1PWx-xwcBNTNUyBp4Jj8346pGcdT3lsgL/view?usp=sharing" target="_blank">G Drive</a>
 </body>
 </html>
