@@ -262,20 +262,21 @@ title: Valguskett
     <span class="function">digitalWrite</span>(ledPins[i], LOW);
   }
 }
-
 <span class="comment">// 3. "Värviline" režiim (grupeerimine)</span>
 <span class="type">void</span> <span class="function">mode3</span>() {
-  <span class="function">digitalWrite</span>(ledPins[<span class="number">0</span>], HIGH); <span class="function">digitalWrite</span>(ledPins[<span class="number">3</span>], HIGH);
+  <span class="function">digitalWrite</span>(ledPins[<span class="number">0</span>], HIGH); <span class="function">digitalWrite</span>(ledPins[<span class="number">4</span>], HIGH);
   <span class="function">delay</span>(<span class="number">200</span>);
-  <span class="function">digitalWrite</span>(ledPins[<span class="number">0</span>], LOW); <span class="function">digitalWrite</span>(ledPins[<span class="number">3</span>], LOW);
+  <span class="function">digitalWrite</span>(ledPins[<span class="number">0</span>], LOW); <span class="function">digitalWrite</span>(ledPins[<span class="number">4</span>], LOW);
+  <span class="function">delay</span>(<span class="number">500</span>);
 
-  <span class="function">digitalWrite</span>(ledPins[<span class="number">1</span>], HIGH);
+  <span class="function">digitalWrite</span>(ledPins[<span class="number">1</span>], HIGH); <span class="function">digitalWrite</span>(ledPins[<span class="number">3</span>], HIGH);
   <span class="function">delay</span>(<span class="number">200</span>);
-  <span class="function">digitalWrite</span>(ledPins[<span class="number">1</span>], LOW);
+  <span class="function">digitalWrite</span>(ledPins[<span class="number">1</span>], LOW); <span class="function">digitalWrite</span>(ledPins[<span class="number">3</span>], LOW);
+  <span class="function">delay</span>(<span class="number">500</span>);
 
-  <span class="function">digitalWrite</span>(ledPins[<span class="number">2</span>], HIGH); <span class="function">digitalWrite</span>(ledPins[<span class="number">4</span>], HIGH);
+  <span class="function">digitalWrite</span>(ledPins[<span class="number">2</span>], HIGH);
   <span class="function">delay</span>(<span class="number">200</span>);
-  <span class="function">digitalWrite</span>(ledPins[<span class="number">2</span>], LOW); <span class="function">digitalWrite</span>(ledPins[<span class="number">4</span>], LOW);
+  <span class="function">digitalWrite</span>(ledPins[<span class="number">2</span>], LOW);
 }
 
 <span class="comment">// 4. Juhuslik järjekord (küünla efekt)</span>
