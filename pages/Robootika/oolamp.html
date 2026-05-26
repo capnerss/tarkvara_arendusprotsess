@@ -168,7 +168,7 @@ title: oolamp
                 let ldrValue = parseInt(document.getElementById('photoresistor').value);
 
                 document.getElementById('pot-text').innerText = `Potentsiomeeter (Värv): ${potValue}`;
-                document.getElementById('ldr-text').innerText = `Fototakisti (Heledus): ${ldrValue}`;
+                document.getElementById('ldr-text').innerText = `Fototakisti (pime/valge): ${ldrValue}`;
 
                 // Arvutame heleduse sarnaselt map funktsiooniga (50..950 -> 0..1)
                 let brightness = (ldrValue - 50) / (950 - 50);
