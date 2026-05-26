@@ -117,7 +117,7 @@ title: oolamp
     <li>Kui väärtus on vahemikus 100–399, süttib <b>punane</b> tuli.</li>
     <li>Kui väärtus on vahemikus 400–699, süttib <b>roheline</b> tuli.</li>
     <li>Kui väärtus on 700 või rohkem, süttib <b>sinine</b> tuli.</li>
-    <li>Valguse intensiivsus (heledus) sõltub fototakisti näidust (mida rohkem valgust on ruumis, seda heledamalt LED põleb).</li>
+    <li>Valguse sõltub fototakisti näidust (mida vahem valgust on ruumis, seda heledamalt LED põleb).</li>
 </ol>
 
 <h3>Vaja läheb:</h3>
@@ -243,8 +243,6 @@ title: oolamp
   Serial.<span class="function">println</span>(ldrValue);
 
   <span class="comment">// 1. Arvutame heleduse. </span>
-  <span class="comment">// Tinkercadis annab fototakisti pimedas tavaliselt umbes 50 ja valguses 900+.</span>
-  <span class="comment">// Muudame need väärtused heleduseks vahemikus 0 kuni 255.</span>
   <span class="type">int</span> brightness = <span class="function">map</span>(ldrValue, <span class="number">950</span>, <span class="number">50</span>, <span class="number">255</span>, <span class="number">0</span>);
 
   <span class="comment">// Kaitse: et heledus ei väljuks piiridest 0-255</span>
