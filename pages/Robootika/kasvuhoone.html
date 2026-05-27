@@ -144,7 +144,10 @@ title: Kasvuhoone
 <h2>Ülesanne: Kasvuhoone</h2>
 
 <h3>Töö kirjeldus:</h3>
-<p>Temperatuuritundlik servojuhtimine, mis töötab koos ühe LED-fotoresistori ja temperatuuritakistiga. Servo pöörleb vastupäeva, kui temperatuur on väiksem või võrdne 20°C (kasvuhoone aken suletakse), ja kui temperatuur on suurem või võrdne 30°C, liigub see päripäeva (aken avatakse, et jahutada). LED töötab, kui on pime, ja valges lülitub välja.</p>
+<p>Temperatuuritundlik servojuhtimine, mis töötab koos ühe LED-fotoresistori ja temperatuuritakistiga.
+    Servo pöörleb vastupäeva, kui temperatuur on väiksem või võrdne 20°C (kasvuhoone aken suletakse),
+    ja kui temperatuur on suurem või võrdne 30°C, liigub see päripäeva (aken avatakse, et jahutada).
+    LED töötab, kui on pime, ja valges lülitub välja.</p>
 
 <h3>Kasutatud komponendid:</h3>
 <ul>
@@ -158,37 +161,76 @@ title: Kasvuhoone
     <li>Servomootor (1tk)</li>
 </ul>
 
-<h3>Simulatsioon:</h3>
-<p>Muuda temperatuuri, et näha, kuidas servomootor akent avab (sujuvalt) ja muuda valgustaset, et näha LED-i reageerimist.</p>
+<h3>Ühendamise skeem:</h3>
+<img src="Nimetu5.png" alt="Skeem" width="600px" height="400px" >
 
-<div class="box">
-    <div class="light-box">
-        <div class="hardware-container">
-            <div class="servo-wrapper">
-                <h2 class="foor">Aken (Servo)</h2>
-                <div class="servo-body">
-                    <div id="servo-arm" class="servo-arm"></div>
-                </div>
-            </div>
-            <div class="servo-wrapper">
-                <h2 class="foor">Valgus (LED)</h2>
-                <div id="led-blue" class="light"></div>
-            </div>
-        </div>
+<div class="code-container">
+<pre><code><span class="keyword">#include</span> <span class="string">&lt;Servo.h&gt;</span>
 
-        <div class="controls">
-            <div class="slider-group">
-                <h2 class="foor" id="temp-text">Temperatuur: 0 °C (Suletud)</h2>
-                <input type="range" id="temp-slider" min="0" max="50" value="15">
-            </div>
+<span class="keyword">const</span> <span class="type">int</span> tempPin = A1;       <span class="comment">// TMP36</span>
+<span class="keyword">const</span> <span class="type">int</span> ldrPin = A0;        <span class="comment">// Fototakisti</span>
+<span class="keyword">const</span> <span class="type">int</span> ledPin = <span class="number">6</span>;         <span class="comment">// LED</span>
+<span class="keyword">const</span> <span class="type">int</span> servoPin = <span class="number">9</span>;       <span class="comment">// Servo</span>
 
-            <div class="slider-group" style="margin-top: 10px;">
-                <h2 class="foor" id="light-text">Valgustus: Pime (Tuli põleb)</h2>
-                <span style="color:#aaa; font-size:12px;">Fotoresistor: <span id="ldr-val">0</span></span>
-                <input type="range" id="ldr-slider" min="0" max="1023" value="300">
-            </div>
-        </div>
+<span class="type">Servo</span> windowServo;
+<span class="type">int</span> currentAngle = <span class="number">0</span>;         <span class="comment">// praegune servo nurk</span>
+
+<span class="type">void</span> setup() {
+  Serial.begin(<span class="number">9600</span>);
+  windowServo.attach(servoPin);
+  pinMode(ledPin, OUTPUT);
+}
+
+<span class="type">void</span> loop() {
+  <span class="comment">// ---------- Temperatuur ----------</span>
+  <span class="type">int</span> tempReading = analogRead(tempPin);
+  <span class="type">float</span> voltage = tempReading * (<span class="number">5.0</span> / <span class="number">1023.0</span>);
+  <span class="type">float</span> temperatureC = (voltage - <span class="number">0.5</span>) * <span class="number">100.0</span>;
+
+  <span class="comment">// ---------- Servo juhtimine ----------</span>
+  <span class="type">int</span> targetAngle;
+
+  <span class="keyword">if</span> (temperatureC &lt;= <span class="number">20</span>) {
+    targetAngle = <span class="number">0</span>; <span class="comment">// Sulge aken</span>
+  } <span class="keyword">else</span> <span class="keyword">if</span> (temperatureC &gt;= <span class="number">30</span>) {
+    targetAngle = <span class="number">180</span>; <span class="comment">// Ava aken</span>
+  } <span class="keyword">else</span> {
+    <span class="comment">// Proportsionaalne nurk temperatuuril 20 ja 30 vahel</span>
+    targetAngle = map(temperatureC, <span class="number">20</span>, <span class="number">30</span>, <span class="number">0</span>, <span class="number">180</span>);
+  }
+
+  <span class="comment">// Sujuv servo liikumine</span>
+  <span class="keyword">if</span> (currentAngle &lt; targetAngle) {
+    currentAngle++;
+  } <span class="keyword">else</span> <span class="keyword">if</span> (currentAngle &gt; targetAngle) {
+    currentAngle--;
+  }
+
+  windowServo.write(currentAngle);
+  delay(<span class="number">15</span>);  <span class="comment">// servo kiirus</span>
+
+  <span class="comment">// ---------- Valgustus ----------</span>
+  <span class="type">int</span> ldrValue = analogRead(ldrPin); <span class="comment">// Fototakisti (valge/pime)</span>
+
+  <span class="type">int</span> threshold = <span class="number">500</span>;
+
+  <span class="keyword">if</span> (ldrValue &lt; threshold) {
+    digitalWrite(ledPin, HIGH); <span class="comment">// Lülita sisse</span>
+  } <span class="keyword">else</span> {
+    digitalWrite(ledPin, LOW);  <span class="comment">// Lülita välja</span>
+  }
+
+  <span class="comment">// ---------- Monitori väljund ----------</span>
+  Serial.print(<span class="string">"Temp: "</span>);
+  Serial.print(temperatureC);
+  Serial.print(<span class="string">" °C\tLight: "</span>);
+  Serial.println(ldrValue);
+}</code></pre>
     </div>
 
-    <script>
-        const delay = (ms) => new Promise(resolve
+<h3>Video:</h3>
+<p>
+  <a href="https://drive.google.com/file/d/1itqUmkECBBmhW3rw9fMkbeyvXX1UUA8V/view?usp=sharing" target="_blank">G disk </a>
+</p>
+<body>
+</html>

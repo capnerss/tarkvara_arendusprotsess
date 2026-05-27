@@ -7,98 +7,13 @@ title: Ilmajaam
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ilmajaama simulatsioon</title>
+    <title>Ilmajaama projekt</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             background-color: #ffffff;
             color: #333333;
             padding: 20px;
-        }
-
-        .box {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            justify-content: center;
-            align-items: center;
-            margin-top: 40px;
-            color: #ffffff;
-        }
-
-        .light-box {
-            background: #333;
-            padding: 30px;
-            border-radius: 15px;
-            border: 4px solid #222;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            align-items: center;
-            width: 100%;
-            max-width: 600px;
-        }
-
-        /* LCD 16x2 Stiil */
-        .lcd-bezel {
-            background-color: #111;
-            padding: 15px;
-            border-radius: 10px;
-            border: 2px solid #555;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
-        }
-
-        .lcd-screen {
-            background-color: #76b322; /* Klassikaline LCD roheline */
-            width: 320px;
-            height: 60px;
-            border-radius: 5px;
-            box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: 5px 10px;
-            box-sizing: border-box;
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 20px;
-            font-weight: bold;
-            color: #111;
-            text-shadow: 1px 1px 0px rgba(118, 179, 34, 0.5);
-        }
-
-        .lcd-row {
-            display: flex;
-            justify-content: space-between;
-            white-space: pre;
-            overflow: hidden;
-            letter-spacing: 2px;
-        }
-
-        .controls {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 100%;
-            gap: 15px;
-        }
-
-        .slider-group {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        h2.foor {
-            margin: 0 0 5px 0;
-            font-size: 1.1rem;
-            text-align: center;
-            color: #ddd;
-        }
-
-        input[type=range] {
-            width: 80%;
-            margin: 5px 0;
         }
 
         .code-container {
@@ -127,73 +42,157 @@ title: Ilmajaam
 </head>
 <body>
 
-<h2>Ülesanne: Interaktiivne infoekraan «Ilmajaam»</h2>
+<h2>Ülesanne: Minituuma Ilmajaam (METEO)</h2>
 
 <h3>Töö kirjeldus:</h3>
-<p>Interaktiivne teabeekraan Ilmajaam, mis kuvab ekraanil ilma sõltuvalt temperatuurianduri temperatuurist ja fotoresistori heledusest. Ekraanil oleva teksti heledust (kontrastsust) saab muuta potentsiomeetri abil.</p>
-<p>Režiimid:</p>
-<ol>
-    <li>Jahe (Prokhladno)</li>
-    <li>Väga kuum (Ochen zharko)</li>
-    <li>Päikeseline päev (Solnechny den)</li>
-    <li>Pilvine (Pasmurno)</li>
-    <li>Soe ja selge (Teplo i yasno)</li>
-</ol>
-<p>Ekraanil: <strong>T</strong> = temperatuur, <strong>L</strong> = valgustase ja <strong>Time</strong> = töötamise aeg (MM:SS).</p>
+<p>Luua Arduino põhine ilmajaam, mis kasutab LCD-ekraani (16x2), temperatuuriandurit (TMP36) ja fototakistit (LDR). Süsteem loeb iga 5 sekundi järel andurite väärtusi ning kuvab vastavalt valgustasemele ilmaolusid (päikseline, pilvine, vihma oht või öö) koos spetsiaalselt loodud piksel-ikoonidega (päike, pilv, kuusirp, piisk). Lisaks kuvatakse ekraanil reaalne temperatuur. Iga neljanda tsükli järel näitab ilmajaam vahelduseks väikest reklaamipausi või soovitust.</p>
 
-<h3>Kasutatud komponendid:</h3>
+<h3>Vaja läheb:</h3>
 <ul>
-    <li>Arduino UNO plaat (1tk)</li>
-    <li>Arendusplaat (1tk)</li>
-    <li>Juhtmed (22tk)</li>
-    <li>Takisti (2tk, 220 Oomi ja 10000 Oomi)</li>
-    <li>Fotoresistor (LDR) (1tk)</li>
-    <li>Temperatuuriandur (TMP36) (1tk)</li>
-    <li>Potentsiomeeter (1tk)</li>
-    <li>LCD ekraan 16×2 (1tk)</li>
+    <li>Arduino Uno plaat - 1 tk</li>
+    <li>LCD-ekraan (16×2) - 1 tk</li>
+    <li>Temperatuuriandur (TMP36) - 1 tk</li>
+    <li>Valguse andur (fototakisti / LDR) - 1 tk</li>
+    <li>Potentsiomeeter (250 kOhm) - 1 tk</li>
+    <li>Takisti (220 Oomi) - 1 tk</li>
+    <li>Takisti (10k Oomi fototakistile) - 1 tk</li>
+    <li>Juhe - 23 tk</li>
 </ul>
 
-<h3>Simulatsioon:</h3>
-<p>Kasuta temperatuuri ja valguse liugureid ilma muutmiseks. Ekraani teksti nähtavuse (kontrastsuse) muutmiseks liiguta potentsiomeetri liugurit.</p>
+<h3>Ühendamise skeem:</h3>
+<img src="Nimetu4.png" alt="Skeem" width="600px" height="400px" >
 
-<div class="box">
-    <div class="light-box">
-        <h2 class="foor">LCD Ekraan 16x2</h2>
-        <div class="lcd-bezel">
-            <div class="lcd-screen" id="lcd-display">
-                <div class="lcd-row" id="lcd-row-1">T:20.0&deg; L:500   </div>
-                <div class="lcd-row" id="lcd-row-2"><span id="lcd-weather">Teplo i yasno</span><span id="lcd-time">00:00</span></div>
-            </div>
-        </div>
+<h3>Programmi kood:</h3>
+<div class="code-container">
+<pre><code><span class="keyword">#include</span> &lt;LiquidCrystal.h&gt;
 
-        <div class="controls">
-            <div class="slider-group">
-                <h2 class="foor" id="temp-text">Temperatuur (TMP36): 20 °C</h2>
-                <input type="range" id="temp-slider" min="-10" max="40" value="20">
-            </div>
+<span class="comment">// Display connection: RS, E, D4, D5, D6, D7</span>
+<span class="type">LiquidCrystal</span> lcd(<span class="number">12</span>, <span class="number">11</span>, <span class="number">5</span>, <span class="number">4</span>, <span class="number">3</span>, <span class="number">2</span>);
 
-            <div class="slider-group" style="margin-top: 10px;">
-                <h2 class="foor" id="light-text">Valgustus (LDR): 500</h2>
-                <input type="range" id="ldr-slider" min="0" max="1023" value="500">
-            </div>
+<span class="type">const int</span> tempPin = A1;
+<span class="type">const int</span> ldrPin = A0;
 
-            <div class="slider-group" style="margin-top: 10px;">
-                <h2 class="foor">Kontrastsus (Potentsiomeeter)</h2>
-                <input type="range" id="contrast-slider" min="0" max="100" value="100">
-            </div>
-        </div>
-    </div>
+<span class="type">unsigned long</span> previousMillis = <span class="number">0</span>;
+<span class="type">const long</span> interval = <span class="number">5000</span>; <span class="comment">// Update every 5 seconds</span>
+<span class="type">int</span> cycleCounter = <span class="number">0</span>;       <span class="comment">// Counter for displaying the ad message</span>
 
-    <script>
-        const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+<span class="comment">// 1. Sun</span>
+<span class="type">byte</span> sun[<span class="number">8</span>] = {
+  <span class="number">0b00100</span>, <span class="number">0b10101</span>, <span class="number">0b01110</span>, <span class="number">0b11111</span>, <span class="number">0b01110</span>, <span class="number">0b10101</span>, <span class="number">0b00100</span>, <span class="number">0b00000</span>
+};
 
-        let secondsPassed = 0;
-        let previousMillis = Date.now();
+<span class="comment">// 2. Cloud</span>
+<span class="type">byte</span> cloud[<span class="number">8</span>] = {
+  <span class="number">0b00000</span>, <span class="number">0b01100</span>, <span class="number">0b10110</span>, <span class="number">0b11111</span>, <span class="number">0b11111</span>, <span class="number">0b01110</span>, <span class="number">0b00000</span>, <span class="number">0b00000</span>
+};
 
-        async function loop() {
-            while (true) {
-                // Aja arvestus (sarnaselt Arduino millis() funktsioonile)
-                let currentMillis = Date.now();
-                if (currentMillis - previousMillis >= 1000) {
-                    previousMillis = currentMillis;
-                    secondsPassed++;
+<span class="comment">// 3. Moon</span>
+<span class="type">byte</span> moon[<span class="number">8</span>] = {
+  <span class="number">0b00011</span>, <span class="number">0b00110</span>, <span class="number">0b01100</span>, <span class="number">0b11000</span>, <span class="number">0b11000</span>, <span class="number">0b01100</span>, <span class="number">0b00110</span>, <span class="number">0b00011</span>
+};
+
+<span class="comment">// 4. Drop (for cloudy/rainy weather)</span>
+<span class="type">byte</span> drop[<span class="number">8</span>] = {
+  <span class="number">0b00100</span>, <span class="number">0b00100</span>, <span class="number">0b01010</span>, <span class="number">0b01010</span>, <span class="number">0b10001</span>, <span class="number">0b10001</span>, <span class="number">0b01110</span>, <span class="number">0b00000</span>
+};
+
+<span class="comment">// 5. Smiley (for the ad message)</span>
+<span class="type">byte</span> smiley[<span class="number">8</span>] = {
+  <span class="number">0b00000</span>, <span class="number">0b01010</span>, <span class="number">0b01010</span>, <span class="number">0b00000</span>, <span class="number">0b10001</span>, <span class="number">0b01110</span>, <span class="number">0b00000</span>, <span class="number">0b00000</span>
+};
+
+<span class="type">void</span> <span class="function">setup</span>() {
+  lcd.<span class="function">begin</span>(<span class="number">16</span>, <span class="number">2</span>);
+
+  <span class="comment">// Initialize custom characters (from 0 to 4)</span>
+  lcd.<span class="function">createChar</span>(<span class="number">0</span>, sun);
+  lcd.<span class="function">createChar</span>(<span class="number">1</span>, cloud);
+  lcd.<span class="function">createChar</span>(<span class="number">2</span>, moon);
+  lcd.<span class="function">createChar</span>(<span class="number">3</span>, drop);
+  lcd.<span class="function">createChar</span>(<span class="number">4</span>, smiley);
+
+  Serial.<span class="function">begin</span>(<span class="number">9600</span>);
+
+  <span class="comment">// Requirement: Weather station name at startup</span>
+  lcd.<span class="function">setCursor</span>(<span class="number">0</span>, <span class="number">0</span>);
+  lcd.<span class="function">print</span>(<span class="string">"Ilmajaam: METEO"</span>);
+  lcd.<span class="function">setCursor</span>(<span class="number">0</span>, <span class="number">1</span>);
+  lcd.<span class="function">print</span>(<span class="string">"Laen andmeid..."</span>);
+  <span class="function">delay</span>(<span class="number">3000</span>);
+  lcd.<span class="function">clear</span>();
+}
+
+<span class="type">void</span> <span class="function">loop</span>() {
+  <span class="type">unsigned long</span> currentMillis = <span class="function">millis</span>();
+
+  <span class="keyword">if</span> (currentMillis - previousMillis &gt;= interval) {
+    previousMillis = currentMillis;
+    cycleCounter++; <span class="comment">// Increment cycle counter</span>
+
+    <span class="comment">// Read temperature</span>
+    <span class="type">int</span> tempRaw = <span class="function">analogRead</span>(tempPin);
+    <span class="type">float</span> voltage = tempRaw * (<span class="number">5.0</span> / <span class="number">1023.0</span>);
+    <span class="type">float</span> temperature = (voltage - <span class="number">0.5</span>) * <span class="number">100.0</span>;
+
+    <span class="comment">// Read light level</span>
+    <span class="type">int</span> ldrValue = <span class="function">analogRead</span>(ldrPin);
+
+    <span class="comment">// Output to serial monitor for debugging</span>
+    Serial.<span class="function">print</span>(<span class="string">"Temp: "</span>);
+    Serial.<span class="function">print</span>(temperature);
+    Serial.<span class="function">print</span>(<span class="string">" C | Valgus: "</span>);
+    Serial.<span class="function">println</span>(ldrValue);
+
+    lcd.<span class="function">clear</span>();
+
+    <span class="comment">// Display logic: show joke/ad every 4th cycle</span>
+    <span class="keyword">if</span> (cycleCounter % <span class="number">4</span> == <span class="number">0</span>) {
+      <span class="comment">// Situation 5: Ad text + smiley icon</span>
+      lcd.<span class="function">setCursor</span>(<span class="number">0</span>, <span class="number">0</span>);
+      lcd.<span class="function">print</span>(<span class="string">"Joo sooja teed!"</span>);
+      lcd.<span class="function">setCursor</span>(<span class="number">15</span>, <span class="number">0</span>);
+      lcd.<span class="function">write</span>(<span class="type">byte</span>(<span class="number">4</span>));
+
+      lcd.<span class="function">setCursor</span>(<span class="number">0</span>, <span class="number">1</span>);
+      lcd.<span class="function">print</span>(<span class="string">"Reklaamipaus :)"</span>);
+    } <span class="keyword">else</span> {
+      <span class="comment">// Normal weather mode</span>
+      lcd.<span class="function">setCursor</span>(<span class="number">0</span>, <span class="number">0</span>);
+
+      <span class="comment">// Situations 1-4: Depend on light sensor (LDR)</span>
+      <span class="keyword">if</span> (ldrValue &gt; <span class="number">935</span>) {
+        lcd.<span class="function">print</span>(<span class="string">"Paikseline ilm"</span>);
+        lcd.<span class="function">setCursor</span>(<span class="number">15</span>, <span class="number">0</span>);
+        lcd.<span class="function">write</span>(<span class="type">byte</span>(<span class="number">0</span>)); <span class="comment">// Sun</span>
+      } <span class="keyword">else if</span> (ldrValue &gt; <span class="number">800</span>) {
+        lcd.<span class="function">print</span>(<span class="string">"Pilvine ilm"</span>);
+        lcd.<span class="function">setCursor</span>(<span class="number">15</span>, <span class="number">0</span>);
+        lcd.<span class="function">write</span>(<span class="type">byte</span>(<span class="number">1</span>)); <span class="comment">// Cloud</span>
+      } <span class="keyword">else if</span> (ldrValue &gt; <span class="number">500</span>) {
+        lcd.<span class="function">print</span>(<span class="string">"Vihma oht!"</span>);
+        lcd.<span class="function">setCursor</span>(<span class="number">15</span>, <span class="number">0</span>);
+        lcd.<span class="function">write</span>(<span class="type">byte</span>(<span class="number">3</span>)); <span class="comment">// Drop</span>
+      } <span class="keyword">else</span> {
+        lcd.<span class="function">print</span>(<span class="string">"Ilusat ood!"</span>);
+        lcd.<span class="function">setCursor</span>(<span class="number">15</span>, <span class="number">0</span>);
+        lcd.<span class="function">write</span>(<span class="type">byte</span>(<span class="number">2</span>)); <span class="comment">// Moon</span>
+      }
+
+      <span class="comment">// Display temperature (always on second row, except during ad)</span>
+      lcd.<span class="function">setCursor</span>(<span class="number">0</span>, <span class="number">1</span>);
+      lcd.<span class="function">print</span>(<span class="string">"Temp: "</span>);
+      lcd.<span class="function">print</span>(temperature, <span class="number">1</span>); <span class="comment">// 1 decimal place</span>
+      lcd.<span class="function">print</span>((<span class="type">char</span>)<span class="number">223</span>);      <span class="comment">// Degree symbol</span>
+      lcd.<span class="function">print</span>(<span class="string">"C"</span>);
+    }
+  }
+}</code></pre>
+</div>
+
+<h3>Video:</h3>
+<p>
+  <a href="#" target="_blank">Tuhi link </a>
+</p>
+
+</body>
+</html>
