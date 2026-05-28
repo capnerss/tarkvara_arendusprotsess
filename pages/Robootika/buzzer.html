@@ -1,178 +1,19 @@
 ---
 layout: default
-title: Väike Alarm Süsteem
+title: Ilmajaam
 ---
 <!DOCTYPE html>
 <html lang="et">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Väike Alarm Süsteem</title>
+    <title>Buzzer projekt</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             background-color: #ffffff;
             color: #333333;
             padding: 20px;
-            margin: 0;
-        }
-
-        /* Ekraan heli aktiveerimiseks */
-        #start-screen {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.85);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-        }
-
-        #start-btn {
-            padding: 20px 40px;
-            font-size: 24px;
-            background-color: #76b322;
-            color: #111;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            font-weight: bold;
-            box-shadow: 0 4px 15px rgba(118, 179, 34, 0.5);
-            transition: transform 0.1s;
-        }
-
-        #start-btn:active {
-            transform: scale(0.95);
-        }
-
-        .box {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            justify-content: center;
-            align-items: center;
-            margin-top: 20px;
-            color: #ffffff;
-        }
-
-        .light-box {
-            background: #333;
-            padding: 30px;
-            border-radius: 15px;
-            border: 4px solid #222;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            align-items: center;
-            width: 100%;
-            max-width: 650px;
-        }
-
-        /* LCD Stiil */
-        .lcd-bezel {
-            background-color: #111;
-            padding: 15px;
-            border-radius: 10px;
-            border: 2px solid #555;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
-        }
-
-        .lcd-screen {
-            background-color: #76b322;
-            width: 320px;
-            height: 60px;
-            border-radius: 5px;
-            box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: 5px 10px;
-            box-sizing: border-box;
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 20px;
-            font-weight: bold;
-            color: #111;
-            text-shadow: 1px 1px 0px rgba(118, 179, 34, 0.5);
-        }
-
-        .lcd-row {
-            display: flex;
-            white-space: pre;
-            overflow: hidden;
-            letter-spacing: 2px;
-            height: 25px;
-        }
-
-        /* Buzzer Stiil */
-        .buzzer-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .buzzer {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background-color: #222;
-            border: 4px solid #444;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-            transition: all 0.2s;
-        }
-
-        .buzzer.active {
-            background-color: #ff3333;
-            border-color: #ffaaaa;
-            box-shadow: 0 0 25px #ff3333;
-            animation: pulse 0.4s infinite alternate;
-        }
-
-        .buzzer-text {
-            font-size: 14px;
-            color: #aaa;
-            font-weight: bold;
-            text-align: center;
-            height: 15px;
-        }
-
-        .buzzer.active + .buzzer-text {
-            color: #ff3333;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            100% { transform: scale(1.1); }
-        }
-
-        .controls {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 100%;
-            gap: 15px;
-        }
-
-        .slider-group {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        h2.foor {
-            margin: 0 0 5px 0;
-            font-size: 1.1rem;
-            text-align: center;
-            color: #ddd;
-        }
-
-        input[type=range] {
-            width: 80%;
-            margin: 5px 0;
         }
 
         .code-container {
@@ -186,7 +27,7 @@ title: Väike Alarm Süsteem
             overflow-x: auto;
             border: 1px solid #333;
             max-width: 800px;
-            margin: 20px auto;
+            margin: 20px 0;
             box-shadow: 0 4px 6px rgba(0,0,0,0.3);
         }
 
@@ -201,238 +42,202 @@ title: Väike Alarm Süsteem
 </head>
 <body>
 
-<div id="start-screen">
-    <button id="start-btn" onclick="startSim()">Käivita simulatsioon</button>
-</div>
-
-<h2>Ülesanne: Buzzeri kasutamine «Väike Alarm Süsteem»</h2>
+<h2>Ülesanne: Buzzer</h2>
 
 <h3>Töö kirjeldus:</h3>
-<p>Meteostatsioon koos häirega. See mõõdab temperatuuri TMP-anduriga ja valgustugevust fotoresistori abil. Kõik andmed kuvatakse LCD-ekraanil. Süsteem lülitatakse sisse potentsiomeetri abil (kui on välja lülitatud, näitab "System off"). Kui süsteem on sees ja temperatuur langeb alla 25 °C, käivitub häire, mängides pala keiserlikust marssist (Imperial March). Normaalse temperatuuri korral ei mängita midagi.</p>
+<p>Luua Arduino põhine ilmajaam, mis kasutab LCD-ekraani (16x2), temperatuuriandurit (TMP36) ja fototakistit (LDR). Süsteem loeb iga 5 sekundi järel andurite väärtusi ning kuvab vastavalt valgustasemele ilmaolusid (päikseline, pilvine, vihma oht või öö) koos spetsiaalselt loodud piksel-ikoonidega (päike, pilv, kuusirp, piisk). Lisaks kuvatakse ekraanil reaalne temperatuur. Iga neljanda tsükli järel näitab ilmajaam vahelduseks väikest reklaamipausi või soovitust.
+    Süsteemi on lisatud ka piesokõlar (buzzer), mis mängib taustaks pidevat meloodiat. Kui temperatuur tõuseb üle <strong>40°C</strong>, asendub taustamuusika automaatselt alarmsireeniga. Heli juhtimiseks kasutatakse <code>millis()</code> funktsiooni, mis tagab ekraani sujuva uuenemise ilma programmi peatamata.</p>
 
-<div class="box">
-    <div class="light-box">
-        <div style="display: flex; gap: 40px; align-items: center;">
-            <div>
-                <h2 class="foor">LCD Ekraan</h2>
-                <div class="lcd-bezel">
-                    <div class="lcd-screen" id="lcd-display">
-                        <div class="lcd-row" id="lcd-row-1">System off</div>
-                        <div class="lcd-row" id="lcd-row-2"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="buzzer-container">
-                <h2 class="foor">Buzzer</h2>
-                <div class="buzzer" id="buzzer-icon"></div>
-                <div class="buzzer-text" id="buzzer-text">Vaikus</div>
-            </div>
-        </div>
+<h3>Vaja läheb:</h3>
+<ul>
+    <li>Arduino Uno plaat - 1 tk</li>
+    <li>LCD-ekraan (16×2) - 1 tk</li>
+    <li>Temperatuuriandur (TMP36) - 1 tk</li>
+    <li>Valguse andur (fototakisti / LDR) - 1 tk</li>
+    <li>Potentsiomeeter (250 kOhm) - 1 tk</li>
+    <li>Piesokõlar (Buzzer) - 1 tk</li>
+    <li>Takisti (220 Oomi) - 1 tk</li>
+    <li>Takisti (10k Oomi fototakistile) - 1 tk</li>
+    <li>Juhe - 25 tk</li>
+</ul>
 
-        <div class="controls">
-            <div class="slider-group">
-                <h2 class="foor" id="pot-text">Süsteemi toide (Potentsiomeeter): VÄLJAS (0)</h2>
-                <input type="range" id="pot-slider" min="0" max="1023" value="0">
-            </div>
+<h3>Ühendamise skeem:</h3>
+<img src="Nimetu4.png" alt="Skeem" width="600px" height="400px" >
 
-            <div class="slider-group" style="margin-top: 10px;">
-                <h2 class="foor" id="temp-text">Temperatuur (TMP): 26.0 °C</h2>
-                <input type="range" id="temp-slider" min="-10" max="50" value="26" step="0.1">
-            </div>
-
-            <div class="slider-group" style="margin-top: 10px;">
-                <h2 class="foor" id="light-text">Valgustus (LDR RAW): 500</h2>
-                <input type="range" id="ldr-slider" min="0" max="1023" value="500">
-            </div>
-        </div>
-    </div>
-
-    <script>
-        const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
-
-        // Web Audio API
-        let audioCtx;
-
-        function initAudio() {
-            if (!audioCtx) {
-                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-            }
-        }
-
-        function playTone(freq, durationMs) {
-            if (!audioCtx) return;
-            const osc = audioCtx.createOscillator();
-            const gain = audioCtx.createGain();
-            osc.type = 'square';
-            osc.frequency.value = freq;
-            osc.connect(gain);
-            gain.connect(audioCtx.destination);
-
-            osc.start();
-            gain.gain.setValueAtTime(0.05, audioCtx.currentTime);
-            gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + durationMs / 1000);
-            osc.stop(audioCtx.currentTime + durationMs / 1000);
-        }
-
-        let isMarchPlaying = false;
-
-        async function playImperialMarch() {
-            if (isMarchPlaying) return;
-            isMarchPlaying = true;
-
-            const melody = [440, 440, 440, 349, 523, 440, 349, 523, 440];
-            const durations = [500, 500, 500, 350, 150, 500, 350, 150, 650];
-
-            for (let i = 0; i < melody.length; i++) {
-                let potVal = parseInt(document.getElementById('pot-slider').value);
-                let tempC = parseFloat(document.getElementById('temp-slider').value);
-                if (potVal <= 512 || tempC >= 25.0) {
-                    isMarchPlaying = false;
-                    return;
-                }
-
-                playTone(melody[i], durations[i]);
-                await delay(durations[i] * 1.3);
-            }
-            isMarchPlaying = false;
-        }
-
-        async function loop() {
-            while (true) {
-                let potVal = parseInt(document.getElementById('pot-slider').value);
-                let tempC = parseFloat(document.getElementById('temp-slider').value).toFixed(1);
-                let lightRaw = parseInt(document.getElementById('ldr-slider').value);
-
-                let systemOn = potVal > 512;
-                document.getElementById('pot-text').innerText = `Süsteemi toide (Pot): ${systemOn ? 'SEES' : 'VÄLJAS'} (${potVal})`;
-                document.getElementById('temp-text').innerText = `Temperatuur (TMP): ${tempC} °C`;
-                document.getElementById('light-text').innerText = `Valgustus (LDR RAW): ${lightRaw}`;
-
-                let buzzer = document.getElementById('buzzer-icon');
-                let buzzerText = document.getElementById('buzzer-text');
-
-                if (!systemOn) {
-                    document.getElementById('lcd-row-1').innerText = "System off";
-                    document.getElementById('lcd-row-2').innerText = "";
-                    buzzer.classList.remove('active');
-                    buzzerText.innerText = "Vaikus";
-                } else {
-                    let lux = Math.floor(((lightRaw - 200) / (900 - 200)) * 1000);
-                    if (lux < 0) lux = 0;
-                    if (lux > 1000) lux = 1000;
-
-                    document.getElementById('lcd-row-1').innerHTML = `Temp: ${tempC}&deg;C`;
-                    document.getElementById('lcd-row-2').innerText = `Light: ${lux} lx`;
-
-                    if (parseFloat(tempC) < 25.0) {
-                        buzzer.classList.add('active');
-                        buzzerText.innerText = "🎶 Imperial March!";
-                        playImperialMarch();
-                    } else {
-                        buzzer.classList.remove('active');
-                        buzzerText.innerText = "Vaikus";
-                    }
-                }
-                await delay(500);
-            }
-        }
-
-        function startSim() {
-            document.getElementById('start-screen').style.display = 'none';
-            initAudio();
-            loop();
-        }
-    </script>
-</div>
-
-<h3>Programmi kood (Arduino C++):</h3>
+<h3>Programmi kood:</h3>
 <div class="code-container">
 <pre><code><span class="keyword">#include</span> &lt;LiquidCrystal.h&gt;
 
-<span class="comment">// LCD: RS, E, D4, D5, D6, D7</span>
-LiquidCrystal <span class="function">lcd</span>(<span class="number">11</span>, <span class="number">12</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>);
+<span class="comment">// Display connection: RS, E, D4, D5, D6, D7</span>
+<span class="type">LiquidCrystal</span> lcd(<span class="number">12</span>, <span class="number">11</span>, <span class="number">5</span>, <span class="number">4</span>, <span class="number">3</span>, <span class="number">2</span>);
 
-<span class="comment">// Viigud (Pins)</span>
-<span class="keyword">const</span> <span class="type">int</span> potPin   = A3;
-<span class="keyword">const</span> <span class="type">int</span> tempPin  = A4;
-<span class="keyword">const</span> <span class="type">int</span> ldrPin   = A5;
-<span class="keyword">const</span> <span class="type">int</span> alarmPin = <span class="number">9</span>;   <span class="comment">// Signalisatsioon (Buzzer)</span>
+<span class="type">const int</span> tempPin = A1;
+<span class="type">const int</span> ldrPin = A0;
+<span class="type">const int</span> buzzerPin = <span class="number">8</span>; <span class="comment">// Pin for connecting the buzzer</span>
 
-<span class="keyword">const</span> <span class="type">int</span> switchThreshold = <span class="number">512</span>;  <span class="comment">// Potentsiomeeter &gt; 512 → sisse</span>
-<span class="keyword">const</span> <span class="type">float</span> tempThreshold = <span class="number">25.0</span>; <span class="comment">// Häiretemperatuur</span>
+<span class="type">unsigned long</span> previousMillis = <span class="number">0</span>;
+<span class="type">const long</span> interval = <span class="number">5000</span>; <span class="comment">// Update every 5 seconds</span>
+<span class="type">int</span> cycleCounter = <span class="number">0</span>;       <span class="comment">// Counter for displaying the ad message</span>
 
-<span class="comment">// Keiserlik marss (Imperial March)</span>
-<span class="type">int</span> melody[] = {
-  <span class="number">440</span>, <span class="number">440</span>, <span class="number">440</span>, <span class="number">349</span>, <span class="number">523</span>, <span class="number">440</span>, <span class="number">349</span>, <span class="number">523</span>, <span class="number">440</span>,
-  <span class="number">659</span>, <span class="number">659</span>, <span class="number">659</span>, <span class="number">698</span>, <span class="number">523</span>, <span class="number">415</span>, <span class="number">349</span>, <span class="number">523</span>, <span class="number">440</span>
+<span class="comment">// --- Global variables ---</span>
+<span class="type">float</span> currentTemperature = <span class="number">20.0</span>; <span class="comment">// Stores current temperature for the buzzer</span>
+
+<span class="comment">// --- Buzzer variables (non-blocking) ---</span>
+<span class="type">unsigned long</span> previousBuzzerMillis = <span class="number">0</span>;
+<span class="type">int</span> noteIndex = <span class="number">0</span>;
+<span class="type">bool</span> alarmState = <span class="keyword">false</span>;
+
+<span class="comment">// Simple background melody (Notes: C4, E4, G4, C5)</span>
+<span class="type">const int</span> melody[] = {<span class="number">262</span>, <span class="number">330</span>, <span class="number">392</span>, <span class="number">523</span>};
+<span class="type">const int</span> melodySpeed = <span class="number">500</span>; <span class="comment">// Note switching speed (ms)</span>
+
+<span class="comment">// Alarm settings</span>
+<span class="type">const int</span> alarmSpeed = <span class="number">200</span>;  <span class="comment">// Siren blink speed (ms)</span>
+
+<span class="comment">// 1. Sun</span>
+<span class="type">byte</span> sun[<span class="number">8</span>] = {
+  <span class="number">0b00100</span>, <span class="number">0b10101</span>, <span class="number">0b01110</span>, <span class="number">0b11111</span>, <span class="number">0b01110</span>, <span class="number">0b10101</span>, <span class="number">0b00100</span>, <span class="number">0b00000</span>
 };
-<span class="type">int</span> noteDurations[] = {
-  <span class="number">500</span>, <span class="number">500</span>, <span class="number">500</span>, <span class="number">350</span>, <span class="number">150</span>, <span class="number">500</span>, <span class="number">350</span>, <span class="number">150</span>, <span class="number">650</span>,
-  <span class="number">500</span>, <span class="number">500</span>, <span class="number">500</span>, <span class="number">350</span>, <span class="number">150</span>, <span class="number">500</span>, <span class="number">350</span>, <span class="number">150</span>, <span class="number">650</span>
+
+<span class="comment">// 2. Cloud</span>
+<span class="type">byte</span> cloud[<span class="number">8</span>] = {
+  <span class="number">0b00000</span>, <span class="number">0b01100</span>, <span class="number">0b10110</span>, <span class="number">0b11111</span>, <span class="number">0b11111</span>, <span class="number">0b01110</span>, <span class="number">0b00000</span>, <span class="number">0b00000</span>
+};
+
+<span class="comment">// 3. Moon</span>
+<span class="type">byte</span> moon[<span class="number">8</span>] = {
+  <span class="number">0b00011</span>, <span class="number">0b00110</span>, <span class="number">0b01100</span>, <span class="number">0b11000</span>, <span class="number">0b11000</span>, <span class="number">0b01100</span>, <span class="number">0b00110</span>, <span class="number">0b00011</span>
+};
+
+<span class="comment">// 4. Drop (for cloudy/rainy weather)</span>
+<span class="type">byte</span> drop[<span class="number">8</span>] = {
+  <span class="number">0b00100</span>, <span class="number">0b00100</span>, <span class="number">0b01010</span>, <span class="number">0b01010</span>, <span class="number">0b10001</span>, <span class="number">0b10001</span>, <span class="number">0b01110</span>, <span class="number">0b00000</span>
+};
+
+<span class="comment">// 5. Smiley (for the ad message)</span>
+<span class="type">byte</span> smiley[<span class="number">8</span>] = {
+  <span class="number">0b00000</span>, <span class="number">0b01010</span>, <span class="number">0b01010</span>, <span class="number">0b00000</span>, <span class="number">0b10001</span>, <span class="number">0b01110</span>, <span class="number">0b00000</span>, <span class="number">0b00000</span>
 };
 
 <span class="type">void</span> <span class="function">setup</span>() {
   lcd.<span class="function">begin</span>(<span class="number">16</span>, <span class="number">2</span>);
+  <span class="function">pinMode</span>(buzzerPin, OUTPUT);
+
+  <span class="comment">// Initialize custom characters (from 0 to 4)</span>
+  lcd.<span class="function">createChar</span>(<span class="number">0</span>, sun);
+  lcd.<span class="function">createChar</span>(<span class="number">1</span>, cloud);
+  lcd.<span class="function">createChar</span>(<span class="number">2</span>, moon);
+  lcd.<span class="function">createChar</span>(<span class="number">3</span>, drop);
+  lcd.<span class="function">createChar</span>(<span class="number">4</span>, smiley);
+
   Serial.<span class="function">begin</span>(<span class="number">9600</span>);
-  <span class="function">pinMode</span>(alarmPin, OUTPUT);
+
+  <span class="comment">// Initial temperature read so the sound matches reality immediately</span>
+  <span class="type">int</span> tempRaw = <span class="function">analogRead</span>(tempPin);
+  currentTemperature = (tempRaw * (<span class="number">5.0</span> / <span class="number">1023.0</span>) - <span class="number">0.5</span>) * <span class="number">100.0</span>;
+
+  <span class="comment">// Requirement: Weather station name at startup</span>
+  lcd.<span class="function">setCursor</span>(<span class="number">0</span>, <span class="number">0</span>);
+  lcd.<span class="function">print</span>(<span class="string">"Ilmajaam: METEO"</span>);
+  lcd.<span class="function">setCursor</span>(<span class="number">0</span>, <span class="number">1</span>);
+  lcd.<span class="function">print</span>(<span class="string">"Laen andmeid..."</span>);
+  <span class="function">delay</span>(<span class="number">3000</span>);
+  lcd.<span class="function">clear</span>();
 }
 
 <span class="type">void</span> <span class="function">loop</span>() {
-  <span class="type">int</span> controlVal = <span class="function">analogRead</span>(potPin);
-  <span class="type">bool</span> systemOn = controlVal &gt; switchThreshold;
+  <span class="type">unsigned long</span> currentMillis = <span class="function">millis</span>();
 
-  <span class="keyword">if</span> (!systemOn) {
-    <span class="function">noTone</span>(alarmPin);
+  <span class="comment">// --- 1. Screen update logic (every 5 seconds) ---</span>
+  <span class="keyword">if</span> (currentMillis - previousMillis &gt;= interval) {
+    previousMillis = currentMillis;
+    cycleCounter++; <span class="comment">// Increment cycle counter</span>
+
+    <span class="comment">// Read temperature</span>
+    <span class="type">int</span> tempRaw = <span class="function">analogRead</span>(tempPin);
+    <span class="type">float</span> voltage = tempRaw * (<span class="number">5.0</span> / <span class="number">1023.0</span>);
+    currentTemperature = (voltage - <span class="number">0.5</span>) * <span class="number">100.0</span>; <span class="comment">// Save to global variable</span>
+
+    <span class="comment">// Read light level</span>
+    <span class="type">int</span> ldrValue = <span class="function">analogRead</span>(ldrPin);
+
+    <span class="comment">// Output to serial monitor for debugging</span>
+    Serial.<span class="function">print</span>(<span class="string">"Temp: "</span>);
+    Serial.<span class="function">print</span>(currentTemperature);
+    Serial.<span class="function">print</span>(<span class="string">" C | Valgus: "</span>);
+    Serial.<span class="function">println</span>(ldrValue);
+
     lcd.<span class="function">clear</span>();
-    lcd.<span class="function">setCursor</span>(<span class="number">0</span>, <span class="number">0</span>);
-    lcd.<span class="function">print</span>(<span class="string">"System off"</span>);
-    <span class="function">delay</span>(<span class="number">500</span>);
-    <span class="keyword">return</span>;
+
+    <span class="comment">// Display logic: show joke/ad every 4th cycle</span>
+    <span class="keyword">if</span> (cycleCounter % <span class="number">4</span> == <span class="number">0</span>) {
+      <span class="comment">// Situation 5: Ad text + smiley icon</span>
+      lcd.<span class="function">setCursor</span>(<span class="number">0</span>, <span class="number">0</span>);
+      lcd.<span class="function">print</span>(<span class="string">"Joo sooja teed!"</span>);
+      lcd.<span class="function">setCursor</span>(<span class="number">15</span>, <span class="number">0</span>);
+      lcd.<span class="function">write</span>(<span class="type">byte</span>(<span class="number">4</span>));
+
+      lcd.<span class="function">setCursor</span>(<span class="number">0</span>, <span class="number">1</span>);
+      lcd.<span class="function">print</span>(<span class="string">"Reklaamipaus :)"</span>);
+    } <span class="keyword">else</span> {
+      <span class="comment">// Normal weather mode</span>
+      lcd.<span class="function">setCursor</span>(<span class="number">0</span>, <span class="number">0</span>);
+
+      <span class="comment">// Situations 1-4: Depend on light sensor (LDR)</span>
+      <span class="keyword">if</span> (ldrValue &gt; <span class="number">935</span>) {
+        lcd.<span class="function">print</span>(<span class="string">"Paikseline ilm"</span>);
+        lcd.<span class="function">setCursor</span>(<span class="number">15</span>, <span class="number">0</span>);
+        lcd.<span class="function">write</span>(<span class="type">byte</span>(<span class="number">0</span>)); <span class="comment">// Sun</span>
+      } <span class="keyword">else if</span> (ldrValue &gt; <span class="number">800</span>) {
+        lcd.<span class="function">print</span>(<span class="string">"Pilvine ilm"</span>);
+        lcd.<span class="function">setCursor</span>(<span class="number">15</span>, <span class="number">0</span>);
+        lcd.<span class="function">write</span>(<span class="type">byte</span>(<span class="number">1</span>)); <span class="comment">// Cloud</span>
+      } <span class="keyword">else if</span> (ldrValue &gt; <span class="number">500</span>) {
+        lcd.<span class="function">print</span>(<span class="string">"Vihma oht!"</span>);
+        lcd.<span class="function">setCursor</span>(<span class="number">15</span>, <span class="number">0</span>);
+        lcd.<span class="function">write</span>(<span class="type">byte</span>(<span class="number">3</span>)); <span class="comment">// Drop</span>
+      } <span class="keyword">else</span> {
+        lcd.<span class="function">print</span>(<span class="string">"Ilusat ood!"</span>);
+        lcd.<span class="function">setCursor</span>(<span class="number">15</span>, <span class="number">0</span>);
+        lcd.<span class="function">write</span>(<span class="type">byte</span>(<span class="number">2</span>)); <span class="comment">// Moon</span>
+      }
+
+      <span class="comment">// Display temperature</span>
+      lcd.<span class="function">setCursor</span>(<span class="number">0</span>, <span class="number">1</span>);
+      lcd.<span class="function">print</span>(<span class="string">"Temp: "</span>);
+      lcd.<span class="function">print</span>(currentTemperature, <span class="number">1</span>); <span class="comment">// 1 decimal place</span>
+      lcd.<span class="function">print</span>((<span class="type">char</span>)<span class="number">223</span>);              <span class="comment">// Degree symbol</span>
+      lcd.<span class="function">print</span>(<span class="string">"C"</span>);
+    }
   }
 
-  <span class="comment">// Temperatuuri näitamine</span>
-  <span class="type">int</span> rawTemp = <span class="function">analogRead</span>(tempPin);
-  <span class="type">float</span> voltage = rawTemp * <span class="number">5.0</span> / <span class="number">1023.0</span>;
-  <span class="type">float</span> tempC = (voltage - <span class="number">0.5</span>) * <span class="number">100.0</span>;
-
-  <span class="comment">// Valguse lugemine</span>
-  <span class="type">int</span> lightRaw = <span class="function">analogRead</span>(ldrPin);
-  <span class="type">int</span> lux = <span class="function">map</span>(lightRaw, <span class="number">200</span>, <span class="number">900</span>, <span class="number">0</span>, <span class="number">1000</span>);
-  lux = <span class="function">constrain</span>(lux, <span class="number">0</span>, <span class="number">1000</span>);
-
-  <span class="comment">// Väljundi kuvamine LCD-l</span>
-  lcd.<span class="function">clear</span>();
-  lcd.<span class="function">setCursor</span>(<span class="number">0</span>, <span class="number">0</span>);
-  lcd.<span class="function">print</span>(<span class="string">"Temp: "</span>);
-  lcd.<span class="function">print</span>(tempC, <span class="number">1</span>);
-  lcd.<span class="function">print</span>((<span class="type">char</span>)<span class="number">223</span>); <span class="comment">// Kraadi märk</span>
-  lcd.<span class="function">print</span>(<span class="string">"C"</span>);
-
-  lcd.<span class="function">setCursor</span>(<span class="number">0</span>, <span class="number">1</span>);
-  lcd.<span class="function">print</span>(<span class="string">"Light: "</span>);
-  lcd.<span class="function">print</span>(lux);
-  lcd.<span class="function">print</span>(<span class="string">" lx"</span>);
-
-  Serial.<span class="function">print</span>(<span class="string">"Temperatur: "</span>); Serial.<span class="function">print</span>(tempC);
-  Serial.<span class="function">print</span>(<span class="string">" C | Light: "</span>); Serial.<span class="function">println</span>(lux);
-
-  <span class="comment">// Häire käivitub, kui temperatuur LANGEB ALLA 25 °C</span>
-  <span class="keyword">if</span> (tempC &lt; tempThreshold) {
-    <span class="function">playImperialMarch</span>();
+  <span class="comment">// --- 2. Buzzer logic (runs continuously in the background) ---</span>
+  <span class="keyword">if</span> (currentTemperature &gt; <span class="number">40.0</span>) {
+    <span class="comment">// ALARM mode: alternating high and low frequency</span>
+    <span class="keyword">if</span> (currentMillis - previousBuzzerMillis &gt;= alarmSpeed) {
+      previousBuzzerMillis = currentMillis;
+      alarmState = !alarmState;
+      <span class="keyword">if</span> (alarmState) {
+        <span class="function">tone</span>(buzzerPin, <span class="number">2000</span>); <span class="comment">// Piercing high sound</span>
+      } <span class="keyword">else</span> {
+        <span class="function">tone</span>(buzzerPin, <span class="number">1000</span>); <span class="comment">// Lower siren sound</span>
+      }
+    }
   } <span class="keyword">else</span> {
-    <span class="function">noTone</span>(alarmPin);
-  }
-
-  <span class="function">delay</span>(<span class="number">2000</span>); <span class="comment">// Paus mõõtmiste vahel</span>
-}
-
-<span class="type">void</span> <span class="function">playImperialMarch</span>() {
-  <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="keyword">sizeof</span>(melody) / <span class="keyword">sizeof</span>(<span class="type">int</span>); i++) {
-    <span class="function">tone</span>(alarmPin, melody[i], noteDurations[i]);
-    <span class="function">delay</span>(noteDurations[i] * <span class="number">1.3</span>);
-    <span class="function">noTone</span>(alarmPin);
+    <span class="comment">// MELODY mode: calm background music</span>
+    <span class="keyword">if</span> (currentMillis - previousBuzzerMillis &gt;= melodySpeed) {
+      previousBuzzerMillis = currentMillis;
+      <span class="function">tone</span>(buzzerPin, melody[noteIndex]);
+      noteIndex = (noteIndex + <span class="number">1</span>) % <span class="number">4</span>; <span class="comment">// Cycle through the 4 notes in the array</span>
+    }
   }
 }</code></pre>
 </div>
+
+<h3>Video:</h3>
+<p>
+  <a href="https://drive.google.com/file/d/1hhVKwQ9tffLAu68Qe_khJkxe4AaHF4Vd/view?usp=sharing" target="_blank">G disk </a>
+</p>
+
 </body>
 </html>
