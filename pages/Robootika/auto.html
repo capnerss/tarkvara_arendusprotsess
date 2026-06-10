@@ -1,0 +1,230 @@
+---
+layout: default
+title: Projekt Eseliikuv auto
+---
+<!DOCTYPE html>
+<html lang="et">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projekt Eseliikuv auto</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+            color: #333333;
+            padding: 20px;
+        }
+
+        .code-container {
+            background-color: #1e1e1e;
+            color: #d4d4d4;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 14px;
+            line-height: 1.5;
+            overflow-x: auto;
+            border: 1px solid #333;
+            max-width: 800px;
+            margin: 20px 0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        }
+
+        /* Süntaksi esiletõstmine */
+        .keyword { color: #569cd6; }
+        .type { color: #4ec9b0; }
+        .number { color: #b5cea8; }
+        .function { color: #dcdcaa;}
+        .comment { color: #6a9955; }
+        .string { color: #ce9178; }
+    </style>
+</head>
+<body>
+
+<h2>Ülesanne: Projekt Eseliikuv auto</h2>
+
+<h3>Töö kirjeldus:</h3>
+<p> Iseliikuv auto, mis tõrjub oma teel olevaid takistusi.
+Pange kokku robot vastavalt antud skeemile või koosta enda skeem.
+Kasuta all antud koodi või kirjuta ise.</p>
+
+<h3>Ühendamise skeem:</h3>
+<img src="auto.jpg" alt="Skeem" width="600px" height="400px" >
+
+<h3>Programmi kood:</h3>
+<div class="code-container">
+<pre><code><span class="type">const int</span> trigPin = <span class="number">3</span>;
+<span class="type">const int</span> echoPin = <span class="number">2</span>;
+<span class="type">int</span> dist_check1, dist_check2, dist_check3;
+<span class="type">long</span> duration, distance, distance_all;
+<span class="type">int</span> dist_result;
+
+<span class="comment">//MOTORS VARIABLES</span>
+<span class="type">const int</span> mot1f = <span class="number">6</span>;
+<span class="type">const int</span> mot1b = <span class="number">5</span>;
+<span class="type">const int</span> mot2f = <span class="number">11</span>;
+<span class="type">const int</span> mot2b = <span class="number">10</span>;
+<span class="type">int</span> mot_speed = <span class="number">225</span>; <span class="comment">//motors speed</span>
+    <span class="type">int</span> left_mot_speed = <span class="number">225</span>; <span class="comment">//1 motors speed</span>
+    <span class="type">int</span> right_mot_speed = <span class="number">225</span>; <span class="comment">//2 motors speed</span>
+<span class="type">int</span> k = <span class="number">0</span>; <span class="comment">//BRAKE</span>
+
+<span class="comment">//LOGICS VARIABLES</span>
+<span class="type">const int</span> dist_stop = <span class="number">25</span>;
+<span class="comment">//const int dist_slow = 40;</span>
+<span class="type">const int</span> max_range = <span class="number">800</span>;
+<span class="type">const int</span> min_range = <span class="number">0</span>;
+<span class="type">int</span> errorLED = <span class="number">13</span>;
+
+<span class="comment">//INITIALIZATION</span>
+<span class="type">void</span> <span class="function">setup</span>() {
+  <span class="comment">// Serial.begin(9600);</span>
+  <span class="comment">// bluetoothSerial.begin(9600);</span>
+  <span class="function">pinMode</span>(trigPin, OUTPUT);
+  <span class="function">pinMode</span>(echoPin, INPUT);
+  <span class="function">pinMode</span>(errorLED, OUTPUT);
+}
+
+<span class="comment">//BASIC PROGRAM CYCLE</span>
+<span class="type">void</span> <span class="function">loop</span>() {
+  <span class="function">delay</span>(<span class="number">1000</span>);
+  <span class="keyword">goto</span> start;
+start:
+  <span class="type">int</span> result = <span class="function">ping</span>(); <span class="comment">//Check distance</span>
+  <span class="keyword">if</span> (result &lt;= min_range){ <span class="comment">//Check min range</span>
+    <span class="function">digitalWrite</span>(errorLED, <span class="number">1</span>);
+    <span class="function">delay</span>(<span class="number">500</span>);
+  }
+  <span class="keyword">if</span> (result == max_range || result &gt; max_range){ <span class="comment">//Check max range</span>
+    <span class="function">digitalWrite</span>(errorLED, <span class="number">1</span>);
+    <span class="function">delay</span>(<span class="number">500</span>);
+  }
+  <span class="keyword">if</span> (result == dist_stop || result &lt; dist_stop){ <span class="comment">//Check stop range</span>
+    <span class="function">digitalWrite</span>(errorLED, <span class="number">0</span>);
+    <span class="function">motors_back</span>();
+    <span class="function">delay</span>(<span class="number">1000</span>);
+    <span class="function">motors_stop</span>();
+    <span class="function">delay</span>(<span class="number">200</span>);
+    <span class="function">motors_left</span>();
+    <span class="function">delay</span>(<span class="number">300</span>);
+    <span class="function">motors_stop</span>();
+    <span class="function">delay</span>(<span class="number">200</span>);
+  }
+  <span class="keyword">if</span> (result &gt; dist_stop){ <span class="comment">//If all is OK, go forward</span>
+    <span class="function">motors_forward</span>();
+    <span class="function">delay</span>(<span class="number">100</span>);
+  }
+  <span class="keyword">goto</span> start;
+}
+
+<span class="comment">////***********************FUNCTIONS*******************************\\\\</span>
+<span class="type">int</span> <span class="function">ping</span>(){ <span class="comment">//CHECK DISTANCE FUNCTION (3x)</span>
+  <span class="function">digitalWrite</span>(trigPin, <span class="number">0</span>);
+  <span class="function">delayMicroseconds</span>(<span class="number">2</span>);
+  <span class="function">digitalWrite</span>(trigPin, <span class="number">1</span>);
+  <span class="function">delayMicroseconds</span>(<span class="number">10</span>);
+  <span class="function">digitalWrite</span>(trigPin, <span class="number">0</span>);
+  duration = <span class="function">pulseIn</span>(echoPin, <span class="number">1</span>);
+  distance = duration/<span class="number">58</span>;
+  dist_check1 = distance;
+
+  <span class="function">digitalWrite</span>(trigPin, <span class="number">0</span>);
+  <span class="function">delayMicroseconds</span>(<span class="number">2</span>);
+  <span class="function">digitalWrite</span>(trigPin, <span class="number">1</span>);
+  <span class="function">delayMicroseconds</span>(<span class="number">10</span>);
+  <span class="function">digitalWrite</span>(trigPin, <span class="number">0</span>);
+  duration = <span class="function">pulseIn</span>(echoPin, <span class="number">1</span>);
+  distance = duration/<span class="number">58</span>;
+  dist_check2 = distance;
+
+  <span class="function">digitalWrite</span>(trigPin, <span class="number">0</span>);
+  <span class="function">delayMicroseconds</span>(<span class="number">2</span>);
+  <span class="function">digitalWrite</span>(trigPin, <span class="number">1</span>);
+  <span class="function">delayMicroseconds</span>(<span class="number">10</span>);
+  <span class="function">digitalWrite</span>(trigPin, <span class="number">0</span>);
+  duration = <span class="function">pulseIn</span>(echoPin, <span class="number">1</span>);
+  distance = duration/<span class="number">58</span>;
+  dist_check3 = distance;
+
+  <span class="type">int</span> dist_check_sum;
+  dist_check_sum = dist_check1 + dist_check2 + dist_check3;
+  dist_result = dist_check_sum/<span class="number">3</span>;
+  <span class="keyword">return</span> dist_result;
+}
+
+<span class="type">void</span> <span class="function">motors_forward</span>(){ <span class="comment">//MOTORS FORWARD FUNCTION</span>
+  <span class="function">analogWrite</span>(mot1f, right_mot_speed);
+  <span class="function">analogWrite</span>(mot2f, left_mot_speed);
+  <span class="function">digitalWrite</span>(mot1b, <span class="number">0</span>);
+  <span class="function">digitalWrite</span>(mot2b, <span class="number">0</span>);
+}
+
+<span class="type">void</span> <span class="function">motors_back</span>(){ <span class="comment">//MOTORS BACK FUNCTION</span>
+  <span class="function">digitalWrite</span>(mot1f, <span class="number">0</span>);
+  <span class="function">digitalWrite</span>(mot2f, <span class="number">0</span>);
+  <span class="function">analogWrite</span>(mot1b, mot_speed);
+  <span class="function">analogWrite</span>(mot2b, mot_speed);
+}
+
+<span class="type">void</span> <span class="function">motors_stop</span>() { <span class="comment">//MOTORS STOP FUNCTION</span>
+  <span class="function">digitalWrite</span>(mot1f, <span class="number">1</span>);
+  <span class="function">digitalWrite</span>(mot2f, <span class="number">1</span>);
+  <span class="function">digitalWrite</span>(mot1b, <span class="number">1</span>);
+  <span class="function">digitalWrite</span>(mot2b, <span class="number">1</span>);
+}
+
+<span class="type">void</span> <span class="function">motors_left</span>() { <span class="comment">//MOTORS LEFT FUNCTION</span>
+  <span class="function">analogWrite</span>(mot1f, mot_speed);
+  <span class="function">digitalWrite</span>(mot2f, <span class="number">0</span>);
+  <span class="function">digitalWrite</span>(mot1b, <span class="number">0</span>);
+  <span class="function">analogWrite</span>(mot2b, mot_speed);
+}
+
+<span class="type">void</span> <span class="function">motors_right</span>() { <span class="comment">//MOTORS RIGHT FUNCTION</span>
+  <span class="function">digitalWrite</span>(mot1f, <span class="number">0</span>);
+  <span class="function">analogWrite</span>(mot2f, mot_speed);
+  <span class="function">analogWrite</span>(mot1b, mot_speed);
+  <span class="function">digitalWrite</span>(mot2b, <span class="number">0</span>);
+}
+
+<span class="type">void</span> <span class="function">motors_foward_left</span>() { <span class="comment">//FORWARD LEFT FUNCTION</span>
+  k = mot_speed*<span class="number">0.8</span>;
+  <span class="function">analogWrite</span>(mot1f, mot_speed);
+  <span class="function">analogWrite</span>(mot2f, k);
+  <span class="function">digitalWrite</span>(mot1b, <span class="number">0</span>);
+  <span class="function">digitalWrite</span>(mot2b, <span class="number">0</span>);
+}
+
+<span class="type">void</span> <span class="function">motors_foward_right</span>() { <span class="comment">//FORWARD RIGHT FUNCTION</span>
+  k = mot_speed*<span class="number">0.8</span>;
+  <span class="function">analogWrite</span>(mot1f, k);
+  <span class="function">analogWrite</span>(mot2f, mot_speed);
+  <span class="function">analogWrite</span>(mot1b, <span class="number">0</span>);
+  <span class="function">analogWrite</span>(mot2b, <span class="number">0</span>);
+}
+
+<span class="type">void</span> <span class="function">motors_back_left</span>() { <span class="comment">//BACK LEFT FUNCTION</span>
+  k = mot_speed*<span class="number">0.8</span>;
+  <span class="function">digitalWrite</span>(mot1f, <span class="number">0</span>);
+  <span class="function">digitalWrite</span>(mot2f, <span class="number">0</span>);
+  <span class="function">analogWrite</span>(mot1b, k);
+  <span class="function">analogWrite</span>(mot2b, mot_speed);
+}
+
+<span class="type">void</span> <span class="function">motors_back_right</span>() { <span class="comment">//BACK RIGHT FUNCTION</span>
+  k = mot_speed*<span class="number">0.8</span>;
+  <span class="function">digitalWrite</span>(mot1f, <span class="number">0</span>);
+  <span class="function">digitalWrite</span>(mot2f, <span class="number">0</span>);
+  <span class="function">analogWrite</span>(mot1b, mot_speed);
+  <span class="function">analogWrite</span>(mot2b, k);
+}</code></pre>
+</div>
+
+<h3>Video:</h3>
+<p>
+  <a href="https://drive.google.com/file/d/1itjknGbRjd8KEIAFIIlDdJ8y-vnl4DZF/view?usp=sharing" target="_blank"> G disk</a>
+</p>
+
+</body>
+</html>
